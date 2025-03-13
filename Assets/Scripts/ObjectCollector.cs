@@ -8,6 +8,7 @@ public class ObjectCollector : MonoBehaviour
     bool isPlayerInAreaDrop = false;
 
 
+    // cobaa
     void Update()
     {
         if (isPlayerInAreaDrop && Input.GetKeyDown(KeyCode.E))
