@@ -1,17 +1,14 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class Container : Interactable
 {
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Transform containerSlot;
+    public GameObject emptyContainer;
+    public GameObject fullContainer;
+    public List<GameObject> storedItems = new List<GameObject>();
+    public int maxCapacity = 1;
 
     public override string Description(){
         if(PlayerInteractions.heldItem != null) {
@@ -29,8 +26,20 @@ public class Container : Interactable
     }
 
     void Collecting(){
-        Debug.Log("Task selesai");
-        Destroy(PlayerInteractions.heldItem.gameObject);
-        PlayerInteractions.heldItem = null;
+        if (storedItems.Count < maxCapacity){
+            PlayerInteractions.heldItem.transform.SetParent(containerSlot);
+            PlayerInteractions.heldItem.transform.localPosition = new Vector3(0, storedItems.Count * 0.2f, 0); // Menyusun item ke atas
+            storedItems.Add(PlayerInteractions.heldItem.gameObject);
+            PlayerInteractions.heldItem = null;
+        }
+    }
+
+    void Update(){
+        if(storedItems.Count == maxCapacity){
+            emptyContainer.SetActive(false);
+            Destroy(emptyContainer);
+            fullContainer.SetActive(true);
+            Debug.Log("Penuhh");
+        }
     }
 }
