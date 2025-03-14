@@ -14,8 +14,8 @@ public class LightSwitch : Interactable
     }
 
     public override string Description(){
-        if(isOn) return "Press {F} to interact.";
-        return "Press {F} to interact.";
+        if(isOn) return "Press {E} to interact.";
+        return "Press {E} to interact.";
     }
     
     void UpdateLight(){

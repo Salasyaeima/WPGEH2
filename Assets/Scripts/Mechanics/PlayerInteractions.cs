@@ -41,7 +41,7 @@ public class PlayerInteractions : MonoBehaviour
     }
 
     void HandleInteraction(Interactable interactable){
-        KeyCode key = KeyCode.F;
+        KeyCode key = KeyCode.E;
 
         switch(interactable.interactionType){
             case Interactable.InteractionType.Click:
