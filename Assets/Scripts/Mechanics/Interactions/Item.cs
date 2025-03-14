@@ -43,7 +43,7 @@ public class Item : Interactable
 
     void Update(){
         if (isHeld == true && PlayerInteractions.heldItem == this){
-            if(Input.GetKeyDown(KeyCode.E)){
+            if(Input.GetKeyDown(KeyCode.Q)){
                 Drop();
             }
             
