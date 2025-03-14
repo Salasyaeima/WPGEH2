@@ -17,7 +17,7 @@ public class Item : Interactable
         if(isHeld == false) {
             return "Press {E} to interact.";
         }else{
-            return "Tes";
+            return " ";
         }
     }
 
@@ -29,12 +29,24 @@ public class Item : Interactable
         isHeld = true;
         PlayerInteractions.heldItem = this;
     }
+    
+    void Drop(){
+        transform.SetParent(null);
+        rb.isKinematic = false;
+        isHeld = false;
+        PlayerInteractions.heldItem = null;
+    }
 
     public override void Interact(){
-    if (isHeld == false){
-            PickUp();
-        }else{
-            Debug.Log("Penuh bang");
+        PickUp();
+    }
+
+    void Update(){
+        if (isHeld == true && PlayerInteractions.heldItem == this){
+            if(Input.GetKeyDown(KeyCode.E)){
+                Drop();
+            }
+            
         }
     }
 }

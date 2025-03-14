@@ -51,6 +51,9 @@ public class PlayerInteractions : MonoBehaviour
                         if(heldItem == null){
                             item.Interact();
                             heldItem = item;
+                        }else if (heldItem == item){
+                                item.Interact();
+                                heldItem = null;
                         }else{
                             Debug.Log("Penuh bang");
                         }
