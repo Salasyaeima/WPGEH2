@@ -7,6 +7,7 @@ public class PlayerInteractions : MonoBehaviour
 
     public float interactionDistance;
     public TMPro.TextMeshProUGUI interactionText;
+    public static Item heldItem = null;
 
 
     Camera cam;
@@ -46,7 +47,16 @@ public class PlayerInteractions : MonoBehaviour
         switch(interactable.interactionType){
             case Interactable.InteractionType.Click:
                 if(Input.GetKeyDown(key)){
-                    interactable.Interact();
+                    if(interactable is Item item){
+                        if(heldItem == null){
+                            item.Interact();
+                            heldItem = item;
+                        }else{
+                            Debug.Log("Penuh bang");
+                        }
+                    }else{
+                        interactable.Interact();
+                    }
                 }
                 break;
         }
