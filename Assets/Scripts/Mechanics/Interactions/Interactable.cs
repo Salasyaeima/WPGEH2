@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-
-    public enum InteractionType{
+    public enum InteractionType
+    {
         Click,
         Hold
     }

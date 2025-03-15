@@ -21,43 +21,58 @@ public class PlayerInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2f, Screen.height/2f, 0f));
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
 
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, interactionDistance)){
+        if (Physics.Raycast(ray, out hit, interactionDistance))
+        {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
 
             bool successfullHit = false;
 
-            if(interactable != null){
+            if (interactable != null)
+            {
                 HandleInteraction(interactable);
                 interactionText.text = interactable.Description();
                 interactionText.gameObject.SetActive(true);
                 successfullHit = true;
-            }else{
+            }
+            else
+            {
                 interactionText.gameObject.SetActive(false);
             }
         }
     }
 
-    void HandleInteraction(Interactable interactable){
+    void HandleInteraction(Interactable interactable)
+    {
         KeyCode key = KeyCode.E;
 
-        switch(interactable.interactionType){
+        switch (interactable.interactionType)
+        {
             case Interactable.InteractionType.Click:
-                if(Input.GetKeyDown(key)){
-                    if(interactable is Item item){
-                        if(heldItem == null){
+                if (Input.GetKeyDown(key))
+                {
+                    if (interactable is Item item)
+                    {
+                        if (heldItem == null)
+                        {
                             item.Interact();
                             heldItem = item;
-                        }else if (heldItem == item){
-                                item.Interact();
-                                heldItem = null;
-                        }else{
+                        }
+                        else if (heldItem == item)
+                        {
+                            item.Interact();
+                            heldItem = null;
+                        }
+                        else
+                        {
                             Debug.Log("Penuh bang");
                         }
-                    }else{
+                    }
+                    else
+                    {
                         interactable.Interact();
                     }
                 }
