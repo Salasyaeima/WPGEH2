@@ -34,7 +34,7 @@ public class Item : Interactable
         PlayerInteractions.heldItem = this;
     }
 
-    void Drop()
+    public void Drop()
     {
         transform.SetParent(null);
         rb.isKinematic = false;
