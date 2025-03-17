@@ -11,6 +11,16 @@ public class Container : Interactable
     public int maxCapacity = 1;
     TaskManager taskManager;
 
+    public enum ContainerType
+    {
+        toyContainer,
+        Bookshelf,
+        wardrobe
+    }
+
+    public ContainerType containerType;
+
+
     void Start()
     {
         taskManager = TaskManager.Instance;
@@ -41,10 +51,18 @@ public class Container : Interactable
     {
         if (storedItems.Count < maxCapacity)
         {
+            ItemData itemData = PlayerInteractions.heldItem.GetComponent<ItemData>();
+            if(itemData != null && 
+            ((containerType == ContainerType.toyContainer && itemData.category == ItemData.ItemCategory.Toy)
+            || (containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes)
+            || (containerType == ContainerType.Bookshelf && itemData.category == ItemData.ItemCategory.Book)))
+            {
             PlayerInteractions.heldItem.transform.SetParent(containerSlot);
             PlayerInteractions.heldItem.transform.localPosition = new Vector3(0, storedItems.Count * 0.2f, 0); // Menyusun item ke atas
             storedItems.Add(PlayerInteractions.heldItem.gameObject);
             PlayerInteractions.heldItem = null;
+            }
+            
         }
     }
 
