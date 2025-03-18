@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class TaskManager : MonoBehaviour
 {
     public static TaskManager Instance;
-
     public List<Task> tasks = new List<Task>();
     public GameObject taskUIPrefab;
     public Transform taskListParent;

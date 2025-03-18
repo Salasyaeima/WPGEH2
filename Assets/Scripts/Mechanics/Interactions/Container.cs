@@ -52,17 +52,18 @@ public class Container : Interactable
         if (storedItems.Count < maxCapacity)
         {
             ItemData itemData = PlayerInteractions.heldItem.GetComponent<ItemData>();
-            if(itemData != null && 
+            if (itemData != null &&
             ((containerType == ContainerType.toyContainer && itemData.category == ItemData.ItemCategory.Toy)
             || (containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes)
             || (containerType == ContainerType.Bookshelf && itemData.category == ItemData.ItemCategory.Book)))
             {
-            PlayerInteractions.heldItem.transform.SetParent(containerSlot);
-            PlayerInteractions.heldItem.transform.localPosition = new Vector3(0, storedItems.Count * 0.2f, 0); // Menyusun item ke atas
-            storedItems.Add(PlayerInteractions.heldItem.gameObject);
-            PlayerInteractions.heldItem = null;
+                PlayerInteractions.heldItem.transform.SetParent(containerSlot);
+
+                PlayerInteractions.heldItem.transform.localPosition = new Vector3(0, storedItems.Count * 0.2f, 0); // Menyusun item ke atas
+                storedItems.Add(PlayerInteractions.heldItem.gameObject);
+                PlayerInteractions.heldItem = null;
             }
-            
+
         }
     }
 
@@ -77,7 +78,8 @@ public class Container : Interactable
 
             if (taskManager != null)
             {
-                Task task = FindTaskByName("Masukkan Item Ke Container1");
+                string taskToComplete = GetTaskName();
+                Task task = FindTaskByName(taskToComplete);
                 if (task != null && !task.isCompleted)
                 {
                     taskManager.CompleteTask(task);
@@ -95,4 +97,20 @@ public class Container : Interactable
         }
         return null;
     }
+
+    string GetTaskName()
+    {
+        switch (containerType)
+        {
+            case ContainerType.toyContainer:
+                return "Masukkan Item Ke Container Toy";
+            case ContainerType.wardrobe:
+                return "Masukkan Item Ke Container Clothes";
+            case ContainerType.Bookshelf:
+                return "Masukkan Item Ke Container Book";
+            default:
+                return "";
+        }
+    }
+
 }
