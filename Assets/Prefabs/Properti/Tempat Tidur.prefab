@@ -355,6 +355,8 @@ GameObject:
   - component: {fileID: 4071562502376789667}
   - component: {fileID: 7031728643222751968}
   - component: {fileID: 3516791555293278973}
+  - component: {fileID: 2043914895553554688}
+  - component: {fileID: 8041460752805990323}
   m_Layer: 0
   m_Name: Tempat Tidur
   m_TagString: Untagged
@@ -436,6 +438,48 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2043914895553554688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931995004160167454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.032144617, y: 0.014970939, z: 0.0045236214}
+  m_Center: {x: -0.011746088, y: 0.00016491649, z: -0.0020258361}
+--- !u!65 &8041460752805990323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931995004160167454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.011738945, y: 0.012853866, z: 0.0071728565}
+  m_Center: {x: 0.010305573, y: 0.00036660722, z: -0.0014756151}
 --- !u!1 &7609300147431834593
 GameObject:
   m_ObjectHideFlags: 0

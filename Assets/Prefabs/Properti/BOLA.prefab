@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9181174493524321246}
   - component: {fileID: 1494917814353801086}
   - component: {fileID: 4836744002182176933}
+  - component: {fileID: 7480768945590143672}
   m_Layer: 0
   m_Name: BOLA
   m_TagString: Untagged
@@ -87,3 +88,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &7480768945590143672
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642599232565452594}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009303048
+  m_Height: 0.018497268
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
