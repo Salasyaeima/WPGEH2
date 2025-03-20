@@ -11,6 +11,6 @@ public partial class CheckLineOfSightCondition : Condition
 
     public override bool IsTrue()
     {
-        return Detector.Value.CheckInSight(Target.Value) ? true : false;
+        return Detector.Value.CheckInSight(Target.Value) != null ? true : false;
     }
 }

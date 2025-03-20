@@ -13,6 +13,12 @@ public class LineOfSight : MonoBehaviour
     [SerializeField]
     private bool showDebugVisuals;
     [SerializeField]
+    [Tooltip("Tag before, triggered")]
+    private string tagBefore;
+    [SerializeField]
+    [Tooltip("Tag after, triggered")]
+    private string tagAfter;
+    [SerializeField]
     private BehaviorGraph behavior;
     private Vector3 lastPosition;
     
@@ -30,25 +36,27 @@ public class LineOfSight : MonoBehaviour
             {
                 Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position,Color.red);
             }
-
+            //change tag when chased or not chased
+            hit.collider.gameObject.tag = tagBefore;
             DetectedTarget = hit.collider.gameObject;
         }
         else
         {
-            CheckLastSeen();          
+            if (DetectedTarget != null)
+            {
+                CheckLastSeen();
+                DetectedTarget.tag = tagBefore;
+            }  
             DetectedTarget = null;
         }
         return DetectedTarget;
     }
 
     public void CheckLastSeen()
-    {   
-        if (DetectedTarget != null)
-        {
-            lastPosition = DetectedTarget.transform.position;
-            behavior.BlackboardReference.SetVariableValue<Vector3>("Last Known Pos", lastPosition);
-            Debug.Log(lastPosition);
-        }
+    {
+        lastPosition = DetectedTarget.transform.position;
+        behavior.BlackboardReference.SetVariableValue<Vector3>("Last Known Pos", lastPosition);
+        Debug.Log(lastPosition); 
     }
 
     void OnDrawGizmos()

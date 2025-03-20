@@ -1,4 +1,3 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class AreaCheck : MonoBehaviour
@@ -6,13 +5,23 @@ public class AreaCheck : MonoBehaviour
     [SerializeField]
     private float detectionRadius = 25;
     [SerializeField]
-    private LayerMask DetectionLayer;
+    public LayerMask DetectionLayer;
     [SerializeField]
     private bool showDebugVisuals;
+    [SerializeField]
+    [Tooltip("Enable, to trigger click event by pressing \"e\"")]
+    private bool activateClickEvent;
 
     public GameObject DetectedTarget
     {
         get;set;
+    }
+
+    private void Update() {
+        if (activateClickEvent)
+        {
+            CheckInRadius();
+        }
     }
 
     public GameObject CheckInRadius()
@@ -27,6 +36,18 @@ public class AreaCheck : MonoBehaviour
             DetectedTarget = null;
         }
         return DetectedTarget;
+    }
+
+    public bool CheckClickEvent()
+    {
+        if (DetectedTarget != null && activateClickEvent)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void OnDrawGizmos()
