@@ -72,6 +72,24 @@ public class PlayerInteractions : MonoBehaviour
                     {
                         interactable.Interact();
                     }
+                
+            
+                }
+                break;
+            case Interactable.InteractionType.Hold:
+                if (Input.GetKey(key))
+                {
+                    interactable.increaseHoldTime();
+                    Debug.Log("Hold Time: " + interactable.HoldTime());
+                    if(interactable.HoldTime() > 5f)
+                    {
+                        interactable.Interact();
+                        interactable.resetHoldTime();
+                    }
+                }
+                else
+                {
+                    interactable.resetHoldTime();
                 }
                 break;
         }

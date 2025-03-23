@@ -8,10 +8,18 @@ public abstract class Interactable : MonoBehaviour
         Hold
     }
 
+
     public InteractionType interactionType;
+
+    float holdTime;
 
     public abstract string Description();
     public abstract void Interact();
+
+    public void increaseHoldTime() => holdTime += Time.deltaTime;
+    public void resetHoldTime() => holdTime = 0f;
+
+    public float HoldTime() => holdTime;
 
 
 }
