@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-public class HideAndSeek : MonoBehaviour
+public class HidingHandlers : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Defining the tag, for smarter AI")]

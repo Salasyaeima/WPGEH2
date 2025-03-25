@@ -1506,8 +1506,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 7383935625716301860
   - rid: 7383935625716301861
-  - rid: 7383935625716302313
-  - rid: 7383935628866748967
+  - rid: 7383935722705649769
   - rid: 7383935632185753849
   - rid: 7383935633998741900
   m_IsInitialised: 0
@@ -1531,22 +1530,6 @@ MonoBehaviour:
           m_Value1: 9922142426599421879
         Name: Target
         m_Value: {fileID: 2107862425}
-    - rid: 7383935625716302313
-      type: {class: 'BlackboardVariable`1[[AreaCheck, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 9687883704103550124
-          m_Value1: 10971198840280321061
-        Name: New Area Check
-        m_Value: {fileID: 1828519768}
-    - rid: 7383935628866748967
-      type: {class: 'BlackboardVariable`1[[LineOfSight, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 6377576051143312284
-          m_Value1: 17195105420765564287
-        Name: New Line Of Sight
-        m_Value: {fileID: 1828519769}
     - rid: 7383935632185753849
       type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1568,6 +1551,14 @@ MonoBehaviour:
         - {fileID: 1473081027}
         - {fileID: 1145051457}
         - {fileID: 406651660}
+    - rid: 7383935722705649769
+      type: {class: 'BlackboardVariable`1[[LineOfSight, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 14990480473142992501
+          m_Value1: 7208516364073121155
+        Name: New Line Of Sight
+        m_Value: {fileID: 1828519769}
 --- !u!54 &1828519767
 Rigidbody:
   m_ObjectHideFlags: 0
