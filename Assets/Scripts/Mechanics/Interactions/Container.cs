@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Container : Interactable
 {
-    public Transform spawnPointWardrobe;
+    public Transform spawnPoint;
     public GameObject baju;
     public GameObject emptyContainer;
     public GameObject fullContainer;
@@ -21,6 +21,7 @@ public class Container : Interactable
     }
 
     public ContainerType containerType;
+    
 
 
     void Start()
@@ -51,36 +52,57 @@ public class Container : Interactable
 
     void SpawnItem()
     {
-        Vector3 spawnPosition = spawnPointWardrobe.position + new Vector3(0, 0, count * 0.5f);
+        
+        Vector3 spawnPosition = spawnPoint.position + new Vector3(0, 0, count * 0.5f);
         Instantiate(baju, spawnPosition, Quaternion.identity);
         count++;
+        Destroy(PlayerInteractions.heldItem.gameObject);
     }
 
     void Collecting()
     {
+        ItemData itemData = PlayerInteractions.heldItem.GetComponent<ItemData>();
         if (storedItems.Count < maxCapacity)
         {
-            ItemData itemData = PlayerInteractions.heldItem.GetComponent<ItemData>();
-            if (itemData != null &&
-            ((containerType == ContainerType.toyContainer && itemData.category == ItemData.ItemCategory.Toy)
-            || (containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes)
-            || (containerType == ContainerType.Bookshelf && itemData.category == ItemData.ItemCategory.Book)))
+            if ((containerType == ContainerType.toyContainer && itemData.category == ItemData.ItemCategory.Toy))
+            {
+                MoveItem();
+                storedItems.Add(PlayerInteractions.heldItem.gameObject); 
+                PlayerInteractions.heldItem = null;
+                
+            }
+            else if((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
             {
                 SpawnItem();
-                storedItems.Add(PlayerInteractions.heldItem.gameObject);
-                Destroy(PlayerInteractions.heldItem.gameObject);   
+                storedItems.Add(PlayerInteractions.heldItem.gameObject); 
                 PlayerInteractions.heldItem = null;
             }
-
+            else
+            {
+                Debug.Log("Mending rakit pc!!!");
+            }
         }
     }
+
+    void MoveItem()
+    {
+        Rigidbody rb = PlayerInteractions.heldItem.GetComponent<Rigidbody>();
+        Collider itemCollider = PlayerInteractions.heldItem.GetComponent<Collider>();
+
+        PlayerInteractions.heldItem.transform.SetParent(null);
+        PlayerInteractions.heldItem.transform.SetParent(spawnPoint);
+        itemCollider.enabled = true;
+        PlayerInteractions.heldItem.transform.position = spawnPoint.position;
+        rb.isKinematic = false;
+        rb.useGravity = true;
+    }
+
 
     void Update()
     {
         if (storedItems.Count == maxCapacity)
         {
             emptyContainer.SetActive(false);
-            Destroy(emptyContainer);
             fullContainer.SetActive(true);
             Debug.Log("Penuhh");
 
