@@ -37,7 +37,7 @@ public class LineOfSight : MonoBehaviour
                 Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position,Color.red);
             }
             //change tag when chased or not chased
-            hit.collider.gameObject.tag = tagBefore;
+            hit.collider.gameObject.tag = tagAfter;
             DetectedTarget = hit.collider.gameObject;
         }
         else

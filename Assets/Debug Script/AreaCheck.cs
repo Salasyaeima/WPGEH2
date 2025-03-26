@@ -21,6 +21,7 @@ public class AreaCheck : MonoBehaviour
         if (activateClickEvent)
         {
             CheckInRadius();
+            Debug.Log(DetectedTarget);
         }
     }
 
@@ -44,9 +45,11 @@ public class AreaCheck : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Debug.Log("Bokep");
                 return true;
             }
         }
+        
         return false;
     }
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class HidingHandlers : MonoBehaviour
@@ -11,8 +10,10 @@ public class HidingHandlers : MonoBehaviour
     private List<string> layerName;
     private GameObject noneObject;
     private Vector3 lastPosition;
-    private bool isHiding;
+    private bool isHiding = false;
     private AreaCheck areaCheck;
+    private GameObject target;
+
     private void Start() {
         areaCheck = GetComponent<AreaCheck>();
     }
@@ -23,30 +24,30 @@ public class HidingHandlers : MonoBehaviour
 
     private void PerformHide()
     {
+        target = areaCheck.DetectedTarget;
         if (areaCheck.CheckClickEvent())
         {
             if (!isHiding)
             {
-                SwitchAll(areaCheck.DetectedTarget, false);
-                lastPosition = areaCheck.DetectedTarget.transform.position;
-                areaCheck.DetectedTarget.transform.position = this.transform.position;
-                if(areaCheck.DetectedTarget.CompareTag(triggerTag))
+                SwitchAll(target, false);
+                lastPosition = target.transform.position;
+                target.transform.position = this.transform.position;
+                if(target.CompareTag(triggerTag))
                 {
-                    this.gameObject.layer = areaCheck.DetectedTarget.layer;
+                    this.gameObject.layer = LayerMask.NameToLayer(layerName[3]);
+                    
                 }
-                else
-                {
-                    areaCheck.DetectionLayer = LayerMask.GetMask(layerName[1]);
-                    isHiding = true;
-                }
+                isHiding = true;
+                areaCheck.DetectionLayer = LayerMask.GetMask(layerName[1]);
             }
             else
             {
-                SwitchAll(areaCheck.DetectedTarget.transform.parent.gameObject, true);
-                areaCheck.DetectedTarget.transform.parent.position = lastPosition;
+                SwitchAll(target.transform.parent.gameObject, true);
+                target.transform.parent.position = lastPosition;
                 areaCheck.DetectionLayer = LayerMask.GetMask(layerName[0]);
                 isHiding = false;
             }
+            Debug.Log(isHiding);
         }
     }
 
@@ -63,13 +64,14 @@ public class HidingHandlers : MonoBehaviour
             if (component is MonoBehaviour)
             {
                 (component as MonoBehaviour).enabled = condition;
+                Debug.Log(component.name);
             }
         }
 
         Transform[] transforms = newGameObject.GetComponentsInChildren<Transform>();
         foreach (Transform transform in transforms)
         {
-            if (transform.gameObject.layer == 8)
+            if (transform.gameObject.layer == LayerMask.NameToLayer(layerName[2]))
             {
                 noneObject = transform.gameObject;
             }

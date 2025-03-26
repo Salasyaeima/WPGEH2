@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 273672951}
   - component: {fileID: 273672950}
   - component: {fileID: 273672949}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 430176040}
   - component: {fileID: 430176039}
   - component: {fileID: 430176038}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 1077017118}
   - component: {fileID: 1077017121}
   - component: {fileID: 1077017120}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Player models
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 1342351747}
   - component: {fileID: 1342351752}
   - component: {fileID: 1342351751}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hiding Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   detectionRadius: 2.3
   DetectionLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   showDebugVisuals: 1
   activateClickEvent: 1
 --- !u!1 &1357235997
@@ -1319,7 +1319,7 @@ GameObject:
   - component: {fileID: 1719787839}
   - component: {fileID: 1719787838}
   - component: {fileID: 1719787837}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   detectionHeight: 0.5
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 1032
+    m_Bits: 2176
   showDebugVisuals: 1
   tagBefore: notChased
   tagAfter: isChased
@@ -1672,7 +1672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1978188460}
   - component: {fileID: 1978188461}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1728,9 +1728,9 @@ GameObject:
   - component: {fileID: 2107862427}
   - component: {fileID: 2107862430}
   - component: {fileID: 2107862429}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Player
-  m_TagString: notChased
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

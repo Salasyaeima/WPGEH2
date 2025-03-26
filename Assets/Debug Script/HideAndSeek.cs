@@ -11,10 +11,14 @@ public class HideAndSeek : MonoBehaviour
     private List<string> layerName;
     private GameObject noneObject;
     private Vector3 lastPosition;
-    private bool isHiding;
+    private bool isHiding = false;
     private AreaCheck areaCheck;
+    private Transform targetTransform;
+    private LayerMask targetLayer;
     private void Start() {
         areaCheck = GetComponent<AreaCheck>();
+        targetTransform = areaCheck.DetectedTarget.transform;
+        targetLayer = areaCheck.DetectedTarget.layer;
     }
 
     private void Update() {
@@ -28,11 +32,11 @@ public class HideAndSeek : MonoBehaviour
             if (!isHiding)
             {
                 SwitchAll(areaCheck.DetectedTarget, false);
-                lastPosition = areaCheck.DetectedTarget.transform.position;
-                areaCheck.DetectedTarget.transform.position = this.transform.position;
+                lastPosition = targetTransform.position;
+                targetTransform.position = this.transform.position;
                 if(areaCheck.DetectedTarget.CompareTag(triggerTag))
                 {
-                    this.gameObject.layer = areaCheck.DetectedTarget.layer;
+                    this.gameObject.layer = targetLayer;
                 }
                 else
                 {
@@ -42,8 +46,8 @@ public class HideAndSeek : MonoBehaviour
             }
             else
             {
-                SwitchAll(areaCheck.DetectedTarget.transform.parent.gameObject, true);
-                areaCheck.DetectedTarget.transform.parent.position = lastPosition;
+                SwitchAll(targetTransform.parent.gameObject, true);
+                targetTransform.parent.position = lastPosition;
                 areaCheck.DetectionLayer = LayerMask.GetMask(layerName[0]);
                 isHiding = false;
             }
@@ -69,14 +73,17 @@ public class HideAndSeek : MonoBehaviour
         Transform[] transforms = newGameObject.GetComponentsInChildren<Transform>();
         foreach (Transform transform in transforms)
         {
-            if (transform.gameObject.layer == 8)
+            if (transform.gameObject.layer == LayerMask.GetMask("None"))
             {
                 noneObject = transform.gameObject;
+                Debug.Log(noneObject.name);
             }
+            
+            noneObject.SetActive(condition);
 
             if (noneObject != null)
             {
-                noneObject.SetActive(condition);
+                
             }
         }
     }
