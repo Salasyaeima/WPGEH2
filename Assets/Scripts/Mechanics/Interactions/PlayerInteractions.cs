@@ -41,6 +41,7 @@ public class PlayerInteractions : MonoBehaviour
             }
         }
         interactionText.gameObject.SetActive(successfullHit);
+        interactionHoldGo.SetActive(successfullHit);
     }
 
     void HandleInteraction(Interactable interactable)
