@@ -52,9 +52,24 @@ public class Container : Interactable
 
     void SpawnItem()
     {
-        
+        Transform kainTransform = PlayerInteractions.heldItem.transform.Find("Kain");
+        Renderer kainRenderer = kainTransform.GetComponent<Renderer>();
+        Color itemColor = kainRenderer.material.color;
+
         Vector3 spawnPosition = spawnPoint.position + new Vector3(0, 0, count * 0.5f);
-        Instantiate(baju, spawnPosition, Quaternion.identity);
+        GameObject spawnedBaju = Instantiate(baju, spawnPosition, Quaternion.identity);
+        Transform spawnedKainTransform = spawnedBaju.transform.Find("Kain");
+
+         if (spawnedKainTransform != null)
+        {
+            Renderer spawnedKainRenderer = spawnedKainTransform.GetComponent<Renderer>();
+            if (spawnedKainRenderer != null)
+            {
+                spawnedKainRenderer.material.mainTexture = kainRenderer.material.mainTexture;
+                spawnedKainRenderer.material.color = kainRenderer.material.color;
+            }
+        }
+
         count++;
         Destroy(PlayerInteractions.heldItem.gameObject);
     }
