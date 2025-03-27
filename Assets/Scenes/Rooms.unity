@@ -4076,7 +4076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.020754695, g: 1, b: 0.036153927, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4115,11 +4115,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 813415288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 924.185, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &769111235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4308,6 +4308,7 @@ GameObject:
   - component: {fileID: 813415288}
   - component: {fileID: 813415290}
   - component: {fileID: 813415289}
+  - component: {fileID: 813415291}
   m_Layer: 5
   m_Name: BarBackGround
   m_TagString: Untagged
@@ -4332,8 +4333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -466, y: 448}
-  m_SizeDelta: {x: 924.18506, y: 100}
+  m_AnchoredPosition: {x: -489.05, y: 456}
+  m_SizeDelta: {x: 878.09, y: 81.3048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813415289
 MonoBehaviour:
@@ -4373,6 +4374,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813415287}
   m_CullTransparentMesh: 1
+--- !u!114 &813415291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813415287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 8, y: 8}
+  m_UseGraphicAlpha: 1
 --- !u!1 &868830893
 GameObject:
   m_ObjectHideFlags: 0
