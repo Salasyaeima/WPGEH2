@@ -21,7 +21,7 @@ public class Container : Interactable
     }
 
     public ContainerType containerType;
-    
+
 
 
     void Start()
@@ -60,7 +60,7 @@ public class Container : Interactable
         GameObject spawnedBaju = Instantiate(baju, spawnPosition, Quaternion.identity);
         Transform spawnedKainTransform = spawnedBaju.transform.Find("Kain");
 
-         if (spawnedKainTransform != null)
+        if (spawnedKainTransform != null)
         {
             Renderer spawnedKainRenderer = spawnedKainTransform.GetComponent<Renderer>();
             if (spawnedKainRenderer != null)
@@ -82,14 +82,14 @@ public class Container : Interactable
             if ((containerType == ContainerType.toyContainer && itemData.category == ItemData.ItemCategory.Toy))
             {
                 MoveItem();
-                storedItems.Add(PlayerInteractions.heldItem.gameObject); 
+                storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
-                
+
             }
-            else if((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
+            else if ((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
             {
                 SpawnItem();
-                storedItems.Add(PlayerInteractions.heldItem.gameObject); 
+                storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
             }
             else
@@ -148,11 +148,9 @@ public class Container : Interactable
         switch (containerType)
         {
             case ContainerType.toyContainer:
-                return "Masukkan Item Ke Container Toy";
+                return "Masukkan barang ke dalam kotak mainan";
             case ContainerType.wardrobe:
-                return "Masukkan Item Ke Container Clothes";
-            case ContainerType.Bookshelf:
-                return "Masukkan Item Ke Container Book";
+                return "Simpan pakaian di dalam lemari";
             default:
                 return "";
         }

@@ -83,12 +83,10 @@ public class Container2 : Interactable
     {
         switch (containerType)
         {
-            case ContainerType.toyContainer:
-                return "Masukkan Item Ke Container Toy";
-            case ContainerType.wardrobe:
-                return "Masukkan Item Ke Container Clothes";
             case ContainerType.Bookshelf:
-                return "Masukkan Item Ke Container Book";
+                return "Susun buku di meja belajar";
+            case ContainerType.bed:
+                return "Rapihkan tempat tidur";
             default:
                 return "";
         }
