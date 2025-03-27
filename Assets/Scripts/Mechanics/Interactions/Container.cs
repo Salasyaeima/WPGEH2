@@ -142,7 +142,7 @@ public class Container : Interactable, ITaskProvider
         return null;
     }
 
-    string GetBaseTaskName()
+    public string GetBaseTaskName()
     {
         switch (containerType)
         {

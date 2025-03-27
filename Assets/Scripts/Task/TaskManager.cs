@@ -10,7 +10,8 @@ public class TaskManager : MonoBehaviour
     public Transform taskListParent;
     public Image progressBar;
 
-    private int completedTasks = 0;
+    int completedTasks = 0;
+    bool tasksShown = false;
 
     void Awake()
     {
@@ -30,6 +31,26 @@ public class TaskManager : MonoBehaviour
         }
 
         UpdateProgressBar();
+    }
+
+    public void ShowTasks()
+    {
+        if (!tasksShown)
+        {
+            foreach (Task task in tasks)
+            {
+                GameObject taskUI = Instantiate(taskUIPrefab, taskListParent);
+                TaskUI taskUIComponent = taskUI.GetComponent<TaskUI>();
+                taskUIComponent.Initialize(task, FindProviderForTask(task));
+            }
+            tasksShown = true;
+            UpdateProgressBar();
+        }
+    }
+
+    public void HideTasks()
+    {
+        tasksShown = true;
     }
 
     public void CompleteTask(Task task)
@@ -77,20 +98,24 @@ public class TaskManager : MonoBehaviour
 
         Task newTask = new Task { taskName = taskName, isCompleted = false };
         tasks.Add(newTask);
-        GameObject taskUI = Instantiate(taskUIPrefab, taskListParent);
-        TaskUI taskUIComponent = taskUI.GetComponent<TaskUI>();
-        taskUIComponent.Initialize(newTask, provider);
-        Debug.Log($"Task baru '{taskName}' dari {provider.GetType().Name} ({(provider as MonoBehaviour)?.gameObject.name}) ditambah.");
     }
 
-    void Update()
+    ITaskProvider FindProviderForTask(Task task)
     {
-        foreach (TaskUI ui in taskListParent.GetComponentsInChildren<TaskUI>())
+        Container[] containers = FindObjectsOfType<Container>();
+        foreach (Container container in containers)
         {
-            if (string.IsNullOrEmpty(ui.taskText.text))
-            {
-                Debug.LogError($"TaskUI kosong ditemukan di {ui.gameObject.name}!");
-            }
+            if (container.GetBaseTaskName() == task.taskName)
+                return container;
         }
+
+        Container2[] container2s = FindObjectsOfType<Container2>();
+        foreach (Container2 container2 in container2s)
+        {
+            if (container2.GetTaskName() == task.taskName)
+                return container2;
+        }
+
+        return null;
     }
 }
