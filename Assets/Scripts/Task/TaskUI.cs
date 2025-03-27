@@ -31,7 +31,6 @@ public class TaskUI : MonoBehaviour
         }
         else
         {
-            taskText.color = Color.white;
             if (checkIcon != null)
             {
                 checkIcon.enabled = false;
@@ -43,11 +42,11 @@ public class TaskUI : MonoBehaviour
     {
         if (taskProvider != null)
         {
-            taskText.text = taskProvider.GetTaskName(); // Ambil teks dari provider
+            taskText.text = taskProvider.GetTaskName();
         }
         else
         {
-            taskText.text = task.taskName; // Fallback kalau nggak ada provider
+            taskText.text = task.taskName;
         }
         UpdateCheckIconPosition();
     }
@@ -80,6 +79,6 @@ public class TaskUI : MonoBehaviour
 
     void Update()
     {
-        UpdateTaskDisplay(); // Update tiap frame
+        UpdateTaskDisplay();
     }
 }
