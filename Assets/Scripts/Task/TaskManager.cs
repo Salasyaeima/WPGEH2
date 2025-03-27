@@ -50,6 +50,7 @@ public class TaskManager : MonoBehaviour
                 if (taskUI != null && taskUI.task == task)
                 {
                     taskUI.StrikeThroughText();
+                    taskUI.UpdateCheckIconPosition();
                     break;
                 }
             }
