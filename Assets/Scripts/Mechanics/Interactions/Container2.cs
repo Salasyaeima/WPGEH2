@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
-public class Container2 : Interactable
+public class Container2 : Interactable, ITaskProvider
 {
     public GameObject emptyContainer;
     public GameObject fullContainer;
@@ -20,10 +19,14 @@ public class Container2 : Interactable
 
     public ContainerType containerType;
 
-
     void Start()
     {
         taskManager = TaskManager.Instance;
+
+        if (taskManager != null)
+        {
+            taskManager.RegisterTask(GetTaskName(), this);
+        }
     }
 
     public override string Description()
@@ -38,12 +41,10 @@ public class Container2 : Interactable
         }
     }
 
-
     public override void Interact()
     {
         isDone = true;
     }
-
 
     void Update()
     {
@@ -79,7 +80,7 @@ public class Container2 : Interactable
         return null;
     }
 
-    string GetTaskName()
+    public string GetTaskName()
     {
         switch (containerType)
         {
@@ -91,5 +92,4 @@ public class Container2 : Interactable
                 return "";
         }
     }
-
 }

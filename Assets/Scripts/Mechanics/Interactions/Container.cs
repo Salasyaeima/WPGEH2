@@ -1,15 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
-public class Container : Interactable
+public class Container : Interactable, ITaskProvider
 {
     public Transform spawnPoint;
     public GameObject baju;
     public GameObject emptyContainer;
     public GameObject fullContainer;
     public List<GameObject> storedItems = new List<GameObject>();
-    public int maxCapacity = 1;
+    public int maxCapacity = 2;
     TaskManager taskManager;
     private int count = 0;
 
@@ -22,11 +21,14 @@ public class Container : Interactable
 
     public ContainerType containerType;
 
-
-
     void Start()
     {
         taskManager = TaskManager.Instance;
+
+        if (taskManager != null)
+        {
+            taskManager.RegisterTask(GetBaseTaskName(), this); // Pake base name
+        }
     }
 
     public override string Description()
@@ -40,7 +42,6 @@ public class Container : Interactable
             return " ";
         }
     }
-
 
     public override void Interact()
     {
@@ -84,7 +85,6 @@ public class Container : Interactable
                 MoveItem();
                 storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
-
             }
             else if ((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
             {
@@ -112,7 +112,6 @@ public class Container : Interactable
         rb.useGravity = true;
     }
 
-
     void Update()
     {
         if (storedItems.Count == maxCapacity)
@@ -123,7 +122,7 @@ public class Container : Interactable
 
             if (taskManager != null)
             {
-                string taskToComplete = GetTaskName();
+                string taskToComplete = GetBaseTaskName();
                 Task task = FindTaskByName(taskToComplete);
                 if (task != null && !task.isCompleted)
                 {
@@ -143,7 +142,7 @@ public class Container : Interactable
         return null;
     }
 
-    string GetTaskName()
+    string GetBaseTaskName()
     {
         switch (containerType)
         {
@@ -156,4 +155,8 @@ public class Container : Interactable
         }
     }
 
+    public string GetTaskName()
+    {
+        return $"{GetBaseTaskName()} ({storedItems.Count}/{maxCapacity})";
+    }
 }

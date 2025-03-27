@@ -7,6 +7,7 @@ public class TaskUI : MonoBehaviour
     public TMP_Text taskText;
     public Image checkIcon;
     public Task task;
+    public ITaskProvider taskProvider; // Cuma pake ini
 
     RectTransform textRectTransform;
     RectTransform iconRectTransform;
@@ -15,16 +16,14 @@ public class TaskUI : MonoBehaviour
     {
         textRectTransform = taskText.GetComponent<RectTransform>();
         if (checkIcon != null) iconRectTransform = checkIcon.GetComponent<RectTransform>();
-        checkIcon.enabled = false;
+        if (checkIcon != null) checkIcon.enabled = false;
     }
 
-    public void Initialize(Task task)
+    public void Initialize(Task task, ITaskProvider provider = null)
     {
         this.task = task;
-        taskText.text = task.taskName;
-
-        Debug.Log("Masuk");
-        UpdateCheckIconPosition();
+        this.taskProvider = provider;
+        UpdateTaskDisplay();
 
         if (task.isCompleted)
         {
@@ -38,6 +37,19 @@ public class TaskUI : MonoBehaviour
                 checkIcon.enabled = false;
             }
         }
+    }
+
+    public void UpdateTaskDisplay()
+    {
+        if (taskProvider != null)
+        {
+            taskText.text = taskProvider.GetTaskName(); // Ambil teks dari provider
+        }
+        else
+        {
+            taskText.text = task.taskName; // Fallback kalau nggak ada provider
+        }
+        UpdateCheckIconPosition();
     }
 
     public void StrikeThroughText()
@@ -64,5 +76,10 @@ public class TaskUI : MonoBehaviour
         float iconOffset = 10f;
         iconRectTransform.anchoredPosition = new Vector2(textWidth + iconOffset, 0f);
         iconRectTransform.sizeDelta = new Vector2(20f, 20f);
+    }
+
+    void Update()
+    {
+        UpdateTaskDisplay(); // Update tiap frame
     }
 }

@@ -2422,7 +2422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &510098016
 Transform:
   m_ObjectHideFlags: 0
@@ -8102,8 +8102,8 @@ GameObject:
   - component: {fileID: 1411327542}
   - component: {fileID: 1411327541}
   - component: {fileID: 1411327540}
-  - component: {fileID: 1411327543}
   - component: {fileID: 1411327544}
+  - component: {fileID: 1411327545}
   m_Layer: 0
   m_Name: kotak mainan
   m_TagString: Untagged
@@ -8275,26 +8275,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.021541608, y: 0.0010873643, z: 0.026285404}
   m_Center: {x: 0.00029454395, y: -0.0094648795, z: -0.00039045708}
---- !u!114 &1411327543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411327535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e788e6af5a5bab4fb1b64e3662c2844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionType: 0
-  spawnPoint: {fileID: 329856441}
-  baju: {fileID: 7236760782502708197, guid: bccb09ba0ac51cc4c96b721270e579f2, type: 3}
-  emptyContainer: {fileID: 329856440}
-  fullContainer: {fileID: 1353996063}
-  storedItems: []
-  maxCapacity: 9
-  containerType: 0
 --- !u!65 &1411327544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8316,6 +8296,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.021662556, y: 0.020673512, z: 0.0018544779}
   m_Center: {x: 0.0006516801, y: 0.0003811178, z: -0.012606236}
+--- !u!114 &1411327545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411327535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e788e6af5a5bab4fb1b64e3662c2844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionType: 0
+  spawnPoint: {fileID: 329856441}
+  baju: {fileID: 7236760782502708197, guid: bccb09ba0ac51cc4c96b721270e579f2, type: 3}
+  emptyContainer: {fileID: 329856440}
+  fullContainer: {fileID: 1353996063}
+  storedItems: []
+  maxCapacity: 9
+  containerType: 0
 --- !u!1 &1443222014
 GameObject:
   m_ObjectHideFlags: 0
@@ -8335,7 +8335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1443222015
 Transform:
   m_ObjectHideFlags: 0
@@ -8475,15 +8475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751d443e825e5654da7d74610111efee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tasks:
-  - taskName: Masukkan barang ke dalam kotak mainan
-    isCompleted: 0
-  - taskName: Susun buku di meja belajar
-    isCompleted: 0
-  - taskName: Simpan pakaian di dalam lemari
-    isCompleted: 0
-  - taskName: Rapihkan tempat tidur
-    isCompleted: 0
+  tasks: []
   taskUIPrefab: {fileID: 4201938792258414336, guid: 4fc6e264b0b628e41bf728d1c57ee9b1, type: 3}
   taskListParent: {fileID: 1752699516}
   progressBar: {fileID: 750955510}
@@ -9420,7 +9412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -854, y: 193.3}
+  m_AnchoredPosition: {x: -854, y: 179.1}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752699517
@@ -11997,7 +11989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2080824506
 Transform:
   m_ObjectHideFlags: 0
