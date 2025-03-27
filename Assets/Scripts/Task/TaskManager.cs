@@ -20,11 +20,6 @@ public class TaskManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void Start()
-    {
-        InitializeTasks();
-    }
-
     void InitializeTasks()
     {
         foreach (Task task in tasks)
@@ -62,7 +57,40 @@ public class TaskManager : MonoBehaviour
 
     void UpdateProgressBar()
     {
-        float progress = (float)completedTasks / tasks.Count;
-        progressBar.fillAmount = progress;
+        if (tasks.Count > 0)
+        {
+            float progress = (float)completedTasks / tasks.Count;
+            progressBar.fillAmount = progress;
+        }
+    }
+
+    public void RegisterTask(string taskName, ITaskProvider provider)
+    {
+        foreach (Task existingTask in tasks)
+        {
+            if (existingTask.taskName == taskName)
+            {
+                Debug.LogWarning($"Task '{taskName}' sudah ada, skip registrasi.");
+                return;
+            }
+        }
+
+        Task newTask = new Task { taskName = taskName, isCompleted = false };
+        tasks.Add(newTask);
+        GameObject taskUI = Instantiate(taskUIPrefab, taskListParent);
+        TaskUI taskUIComponent = taskUI.GetComponent<TaskUI>();
+        taskUIComponent.Initialize(newTask, provider);
+        Debug.Log($"Task baru '{taskName}' dari {provider.GetType().Name} ({(provider as MonoBehaviour)?.gameObject.name}) ditambah.");
+    }
+
+    void Update()
+    {
+        foreach (TaskUI ui in taskListParent.GetComponentsInChildren<TaskUI>())
+        {
+            if (string.IsNullOrEmpty(ui.taskText.text))
+            {
+                Debug.LogError($"TaskUI kosong ditemukan di {ui.gameObject.name}!");
+            }
+        }
     }
 }
