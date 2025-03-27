@@ -2402,7 +2402,7 @@ MonoBehaviour:
   interactionType: 1
   emptyContainer: {fileID: 465814979}
   fullContainer: {fileID: 2109442488}
-  containerType: 2
+  containerType: 3
 --- !u!1 &510098015
 GameObject:
   m_ObjectHideFlags: 0
@@ -8460,11 +8460,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tasks:
-  - taskName: Masukkan Item Ke Container Toy
+  - taskName: Masukkan barang ke dalam kotak mainan
     isCompleted: 0
-  - taskName: Masukkan Item Ke Container Clothes
+  - taskName: Susun buku di meja belajar
     isCompleted: 0
-  - taskName: Masukkan Item Ke Container Book
+  - taskName: Simpan pakaian di dalam lemari
+    isCompleted: 0
+  - taskName: Rapihkan tempat tidur
     isCompleted: 0
   taskUIPrefab: {fileID: 4201938792258414336, guid: 4fc6e264b0b628e41bf728d1c57ee9b1, type: 3}
   taskListParent: {fileID: 1752699516}
@@ -8478,7 +8480,7 @@ Transform:
   m_GameObject: {fileID: 1450977755}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 273.99817, y: 236.00905, z: -26.19991}
+  m_LocalPosition: {x: 273.99817, y: 230.09, z: -26.19991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9402,7 +9404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -854, y: 231}
+  m_AnchoredPosition: {x: -854, y: 193.3}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752699517
