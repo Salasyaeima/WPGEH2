@@ -68,9 +68,9 @@ public class PlayerInteractions : MonoBehaviour
                             item.Interact();
                         }
                     }
-                    else
+                    else if (interactable is HidingMechanism hidingBox)
                     {
-                        interactable.Interact();
+                        hidingBox.Interact();
                     }
                 
             
