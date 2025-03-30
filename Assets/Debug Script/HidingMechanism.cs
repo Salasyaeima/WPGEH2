@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cinemachine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HidingMechanism : Interactable
 {
@@ -9,6 +10,8 @@ public class HidingMechanism : Interactable
     [SerializeField]
     private CinemachineVirtualCamera playersCamera;    private CinemachineBrain cameraBrain;
     private CinemachineVirtualCamera thisCamera;
+    [SerializeField]
+    private List<GameObject> models;
     private bool isHiding;
     private Vector3 playersLastPos;
 
@@ -16,11 +19,13 @@ public class HidingMechanism : Interactable
     {
         cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
         thisCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        SetActiveModels(true, false);
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && isHiding)
         {
+            SetActiveModels(true, false);
             PerformHide(true, playersCamera, thisCamera);
             isHiding = false;
         }
@@ -33,6 +38,7 @@ public class HidingMechanism : Interactable
 
     public override void Interact()
     {
+        SetActiveModels(false, true);
         PerformHide(false, thisCamera, playersCamera);
         isHiding = true;
     }
@@ -81,5 +87,11 @@ public class HidingMechanism : Interactable
     {
         camera1.Priority = 20;
         camera2.Priority = 10;
+    }
+
+    private void SetActiveModels(bool bool1, bool bool2)
+    {
+        models[0].SetActive(bool1);
+        models[1].SetActive(bool2);
     }
 }
