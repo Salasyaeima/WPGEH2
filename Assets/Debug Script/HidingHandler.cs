@@ -4,7 +4,7 @@ using UnityEngine;
 public class HidingHandlers : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Defining the tag, for smarter AI")]
+    [Tooltip("Tag if Chased by Enemy")]
     private string triggerTag;
     [SerializeField]
     private List<string> layerName;
