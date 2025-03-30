@@ -71,6 +71,10 @@ public class PlayerInteractions : MonoBehaviour
                     {
                         hidingBox.Interact();
                     }
+                    else
+                    {
+                        interactable.Interact();
+                    }
                 }
                 break;
             case Interactable.InteractionType.Hold:
