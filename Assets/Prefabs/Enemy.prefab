@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3874876949191460569}
   - component: {fileID: 107391924014228077}
   - component: {fileID: 5619499564630962364}
+  - component: {fileID: 4603259284679034380}
+  - component: {fileID: 6992422740877271463}
   - component: {fileID: 5231426775719088091}
   - component: {fileID: 4985185104865769721}
   m_Layer: 6
@@ -93,12 +95,39 @@ MonoBehaviour:
   detectionHeight: 0.5
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 2176
+    m_Bits: 2048
   showDebugVisuals: 1
   tagBefore: notChased
   tagAfter: isChased
   behavior: {fileID: 6026185145718736116, guid: 79fc47f47a121b04fae1fa00838c708c, type: 2}
   DetectedTarget: {fileID: 0}
+--- !u!114 &4603259284679034380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733105442133321480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f7d3b4b87bdb54b8d7a5b2c3ae2a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6992422740877271463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733105442133321480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d629d79c2a6b5469ed3e5786d065cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolSpeed: 5
+  chaseSpeed: 10
+  behavior: {fileID: 6026185145718736116, guid: 79fc47f47a121b04fae1fa00838c708c, type: 2}
 --- !u!114 &5231426775719088091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +147,7 @@ MonoBehaviour:
   - rid: 7383935722705649769
   - rid: 7383935632185753849
   - rid: 7383935633998741900
+  - rid: 7383935949692993884
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -168,6 +198,14 @@ MonoBehaviour:
           m_Value1: 7208516364073121155
         Name: New Line Of Sight
         m_Value: {fileID: 5619499564630962364}
+    - rid: 7383935949692993884
+      type: {class: 'BlackboardVariable`1[[CaughtHandler, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1881998544641693118
+          m_Value1: 6106279192778709429
+        Name: New Caught Handler
+        m_Value: {fileID: 4603259284679034380}
 --- !u!54 &4985185104865769721
 Rigidbody:
   m_ObjectHideFlags: 0
