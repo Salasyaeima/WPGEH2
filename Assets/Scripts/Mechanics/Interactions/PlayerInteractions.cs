@@ -10,6 +10,8 @@ public class PlayerInteractions : MonoBehaviour
     public GameObject interactionHoldGo;
     public UnityEngine.UI.Image holdProgress;
     public static Item heldItem = null;
+    Interactable interactable = null;
+    bool successfullHit = false;
 
 
     Camera cam;
@@ -24,13 +26,13 @@ public class PlayerInteractions : MonoBehaviour
     void Update()
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
-
         RaycastHit hit;
-        bool successfullHit = false;
-
+        interactionText.gameObject.SetActive(successfullHit);
+        interactionHoldGo.SetActive(successfullHit);
+        
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
-            Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
+            interactable = hit.collider.GetComponentInParent<Interactable>();
 
             if (interactable != null)
             {
@@ -40,8 +42,11 @@ public class PlayerInteractions : MonoBehaviour
                 successfullHit = true;
             }
         }
-        interactionText.gameObject.SetActive(successfullHit);
-        interactionHoldGo.SetActive(successfullHit);
+        else
+        {
+            successfullHit = false;
+        }
+        
     }
 
     void HandleInteraction(Interactable interactable)
@@ -78,13 +83,17 @@ public class PlayerInteractions : MonoBehaviour
                 }
                 break;
             case Interactable.InteractionType.Hold:
-                if (Input.GetKey(key))
+                if (Input.GetKey(key) )
                 {
                     interactable.increaseHoldTime();
                     Debug.Log("Hold Time: " + interactable.HoldTime());
                     if(interactable.HoldTime() > 5f)
                     {
                         interactable.Interact();
+                        interactable.resetHoldTime();
+                    }
+                    else if(successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
+                    {
                         interactable.resetHoldTime();
                     }
                 }
