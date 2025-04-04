@@ -2,13 +2,13 @@ using UnityEngine;
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-
 public class HidingMechanism : Interactable
 {
     [SerializeField]
     private GameObject player;
     [SerializeField]
-    private CinemachineVirtualCamera playersCamera;    private CinemachineBrain cameraBrain;
+    private CinemachineVirtualCamera playersCamera;
+    private CinemachineBrain cameraBrain;
     private CinemachineVirtualCamera thisCamera;
     [SerializeField]
     private List<GameObject> models;
@@ -21,19 +21,18 @@ public class HidingMechanism : Interactable
         thisCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         SetActiveModels(true, false);
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && isHiding)
         {
-            SetActiveModels(true, false);
-            PerformHide(true, playersCamera, thisCamera);
-            isHiding = false;
+            ExitHide();
         }
     }
 
     public override string Description()
     {
-        return "Press {E} to interact.";
+        return "Tekan {E} untuk berinteraksi.";
     }
 
     public override void Interact()
@@ -48,39 +47,64 @@ public class HidingMechanism : Interactable
         if (isHiding)
         {
             SetCameraPriority(camera1, camera2);
-            player.transform.position = playersLastPos;
-            playersLastPos = Vector3.zero;
-            SwitchComponents(condition);
         }
         else
         {
-            SwitchComponents(condition);
+            SwitchComponents(condition, false);
             playersLastPos = player.transform.position;
             player.transform.position = this.transform.position;
             SetCameraPriority(camera1, camera2);
         }
     }
 
-    private void SwitchComponents(bool condition)
+    private void ExitHide()
+    {
+        SetActiveModels(true, false);
+        SetCameraPriority(playersCamera, thisCamera);
+
+        player.transform.position = playersLastPos;
+        SwitchComponents(true, false);
+
+        StartCoroutine(EnableRendererAfterBlend());
+    }
+
+    IEnumerator EnableRendererAfterBlend()
+    {
+        yield return new WaitForSeconds(cameraBrain.m_DefaultBlend.m_Time);
+        Renderer renderer = player.GetComponentInChildren<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = true;
+        }
+        isHiding = false;
+    }
+
+    private void SwitchComponents(bool condition, bool enableRenderer)
     {
         MonoBehaviour[] components = player.GetComponentsInChildren<MonoBehaviour>();
-        Collider[] colliders= player.GetComponentsInChildren<Collider>();
+        Collider[] colliders = player.GetComponentsInChildren<Collider>();
         Renderer renderer = player.GetComponentInChildren<Renderer>();
-        
-        if (components != null){foreach (MonoBehaviour component in components) 
+
+        if (components != null)
         {
-            component.enabled = condition;
-        }}
+            foreach (MonoBehaviour component in components)
+            {
+                component.enabled = condition;
+            }
+        }
 
         if (colliders != null)
         {
             foreach (Collider collider in colliders)
             {
-                collider.enabled = condition; 
+                collider.enabled = condition;
             }
         }
 
-        renderer.enabled = condition;
+        if (renderer != null)
+        {
+            renderer.enabled = enableRenderer;
+        }
     }
 
     private void SetCameraPriority(CinemachineVirtualCamera camera1, CinemachineVirtualCamera camera2)
