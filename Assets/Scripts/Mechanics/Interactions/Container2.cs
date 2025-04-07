@@ -6,7 +6,7 @@ public class Container2 : Interactable, ITaskProvider
     public GameObject emptyContainer;
     public GameObject fullContainer;
     TaskManager taskManager;
-
+    Room room;
     bool isDone = false;
 
     public enum ContainerType
@@ -22,10 +22,15 @@ public class Container2 : Interactable, ITaskProvider
     void Start()
     {
         taskManager = TaskManager.Instance;
+        room = GetComponentInParent<Room>();
+        if (room == null)
+        {
+            Debug.LogWarning($"{name} tidak menemukan Room di parent!");
+        }
 
         if (taskManager != null)
         {
-            taskManager.RegisterTask(GetTaskName(), this);
+            taskManager.RegisterTask(GetTaskName(), this, room);
         }
     }
 

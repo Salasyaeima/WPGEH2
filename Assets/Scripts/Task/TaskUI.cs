@@ -58,7 +58,6 @@ public class TaskUI : MonoBehaviour
         if (checkIcon != null)
         {
             checkIcon.enabled = true;
-            Debug.Log("CheckIcon diaktifkan untuk: " + task.taskName);
         }
     }
 
