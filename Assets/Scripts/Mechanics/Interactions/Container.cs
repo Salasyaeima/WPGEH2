@@ -11,6 +11,7 @@ public class Container : Interactable, ITaskProvider
     public int maxCapacity = 2;
     TaskManager taskManager;
     private int count = 0;
+    Room room;
 
     public enum ContainerType
     {
@@ -24,10 +25,15 @@ public class Container : Interactable, ITaskProvider
     void Start()
     {
         taskManager = TaskManager.Instance;
+        room = GetComponentInParent<Room>();
+        if (room == null)
+        {
+            Debug.LogWarning($"{name} tidak menemukan Room di parent!");
+        }
 
         if (taskManager != null)
         {
-            taskManager.RegisterTask(GetBaseTaskName(), this); // Pake base name
+            taskManager.RegisterTask(GetBaseTaskName(), this, room); // Pake base name
         }
     }
 
@@ -118,7 +124,6 @@ public class Container : Interactable, ITaskProvider
         {
             emptyContainer.SetActive(false);
             fullContainer.SetActive(true);
-            Debug.Log("Penuhh");
 
             if (taskManager != null)
             {
