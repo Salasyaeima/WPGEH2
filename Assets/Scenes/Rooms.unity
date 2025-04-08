@@ -4152,8 +4152,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -9525,7 +9525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 31, y: 30.799988}
+  m_AnchoredPosition: {x: 31, y: 30.800049}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1572812927
@@ -13308,6 +13308,9 @@ MonoBehaviour:
   detectionRadius: 10
   motherTag: Mother
   player: {fileID: 543449882}
+  volume: {fileID: 2135677328}
+  maxDistance: 8
+  maxIntensity: 0.5
 --- !u!1 &2080824505
 GameObject:
   m_ObjectHideFlags: 0

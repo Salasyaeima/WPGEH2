@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class IconController : MonoBehaviour
@@ -9,6 +11,10 @@ public class IconController : MonoBehaviour
     [SerializeField] float detectionRadius = 10f;
     [SerializeField] string motherTag = "Mother";
     [SerializeField] GameObject player;
+    [SerializeField] Volume volume;
+    [SerializeField] float maxDistance = 5f;
+    [SerializeField] float maxIntensity = 0.8f;
+    Vignette vignette;
     GameObject mother;
 
     void Start()
@@ -22,6 +28,15 @@ public class IconController : MonoBehaviour
         if (mother == null)
         {
             Debug.LogWarning("Tidak ada GameObject dengan tag 'Mother' di scene!");
+        }
+
+        if (volume != null && volume.profile.TryGet(out vignette))
+        {
+            vignette.intensity.value = 0.3f;
+        }
+        else
+        {
+            Debug.LogWarning("Volume atau Vignette tidak ditemukan!");
         }
     }
 
@@ -39,6 +54,16 @@ public class IconController : MonoBehaviour
         {
             iconImage.sprite = handSprite;
         }
+
+        if (mother == null || vignette == null) return;
+
+        float intensity = 0f;
+        if (distanceToMother <= maxDistance)
+        {
+            intensity = Mathf.Lerp(maxIntensity, 0f, distanceToMother / maxDistance);
+        }
+
+        vignette.intensity.value = intensity;
     }
 
     void OnDrawGizmosSelected()
