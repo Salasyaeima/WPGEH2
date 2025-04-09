@@ -7,15 +7,18 @@ public class HidingMechanism : Interactable
     [SerializeField]
     private GameObject player;
     [SerializeField]
-    private CinemachineVirtualCamera playersCamera;    private CinemachineBrain cameraBrain;
+    private CinemachineVirtualCamera playersCamera;    
+    private CinemachineBrain cameraBrain;
     private CinemachineVirtualCamera thisCamera;
     private bool isHiding;
     private Vector3 playersLastPos;
+    private LineOfSight lineOfSight;
 
     void Start()
     {
         cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
         thisCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        lineOfSight = player.GetComponent<LineOfSight>();
     }
     void Update()
     {
