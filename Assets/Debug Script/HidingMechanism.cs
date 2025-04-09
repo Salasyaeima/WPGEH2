@@ -14,14 +14,12 @@ public class HidingMechanism : Interactable
     private List<GameObject> models;
     private bool isHiding;
     private Vector3 playersLastPos;
-    private LineOfSight lineOfSight;
 
     void Start()
     {
         cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
         thisCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         SetActiveModels(true, false);
-        lineOfSight = player.GetComponent<LineOfSight>();
     }
 
     void Update()

@@ -7,17 +7,17 @@ public class LineOfSight : MonoBehaviour
     private float detectionRange = 20f;
     //Opsional, untuk peletakan "Raycast" tepat di kepala
     [SerializeField]
-    public float detectionHeight = 3f;
+    private float detectionHeight = 3f;
     [SerializeField]
     private LayerMask detectionLayer;
     [SerializeField]
     private bool showDebugVisuals;
     [SerializeField]
     [Tooltip("Tag before, triggered")]
-    public string tagBefore;
+    private string tagBefore;
     [SerializeField]
     [Tooltip("Tag after, triggered")]
-    public string tagAfter;
+    private string tagAfter;
     [SerializeField]
     private BehaviorGraph behavior;
     private Vector3 lastPosition;
