@@ -29,7 +29,7 @@ public class LineOfSight : MonoBehaviour
         RaycastHit hit;
         Vector3 direction = potentialTarget.transform.position - transform.position;
         Physics.Raycast(transform.position + Vector3.up * detectionHeight, direction, out hit, detectionRange, detectionLayer);
-        if (hit.collider != null && hit.collider.gameObject == potentialTarget)
+        if (hit.collider != null && hit.collider.gameObject.layer == potentialTarget.layer)
         {
             if (showDebugVisuals)
             {

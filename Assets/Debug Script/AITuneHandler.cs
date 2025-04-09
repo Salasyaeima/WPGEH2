@@ -1,13 +1,15 @@
 using UnityEngine;
 using Unity.Behavior;
 
-public class AISpeedHandler : MonoBehaviour
+public class AITuneHandler : MonoBehaviour
 {
-    public float patrolSpeed = 2;
-    public float chaseSpeed = 4;
     [SerializeField]
     private BehaviorGraph behavior;
-
+    public float patrolDelay = 2;
+    [Header("Walkspeed")]
+    public float patrolSpeed = 2;
+    public float chaseSpeed = 4;
+    
     void Start()
     {
         
@@ -17,5 +19,6 @@ public class AISpeedHandler : MonoBehaviour
     {
         behavior.BlackboardReference.SetVariableValue("Patrol Walkspeed", patrolSpeed);
         behavior.BlackboardReference.SetVariableValue("Chase Walkspeed", chaseSpeed);
+        behavior.BlackboardReference.SetVariableValue("Patrol Delay", patrolDelay);
     }
 }

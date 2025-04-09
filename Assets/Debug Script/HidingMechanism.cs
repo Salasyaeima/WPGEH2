@@ -1,4 +1,6 @@
 using UnityEngine;
+
+using Unity.Behavior;
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +8,8 @@ public class HidingMechanism : Interactable
 {
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject enemy;
     [SerializeField]
     private CinemachineVirtualCamera playersCamera;
     private CinemachineBrain cameraBrain;
@@ -21,7 +25,7 @@ public class HidingMechanism : Interactable
         cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
         thisCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         SetActiveModels(true, false);
-        lineOfSight = player.GetComponent<LineOfSight>();
+        lineOfSight = enemy.GetComponent<LineOfSight>();
     }
 
     void Update()
@@ -30,6 +34,8 @@ public class HidingMechanism : Interactable
         {
             ExitHide();
         }
+        Debug.Log(isHiding);
+        // NotHiddenWhenChased();
     }
 
     public override string Description()
@@ -67,6 +73,7 @@ public class HidingMechanism : Interactable
         player.transform.position = playersLastPos;
         SwitchComponents(true, false);
 
+        isHiding = false;
         StartCoroutine(EnableRendererAfterBlend());
     }
 
@@ -78,7 +85,6 @@ public class HidingMechanism : Interactable
         {
             renderer.enabled = true;
         }
-        isHiding = false;
     }
 
     private void SwitchComponents(bool condition, bool enableRenderer)
@@ -119,5 +125,17 @@ public class HidingMechanism : Interactable
     {
         models[0].SetActive(bool1);
         models[1].SetActive(bool2);
+    }
+
+    private void NotHiddenWhenChased()
+    {
+        if (lineOfSight.DetectedTarget != null)
+        {
+            if (lineOfSight.DetectedTarget.CompareTag(lineOfSight.tagAfter) && isHiding)
+            {
+                Debug.Log("Test");
+            }    
+        }
+        
     }
 }
