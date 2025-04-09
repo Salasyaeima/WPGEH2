@@ -620,12 +620,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5546504744788794811, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
   m_PrefabInstance: {fileID: 2269510385709495934}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &406651660
---- !u!1 &406651660 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2943504882668071976, guid: e090e36effbef554383371435014d912, type: 3}
-  m_PrefabInstance: {fileID: 3665739222836522294}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &430176036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,13 +1067,19 @@ MonoBehaviour:
   tasks:
   - taskName: Masukkan Item Ke Container Toy
     isCompleted: 0
+    room: {fileID: 0}
   - taskName: Masukkan Item Ke Container Clothes
     isCompleted: 0
+    room: {fileID: 0}
   - taskName: Masukkan Item Ke Container Book
     isCompleted: 0
+    room: {fileID: 0}
   taskUIPrefab: {fileID: 4201938792258414336, guid: 4fc6e264b0b628e41bf728d1c57ee9b1, type: 3}
   taskListParent: {fileID: 2107576357}
   progressBar: {fileID: 591364139}
+  taskText: {fileID: 0}
+  roomText: {fileID: 0}
+  panelResult: {fileID: 0}
 --- !u!4 &625934983
 Transform:
   m_ObjectHideFlags: 0
@@ -2099,7 +2099,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18b886443f19c0e4f9bad309f797e438, type: 3}
   m_PrefabInstance: {fileID: 1766816725}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1838367525
 --- !u!1 &1769981335 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7363558939356645105, guid: adf8cef9b39766348b5c67e12a037175, type: 3}
@@ -2593,7 +2592,7 @@ PrefabInstance:
     - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: 'managedReferences[7383935633998741900].m_Value.Array.data[4]'
       value: 
-      objectReference: {fileID: 406651660}
+      objectReference: {fileID: 0}
     - target: {fileID: 5619499564630962364, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: detectionLayer.m_Bits
       value: 4294967295
