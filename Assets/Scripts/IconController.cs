@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class IconController : MonoBehaviour
 {
-    [SerializeField] Image iconImage;
-    [SerializeField] Sprite handSprite;
-    [SerializeField] Sprite eyeSprite;
+    [SerializeField] Image iconEye;
     [SerializeField] float detectionRadius = 10f;
     [SerializeField] string motherTag = "Mother";
     [SerializeField] GameObject player;
@@ -19,10 +17,7 @@ public class IconController : MonoBehaviour
 
     void Start()
     {
-        if (iconImage != null)
-        {
-            iconImage.sprite = handSprite;
-        }
+        iconEye.enabled = false;
 
         mother = GameObject.FindGameObjectWithTag(motherTag);
         if (mother == null)
@@ -32,7 +27,7 @@ public class IconController : MonoBehaviour
 
         if (volume != null && volume.profile.TryGet(out vignette))
         {
-            vignette.intensity.value = 0.3f;
+            vignette.intensity.value = 0f;
         }
         else
         {
@@ -42,18 +37,16 @@ public class IconController : MonoBehaviour
 
     void Update()
     {
-        if (mother == null || iconImage == null) return;
-
         float distanceToMother = Vector3.Distance(player.transform.position, mother.transform.position);
-
         if (distanceToMother <= detectionRadius)
         {
-            iconImage.sprite = eyeSprite;
+            iconEye.enabled = true;
         }
         else
         {
-            iconImage.sprite = handSprite;
+            iconEye.enabled = false;
         }
+
 
         if (mother == null || vignette == null) return;
 
