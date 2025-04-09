@@ -7,7 +7,11 @@ public class PlayerInteractions : MonoBehaviour
 
     public float interactionDistance;
     public TMPro.TextMeshProUGUI interactionText;
+    public GameObject interactionHoldGo;
+    public UnityEngine.UI.Image holdProgress;
     public static Item heldItem = null;
+    Interactable interactable = null;
+    bool successfullHit = false;
 
 
     Camera cam;
@@ -22,27 +26,27 @@ public class PlayerInteractions : MonoBehaviour
     void Update()
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
-
         RaycastHit hit;
-
+        interactionText.gameObject.SetActive(successfullHit);
+        interactionHoldGo.SetActive(successfullHit);
+        
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
-            Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
-
-            bool successfullHit = false;
+            interactable = hit.collider.GetComponentInParent<Interactable>();
 
             if (interactable != null)
             {
                 HandleInteraction(interactable);
                 interactionText.text = interactable.Description();
-                interactionText.gameObject.SetActive(true);
+                interactionHoldGo.SetActive(interactable.interactionType == Interactable.InteractionType.Hold);
                 successfullHit = true;
             }
-            else
-            {
-                interactionText.gameObject.SetActive(false);
-            }
         }
+        else
+        {
+            successfullHit = false;
+        }
+        
     }
 
     void HandleInteraction(Interactable interactable)
@@ -72,18 +76,23 @@ public class PlayerInteractions : MonoBehaviour
                     {
                         hidingBox.Interact();
                     }
-                
-            
+                    else
+                    {
+                        interactable.Interact();
+                    }
                 }
                 break;
             case Interactable.InteractionType.Hold:
-                if (Input.GetKey(key))
+                if (Input.GetKey(key) )
                 {
                     interactable.increaseHoldTime();
-                    Debug.Log("Hold Time: " + interactable.HoldTime());
-                    if(interactable.HoldTime() > 5f)
+                    if (interactable.HoldTime() > 5f)
                     {
                         interactable.Interact();
+                        interactable.resetHoldTime();
+                    }
+                    else if(successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
+                    {
                         interactable.resetHoldTime();
                     }
                 }
@@ -91,6 +100,7 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     interactable.resetHoldTime();
                 }
+                holdProgress.fillAmount = interactable.HoldTime() / 5f;
                 break;
         }
     }

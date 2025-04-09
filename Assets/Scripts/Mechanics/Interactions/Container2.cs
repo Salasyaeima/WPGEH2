@@ -1,13 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
-public class Container2 : Interactable
+public class Container2 : Interactable, ITaskProvider
 {
     public GameObject emptyContainer;
     public GameObject fullContainer;
     TaskManager taskManager;
-
+    Room room;
     bool isDone = false;
 
     public enum ContainerType
@@ -20,10 +19,19 @@ public class Container2 : Interactable
 
     public ContainerType containerType;
 
-
     void Start()
     {
         taskManager = TaskManager.Instance;
+        room = GetComponentInParent<Room>();
+        if (room == null)
+        {
+            Debug.LogWarning($"{name} tidak menemukan Room di parent!");
+        }
+
+        if (taskManager != null)
+        {
+            taskManager.RegisterTask(GetTaskName(), this, room);
+        }
     }
 
     public override string Description()
@@ -38,12 +46,10 @@ public class Container2 : Interactable
         }
     }
 
-
     public override void Interact()
     {
         isDone = true;
     }
-
 
     void Update()
     {
@@ -79,19 +85,16 @@ public class Container2 : Interactable
         return null;
     }
 
-    string GetTaskName()
+    public string GetTaskName()
     {
         switch (containerType)
         {
-            case ContainerType.toyContainer:
-                return "Masukkan Item Ke Container Toy";
-            case ContainerType.wardrobe:
-                return "Masukkan Item Ke Container Clothes";
             case ContainerType.Bookshelf:
-                return "Masukkan Item Ke Container Book";
+                return "Susun buku di meja belajar";
+            case ContainerType.bed:
+                return "Rapihkan tempat tidur";
             default:
                 return "";
         }
     }
-
 }

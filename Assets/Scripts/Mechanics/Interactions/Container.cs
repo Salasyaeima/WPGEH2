@@ -1,17 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
-public class Container : Interactable
+public class Container : Interactable, ITaskProvider
 {
     public Transform spawnPoint;
     public GameObject baju;
     public GameObject emptyContainer;
     public GameObject fullContainer;
     public List<GameObject> storedItems = new List<GameObject>();
-    public int maxCapacity = 1;
+    public int maxCapacity = 2;
     TaskManager taskManager;
     private int count = 0;
+    Room room;
 
     public enum ContainerType
     {
@@ -21,12 +21,20 @@ public class Container : Interactable
     }
 
     public ContainerType containerType;
-    
-
 
     void Start()
     {
         taskManager = TaskManager.Instance;
+        room = GetComponentInParent<Room>();
+        if (room == null)
+        {
+            Debug.LogWarning($"{name} tidak menemukan Room di parent!");
+        }
+
+        if (taskManager != null)
+        {
+            taskManager.RegisterTask(GetBaseTaskName(), this, room); // Pake base name
+        }
     }
 
     public override string Description()
@@ -40,7 +48,6 @@ public class Container : Interactable
             return " ";
         }
     }
-
 
     public override void Interact()
     {
@@ -60,7 +67,7 @@ public class Container : Interactable
         GameObject spawnedBaju = Instantiate(baju, spawnPosition, Quaternion.identity);
         Transform spawnedKainTransform = spawnedBaju.transform.Find("Kain");
 
-         if (spawnedKainTransform != null)
+        if (spawnedKainTransform != null)
         {
             Renderer spawnedKainRenderer = spawnedKainTransform.GetComponent<Renderer>();
             if (spawnedKainRenderer != null)
@@ -82,14 +89,13 @@ public class Container : Interactable
             if ((containerType == ContainerType.toyContainer && itemData.category == ItemData.ItemCategory.Toy))
             {
                 MoveItem();
-                storedItems.Add(PlayerInteractions.heldItem.gameObject); 
+                storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
-                
             }
-            else if((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
+            else if ((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
             {
                 SpawnItem();
-                storedItems.Add(PlayerInteractions.heldItem.gameObject); 
+                storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
             }
             else
@@ -112,18 +118,16 @@ public class Container : Interactable
         rb.useGravity = true;
     }
 
-
     void Update()
     {
         if (storedItems.Count == maxCapacity)
         {
             emptyContainer.SetActive(false);
             fullContainer.SetActive(true);
-            Debug.Log("Penuhh");
 
             if (taskManager != null)
             {
-                string taskToComplete = GetTaskName();
+                string taskToComplete = GetBaseTaskName();
                 Task task = FindTaskByName(taskToComplete);
                 if (task != null && !task.isCompleted)
                 {
@@ -143,19 +147,21 @@ public class Container : Interactable
         return null;
     }
 
-    string GetTaskName()
+    public string GetBaseTaskName()
     {
         switch (containerType)
         {
             case ContainerType.toyContainer:
-                return "Masukkan Item Ke Container Toy";
+                return "Masukkan barang ke dalam kotak mainan";
             case ContainerType.wardrobe:
-                return "Masukkan Item Ke Container Clothes";
-            case ContainerType.Bookshelf:
-                return "Masukkan Item Ke Container Book";
+                return "Simpan pakaian di dalam lemari";
             default:
                 return "";
         }
     }
 
+    public string GetTaskName()
+    {
+        return $"{GetBaseTaskName()} ({storedItems.Count}/{maxCapacity})";
+    }
 }
