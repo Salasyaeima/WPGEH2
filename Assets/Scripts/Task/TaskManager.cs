@@ -12,6 +12,7 @@ public class TaskManager : MonoBehaviour
     public Image progressBar;
     [SerializeField] TextMeshProUGUI taskText;
     [SerializeField] TextMeshProUGUI roomText;
+    [SerializeField] TextMeshProUGUI detailProgression;
     [SerializeField] GameObject panelResult;
 
     Room[] rooms;
@@ -96,6 +97,9 @@ public class TaskManager : MonoBehaviour
         {
             float progress = (float)completedTasks / tasks.Count;
             progressBar.fillAmount = progress;
+
+            int percentage = Mathf.RoundToInt(progress * 100f);
+            detailProgression.text = $"{percentage}% Task Complete";
         }
     }
 
