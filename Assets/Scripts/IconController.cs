@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class IconController : MonoBehaviour
 {
@@ -12,14 +13,21 @@ public class IconController : MonoBehaviour
     [SerializeField] Volume volume;
     [SerializeField] float maxDistance = 5f;
     [SerializeField] float maxIntensity = 0.8f;
+    [SerializeField] float shakeAmplitudo = 2f;
+    [SerializeField] float shakeFrequency = 2f;
+    [SerializeField] CinemachineVirtualCamera vCam;
+    CinemachineBasicMultiChannelPerlin noise;
     Vignette vignette;
     GameObject mother;
+
+
 
     void Start()
     {
         iconEye.enabled = false;
 
         mother = GameObject.FindGameObjectWithTag(motherTag);
+        noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         if (mother == null)
         {
             Debug.LogWarning("Tidak ada GameObject dengan tag 'Mother' di scene!");
@@ -45,6 +53,7 @@ public class IconController : MonoBehaviour
         else
         {
             iconEye.enabled = false;
+            
         }
 
 
@@ -54,6 +63,12 @@ public class IconController : MonoBehaviour
         if (distanceToMother <= maxDistance)
         {
             intensity = Mathf.Lerp(maxIntensity, 0f, distanceToMother / maxDistance);
+            CameraShaking();
+        }
+        else
+        {
+            noise.m_AmplitudeGain = 0f;
+            noise.m_FrequencyGain = 0f;
         }
 
         vignette.intensity.value = intensity;
@@ -63,5 +78,11 @@ public class IconController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
+    void CameraShaking() 
+    {
+        noise.m_AmplitudeGain = shakeAmplitudo;
+        noise.m_FrequencyGain = shakeFrequency;
     }
 }

@@ -6221,7 +6221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 34.3, y: 883}
+  m_AnchoredPosition: {x: 34.30005, y: 883}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &945819016
@@ -10257,6 +10257,7 @@ MonoBehaviour:
   progressBar: {fileID: 750955510}
   taskText: {fileID: 670255509}
   totalTask: {fileID: 261392124}
+  tasksPerRoom: {fileID: 0}
   roomText: {fileID: 857270161}
   detailProgression: {fileID: 370127306}
   panelResult: {fileID: 131737730}
@@ -12527,6 +12528,9 @@ MonoBehaviour:
   volume: {fileID: 2135677328}
   maxDistance: 25
   maxIntensity: 0.8
+  shakeAmplitudo: 0.5
+  shakeFrequency: 2.5
+  vCam: {fileID: 1391944216}
 --- !u!1 &1911615495
 GameObject:
   m_ObjectHideFlags: 0
