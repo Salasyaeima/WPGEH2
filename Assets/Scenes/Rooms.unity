@@ -6197,9 +6197,8 @@ GameObject:
   - component: {fileID: 945819015}
   - component: {fileID: 945819018}
   - component: {fileID: 945819017}
-  - component: {fileID: 945819016}
   m_Layer: 5
-  m_Name: TimerText (1)
+  m_Name: TaskComplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6224,20 +6223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 34.30005, y: 883}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &945819016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945819014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb773d14dcf8b924e826363493dddaf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 945819017}
-  completionTimeText: {fileID: 1930071541}
 --- !u!114 &945819017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9844,6 +9829,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5502175228112316357, guid: c0c28fc2d1a299a44aa306e1e944efc1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1644617571}
+    - targetCorrespondingSourceObject: {fileID: 5502175228112316357, guid: c0c28fc2d1a299a44aa306e1e944efc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1644617573}
     - targetCorrespondingSourceObject: {fileID: 2398278663188376080, guid: c0c28fc2d1a299a44aa306e1e944efc1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 553395388}
@@ -10257,7 +10245,7 @@ MonoBehaviour:
   progressBar: {fileID: 750955510}
   taskText: {fileID: 670255509}
   totalTask: {fileID: 261392124}
-  tasksPerRoom: {fileID: 0}
+  tasksPerRoom: {fileID: 945819017}
   roomText: {fileID: 857270161}
   detailProgression: {fileID: 370127306}
   panelResult: {fileID: 131737730}
@@ -10931,6 +10919,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomName: Kamar
   totalTasks: 4
+--- !u!65 &1644617573
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644617569}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 24.18, y: 9.98, z: 24.9}
+  m_Center: {x: 7.8, y: -0.34, z: 5.4}
 --- !u!1 &1655561885
 GameObject:
   m_ObjectHideFlags: 0
@@ -12527,7 +12536,7 @@ MonoBehaviour:
   player: {fileID: 543449882}
   volume: {fileID: 2135677328}
   maxDistance: 25
-  maxIntensity: 0.8
+  maxIntensity: 0.5
   shakeAmplitudo: 0.5
   shakeFrequency: 2.5
   vCam: {fileID: 1391944216}
@@ -36903,6 +36912,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 8338988565591873055}
+    - target: {fileID: 8762286024517199035, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_FrequencyGain
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
