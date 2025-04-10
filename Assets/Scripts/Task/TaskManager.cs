@@ -11,6 +11,8 @@ public class TaskManager : MonoBehaviour
     public Transform taskListParent;
     public Image progressBar;
     [SerializeField] TextMeshProUGUI taskText;
+    [SerializeField] TextMeshProUGUI totalTask;
+    [SerializeField] TextMeshProUGUI tasksPerRoom;
     [SerializeField] TextMeshProUGUI roomText;
     [SerializeField] TextMeshProUGUI detailProgression;
     [SerializeField] GameObject panelResult;
@@ -19,6 +21,7 @@ public class TaskManager : MonoBehaviour
     int completedRooms = 0;
     int completedTasks = 0;
     bool tasksShown = false;
+    Room currentRoom;
 
     void Awake()
     {
@@ -33,6 +36,13 @@ public class TaskManager : MonoBehaviour
         rooms = FindObjectsOfType<Room>();
         UpdateTaskInfo();
         Debug.Log($"Total Ruangan: {rooms.Length}");
+        UpdateTasksPerRoom();
+    }
+
+    public void SetCurrentRoom(Room room)
+    {
+        currentRoom = room;
+        UpdateTasksPerRoom();
     }
 
     public void ShowTasks()
@@ -74,6 +84,7 @@ public class TaskManager : MonoBehaviour
                 task.room.OnTaskCompleted();
             }
             UpdateTaskInfo();
+            UpdateTasksPerRoom();
 
             if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
             {
@@ -91,6 +102,30 @@ public class TaskManager : MonoBehaviour
             roomText.text = $"{completedRooms}/{rooms.Length} Ruangan";
     }
 
+    void UpdateTasksPerRoom()
+    {
+        if (tasksPerRoom != null && currentRoom != null)
+        {
+            int tasksInRoom = 0;
+            int completedTasksInRoom = 0;
+
+            foreach (Task task in tasks)
+            {
+                if (task.room == currentRoom)
+                {
+                    tasksInRoom++;
+                    if (task.isCompleted)
+                        completedTasksInRoom++;
+                }
+            }
+            tasksPerRoom.text = $"Tugas di Ruangan Ini: {completedTasksInRoom}/{tasksInRoom}";
+        }
+        else if (tasksPerRoom != null)
+        {
+            tasksPerRoom.text = "Tugas di Ruangan Ini: -/-";
+        }
+    }
+
     void UpdateProgressBar()
     {
         if (tasks.Count > 0)
@@ -99,7 +134,7 @@ public class TaskManager : MonoBehaviour
             progressBar.fillAmount = progress;
 
             int percentage = Mathf.RoundToInt(progress * 100f);
-            detailProgression.text = $"{percentage}% Task Complete";
+            detailProgression.text = $"{percentage}% Tugas Selesai";
         }
     }
 

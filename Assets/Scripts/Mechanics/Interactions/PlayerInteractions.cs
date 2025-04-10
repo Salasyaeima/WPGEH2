@@ -29,7 +29,7 @@ public class PlayerInteractions : MonoBehaviour
         RaycastHit hit;
         interactionText.gameObject.SetActive(successfullHit);
         interactionHoldGo.SetActive(successfullHit);
-        
+
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
             interactable = hit.collider.GetComponentInParent<Interactable>();
@@ -46,7 +46,7 @@ public class PlayerInteractions : MonoBehaviour
         {
             successfullHit = false;
         }
-        
+
     }
 
     void HandleInteraction(Interactable interactable)
@@ -72,6 +72,10 @@ public class PlayerInteractions : MonoBehaviour
                             item.Interact();
                         }
                     }
+                    else if (interactable is Door door)
+                    {
+                        door.Interact();
+                    }
                     else if (interactable is HidingMechanism hidingBox)
                     {
                         hidingBox.Interact();
@@ -83,7 +87,7 @@ public class PlayerInteractions : MonoBehaviour
                 }
                 break;
             case Interactable.InteractionType.Hold:
-                if (Input.GetKey(key) )
+                if (Input.GetKey(key))
                 {
                     interactable.increaseHoldTime();
                     if (interactable.HoldTime() > 5f)
@@ -91,7 +95,7 @@ public class PlayerInteractions : MonoBehaviour
                         interactable.Interact();
                         interactable.resetHoldTime();
                     }
-                    else if(successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
+                    else if (successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
                     {
                         interactable.resetHoldTime();
                     }
