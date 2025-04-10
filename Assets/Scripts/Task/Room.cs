@@ -36,4 +36,21 @@ public class Room : MonoBehaviour
     {
         return totalTasks;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Room room = GetComponent<Room>();
+            TaskManager.Instance.SetCurrentRoom(room);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            TaskManager.Instance.SetCurrentRoom(null);
+        }
+    }
 }
