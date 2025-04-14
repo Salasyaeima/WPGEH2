@@ -11260,6 +11260,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -516098083770646512, guid: 98308f2b816b9fa44a24e8c12e200864, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1866193983}
+    - targetCorrespondingSourceObject: {fileID: 5318004700272846845, guid: 98308f2b816b9fa44a24e8c12e200864, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046439333}
   m_SourcePrefab: {fileID: 100100000, guid: 98308f2b816b9fa44a24e8c12e200864, type: 3}
 --- !u!1001 &1979352518
 PrefabInstance:
@@ -11872,6 +11875,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 0
   playerHand: {fileID: 1404186845}
+--- !u!1 &2046439329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5318004700272846845, guid: 98308f2b816b9fa44a24e8c12e200864, type: 3}
+  m_PrefabInstance: {fileID: 1972735320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2046439333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046439329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636369da602fad74eb408b4f4f8a1aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomName: Kamar
+  totalTasks: 4
 --- !u!1 &2057581208
 GameObject:
   m_ObjectHideFlags: 0
@@ -19563,8 +19585,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8338988565591873055}
     - target: {fileID: 8762286024517199035, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_AmplitudeGain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762286024517199035, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_FrequencyGain
-      value: 2.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
