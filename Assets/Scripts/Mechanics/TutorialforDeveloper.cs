@@ -6,5 +6,5 @@ public class TutorialforDeveloper : MonoBehaviour
     // E untuk ambil item dan interaksi
     // Space untuk lompat
     // WASD untuk movement
-    //
+    // Tab untuk x ray
 }
