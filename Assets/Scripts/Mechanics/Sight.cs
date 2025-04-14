@@ -14,6 +14,7 @@ public class Sight : MonoBehaviour
     bool isHolding = false;
     Vector3 lockedPos;
     ColorAdjustments colorAdjust;
+    public bool xrayActive = false;
 
     void Start()
     {
@@ -30,33 +31,20 @@ public class Sight : MonoBehaviour
 
     void Update()
     {
-        isHolding = Input.GetKey(KeyCode.H);
+        
         float saturation = 0f;
-        if(isHolding){
+        if(Input.GetKey(KeyCode.Tab)){
+            xrayActive = true;
             lerpTime = 0f;
             movementScript.enabled = false;
-            ResetSight();
+            colorAdjust.saturation.value = -100f;
         }else{
             movementScript.enabled = true;
+            xrayActive = false;
             lerpTime = 0f;
-            SightActive();
+            colorAdjust.saturation.value = 0f;
         }
         saturation = colorAdjust.saturation.value;
         Debug.Log("Saturasi = "+ saturation);
-    }
-
-    void SightActive(){
-        if(lerpTime < duration){
-            lerpTime += Time.deltaTime;
-            colorAdjust.saturation.value = Mathf.Lerp(normalSaturation, targetSaturation, lerpTime / duration);
-        }
-        
-    }
-
-    void ResetSight(){
-        if(lerpTime < duration){
-            lerpTime += Time.deltaTime;
-            colorAdjust.saturation.value = Mathf.Lerp(targetSaturation, normalSaturation, lerpTime / duration);
-        }
     }
 }

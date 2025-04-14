@@ -59,21 +59,21 @@ public class Container : Interactable, ITaskProvider
 
     void SpawnItem()
     {
-        Transform kainTransform = PlayerInteractions.heldItem.transform.Find("Kain");
-        Renderer kainRenderer = kainTransform.GetComponent<Renderer>();
-        Color itemColor = kainRenderer.material.color;
+        Transform clothesTransform = PlayerInteractions.heldItem.transform.Find("Kain");
+        Renderer clothesRenderer = clothesTransform.GetComponent<Renderer>();
+        Color itemColor = clothesRenderer.material.color;
 
         Vector3 spawnPosition = spawnPoint.position + new Vector3(0, 0, count * 0.5f);
-        GameObject spawnedBaju = Instantiate(baju, spawnPosition, Quaternion.identity);
-        Transform spawnedKainTransform = spawnedBaju.transform.Find("Kain");
+        GameObject spawnedClothes = Instantiate(baju, spawnPosition, Quaternion.identity);
+        Transform spawnedClothesTransform = spawnedClothes.transform.Find("Kain");
 
-        if (spawnedKainTransform != null)
+        if (spawnedClothesTransform != null)
         {
-            Renderer spawnedKainRenderer = spawnedKainTransform.GetComponent<Renderer>();
-            if (spawnedKainRenderer != null)
+            Renderer spawnedClothesRenderer = spawnedClothesTransform.GetComponent<Renderer>();
+            if (spawnedClothesRenderer != null)
             {
-                spawnedKainRenderer.material.mainTexture = kainRenderer.material.mainTexture;
-                spawnedKainRenderer.material.color = kainRenderer.material.color;
+                spawnedClothesRenderer.material.mainTexture = clothesRenderer.material.mainTexture;
+                spawnedClothesRenderer.material.color = clothesRenderer.material.color;
             }
         }
 
