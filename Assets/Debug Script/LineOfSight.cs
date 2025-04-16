@@ -5,6 +5,8 @@ public class LineOfSight : MonoBehaviour
 {
     [SerializeField]
     private float detectionRange = 20f;
+    [SerializeField]
+    private float detectionAngle = 45f;
     //Opsional, untuk peletakan "Raycast" tepat di kepala
     [SerializeField]
     public float detectionHeight = 3f;
@@ -26,27 +28,30 @@ public class LineOfSight : MonoBehaviour
 
     public GameObject CheckInSight(GameObject potentialTarget)
     {
-        RaycastHit hit;
-        Vector3 direction = potentialTarget.transform.position - transform.position;
-        Physics.Raycast(transform.position + Vector3.up * detectionHeight, direction, out hit, detectionRange, detectionLayer);
-        if (hit.collider != null && hit.collider.gameObject.layer == potentialTarget.layer)
+        if (CheckTargetInAngle(potentialTarget))
         {
-            if (showDebugVisuals)
+            RaycastHit hit;
+            Vector3 direction = potentialTarget.transform.position - transform.position;
+            Physics.Raycast(transform.position + Vector3.up * detectionHeight, direction, out hit, detectionRange, detectionLayer);
+            if (hit.collider != null && hit.collider.gameObject == potentialTarget)
             {
-                Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position,Color.red);
+                if (showDebugVisuals)
+                {
+                    Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position,Color.red);
+                }
+                //change tag when chased or not chased
+                hit.collider.gameObject.tag = tagAfter;
+                DetectedTarget = hit.collider.gameObject;
             }
-            //change tag when chased or not chased
-            hit.collider.gameObject.tag = tagAfter;
-            DetectedTarget = hit.collider.gameObject;
-        }
-        else
-        {
-            if (DetectedTarget != null)
+            else
             {
-                CheckLastSeen();
-                DetectedTarget.tag = tagBefore;
-            }  
-            DetectedTarget = null;
+                if (DetectedTarget != null)
+                {
+                    CheckLastSeen();
+                    DetectedTarget.tag = tagBefore;
+                }  
+                DetectedTarget = null;
+            }
         }
         return DetectedTarget;
     }
@@ -56,6 +61,21 @@ public class LineOfSight : MonoBehaviour
         lastPosition = DetectedTarget.transform.position;
         behavior.BlackboardReference.SetVariableValue<Vector3>("Last Known Pos", lastPosition);
         Debug.Log(lastPosition); 
+    }
+
+    private bool CheckTargetInAngle(GameObject target)
+    {
+        Vector3 side1 = target.transform.position - this.transform.position;
+        Vector3 side2 = Vector3.left;
+
+        float angle = Vector3.SignedAngle(side1, side2, Vector3.up);
+        if(angle<detectionAngle && angle<-1 * detectionAngle)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
     void OnDrawGizmos()
