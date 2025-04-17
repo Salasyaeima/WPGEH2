@@ -1,0 +1,18 @@
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+    editor-extension-mode="False">
+
+  <engine:Style src="MainMenu.uss" />
+
+  <engine:VisualElement class="button-container">
+    <engine:Button name="Start"  class="menu-button" text="Start"  />
+    <engine:Button name="Option" class="menu-button" text="Option" />
+    <engine:Button name="Exit"   class="menu-button" text="Exit"   />
+  </engine:VisualElement>
+  <engine:VisualElement class="slider-container">
+    <engine:Slider name="Volume" class="menu-slider" text="TEs" />
+  </engine:VisualElement>
+</engine:UXML>
