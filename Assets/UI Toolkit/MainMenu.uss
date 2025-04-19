@@ -12,6 +12,7 @@
 .slider-container{
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
     justify-content: center;
     height: 100%;
     width: 100%;
@@ -23,6 +24,10 @@
     border-width: 0;
     padding: 40px;
     transition: color 0.2s ease;
+}
+
+.option-slider{
+    padding: 40px;
 }
 
 .menu-button:hover {
