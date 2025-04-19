@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TargetWalk : MonoBehaviour
@@ -6,10 +7,19 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] Transform[] waypoints;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float rotationSpeed = 5f;
-    private int currentWaypoint = 0;
-    private bool isMoving = false;
-    private bool autoMove = false;
-    private Animator motherAnimator;
+    [SerializeField]
+    TextDisplayManager textDisplayManager;
+    [SerializeField] GameObject pickupItem;
+    [SerializeField] Transform handBone;
+    [SerializeField] Transform lookTarget;
+    Coroutine pickupCoroutine;
+    int currentWaypoint = 0;
+    int lastReachedWaypoint = -1;
+    bool isMoving = false;
+    bool autoMove = false;
+    bool reachedWaypoint = false;
+    Animator motherAnimator;
+
 
     void Start()
     {
@@ -37,6 +47,7 @@ public class TargetWalk : MonoBehaviour
         if (Vector3.Distance(mother.position, waypoints[currentWaypoint].position) < 0.1f)
         {
             isMoving = false;
+            lastReachedWaypoint = currentWaypoint;
             Debug.Log($"Reached waypoint {currentWaypoint}");
 
             if (autoMove && currentWaypoint + 1 < waypoints.Length)
@@ -57,6 +68,11 @@ public class TargetWalk : MonoBehaviour
             autoMove = true;
             motherAnimator.Play("Walking");
             Debug.Log($"Starting move to waypoint {currentWaypoint}");
+
+            if (textDisplayManager != null)
+            {
+                textDisplayManager.StopDisplayingText();
+            }
         }
         else
         {
@@ -69,9 +85,74 @@ public class TargetWalk : MonoBehaviour
         isMoving = false;
         autoMove = false;
         motherAnimator.Play("LookingAround");
-        Debug.Log($"Auto move stopped at waypoint {currentWaypoint}");
+        if (textDisplayManager != null)
+        {
+            textDisplayManager.StartDisplayingText();
+        }
+
+        if (lastReachedWaypoint == 9)
+        {
+            motherAnimator.Play("Angry");
+            Debug.Log("Playing Angry animation at waypoint 9");
+        }
+        else if (lastReachedWaypoint == 10)
+        {
+            motherAnimator.Play("Pick Up");
+            pickupCoroutine = StartCoroutine(PickupItemWithDelay(3f));
+        }
+
     }
 
+    IEnumerator PickupItemWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (handBone != null)
+        {
+            pickupItem.transform.SetParent(handBone);
+            pickupItem.transform.localPosition = new Vector3(-0.055f, 0.008f, 0.043f);
+            pickupItem.transform.localRotation = Quaternion.Euler(-0.053f, 138.049f, 50.604f);
+            pickupItem.transform.localScale = new Vector3(0.2088804f, 0.2088804f, 0.2088804f);
+            Debug.Log("Pickup item attached to hand");
+
+            StartCoroutine(Idle(3f));
+
+        }
+        else
+        {
+            Debug.LogWarning("Hand bone not assigned for pickup!");
+        }
+
+        pickupCoroutine = null;
+    }
+
+    IEnumerator Idle(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (lookTarget != null)
+        {
+            yield return StartCoroutine(RotateToTarget(lookTarget, 1f));
+        }
+
+        motherAnimator.Play("Idlee");
+    }
+
+    IEnumerator RotateToTarget(Transform target, float duration)
+    {
+        Quaternion startRotation = mother.rotation;
+        Vector3 targetPos = target.position;
+        targetPos.y = mother.position.y;
+        Quaternion targetRotation = Quaternion.LookRotation(targetPos - mother.position);
+        float time = 0;
+
+        while (time < duration)
+        {
+            mother.rotation = Quaternion.Slerp(startRotation, targetRotation, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        mother.rotation = targetRotation;
+    }
     public bool IsMoving()
     {
         return isMoving;
