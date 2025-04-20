@@ -9,7 +9,6 @@ public class SignalReceiver : MonoBehaviour
         if (targetWalk != null)
         {
             targetWalk.StartMovingToWaypoint(waypointIndex);
-            Debug.Log($"Signal received: Moving to waypoint {(waypointIndex >= 0 ? waypointIndex : targetWalk.GetCurrentWaypoint())}");
         }
         else
         {
@@ -22,7 +21,6 @@ public class SignalReceiver : MonoBehaviour
         if (targetWalk != null)
         {
             targetWalk.StopAutoMove();
-            Debug.Log("Signal received: Stopping auto move");
         }
         else
         {

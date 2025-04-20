@@ -764,7 +764,6 @@ GameObject:
   m_Component:
   - component: {fileID: 611261780}
   - component: {fileID: 611261779}
-  - component: {fileID: 611261778}
   - component: {fileID: 611261777}
   - component: {fileID: 611261781}
   m_Layer: 0
@@ -818,14 +817,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &611261778
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611261776}
-  m_Enabled: 1
 --- !u!20 &611261779
 Camera:
   m_ObjectHideFlags: 0
@@ -955,7 +946,6 @@ GameObject:
   m_Component:
   - component: {fileID: 700208620}
   - component: {fileID: 700208619}
-  - component: {fileID: 700208618}
   - component: {fileID: 700208617}
   m_Layer: 0
   m_Name: LongShot2
@@ -1008,14 +998,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &700208618
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700208616}
-  m_Enabled: 1
 --- !u!20 &700208619
 Camera:
   m_ObjectHideFlags: 0
@@ -1427,25 +1409,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUI: {fileID: 856360262}
-  mother: {fileID: 552329288}
   targetWalk: {fileID: 1820767001}
   textList:
-  - Aduh kenapa kamar ini berantakan sekali sih?!"
-  - Kemana Andy?!, kenapa kamarnya dibiarkan seperti ini!?!?
-  - Andy! Ini hasilnya kalau kerjaannya cuma main HP! Kamarmu jadi jorok gitu!
-  - Iyaa, Bu... Maaf ya. Nanti aku bersihin kok.
-  - Kamu ini, nanti-nanti aja terus! Cepat beresin sana!
-  - Heh! Sini Hp kamu!
-  - "Ehh\u2014! Ibu jangan lah"
-  - Masa langsung dirampas sih bu
-  - Cepat bereskan kamarmu! Ibu mau pergi dulu
-  - Kalau Ibu masih lihat kamu baru mau bersihin, awas kamu!
-  - "Ehh\u2014! iya Buu"
-  - 'Jangan cuman kamar kamu saja tapi semuanya! '
-  - Yaudah ibu pergi dulu, Bye
-  - Iya Bu. . . Hati - hati
-  displayDuration: 3
+  - text: Aduh kenapa kamar ini berantakan sekali sih?!
+    triggerAngryModel: 0
+  - text: Kemana Andy?!, kenapa kamarnya dibiarkan seperti ini!?!?
+    triggerAngryModel: 0
+  - text: Andy! ini hasilnya kalau kerjaannya cuma main HP! Kamarmu jadi jorok gitu!
+    triggerAngryModel: 0
+  - text: Iyaa, Bu. . . Maaf ya. Nanti aku bersihin kok.
+    triggerAngryModel: 0
+  - text: Kamu ini, nanti-nanti aja terus! Cepat beresin sana!
+    triggerAngryModel: 0
+  - text: Heh!!! Sini Hp Kamu!
+    triggerAngryModel: 0
+  - text: Ehh-! Ibu jangan lah
+    triggerAngryModel: 0
+  - text: Masa langsung dirampas sih bu
+    triggerAngryModel: 0
+  - text: Cepat bereskan kamarmu! ibu mau pergi dulu
+    triggerAngryModel: 0
+  - text: Kalau ibu masih lihat kamu baru mau bersihin, Awas Kamu!
+    triggerAngryModel: 1
+  - text: Ehh-! Iya Buu
+    triggerAngryModel: 0
+  - text: Jangan cuman kamar kamu saja tapi semuanya!
+    triggerAngryModel: 0
+  - text: Yaudah Ibu pergi dulu, Bye
+    triggerAngryModel: 0
   useAutoDisplay: 1
+  displayDuration: 3
 --- !u!1 &865701600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2114,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1097370900}
   - component: {fileID: 1097370904}
-  - component: {fileID: 1097370903}
   - component: {fileID: 1097370902}
   - component: {fileID: 1097370901}
   m_Layer: 0
@@ -2212,14 +2204,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1097370903
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097370899}
-  m_Enabled: 1
 --- !u!20 &1097370904
 Camera:
   m_ObjectHideFlags: 0
@@ -2286,7 +2270,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1171657678}
   - component: {fileID: 1171657677}
-  - component: {fileID: 1171657676}
   - component: {fileID: 1171657675}
   m_Layer: 0
   m_Name: LongShot4
@@ -2339,14 +2322,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1171657676
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171657674}
-  m_Enabled: 1
 --- !u!20 &1171657677
 Camera:
   m_ObjectHideFlags: 0
@@ -2423,7 +2398,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1180617654}
   - component: {fileID: 1180617653}
-  - component: {fileID: 1180617652}
   - component: {fileID: 1180617651}
   m_Layer: 0
   m_Name: LongShot7
@@ -2476,14 +2450,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1180617652
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180617650}
-  m_Enabled: 1
 --- !u!20 &1180617653
 Camera:
   m_ObjectHideFlags: 0
@@ -2778,7 +2744,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1403630450}
   - component: {fileID: 1403630454}
-  - component: {fileID: 1403630453}
   - component: {fileID: 1403630452}
   - component: {fileID: 1403630451}
   m_Layer: 0
@@ -2869,14 +2834,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1403630453
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403630449}
-  m_Enabled: 1
 --- !u!20 &1403630454
 Camera:
   m_ObjectHideFlags: 0
@@ -3264,7 +3221,7 @@ Transform:
   m_GameObject: {fileID: 1570988864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.2, y: 0, z: -7.74}
+  m_LocalPosition: {x: 9.74, y: 0, z: -7.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3280,7 +3237,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1639256672}
   - component: {fileID: 1639256671}
-  - component: {fileID: 1639256670}
   - component: {fileID: 1639256669}
   m_Layer: 0
   m_Name: LongShot5
@@ -3333,14 +3289,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1639256670
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639256668}
-  m_Enabled: 1
 --- !u!20 &1639256671
 Camera:
   m_ObjectHideFlags: 0
@@ -3531,6 +3479,10 @@ MonoBehaviour:
   lookTarget: {fileID: 611261780}
   modelUpdate: {fileID: 552329288}
   modelMarah: {fileID: 1866253606}
+  videoPlayer: {fileID: 933430650}
+  pickupItemPosition: {x: -0.055, y: 0.008, z: 0.043}
+  pickupItemRotation: {x: 0.39891812, y: 0.844229, z: 0.15338248, w: 0.32344335}
+  pickupItemScale: {x: 0.2088804, y: 0.2088804, z: 0.2088804}
 --- !u!1 &1866253606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ca29c691ede28334d815841a37e3bb28, type: 3}
@@ -3666,7 +3618,7 @@ Transform:
   m_GameObject: {fileID: 1945658580}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9, y: 0, z: -2.56}
+  m_LocalPosition: {x: 2.9, y: 0, z: 0.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3713,7 +3665,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1959928591}
   - component: {fileID: 1959928594}
-  - component: {fileID: 1959928593}
   - component: {fileID: 1959928592}
   m_Layer: 0
   m_Name: LongShot6
@@ -3781,14 +3732,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1959928593
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959928590}
-  m_Enabled: 1
 --- !u!20 &1959928594
 Camera:
   m_ObjectHideFlags: 0
@@ -3850,7 +3793,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1977963421}
   - component: {fileID: 1977963420}
-  - component: {fileID: 1977963419}
   - component: {fileID: 1977963418}
   m_Layer: 0
   m_Name: LongShot3
@@ -3903,14 +3845,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1977963419
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977963417}
-  m_Enabled: 1
 --- !u!20 &1977963420
 Camera:
   m_ObjectHideFlags: 0
@@ -4018,7 +3952,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2076015002}
   - component: {fileID: 2076015001}
-  - component: {fileID: 2076015000}
   - component: {fileID: 2076014999}
   m_Layer: 0
   m_Name: LongShot1
@@ -4071,14 +4004,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &2076015000
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076014998}
-  m_Enabled: 1
 --- !u!20 &2076015001
 Camera:
   m_ObjectHideFlags: 0

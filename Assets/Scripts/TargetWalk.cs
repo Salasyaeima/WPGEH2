@@ -1,37 +1,64 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
 public class TargetWalk : MonoBehaviour
 {
+    [System.Serializable]
+    public class WaypointData
+    {
+        public Transform waypoint;
+        public string animationToPlay = "Idle";
+        public bool stopAutoMove;
+        public bool muteVideo = true;
+    }
+
     [SerializeField] Transform mother;
     [SerializeField] Transform[] waypoints;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float rotationSpeed = 5f;
-    [SerializeField]
-    TextDisplayManager textDisplayManager;
+    [SerializeField] TextDisplayManager textDisplayManager;
     [SerializeField] GameObject pickupItem;
     [SerializeField] Transform handBone;
     [SerializeField] Transform lookTarget;
     [SerializeField] GameObject modelUpdate;
     [SerializeField] GameObject modelMarah;
     [SerializeField] VideoPlayer videoPlayer;
-    Coroutine pickupCoroutine;
+    [SerializeField] Vector3 pickupItemPosition = new Vector3(-0.055f, 0.008f, 0.043f);
+    [SerializeField] Quaternion pickupItemRotation = Quaternion.Euler(-0.053f, 138.049f, 50.604f);
+    [SerializeField] Vector3 pickupItemScale = new Vector3(0.2088804f, 0.2088804f, 0.2088804f);
+
+    public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp };
+    CharacterState currentState = CharacterState.Idlee;
+
+    Animator motherAnimator;
     int currentWaypoint = 0;
     int lastReachedWaypoint = -1;
     bool isMoving = false;
     bool autoMove = false;
-    bool reachedWaypoint = false;
-    Animator motherAnimator;
+    Coroutine pickupCoroutine;
 
+    public event Action<int> OnWaypointReached;
 
+    void Awake()
+    {
+        ValidateReferences();
+        motherAnimator = GetComponent<Animator>();
+        if (mother == null)
+        {
+            Debug.LogError("Mother transform not assigned.");
+            enabled = false;
+        }
+    }
 
     void Start()
     {
-        motherAnimator = GetComponent<Animator>();
         isMoving = false;
-        videoPlayer.SetDirectAudioMute(0, true);
-        Debug.Log("TargetWalk initialized");
+        if (videoPlayer != null)
+        {
+            videoPlayer.SetDirectAudioMute(0, true);
+        }
     }
 
     void Update()
@@ -42,8 +69,19 @@ public class TargetWalk : MonoBehaviour
         }
     }
 
+    void ValidateReferences()
+    {
+        if (mother == null) Debug.LogError("Mother transform not assigned.");
+        if (waypoints == null || waypoints.Length == 0) Debug.LogError("Waypoints array is empty or not assigned.");
+        if (videoPlayer == null) Debug.LogWarning("VideoPlayer not assigned.");
+        if (handBone == null) Debug.LogWarning("Hand bone not assigned for pickup.");
+        if (modelUpdate == null || modelMarah == null) Debug.LogWarning("Model references not assigned.");
+    }
+
     void MoveToWaypoint()
     {
+        if (currentWaypoint >= waypoints.Length) return;
+
         Vector3 direction = (waypoints[currentWaypoint].position - mother.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         mother.rotation = Quaternion.Slerp(mother.rotation, lookRotation, rotationSpeed * Time.deltaTime);
@@ -54,7 +92,6 @@ public class TargetWalk : MonoBehaviour
         {
             isMoving = false;
             lastReachedWaypoint = currentWaypoint;
-            Debug.Log($"Reached waypoint {currentWaypoint}");
 
             if (lastReachedWaypoint == 7)
             {
@@ -65,7 +102,7 @@ public class TargetWalk : MonoBehaviour
                 StopAutoMove();
             }
 
-            if (autoMove && currentWaypoint + 1 < waypoints.Length)
+            else if (autoMove && currentWaypoint + 1 < waypoints.Length)
             {
                 currentWaypoint++;
                 StartMovingToWaypoint(currentWaypoint);
@@ -76,23 +113,21 @@ public class TargetWalk : MonoBehaviour
     public void StartMovingToWaypoint(int waypointIndex = -1)
     {
         int targetWaypoint = waypointIndex >= 0 ? waypointIndex : currentWaypoint;
-        if (targetWaypoint < waypoints.Length)
+        if (targetWaypoint < 0 || targetWaypoint >= waypoints.Length)
         {
-            currentWaypoint = targetWaypoint;
-            isMoving = true;
-            autoMove = true;
-            motherAnimator.Play("Walking");
-            Debug.Log($"Starting move to waypoint {currentWaypoint}");
+            Debug.LogError($"Waypoint index {targetWaypoint} out of range. Total waypoints: {waypoints.Length}");
+            return;
+        }
+        currentWaypoint = targetWaypoint;
+        isMoving = true;
+        autoMove = true;
+        motherAnimator.Play("Walking");
 
-            if (textDisplayManager != null)
-            {
-                textDisplayManager.StopDisplayingText();
-            }
-        }
-        else
+        if (textDisplayManager != null)
         {
-            Debug.LogWarning($"Waypoint index {targetWaypoint} out of range. Total waypoints: {waypoints.Length}");
+            textDisplayManager?.StopDisplayingText();
         }
+
     }
 
     public void StopAutoMove()
@@ -101,23 +136,34 @@ public class TargetWalk : MonoBehaviour
         autoMove = false;
         if (lastReachedWaypoint == 6)
         {
-            motherAnimator.Play("LookingAround");
+            SetState(CharacterState.LookingAround);
         }
-        if (textDisplayManager != null)
+        else if (lastReachedWaypoint == 9)
         {
-            textDisplayManager.StartDisplayingText();
-        }
-
-        if (lastReachedWaypoint == 9)
-        {
-            motherAnimator.Play("Angry");
+            SetState(CharacterState.Angry);
         }
         else if (lastReachedWaypoint == 10)
         {
-            motherAnimator.Play("Pick Up");
+            SetState(CharacterState.PickingUp);
             pickupCoroutine = StartCoroutine(PickupItemWithDelay(3f));
         }
 
+        textDisplayManager?.StartDisplayingText();
+
+    }
+
+    void SetState(CharacterState newState)
+    {
+        currentState = newState;
+        string animation = currentState switch
+        {
+            CharacterState.Walking => "Walking",
+            CharacterState.LookingAround => "LookingAround",
+            CharacterState.Angry => "Angry",
+            CharacterState.PickingUp => "Pick Up",
+            _ => "Idlee"
+        };
+        motherAnimator.Play(animation);
     }
 
     IEnumerator PickupItemWithDelay(float delay)
@@ -127,12 +173,11 @@ public class TargetWalk : MonoBehaviour
         if (handBone != null)
         {
             pickupItem.transform.SetParent(handBone);
-            pickupItem.transform.localPosition = new Vector3(-0.055f, 0.008f, 0.043f);
-            pickupItem.transform.localRotation = Quaternion.Euler(-0.053f, 138.049f, 50.604f);
-            pickupItem.transform.localScale = new Vector3(0.2088804f, 0.2088804f, 0.2088804f);
-            Debug.Log("Pickup item attached to hand");
+            pickupItem.transform.localPosition = pickupItemPosition;
+            pickupItem.transform.localRotation = pickupItemRotation;
+            pickupItem.transform.localScale = pickupItemScale;
             videoPlayer.SetDirectAudioMute(0, true);
-            StartCoroutine(Idle(3f));
+            yield return StartCoroutine(Idle(3f));
         }
         else
         {
@@ -150,7 +195,7 @@ public class TargetWalk : MonoBehaviour
             yield return StartCoroutine(RotateToTarget(lookTarget, 1f));
         }
 
-        motherAnimator.Play("Idlee");
+        SetState(CharacterState.Idlee);
     }
 
     IEnumerator RotateToTarget(Transform target, float duration)
@@ -185,13 +230,13 @@ public class TargetWalk : MonoBehaviour
         return currentWaypoint;
     }
 
-    public void TampilkanMarah()
+    public void ShowAngryModel()
     {
         modelUpdate.SetActive(false);
         modelMarah.SetActive(true);
-
         motherAnimator = modelMarah.GetComponent<Animator>();
         mother = modelMarah.transform;
-        motherAnimator.Play("Idlee");
+
+        SetState(CharacterState.Idlee);
     }
 }
