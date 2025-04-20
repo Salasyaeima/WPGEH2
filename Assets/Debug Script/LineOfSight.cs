@@ -66,10 +66,11 @@ public class LineOfSight : MonoBehaviour
     private bool CheckTargetInAngle(GameObject target)
     {
         Vector3 side1 = target.transform.position - this.transform.position;
-        Vector3 side2 = Vector3.left;
+        Vector3 side2 = this.transform.forward;
 
         float angle = Vector3.SignedAngle(side1, side2, Vector3.up);
-        if(angle<detectionAngle && angle<-1 * detectionAngle)
+        Debug.Log(angle);
+        if((angle < detectionAngle && angle > 0) || (angle > -detectionAngle && angle < 0))
         {
             return true;
         }else
