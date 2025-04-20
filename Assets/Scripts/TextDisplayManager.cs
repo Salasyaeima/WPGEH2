@@ -4,6 +4,8 @@ using TMPro;
 public class TextDisplayManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textUI;
+    [SerializeField] GameObject mother;
+    [SerializeField] TargetWalk targetWalk;
     [SerializeField] string[] textList;
     [SerializeField] float displayDuration = 3f;
     [SerializeField] bool useAutoDisplay = true;
@@ -86,17 +88,23 @@ public class TextDisplayManager : MonoBehaviour
         if (currentTextIndex < textList.Length)
         {
             textUI.text = textList[currentTextIndex];
+            CheckAngryState();
             timer = 0f;
-            Debug.Log($"Displaying text: {textList[currentTextIndex]}");
         }
         else
         {
             isDisplaying = false;
             textUI.gameObject.SetActive(false);
-            Debug.Log("All texts displayed, UI hidden");
         }
     }
 
+    void CheckAngryState()
+    {
+        if (currentTextIndex == 9)
+        {
+            targetWalk.TampilkanMarah();
+        }
+    }
     public bool IsDisplaying()
     {
         return isDisplaying;

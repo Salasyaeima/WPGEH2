@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class TargetWalk : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] GameObject pickupItem;
     [SerializeField] Transform handBone;
     [SerializeField] Transform lookTarget;
+    [SerializeField] GameObject modelUpdate;
+    [SerializeField] GameObject modelMarah;
+    [SerializeField] VideoPlayer videoPlayer;
     Coroutine pickupCoroutine;
     int currentWaypoint = 0;
     int lastReachedWaypoint = -1;
@@ -21,10 +25,12 @@ public class TargetWalk : MonoBehaviour
     Animator motherAnimator;
 
 
+
     void Start()
     {
         motherAnimator = GetComponent<Animator>();
         isMoving = false;
+        videoPlayer.SetDirectAudioMute(0, true);
         Debug.Log("TargetWalk initialized");
     }
 
@@ -49,6 +55,15 @@ public class TargetWalk : MonoBehaviour
             isMoving = false;
             lastReachedWaypoint = currentWaypoint;
             Debug.Log($"Reached waypoint {currentWaypoint}");
+
+            if (lastReachedWaypoint == 7)
+            {
+                videoPlayer.SetDirectAudioMute(0, false);
+            }
+            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 9 || lastReachedWaypoint == 10)
+            {
+                StopAutoMove();
+            }
 
             if (autoMove && currentWaypoint + 1 < waypoints.Length)
             {
@@ -84,7 +99,10 @@ public class TargetWalk : MonoBehaviour
     {
         isMoving = false;
         autoMove = false;
-        motherAnimator.Play("LookingAround");
+        if (lastReachedWaypoint == 6)
+        {
+            motherAnimator.Play("LookingAround");
+        }
         if (textDisplayManager != null)
         {
             textDisplayManager.StartDisplayingText();
@@ -93,7 +111,6 @@ public class TargetWalk : MonoBehaviour
         if (lastReachedWaypoint == 9)
         {
             motherAnimator.Play("Angry");
-            Debug.Log("Playing Angry animation at waypoint 9");
         }
         else if (lastReachedWaypoint == 10)
         {
@@ -114,9 +131,8 @@ public class TargetWalk : MonoBehaviour
             pickupItem.transform.localRotation = Quaternion.Euler(-0.053f, 138.049f, 50.604f);
             pickupItem.transform.localScale = new Vector3(0.2088804f, 0.2088804f, 0.2088804f);
             Debug.Log("Pickup item attached to hand");
-
+            videoPlayer.SetDirectAudioMute(0, true);
             StartCoroutine(Idle(3f));
-
         }
         else
         {
@@ -139,19 +155,25 @@ public class TargetWalk : MonoBehaviour
 
     IEnumerator RotateToTarget(Transform target, float duration)
     {
-        Quaternion startRotation = mother.rotation;
-        Vector3 targetPos = target.position;
-        targetPos.y = mother.position.y;
-        Quaternion targetRotation = Quaternion.LookRotation(targetPos - mother.position);
+        Quaternion referenceRotation = new Quaternion(-0.0420385301f, 0.509046674f, -0.00661452068f, -0.859686315f);
+        Vector3 referenceEuler = referenceRotation.eulerAngles;
+        float startXRotation = mother.eulerAngles.x;
+        float targetXRotation = 10.878f;
+        float startYRotation = mother.eulerAngles.y;
+        float startZRotation = mother.eulerAngles.z;
         float time = 0;
 
         while (time < duration)
         {
-            mother.rotation = Quaternion.Slerp(startRotation, targetRotation, time / duration);
+            float xRotation = Mathf.LerpAngle(startXRotation, targetXRotation, time / duration);
+            float yRotation = Mathf.LerpAngle(startYRotation, referenceEuler.y, time / duration);
+            float zRotation = Mathf.LerpAngle(startZRotation, referenceEuler.z, time / duration);
+            mother.rotation = Quaternion.Euler(xRotation, yRotation, zRotation);
             time += Time.deltaTime;
             yield return null;
         }
-        mother.rotation = targetRotation;
+
+        mother.rotation = Quaternion.Euler(targetXRotation, referenceEuler.y, referenceEuler.z);
     }
     public bool IsMoving()
     {
@@ -161,5 +183,15 @@ public class TargetWalk : MonoBehaviour
     public int GetCurrentWaypoint()
     {
         return currentWaypoint;
+    }
+
+    public void TampilkanMarah()
+    {
+        modelUpdate.SetActive(false);
+        modelMarah.SetActive(true);
+
+        motherAnimator = modelMarah.GetComponent<Animator>();
+        mother = modelMarah.transform;
+        motherAnimator.Play("Idlee");
     }
 }
