@@ -1,18 +1,12 @@
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
-    editor-extension-mode="False">
-
-  <engine:Style src="MainMenu.uss" />
-
-  <engine:VisualElement class="button-container">
-    <engine:Button name="Start"  class="menu-button" text="Start"  />
-    <engine:Button name="Option" class="menu-button" text="Option" />
-    <engine:Button name="Exit"   class="menu-button" text="Exit"   />
-  </engine:VisualElement>
-  <engine:VisualElement class="slider-container">
-    <engine:Slider name="Volume" class="menu-slider" text="TEs" />
-  </engine:VisualElement>
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenu.uss?fileID=7433441132597879392&amp;guid=12deee7453a5e7b4c81ee57587acc8ab&amp;type=3#MainMenu" />
+    <engine:VisualElement name="MainMenu" class="button-container">
+        <engine:Button name="Start" text="Start" class="menu-button" />
+        <engine:Button name="Option" text="Option" class="menu-button" />
+        <engine:Button name="Exit" text="Exit" class="menu-button" />
+    </engine:VisualElement>
+    <engine:VisualElement name="SettingMenu" focusable="false" enabled="true" class="slider-container" style="flex-grow: 1; flex-direction: column; align-items: center; justify-content: center; width: 2204px; position: absolute;">
+        <engine:Slider label="Slider" class="option-slider" value="42" high-value="100" name="Volume" />
+        <engine:Slider label="Slider" class="option-slider" value="42" high-value="100" name="Brightness" />
+    </engine:VisualElement>
 </engine:UXML>
