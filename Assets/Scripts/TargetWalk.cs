@@ -15,6 +15,7 @@ public class TargetWalk : MonoBehaviour
     }
 
     [SerializeField] Transform mother;
+    [SerializeField] GameObject anak;
     [SerializeField] Transform[] waypoints;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float rotationSpeed = 5f;
@@ -25,6 +26,8 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] GameObject modelUpdate;
     [SerializeField] GameObject modelMarah;
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] Transform HandPhone;
+    [SerializeField] Transform HandPhoneLayar;
     [SerializeField] Vector3 pickupItemPosition = new Vector3(-0.055f, 0.008f, 0.043f);
     [SerializeField] Quaternion pickupItemRotation = Quaternion.Euler(-0.053f, 138.049f, 50.604f);
     [SerializeField] Vector3 pickupItemScale = new Vector3(0.2088804f, 0.2088804f, 0.2088804f);
@@ -32,6 +35,7 @@ public class TargetWalk : MonoBehaviour
     public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp };
     CharacterState currentState = CharacterState.Idlee;
 
+    bool hasTriggeredHandPhoneTransform = false;
     Animator motherAnimator;
     int currentWaypoint = 0;
     int lastReachedWaypoint = -1;
@@ -76,6 +80,8 @@ public class TargetWalk : MonoBehaviour
         if (videoPlayer == null) Debug.LogWarning("VideoPlayer not assigned.");
         if (handBone == null) Debug.LogWarning("Hand bone not assigned for pickup.");
         if (modelUpdate == null || modelMarah == null) Debug.LogWarning("Model references not assigned.");
+        if (HandPhone == null) Debug.LogWarning("HandPhone not assigned.");
+        if (HandPhoneLayar == null) Debug.LogWarning("HandPhoneLayar not assigned.");
     }
 
     void MoveToWaypoint()
@@ -87,6 +93,19 @@ public class TargetWalk : MonoBehaviour
         mother.rotation = Quaternion.Slerp(mother.rotation, lookRotation, rotationSpeed * Time.deltaTime);
 
         mother.position = Vector3.MoveTowards(mother.position, waypoints[currentWaypoint].position, moveSpeed * Time.deltaTime);
+
+        if (lastReachedWaypoint == 8 && currentWaypoint == 9)
+        {
+            float totalDistance = Vector3.Distance(waypoints[8].position, waypoints[9].position);
+            float currentDistance = Vector3.Distance(mother.position, waypoints[8].position);
+            float progress = currentDistance / totalDistance;
+
+            if (progress >= 0.75f && !hasTriggeredHandPhoneTransform)
+            {
+                SetHandPhoneTransform();
+                hasTriggeredHandPhoneTransform = true;
+            }
+        }
 
         if (Vector3.Distance(mother.position, waypoints[currentWaypoint].position) < 0.1f)
         {
@@ -138,6 +157,7 @@ public class TargetWalk : MonoBehaviour
         {
             SetState(CharacterState.LookingAround);
         }
+
         else if (lastReachedWaypoint == 9)
         {
             SetState(CharacterState.Angry);
@@ -164,6 +184,27 @@ public class TargetWalk : MonoBehaviour
             _ => "Idlee"
         };
         motherAnimator.Play(animation);
+    }
+
+    void SetHandPhoneTransform()
+    {
+        if (HandPhone == null || HandPhoneLayar == null)
+        {
+            Debug.LogWarning("HandPhone or HandPhoneLayar not assigned!");
+            return;
+        }
+        anak.SetActive(false);
+
+        HandPhone.position = new Vector3(-1.6519999504089356f, -2.5665714740753176f, 140.0666046142578f);
+        HandPhone.rotation = new Quaternion(-0.649800181388855f, 0.3916305899620056f, -0.2740679979324341f, 0.5909923911094666f);
+        HandPhone.localScale = new Vector3(3.525049924850464f, 126.88525390625f, 83.07534790039063f);
+
+        HandPhoneLayar.position = new Vector3(-1.6531000137329102f, -2.5769999027252199f, 140.05239868164063f);
+        HandPhoneLayar.rotation = new Quaternion(0.29406702518463137f, 0.6799345016479492f, -0.35893207788467409f, 0.5677865147590637f);
+        HandPhoneLayar.localScale = new Vector3(2.4727044105529787f, 1.5983017683029175f, 1.6212660074234009f);
+
+        Debug.Log($"HandPhone transform set to: position={HandPhone.position}, rotation={HandPhone.rotation}, scale={HandPhone.localScale}");
+        Debug.Log($"HandPhoneLayar transform set to: position={HandPhoneLayar.position}, rotation={HandPhoneLayar.rotation}, scale={HandPhoneLayar.localScale}");
     }
 
     IEnumerator PickupItemWithDelay(float delay)
