@@ -2799,9 +2799,17 @@ PrefabInstance:
       propertyPath: 'managedReferences[7383935633998741900].m_Value.Array.data[3]'
       value: 
       objectReference: {fileID: 1902090777}
+    - target: {fileID: 5619499564630962364, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: detectionRange
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5983653979664937620, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: chaseSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5983653979664937620, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: patrolSpeed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3265,6 +3273,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4630688852928361346, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
   m_PrefabInstance: {fileID: 878856886838597070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1391487681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2733105442133321480, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+  m_PrefabInstance: {fileID: 1027731989}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1391944216 stripped
 MonoBehaviour:
@@ -5573,7 +5586,7 @@ PrefabInstance:
     - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
       propertyPath: enemy
       value: 
-      objectReference: {fileID: 1161855523}
+      objectReference: {fileID: 1391487681}
     - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
       propertyPath: player
       value: 
@@ -15914,6 +15927,10 @@ PrefabInstance:
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_RootOrder
