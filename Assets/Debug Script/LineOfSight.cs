@@ -23,7 +23,7 @@ public class LineOfSight : MonoBehaviour
     [SerializeField]
     private BehaviorGraph behavior;
     private Vector3 lastPosition;
-    
+
     public GameObject DetectedTarget;
 
     public GameObject CheckInSight(GameObject potentialTarget)
@@ -37,7 +37,7 @@ public class LineOfSight : MonoBehaviour
             {
                 if (showDebugVisuals)
                 {
-                    Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position,Color.red);
+                    Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position, Color.red);
                 }
                 //change tag when chased or not chased
                 hit.collider.gameObject.tag = tagAfter;
@@ -49,7 +49,7 @@ public class LineOfSight : MonoBehaviour
                 {
                     CheckLastSeen();
                     DetectedTarget.tag = tagBefore;
-                }  
+                }
                 DetectedTarget = null;
             }
         }
@@ -60,7 +60,6 @@ public class LineOfSight : MonoBehaviour
     {
         lastPosition = DetectedTarget.transform.position;
         behavior.BlackboardReference.SetVariableValue<Vector3>("Last Known Pos", lastPosition);
-        Debug.Log(lastPosition); 
     }
 
     private bool CheckTargetInAngle(GameObject target)
@@ -69,11 +68,11 @@ public class LineOfSight : MonoBehaviour
         Vector3 side2 = this.transform.forward;
 
         float angle = Vector3.SignedAngle(side1, side2, Vector3.up);
-        Debug.Log(angle);
-        if((angle < detectionAngle && angle > 0) || (angle > -detectionAngle && angle < 0))
+        if ((angle < detectionAngle && angle > 0) || (angle > -detectionAngle && angle < 0))
         {
             return true;
-        }else
+        }
+        else
         {
             return false;
         }

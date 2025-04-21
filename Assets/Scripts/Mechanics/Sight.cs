@@ -17,7 +17,6 @@ public class Sight : MonoBehaviour
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjust))
         {
             colorAdjust.saturation.value = 0f;
-            Debug.Log("Color Curves ditemukan!");
         }
         else
         {
@@ -27,18 +26,20 @@ public class Sight : MonoBehaviour
 
     void Update()
     {
-        
+
         float saturation = 0f;
-        if(Input.GetKey(KeyCode.Tab)){
+        if (Input.GetKey(KeyCode.Tab))
+        {
             xrayActive = true;
             movementScript.enabled = false;
             colorAdjust.saturation.value = -100f;
-        }else{
+        }
+        else
+        {
             movementScript.enabled = true;
             xrayActive = false;
             colorAdjust.saturation.value = 0f;
         }
         saturation = colorAdjust.saturation.value;
-        Debug.Log("Saturasi = "+ saturation);
     }
 }
