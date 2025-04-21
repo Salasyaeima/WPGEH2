@@ -49,7 +49,6 @@ public class PlayerInteractions : MonoBehaviour
 
         if (interactable != null)
         {
-            Debug.Log("Interactable found: " + interactable.GetType());
             HandleInteraction(interactable);
         }
 

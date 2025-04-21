@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class AreaCheck : MonoBehaviour
 {
-    [SerializeField]
-    private float detectionRadius = 25;
+    public float detectionRadius = 25;
     [SerializeField]
     public LayerMask DetectionLayer;
     [SerializeField]
@@ -14,10 +13,11 @@ public class AreaCheck : MonoBehaviour
 
     public GameObject DetectedTarget
     {
-        get;set;
+        get; set;
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (activateClickEvent)
         {
             CheckInRadius();
@@ -49,13 +49,13 @@ public class AreaCheck : MonoBehaviour
                 return true;
             }
         }
-        
+
         return false;
     }
 
     void OnDrawGizmos()
     {
-        if(!showDebugVisuals || !this.enabled) return;
+        if (!showDebugVisuals || !this.enabled) return;
 
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);

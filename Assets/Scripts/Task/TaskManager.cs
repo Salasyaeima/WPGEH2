@@ -33,9 +33,8 @@ public class TaskManager : MonoBehaviour
 
     void Start()
     {
-        rooms = FindObjectsOfType<Room>();
+        rooms = Object.FindObjectsByType<Room>(FindObjectsSortMode.None);
         UpdateTaskInfo();
-        Debug.Log($"Total Ruangan: {rooms.Length}");
         UpdateTasksPerRoom();
     }
 
@@ -154,13 +153,13 @@ public class TaskManager : MonoBehaviour
 
     ITaskProvider FindProviderForTask(Task task)
     {
-        Container[] containers = FindObjectsOfType<Container>();
+        Container[] containers = Object.FindObjectsByType<Container>(FindObjectsSortMode.None);
         foreach (Container container in containers)
         {
             if (container.GetBaseTaskName() == task.taskName)
                 return container;
         }
-        Container2[] container2s = FindObjectsOfType<Container2>();
+        Container2[] container2s = Object.FindObjectsByType<Container2>(FindObjectsSortMode.None);
         foreach (Container2 container2 in container2s)
         {
             if (container2.GetTaskName() == task.taskName)

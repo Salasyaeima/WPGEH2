@@ -34,7 +34,6 @@ public class HidingMechanism : Interactable
         {
             ExitHide();
         }
-        Debug.Log(isHiding);
         // NotHiddenWhenChased();
     }
 
@@ -134,8 +133,8 @@ public class HidingMechanism : Interactable
             if (lineOfSight.DetectedTarget.CompareTag(lineOfSight.tagAfter) && isHiding)
             {
                 Debug.Log("Test");
-            }    
+            }
         }
-        
+
     }
 }
