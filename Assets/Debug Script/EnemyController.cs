@@ -23,7 +23,6 @@ public class EnemyController : MonoBehaviour
     {
         if(agent.hasPath)
         {
-            animator.SetBool("isIdle", false);
             if (lineOfSight.DetectedTarget != null || animator.GetFloat("isTowardsLastPos") > 0)
             {
                 animator.SetFloat("SpeedMagnitude", 1, 0.5f, Time.deltaTime);
@@ -33,9 +32,6 @@ public class EnemyController : MonoBehaviour
             }
             dir = (agent.steeringTarget + new Vector3(0f, transform.position.y - agent.steeringTarget.y ,0f) - transform.position).normalized;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 180 * Time.deltaTime);
-        }else
-        {
-            animator.SetBool("isIdle", true);
         }
     }
 
