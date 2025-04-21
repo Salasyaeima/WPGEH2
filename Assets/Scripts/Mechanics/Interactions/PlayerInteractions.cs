@@ -47,6 +47,12 @@ public class PlayerInteractions : MonoBehaviour
             successfullHit = false;
         }
 
+        if (interactable != null)
+        {
+            Debug.Log("Interactable found: " + interactable.GetType());
+            HandleInteraction(interactable);
+        }
+
     }
 
     void HandleInteraction(Interactable interactable)
