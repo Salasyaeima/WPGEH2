@@ -4,7 +4,7 @@ using UnityEngine;
 //Press F for Interact
 public class PlayerInteractions : MonoBehaviour
 {
-
+    [SerializeField] private float holdTimeDuration = 5f;
     public float interactionDistance;
     public TMPro.TextMeshProUGUI interactionText;
     public GameObject interactionHoldGo;
@@ -45,11 +45,6 @@ public class PlayerInteractions : MonoBehaviour
         else
         {
             successfullHit = false;
-        }
-
-        if (interactable != null)
-        {
-            HandleInteraction(interactable);
         }
 
     }
@@ -95,7 +90,7 @@ public class PlayerInteractions : MonoBehaviour
                 if (Input.GetKey(key))
                 {
                     interactable.increaseHoldTime();
-                    if (interactable.HoldTime() > 5f)
+                    if (interactable.HoldTime() > holdTimeDuration)
                     {
                         interactable.Interact();
                         interactable.resetHoldTime();
@@ -109,7 +104,7 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     interactable.resetHoldTime();
                 }
-                holdProgress.fillAmount = interactable.HoldTime() / 5f;
+                holdProgress.fillAmount = interactable.HoldTime() / holdTimeDuration;
                 break;
         }
     }
