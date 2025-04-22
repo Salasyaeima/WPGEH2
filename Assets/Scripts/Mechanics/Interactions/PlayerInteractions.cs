@@ -12,13 +12,13 @@ public class PlayerInteractions : MonoBehaviour
     public static Item heldItem = null;
     Interactable interactable = null;
     bool successfullHit = false;
-
-
+    int interactableMask;
     Camera cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cam = Camera.main;
+        interactableMask = ~LayerMask.GetMask("Player");
         interactionText.gameObject.SetActive(false);
     }
 
@@ -30,7 +30,7 @@ public class PlayerInteractions : MonoBehaviour
         interactionText.gameObject.SetActive(successfullHit);
         interactionHoldGo.SetActive(successfullHit);
 
-        if (Physics.Raycast(ray, out hit, interactionDistance))
+        if (Physics.Raycast(ray, out hit, interactionDistance, interactableMask))
         {
             interactable = hit.collider.GetComponentInParent<Interactable>();
 
@@ -52,6 +52,7 @@ public class PlayerInteractions : MonoBehaviour
     void HandleInteraction(Interactable interactable)
     {
         KeyCode key = KeyCode.E;
+        successfullHit = false;
 
         switch (interactable.interactionType)
         {
