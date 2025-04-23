@@ -785,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016640, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Layer
@@ -813,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_IsActive
@@ -1134,7 +1134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9018249871969862650, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_DefaultBlend.m_Time
-      value: 0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9018249871969862650, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_DefaultBlend.m_Style
@@ -1389,11 +1389,6 @@ PrefabInstance:
       addedObject: {fileID: 430616222}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
---- !u!1 &1494990550 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 497166626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1506116155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1824,6 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319445a10d6d2a4419a3f6169c372bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdTimeDuration: 5
   interactionDistance: 5
   interactionText: {fileID: 1692043242}
   interactionHoldGo: {fileID: 1769981335}
@@ -2410,7 +2406,7 @@ PrefabInstance:
     - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: managedReferences[7383935625716301861].m_Value
       value: 
-      objectReference: {fileID: 1494990550}
+      objectReference: {fileID: 1707845515}
     - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: 'managedReferences[7383935633998741900].m_Value.Array.data[0]'
       value: 
@@ -2427,6 +2423,10 @@ PrefabInstance:
       propertyPath: 'managedReferences[7383935633998741900].m_Value.Array.data[3]'
       value: 
       objectReference: {fileID: 1145051457}
+    - target: {fileID: 5619499564630962364, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: detectionAngle
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2549,6 +2549,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1707845515}
+    - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
+      propertyPath: behavior
+      value: 
+      objectReference: {fileID: 6026185145718736116, guid: 79fc47f47a121b04fae1fa00838c708c, type: 2}
     - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
       propertyPath: playersCamera
       value: 

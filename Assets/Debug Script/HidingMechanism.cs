@@ -1,7 +1,6 @@
 using UnityEngine;
-
-using Unity.Behavior;
 using Cinemachine;
+using Unity.Behavior;
 using System.Collections;
 using System.Collections.Generic;
 public class HidingMechanism : Interactable
@@ -12,56 +11,73 @@ public class HidingMechanism : Interactable
     private GameObject enemy;
     [SerializeField]
     private CinemachineVirtualCamera playersCamera;
-    private CinemachineBrain cameraBrain;
-    private CinemachineVirtualCamera thisCamera;
+    [SerializeField]
+    private BehaviorGraph behavior;
     [SerializeField]
     private List<GameObject> models;
+    private CinemachineVirtualCamera thisCamera;
+    private float timer;
+    private bool coolDown;
     private bool isHiding;
     private Vector3 playersLastPos;
     private LineOfSight lineOfSight;
 
     void Start()
     {
-        cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
         thisCamera = GetComponentInChildren<CinemachineVirtualCamera>();
-        SetActiveModels(true, false);
         lineOfSight = enemy.GetComponent<LineOfSight>();
+
+        SetCameraPriority(playersCamera, thisCamera);
+        SetActiveModels(true, false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isHiding)
+        timer += Time.deltaTime;
+        Debug.Log(playersLastPos);
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            ExitHide();
+            if (isHiding)
+            {
+                isHiding = false;
+                NotHiddenWhenChased();
+                PerformHide(isHiding);
+            }
         }
-        // NotHiddenWhenChased();
     }
 
     public override string Description()
     {
-        return "Tekan {E} untuk berinteraksi.";
+        if (isHiding)
+        {
+            return " ";
+        }else
+        {
+            return "Tekan {E} untuk berinteraksi.";
+        }
     }
 
     public override void Interact()
     {
-        SetActiveModels(false, true);
-        PerformHide(false, thisCamera, playersCamera);
-        isHiding = true;
+        if (!isHiding)
+        {
+            isHiding = true;
+            NotHiddenWhenChased();
+            PerformHide(isHiding);
+        }
     }
 
-    private void PerformHide(bool condition, CinemachineVirtualCamera camera1, CinemachineVirtualCamera camera2)
+    private void PerformHide(bool condition)
     {
         if (isHiding)
         {
-            SetCameraPriority(camera1, camera2);
-        }
-        else
-        {
-            SwitchComponents(condition, false);
             playersLastPos = player.transform.position;
-            player.transform.position = this.transform.position;
-            SetCameraPriority(camera1, camera2);
+            EnterHide();
+        }else
+        {
+            ExitHide();
         }
+        SwitchComponents(!condition);
     }
 
     private void ExitHide()
@@ -70,48 +86,56 @@ public class HidingMechanism : Interactable
         SetCameraPriority(playersCamera, thisCamera);
 
         player.transform.position = playersLastPos;
-        SwitchComponents(true, false);
-
-        isHiding = false;
-        StartCoroutine(EnableRendererAfterBlend());
+        Debug.Log("Exit Hide");
     }
 
-    IEnumerator EnableRendererAfterBlend()
+    private void EnterHide()
     {
-        yield return new WaitForSeconds(cameraBrain.m_DefaultBlend.m_Time);
-        Renderer renderer = player.GetComponentInChildren<Renderer>();
-        if (renderer != null)
-        {
-            renderer.enabled = true;
-        }
+        // playersLastPos = player.transform.position;
+        SetActiveModels(false, true);
+        SetCameraPriority(thisCamera, playersCamera);
+
+        player.transform.position = this.transform.position;
+        Debug.Log("Enter Hide");
     }
 
-    private void SwitchComponents(bool condition, bool enableRenderer)
+    // IEnumerator EnableRendererAfterBlend()
+    // {
+    //     yield return new WaitForSeconds(cameraBrain.m_DefaultBlend.m_Time);
+    //     Renderer renderer = player.GetComponentInChildren<Renderer>();
+    //     if (renderer != null)
+    //     {
+    //         renderer.enabled = true;
+    //     }
+    // }
+
+    private void SwitchComponents(bool condition)
     {
-        MonoBehaviour[] components = player.GetComponentsInChildren<MonoBehaviour>();
-        Collider[] colliders = player.GetComponentsInChildren<Collider>();
-        Renderer renderer = player.GetComponentInChildren<Renderer>();
+        player.SetActive(condition);
+        // MonoBehaviour[] components = player.GetComponentsInChildren<MonoBehaviour>();
+        // Collider[] colliders = player.GetComponentsInChildren<Collider>();
+        // Renderer renderer = player.GetComponentInChildren<Renderer>();
 
-        if (components != null)
-        {
-            foreach (MonoBehaviour component in components)
-            {
-                component.enabled = condition;
-            }
-        }
+        // if (components != null)
+        // {
+        //     foreach (MonoBehaviour component in components)
+        //     {
+        //         component.enabled = condition;
+        //     }
+        // }
 
-        if (colliders != null)
-        {
-            foreach (Collider collider in colliders)
-            {
-                collider.enabled = condition;
-            }
-        }
+        // if (colliders != null)
+        // {
+        //     foreach (Collider collider in colliders)
+        //     {
+        //         collider.enabled = condition;
+        //     }
+        // }
 
-        if (renderer != null)
-        {
-            renderer.enabled = enableRenderer;
-        }
+        // if (renderer != null)
+        // {
+        //     renderer.enabled = enableRenderer;
+        // }
     }
 
     private void SetCameraPriority(CinemachineVirtualCamera camera1, CinemachineVirtualCamera camera2)
@@ -128,13 +152,12 @@ public class HidingMechanism : Interactable
 
     private void NotHiddenWhenChased()
     {
-        if (lineOfSight.DetectedTarget != null)
+        if (player.CompareTag("isChased"))
         {
-            if (lineOfSight.DetectedTarget.CompareTag(lineOfSight.tagAfter) && isHiding)
-            {
-                Debug.Log("Test");
-            }
+            behavior.BlackboardReference.SetVariableValue<GameObject>("Target", this.gameObject);
+        }else
+        {
+            behavior.BlackboardReference.SetVariableValue<GameObject>("Target", player);
         }
-
     }
 }
