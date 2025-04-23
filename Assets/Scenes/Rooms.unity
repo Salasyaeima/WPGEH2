@@ -2725,7 +2725,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 107391924014228077, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: detectionRadius
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 107391924014228077, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: showDebugVisuals
@@ -4276,8 +4276,7 @@ MonoBehaviour:
     m_Bits: 64
   player: {fileID: 543449882}
   volume: {fileID: 2135677328}
-  maxDistance: 25
-  maxIntensity: 0.8
+  maxIntensity: 0.5
   shakeAmplitudo: 0.5
   shakeFrequency: 2.5
   vCam: {fileID: 1391944216}

@@ -14,7 +14,6 @@ public class IconController : MonoBehaviour
     [SerializeField] LayerMask obstacleLayer;
     [SerializeField] GameObject player;
     [SerializeField] Volume volume;
-    [SerializeField] float maxDistance = 5f;
     [SerializeField] float maxIntensity = 0.8f;
     [SerializeField] float shakeAmplitudo = 2f;
     [SerializeField] float shakeFrequency = 2f;
@@ -51,12 +50,18 @@ public class IconController : MonoBehaviour
         if (mother == null || vignette == null) return;
 
         float distanceToMother = Vector3.Distance(player.transform.position, mother.transform.position);
+        float motherDetectionRadius = mother.GetComponent<AreaCheck>().detectionRadius;
         bool isMotherVisible = false;
         bool isPlayerVisibleToMother = false;
 
         if (distanceToMother <= playerAlertRadius)
         {
-            iconEye.enabled = true;
+            Vector3 directionToPlayer = (player.transform.position - mother.transform.position).normalized;
+            RaycastHit hit;
+            if (!Physics.Raycast(mother.transform.position, directionToPlayer, out hit, motherDetectionRadius, obstacleLayer))
+            {
+                iconEye.enabled = true;
+            }
         }
         else
         {
@@ -75,25 +80,25 @@ public class IconController : MonoBehaviour
 
         if (distanceToMother <= playerVisionRadius)
         {
-            Vector3 directionToMother = (mother.transform.position - player.transform.position).normalized;
-            RaycastHit hit;
-            if (!Physics.Raycast(player.transform.position, directionToMother, out hit, playerVisionRadius, obstacleLayer))
-            {
-                isMotherVisible = true;
-            }
+            isMotherVisible = true;
+        }
+        else
+        {
+            isMotherVisible = false;
         }
 
-        if (mother.GetComponent<AreaCheck>() != null)
+
+        LineOfSight lineOfSight = mother.GetComponent<LineOfSight>();
+        if (lineOfSight != null)
         {
-            float motherDetectionRadius = mother.GetComponent<AreaCheck>().detectionRadius;
-            if (distanceToMother <= motherDetectionRadius)
+            GameObject detected = lineOfSight.CheckInSight(player);
+            if (detected != null && detected == player)
             {
-                Vector3 directionToPlayer = (player.transform.position - mother.transform.position).normalized;
-                RaycastHit hit;
-                if (!Physics.Raycast(mother.transform.position, directionToPlayer, out hit, motherDetectionRadius, obstacleLayer))
-                {
-                    isPlayerVisibleToMother = true;
-                }
+                isPlayerVisibleToMother = true;
+            }
+            else
+            {
+                isPlayerVisibleToMother = false;
             }
         }
         else
@@ -101,13 +106,15 @@ public class IconController : MonoBehaviour
             Debug.LogWarning("Komponen AreaCheck pada Mother tidak ditemukan!");
         }
 
-        float intensity = 0f;
         if (isMotherVisible || isPlayerVisibleToMother)
         {
-            intensity = Mathf.Lerp(maxIntensity, 0f, distanceToMother / playerVisionRadius);
+            vignette.intensity.value = maxIntensity;
+        }
+        else
+        {
+            vignette.intensity.value = 0f;
         }
 
-        vignette.intensity.value = intensity;
     }
 
     void OnDrawGizmosSelected()
