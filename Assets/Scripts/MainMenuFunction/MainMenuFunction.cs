@@ -31,7 +31,7 @@ public class MainMenuFunction : MonoBehaviour
     }
 
     void startButtonClicked(){
-        SceneManager.LoadScene("Rooms");
+        LoadingScreen.Instance.SwitchToScene("Rooms");
     }
 
     void optionButtonClicked(){
