@@ -152,7 +152,7 @@ public class HidingMechanism : Interactable
 
     private void NotHiddenWhenChased()
     {
-        if (player.CompareTag("isChased"))
+        if (player.CompareTag("isChased") && isHiding)
         {
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", this.gameObject);
         }else
