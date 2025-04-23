@@ -52,7 +52,6 @@ public class PlayerInteractions : MonoBehaviour
     void HandleInteraction(Interactable interactable)
     {
         KeyCode key = KeyCode.E;
-        successfullHit = false;
 
         switch (interactable.interactionType)
         {
@@ -72,14 +71,6 @@ public class PlayerInteractions : MonoBehaviour
                             heldItem = null;
                             item.Interact();
                         }
-                    }
-                    else if (interactable is Door door)
-                    {
-                        door.Interact();
-                    }
-                    else if (interactable is HidingMechanism hidingBox)
-                    {
-                        hidingBox.Interact();
                     }
                     else
                     {
