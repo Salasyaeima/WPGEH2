@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using Unity.Behavior;
 
 public class LineOfSight : MonoBehaviour
@@ -48,10 +49,12 @@ public class LineOfSight : MonoBehaviour
                 if (DetectedTarget != null)
                 {
                     CheckLastSeen();
-                    DetectedTarget.tag = tagBefore;
                 }
                 DetectedTarget = null;
             }
+        }else
+        {
+            potentialTarget.tag = tagBefore;
         }
         return DetectedTarget;
     }

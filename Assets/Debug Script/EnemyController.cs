@@ -1,9 +1,5 @@
-using System;
-using Unity.Mathematics;
-using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -23,6 +19,7 @@ public class EnemyController : MonoBehaviour
     {
         if(agent.hasPath)
         {
+            animator.SetBool("isIdle", false);
             if (lineOfSight.DetectedTarget != null || animator.GetFloat("isTowardsLastPos") > 0)
             {
                 animator.SetFloat("SpeedMagnitude", 1, 0.5f, Time.deltaTime);
@@ -30,8 +27,12 @@ public class EnemyController : MonoBehaviour
             {
                 animator.SetFloat("SpeedMagnitude", 0, -0.5f, Time.deltaTime);
             }
+
             dir = (agent.steeringTarget + new Vector3(0f, transform.position.y - agent.steeringTarget.y ,0f) - transform.position).normalized;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 180 * Time.deltaTime);
+        }else if (!agent.hasPath && animator.GetFloat("isTowardsLastPos") <= 0)
+        {
+            animator.SetBool("isIdle", true);
         }
     }
 
