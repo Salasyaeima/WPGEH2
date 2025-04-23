@@ -98,10 +98,6 @@ public class Container : Interactable, ITaskProvider
                 storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
             }
-            else
-            {
-                Debug.Log("Mending rakit pc!!!");
-            }
         }
     }
 
