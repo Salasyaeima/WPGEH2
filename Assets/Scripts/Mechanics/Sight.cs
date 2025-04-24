@@ -7,7 +7,6 @@ public class Sight : MonoBehaviour
     [SerializeField] Volume volume;
     [SerializeField] Transform objectToLock;
     [SerializeField] MonoBehaviour movementScript;
-    bool isHolding = false;
     Vector3 lockedPos;
     ColorAdjustments colorAdjust;
     public bool xrayActive = false;

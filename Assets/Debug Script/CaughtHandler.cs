@@ -5,6 +5,6 @@ public class CaughtHandler : MonoBehaviour
 {
     public void PerformCaught()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadingScreen.Instance.SwitchToScene("Rooms");
     }
 }

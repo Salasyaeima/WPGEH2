@@ -2922,6 +2922,10 @@ PrefabInstance:
       propertyPath: 'managedReferences[7383935633998741900].m_Value.Array.data[7]'
       value: 
       objectReference: {fileID: 671999953}
+    - target: {fileID: 5513595705338987225, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: sight
+      value: 
+      objectReference: {fileID: 135756641613574985}
     - target: {fileID: 5619499564630962364, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: detectionRange
       value: 2000
@@ -2950,7 +2954,8 @@ PrefabInstance:
       propertyPath: patrolThreshold
       value: 0.3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5513595705338987225, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3497,7 +3502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultLayer:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 2048
   xRayLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -9733,7 +9738,7 @@ Transform:
   m_GameObject: {fileID: 8036328319244497330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: -0.68}
+  m_LocalPosition: {x: 0, y: 0.04, z: -0.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15913,11 +15918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4071562502376789667, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7199998
+      value: -3.48
       objectReference: {fileID: 0}
     - target: {fileID: 4071562502376789667, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.120001
+      value: 12.12
       objectReference: {fileID: 0}
     - target: {fileID: 4071562502376789667, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_LocalRotation.w

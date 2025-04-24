@@ -9,6 +9,7 @@ public class LoadingScreen : MonoBehaviour
     public static LoadingScreen Instance;
     [SerializeField] GameObject m_loadingScreen;
     [SerializeField] Slider progressBar;
+    [SerializeField] private float timeDuration = 3f;
 
 
     private void Awake()
@@ -26,10 +27,19 @@ public class LoadingScreen : MonoBehaviour
 
     public void SwitchToScene(string nameScene)
     {
+        StartCoroutine(StartLoadingScreen(nameScene));
+    }
+
+    IEnumerator StartLoadingScreen(string nameScene)
+    {
         m_loadingScreen.SetActive(true);
         progressBar.value = 0;
-        StartCoroutine(SwitchToSceneAsyc(nameScene));
+        yield return null;
+
+        yield return StartCoroutine(SwitchToSceneAsyc(nameScene));
     }
+
+    
 
     IEnumerator SwitchToSceneAsyc(string nameScene)
     {
@@ -39,7 +49,7 @@ public class LoadingScreen : MonoBehaviour
             progressBar.value = asycLoad.progress;
             yield return null;
         }
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(timeDuration);
         m_loadingScreen.SetActive(false);
     }
 

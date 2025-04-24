@@ -116,7 +116,7 @@ public class TargetWalk : MonoBehaviour
             {
                 videoPlayer.SetDirectAudioMute(0, false);
             }
-            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 9 || lastReachedWaypoint == 10)
+            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 9 || lastReachedWaypoint == 10 || lastReachedWaypoint == 13)
             {
                 StopAutoMove();
             }
@@ -166,6 +166,10 @@ public class TargetWalk : MonoBehaviour
         {
             SetState(CharacterState.PickingUp);
             pickupCoroutine = StartCoroutine(PickupItemWithDelay(3f));
+        } else if (lastReachedWaypoint == 13)
+        {
+            Debug.Log("Masuk");
+            LoadingScreen.Instance.SwitchToScene("Rooms");
         }
 
         textDisplayManager?.StartDisplayingText();
