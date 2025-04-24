@@ -5,10 +5,14 @@ public class AITuneHandler : MonoBehaviour
 {
     [SerializeField]
     private BehaviorGraph behavior;
-    public float patrolDelay = 2;
-    [Header("Walkspeed")]
-    public float patrolSpeed = 2;
-    public float chaseSpeed = 4;
+    public float patrolDelay = 2f;
+
+    public float patrolSpeed = 2f;
+    public float chaseSpeed = 4f;
+
+    [Header("Threshold")]
+    public float patrolThreshold = 2f;
+    public float chaseThreshold = 3f;
     
     void Start()
     {
@@ -20,5 +24,7 @@ public class AITuneHandler : MonoBehaviour
         behavior.BlackboardReference.SetVariableValue("Patrol Walkspeed", patrolSpeed);
         behavior.BlackboardReference.SetVariableValue("Chase Walkspeed", chaseSpeed);
         behavior.BlackboardReference.SetVariableValue("Patrol Delay", patrolDelay);
+        behavior.BlackboardReference.SetVariableValue("Patrol Threshold", patrolThreshold);
+        behavior.BlackboardReference.SetVariableValue("Chase Threshold", chaseThreshold);
     }
 }
