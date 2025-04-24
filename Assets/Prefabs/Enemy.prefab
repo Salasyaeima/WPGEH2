@@ -18,9 +18,10 @@ GameObject:
   - component: {fileID: 5983653979664937620}
   - component: {fileID: 5231426775719088091}
   - component: {fileID: 4985185104865769721}
+  - component: {fileID: 5513595705338987225}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Mother
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.39, y: 2.08, z: -9.53}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.1496, y: 3.1496, z: 3.1496}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5546504744788794811}
@@ -115,7 +116,7 @@ MonoBehaviour:
   DetectionLayer:
     serializedVersion: 2
     m_Bits: 0
-  showDebugVisuals: 0
+  showDebugVisuals: 1
   activateClickEvent: 0
 --- !u!114 &5619499564630962364
 MonoBehaviour:
@@ -129,12 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69161a0a4b05d2141844f46a4ae479c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 20
+  detectionRange: 2000
   detectionAngle: 90
   detectionHeight: 0.5
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 2112
   showDebugVisuals: 1
   tagBefore: notChased
   tagAfter: isChased
@@ -166,8 +167,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavior: {fileID: 6026185145718736116, guid: 79fc47f47a121b04fae1fa00838c708c, type: 2}
   patrolDelay: 2
-  patrolSpeed: 2
-  chaseSpeed: 5
+  patrolSpeed: 5
+  chaseSpeed: 12
+  patrolThreshold: 0.3
+  chaseThreshold: 5
 --- !u!114 &5231426775719088091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +233,9 @@ MonoBehaviour:
         - {fileID: 0}
         - {fileID: 0}
         - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
     - rid: 7383935722705649769
       type: {class: 'BlackboardVariable`1[[LineOfSight, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -273,6 +279,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5513595705338987225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733105442133321480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b734636c66f30244a83b4ede6832f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultLayer:
+    serializedVersion: 2
+    m_Bits: 2049
+  xRayLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  sight: {fileID: 0}
 --- !u!1 &3827948422113919329
 GameObject:
   m_ObjectHideFlags: 0
