@@ -1,5 +1,8 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenu.uss?fileID=7433441132597879392&amp;guid=12deee7453a5e7b4c81ee57587acc8ab&amp;type=3#MainMenu" />
+    <engine:VisualElement name="Title" style="flex-grow: 1;">
+        <engine:Label text="Anak Durhaka" name="title" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;); font-size: 140px; color: rgb(255, 255, 255); left: 650px; top: 150px;" />
+    </engine:VisualElement>
     <engine:VisualElement name="MainMenu" class="button-container">
         <engine:Button name="Start" text="Start" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;);" />
         <engine:Button name="Option" text="Option" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;);" />
