@@ -15,7 +15,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI tasksPerRoom;
     [SerializeField] TextMeshProUGUI roomText;
     [SerializeField] TextMeshProUGUI detailProgression;
-    [SerializeField] GameObject panelResult;
+    public GameObject panelResult;
 
     Room[] rooms;
     int completedRooms = 0;
