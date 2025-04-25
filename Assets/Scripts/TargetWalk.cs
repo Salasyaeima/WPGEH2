@@ -63,6 +63,7 @@ public class TargetWalk : MonoBehaviour
         {
             videoPlayer.SetDirectAudioMute(0, true);
         }
+        SetCursorVisibility(false);
     }
 
     void Update()
@@ -71,6 +72,12 @@ public class TargetWalk : MonoBehaviour
         {
             MoveToWaypoint();
         }
+    }
+
+    void SetCursorVisibility(bool visible)
+    {
+        Cursor.visible = visible;
+        Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     void ValidateReferences()
