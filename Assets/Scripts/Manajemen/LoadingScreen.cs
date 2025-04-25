@@ -14,7 +14,7 @@ public class LoadingScreen : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
         }
@@ -39,12 +39,12 @@ public class LoadingScreen : MonoBehaviour
         yield return StartCoroutine(SwitchToSceneAsyc(nameScene));
     }
 
-    
+
 
     IEnumerator SwitchToSceneAsyc(string nameScene)
     {
         AsyncOperation asycLoad = SceneManager.LoadSceneAsync(nameScene);
-        while(!asycLoad.isDone)
+        while (!asycLoad.isDone)
         {
             progressBar.value = asycLoad.progress;
             yield return null;
@@ -56,12 +56,12 @@ public class LoadingScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

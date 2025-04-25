@@ -5,6 +5,8 @@ public class CaughtHandler : MonoBehaviour
 {
     public void PerformCaught()
     {
-        LoadingScreen.Instance.SwitchToScene("Rooms");
+        Cursor.lockState = CursorLockMode.None;
+        TaskManager.Instance.panelResult.SetActive(true);
+        Timer.Instance.CompleteGame();
     }
 }
