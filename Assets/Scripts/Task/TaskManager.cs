@@ -15,6 +15,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI tasksPerRoom;
     [SerializeField] TextMeshProUGUI roomText;
     [SerializeField] TextMeshProUGUI detailProgression;
+    [SerializeField] GameObject player;
     public GameObject panelResult;
 
     Room[] rooms;
@@ -36,6 +37,11 @@ public class TaskManager : MonoBehaviour
         rooms = Object.FindObjectsByType<Room>(FindObjectsSortMode.None);
         UpdateTaskInfo();
         UpdateTasksPerRoom();
+    }
+
+    public GameObject Player
+    {
+        get { return player; }
     }
 
     public void SetCurrentRoom(Room room)
@@ -103,7 +109,17 @@ public class TaskManager : MonoBehaviour
 
     void UpdateTasksPerRoom()
     {
-        if (tasksPerRoom != null && currentRoom != null)
+        if (tasksPerRoom == null)
+        {
+            Debug.LogWarning("tasksPerRoom tidak diatur di Inspector!");
+            return;
+        }
+
+        if (currentRoom == null)
+        {
+            tasksPerRoom.text = "Tugas di Ruangan Ini: -/-";
+        }
+        else
         {
             int tasksInRoom = 0;
             int completedTasksInRoom = 0;
@@ -118,10 +134,6 @@ public class TaskManager : MonoBehaviour
                 }
             }
             tasksPerRoom.text = $"Tugas di Ruangan Ini: {completedTasksInRoom}/{tasksInRoom}";
-        }
-        else if (tasksPerRoom != null)
-        {
-            tasksPerRoom.text = "Tugas di Ruangan Ini: -/-";
         }
     }
 

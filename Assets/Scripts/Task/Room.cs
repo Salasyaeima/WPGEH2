@@ -39,7 +39,7 @@ public class Room : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (TaskManager.Instance.Player != null && other.gameObject == TaskManager.Instance.Player)
         {
             Room room = GetComponent<Room>();
             TaskManager.Instance.SetCurrentRoom(room);
@@ -48,7 +48,7 @@ public class Room : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (TaskManager.Instance.Player != null && other.gameObject == TaskManager.Instance.Player)
         {
             TaskManager.Instance.SetCurrentRoom(null);
         }

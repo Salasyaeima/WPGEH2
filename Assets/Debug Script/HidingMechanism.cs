@@ -34,7 +34,6 @@ public class HidingMechanism : Interactable
     void Update()
     {
         timer += Time.deltaTime;
-        Debug.Log(playersLastPos);
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (isHiding)
@@ -51,7 +50,8 @@ public class HidingMechanism : Interactable
         if (isHiding)
         {
             return " ";
-        }else
+        }
+        else
         {
             return "Tekan {E} untuk berinteraksi.";
         }
@@ -73,7 +73,8 @@ public class HidingMechanism : Interactable
         {
             playersLastPos = player.transform.position;
             EnterHide();
-        }else
+        }
+        else
         {
             ExitHide();
         }
@@ -155,7 +156,8 @@ public class HidingMechanism : Interactable
         if (player.CompareTag("isChased") && isHiding)
         {
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", this.gameObject);
-        }else
+        }
+        else
         {
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", player);
         }
