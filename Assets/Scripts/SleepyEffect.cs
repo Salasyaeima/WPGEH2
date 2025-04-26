@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class SleepyBlinkEffect : MonoBehaviour
 {
@@ -20,10 +21,21 @@ public class SleepyBlinkEffect : MonoBehaviour
     {
         maxEyelidDistance = Screen.height / 2f;
 
-        if (eyelidTop) eyelidTop.rectTransform.anchoredPosition = new Vector2(0, maxEyelidDistance);
-        if (eyelidBottom) eyelidBottom.rectTransform.anchoredPosition = new Vector2(0, -maxEyelidDistance);
-        if (darkOverlay)
+
+        if (eyelidTop != null)
         {
+            eyelidTop.enabled = false;
+            eyelidTop.rectTransform.anchoredPosition = new Vector2(0, maxEyelidDistance);
+        }
+        ;
+        if (eyelidBottom != null)
+        {
+            eyelidBottom.enabled = false;
+            eyelidBottom.rectTransform.anchoredPosition = new Vector2(0, -maxEyelidDistance);
+        }
+        if (darkOverlay != null)
+        {
+            darkOverlay.enabled = false;
             Color c = darkOverlay.color;
             c.a = 0f;
             darkOverlay.color = c;
@@ -53,6 +65,12 @@ public class SleepyBlinkEffect : MonoBehaviour
                 Debug.LogWarning("DepthOfField effect not found in PostProcessVolume profile.");
             }
         }
+
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "CutScene")
+        {
+            isBlinking = true;
+        }
     }
 
     void Update()
@@ -70,17 +88,20 @@ public class SleepyBlinkEffect : MonoBehaviour
 
             if (eyelidTop)
             {
+                eyelidTop.enabled = true;
                 float topY = Mathf.Lerp(maxEyelidDistance, 0f, blinkAmount);
                 eyelidTop.rectTransform.anchoredPosition = new Vector2(0, topY);
             }
             if (eyelidBottom)
             {
+                eyelidBottom.enabled = true;
                 float bottomY = Mathf.Lerp(-maxEyelidDistance, 0f, blinkAmount);
                 eyelidBottom.rectTransform.anchoredPosition = new Vector2(0, bottomY);
             }
 
             if (darkOverlay)
             {
+                darkOverlay.enabled = true;
                 Color c = darkOverlay.color;
                 c.a = Mathf.Lerp(0f, 0.9f, blinkAmount);
                 darkOverlay.color = c;

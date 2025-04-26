@@ -153,7 +153,6 @@ public class TargetWalk : MonoBehaviour
         {
             textDisplayManager?.StopDisplayingText();
         }
-
     }
 
     public void StopAutoMove()
@@ -173,11 +172,12 @@ public class TargetWalk : MonoBehaviour
         {
             SetState(CharacterState.PickingUp);
             pickupCoroutine = StartCoroutine(PickupItemWithDelay(3f));
-        } else if (lastReachedWaypoint == 13)
-        {
-            Debug.Log("Masuk");
-            LoadingScreen.Instance.SwitchToScene("Rooms");
         }
+        // else if (lastReachedWaypoint == 13)
+        // {
+        //     Debug.Log("Masuk");
+        //     LoadingScreen.Instance.SwitchToScene("Rooms");
+        // }
 
         textDisplayManager?.StartDisplayingText();
 
