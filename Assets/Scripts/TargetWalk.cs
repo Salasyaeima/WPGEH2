@@ -173,15 +173,31 @@ public class TargetWalk : MonoBehaviour
             SetState(CharacterState.PickingUp);
             pickupCoroutine = StartCoroutine(PickupItemWithDelay(3f));
         }
-        // else if (lastReachedWaypoint == 13)
-        // {
-        //     Debug.Log("Masuk");
-        //     LoadingScreen.Instance.SwitchToScene("Rooms");
-        // }
+        else if (lastReachedWaypoint == 13)
+        {
+            SetState(CharacterState.Idlee);
+            StartCoroutine(WaitAndContinue(78f));
+        }
 
         textDisplayManager?.StartDisplayingText();
 
     }
+
+    IEnumerator WaitAndContinue(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ContinueAfterStop();
+    }
+
+    public void ContinueAfterStop()
+    {
+        if (lastReachedWaypoint == 13 && currentWaypoint + 1 < waypoints.Length)
+        {
+            currentWaypoint++;
+            StartMovingToWaypoint(currentWaypoint);
+        }
+    }
+
 
     void SetState(CharacterState newState)
     {
@@ -213,9 +229,6 @@ public class TargetWalk : MonoBehaviour
         HandPhoneLayar.position = new Vector3(-1.6531000137329102f, -2.5769999027252199f, 140.05239868164063f);
         HandPhoneLayar.rotation = new Quaternion(0.29406702518463137f, 0.6799345016479492f, -0.35893207788467409f, 0.5677865147590637f);
         HandPhoneLayar.localScale = new Vector3(2.4727044105529787f, 1.5983017683029175f, 1.6212660074234009f);
-
-        Debug.Log($"HandPhone transform set to: position={HandPhone.position}, rotation={HandPhone.rotation}, scale={HandPhone.localScale}");
-        Debug.Log($"HandPhoneLayar transform set to: position={HandPhoneLayar.position}, rotation={HandPhoneLayar.rotation}, scale={HandPhoneLayar.localScale}");
     }
 
     IEnumerator PickupItemWithDelay(float delay)
