@@ -1,3 +1,4 @@
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -6,7 +7,7 @@ public class Sight : MonoBehaviour
 {
     [SerializeField] Volume volume;
     [SerializeField] Transform objectToLock;
-    [SerializeField] MonoBehaviour movementScript;
+    [SerializeField] StarterAssetsInputs starterAssetInput;
     Vector3 lockedPos;
     ColorAdjustments colorAdjust;
     public bool xrayActive = false;
@@ -30,12 +31,11 @@ public class Sight : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             xrayActive = true;
-            movementScript.enabled = false;
+            starterAssetInput.move = new Vector2(0, 0);
             colorAdjust.saturation.value = -100f;
         }
         else
         {
-            movementScript.enabled = true;
             xrayActive = false;
             colorAdjust.saturation.value = 0f;
         }
