@@ -92,7 +92,7 @@ public class CameraJumpScare : MonoBehaviour
         yield return new WaitForSeconds(1f);
         blackBackground.SetActive(true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
         blackBackground.SetActive(false);
         if (shakeCoroutine != null)
