@@ -28,9 +28,9 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] Transform HandPhone;
     [SerializeField] Transform HandPhoneLayar;
-    [SerializeField] Vector3 pickupItemPosition = new Vector3(-0.055f, 0.008f, 0.043f);
-    [SerializeField] Quaternion pickupItemRotation = Quaternion.Euler(-0.053f, 138.049f, 50.604f);
-    [SerializeField] Vector3 pickupItemScale = new Vector3(0.2088804f, 0.2088804f, 0.2088804f);
+    [SerializeField] Vector3 pickupItemPosition = new Vector3(0.00159f, -0.00022f, 0.00061f);
+    [SerializeField] Quaternion pickupItemRotation = Quaternion.Euler(-21.372f, 36.127f, 226.037f);
+    [SerializeField] Vector3 pickupItemScale = new Vector3(0.002088804f, 0.2088804f, 0.2088804f);
 
     public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp };
     CharacterState currentState = CharacterState.Idlee;
@@ -48,7 +48,7 @@ public class TargetWalk : MonoBehaviour
     void Awake()
     {
         ValidateReferences();
-        motherAnimator = GetComponent<Animator>();
+        motherAnimator = GetComponentInChildren<Animator>();
         if (mother == null)
         {
             Debug.LogError("Mother transform not assigned.");
@@ -241,8 +241,10 @@ public class TargetWalk : MonoBehaviour
             pickupItem.transform.localPosition = pickupItemPosition;
             pickupItem.transform.localRotation = pickupItemRotation;
             pickupItem.transform.localScale = pickupItemScale;
+            videoPlayer.enabled = false;
             videoPlayer.SetDirectAudioMute(0, true);
             yield return StartCoroutine(Idle(3f));
+
         }
         else
         {
