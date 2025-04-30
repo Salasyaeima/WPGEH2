@@ -28,9 +28,9 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] Transform HandPhone;
     [SerializeField] Transform HandPhoneLayar;
-    [SerializeField] Vector3 pickupItemPosition = new Vector3(-0.055f, 0.008f, 0.043f);
-    [SerializeField] Quaternion pickupItemRotation = Quaternion.Euler(-0.053f, 138.049f, 50.604f);
-    [SerializeField] Vector3 pickupItemScale = new Vector3(0.2088804f, 0.2088804f, 0.2088804f);
+    [SerializeField] Vector3 pickupItemPosition = new Vector3(0.00159f, -0.00022f, 0.00061f);
+    [SerializeField] Quaternion pickupItemRotation = Quaternion.Euler(-21.372f, 36.127f, 226.037f);
+    [SerializeField] Vector3 pickupItemScale = new Vector3(0.002088804f, 0.2088804f, 0.2088804f);
 
     public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp };
     CharacterState currentState = CharacterState.Idlee;
@@ -48,7 +48,7 @@ public class TargetWalk : MonoBehaviour
     void Awake()
     {
         ValidateReferences();
-        motherAnimator = GetComponent<Animator>();
+        motherAnimator = GetComponentInChildren<Animator>();
         if (mother == null)
         {
             Debug.LogError("Mother transform not assigned.");
@@ -153,7 +153,6 @@ public class TargetWalk : MonoBehaviour
         {
             textDisplayManager?.StopDisplayingText();
         }
-
     }
 
     public void StopAutoMove()
@@ -173,15 +172,32 @@ public class TargetWalk : MonoBehaviour
         {
             SetState(CharacterState.PickingUp);
             pickupCoroutine = StartCoroutine(PickupItemWithDelay(3f));
-        } else if (lastReachedWaypoint == 13)
+        }
+        else if (lastReachedWaypoint == 13)
         {
-            Debug.Log("Masuk");
-            LoadingScreen.Instance.SwitchToScene("Rooms");
+            SetState(CharacterState.Idlee);
+            StartCoroutine(WaitAndContinue(78f));
         }
 
         textDisplayManager?.StartDisplayingText();
 
     }
+
+    IEnumerator WaitAndContinue(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ContinueAfterStop();
+    }
+
+    public void ContinueAfterStop()
+    {
+        if (lastReachedWaypoint == 13 && currentWaypoint + 1 < waypoints.Length)
+        {
+            currentWaypoint++;
+            StartMovingToWaypoint(currentWaypoint);
+        }
+    }
+
 
     void SetState(CharacterState newState)
     {
@@ -213,9 +229,6 @@ public class TargetWalk : MonoBehaviour
         HandPhoneLayar.position = new Vector3(-1.6531000137329102f, -2.5769999027252199f, 140.05239868164063f);
         HandPhoneLayar.rotation = new Quaternion(0.29406702518463137f, 0.6799345016479492f, -0.35893207788467409f, 0.5677865147590637f);
         HandPhoneLayar.localScale = new Vector3(2.4727044105529787f, 1.5983017683029175f, 1.6212660074234009f);
-
-        Debug.Log($"HandPhone transform set to: position={HandPhone.position}, rotation={HandPhone.rotation}, scale={HandPhone.localScale}");
-        Debug.Log($"HandPhoneLayar transform set to: position={HandPhoneLayar.position}, rotation={HandPhoneLayar.rotation}, scale={HandPhoneLayar.localScale}");
     }
 
     IEnumerator PickupItemWithDelay(float delay)
@@ -228,8 +241,10 @@ public class TargetWalk : MonoBehaviour
             pickupItem.transform.localPosition = pickupItemPosition;
             pickupItem.transform.localRotation = pickupItemRotation;
             pickupItem.transform.localScale = pickupItemScale;
+            videoPlayer.enabled = false;
             videoPlayer.SetDirectAudioMute(0, true);
             yield return StartCoroutine(Idle(3f));
+
         }
         else
         {
