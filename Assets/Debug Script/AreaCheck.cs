@@ -16,15 +16,6 @@ public class AreaCheck : MonoBehaviour
         get; set;
     }
 
-    private void Update()
-    {
-        if (activateClickEvent)
-        {
-            CheckInRadius();
-            Debug.Log(DetectedTarget);
-        }
-    }
-
     public GameObject CheckInRadius()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius, DetectionLayer);
