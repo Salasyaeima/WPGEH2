@@ -136,7 +136,7 @@ MonoBehaviour:
           m_Value0: 3730810198478997127
           m_Value1: 7816237576632902104
         Name: Patrol Walkspeed
-        m_Value: 2
+        m_Value: 5
     - rid: 7383935949692994090
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -144,7 +144,7 @@ MonoBehaviour:
           m_Value0: 6583366331875488530
           m_Value1: 6699068983220453339
         Name: Chase Walkspeed
-        m_Value: 4
+        m_Value: 12
     - rid: 8207485084310176070
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -152,7 +152,7 @@ MonoBehaviour:
           m_Value0: 11247533776767936484
           m_Value1: 5267500228358815460
         Name: Patrol Delay
-        m_Value: 0
+        m_Value: 2
     - rid: 8207485412100276226
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -160,7 +160,7 @@ MonoBehaviour:
           m_Value0: 11865356271296174899
           m_Value1: 12986939305834506462
         Name: Chase Threshold
-        m_Value: 0
+        m_Value: 5
     - rid: 8207485412100276227
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -168,7 +168,7 @@ MonoBehaviour:
           m_Value0: 10332620691668837313
           m_Value1: 2200943380318261357
         Name: Patrol Threshold
-        m_Value: 0
+        m_Value: 0.3
     - rid: 8207485488332538131
       type: {class: 'BlackboardVariable`1[[AreaCheck, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -5852,7 +5852,7 @@ MonoBehaviour:
         AuthoringAssetID:
           m_Value0: 295850519816567929
           m_Value1: 10119742856986550778
-        m_DebugInfo: {fileID: 0}
+        m_DebugInfo: {fileID: 2842985228590260189}
         Root:
           rid: 8207485555639845007
         BlackboardReference:
@@ -7037,7 +7037,7 @@ MonoBehaviour:
   - rid: 8207485488332538128
   - rid: 8207485488332538603
   - rid: 8207485551656566914
-  m_VersionTimestamp: 638816341846600651
+  m_VersionTimestamp: 638816359664327966
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: -3962288609357106218}
@@ -7171,7 +7171,7 @@ MonoBehaviour:
           m_Value0: 11865356271296174899
           m_Value1: 12986939305834506462
         Name: Chase Threshold
-        IsExposed: 1
+        IsExposed: 0
         m_IsShared: 1
         m_Value: 0
     - rid: 8207485412100276225
@@ -7181,7 +7181,7 @@ MonoBehaviour:
           m_Value0: 10332620691668837313
           m_Value1: 2200943380318261357
         Name: Patrol Threshold
-        IsExposed: 1
+        IsExposed: 0
         m_IsShared: 1
         m_Value: 0
     - rid: 8207485488332538128
@@ -7191,7 +7191,7 @@ MonoBehaviour:
           m_Value0: 4804566673599677281
           m_Value1: 16874561269736613126
         Name: Dropped Object Pos
-        IsExposed: 1
+        IsExposed: 0
         m_IsShared: 0
         m_Value: {x: 0, y: 0, z: 0}
     - rid: 8207485488332538130
@@ -7211,7 +7211,7 @@ MonoBehaviour:
           m_Value0: 8915181969767585441
           m_Value1: 13335278195857228050
         Name: SoundedObject
-        IsExposed: 1
+        IsExposed: 0
         m_IsShared: 0
         m_Value: 0
     - rid: 8207485551656566914
@@ -7221,7 +7221,7 @@ MonoBehaviour:
           m_Value0: 3536812866367788554
           m_Value1: 12758119869769327598
         Name: hasChecked
-        IsExposed: 1
+        IsExposed: 0
         m_IsShared: 1
         m_Value: 0
     - rid: 8207485551656566940
@@ -7231,6 +7231,6 @@ MonoBehaviour:
           m_Value0: 16599157742708884213
           m_Value1: 12322113935185163267
         Name: Dropped Object
-        IsExposed: 1
+        IsExposed: 0
         m_IsShared: 0
         m_Value: {fileID: 0}
