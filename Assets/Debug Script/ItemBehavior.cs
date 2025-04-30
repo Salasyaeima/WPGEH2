@@ -1,17 +1,18 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemBehavior : MonoBehaviour
 {
-    private AudioSource dropSfx;
+    [SerializeField]
+    private AudioClip dropSfx;
+    private AudioSource audioPlayer;
     void Start()
     {
-        dropSfx = GetComponent<AudioSource>();
+        audioPlayer = GetComponent<AudioSource>();
     }
     void OnCollisionEnter(Collision other)
     {
         gameObject.layer = LayerMask.NameToLayer("SoundedObject");
-        dropSfx.Play();
+        audioPlayer.PlayOneShot(dropSfx);
     }
 
     void OnCollisionExit(Collision other)
