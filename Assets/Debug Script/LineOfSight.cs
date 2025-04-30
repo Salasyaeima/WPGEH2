@@ -29,32 +29,34 @@ public class LineOfSight : MonoBehaviour
 
     public GameObject CheckInSight(GameObject potentialTarget)
     {
-        if (CheckTargetInAngle(potentialTarget))
-        {
-            RaycastHit hit;
-            Vector3 direction = potentialTarget.transform.position - transform.position;
-            Physics.Raycast(transform.position + Vector3.up * detectionHeight, direction, out hit, detectionRange, detectionLayer);
-            if (hit.collider != null && hit.collider.gameObject == potentialTarget)
+        if(potentialTarget){
+            if (CheckTargetInAngle(potentialTarget))
             {
-                if (showDebugVisuals)
+                RaycastHit hit;
+                Vector3 direction = potentialTarget.transform.position - transform.position;
+                Physics.Raycast(transform.position + Vector3.up * detectionHeight, direction, out hit, detectionRange, detectionLayer);
+                if (hit.collider != null && hit.collider.gameObject == potentialTarget)
                 {
-                    Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position, Color.red);
+                    if (showDebugVisuals)
+                    {
+                        Debug.DrawLine(transform.position + Vector3.up * detectionHeight, potentialTarget.transform.position, Color.red);
+                    }
+                    //change tag when chased or not chased
+                    hit.collider.gameObject.tag = tagAfter;
+                    DetectedTarget = hit.collider.gameObject;
                 }
-                //change tag when chased or not chased
-                hit.collider.gameObject.tag = tagAfter;
-                DetectedTarget = hit.collider.gameObject;
-            }
-            else
+                else
+                {
+                    if (DetectedTarget != null)
+                    {
+                        CheckLastSeen();
+                    }
+                    DetectedTarget = null;
+                }
+            }else
             {
-                if (DetectedTarget != null)
-                {
-                    CheckLastSeen();
-                }
-                DetectedTarget = null;
+                potentialTarget.tag = tagBefore;
             }
-        }else
-        {
-            potentialTarget.tag = tagBefore;
         }
         return DetectedTarget;
     }

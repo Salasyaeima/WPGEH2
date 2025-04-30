@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5983653979664937620}
   - component: {fileID: 5231426775719088091}
   - component: {fileID: 4985185104865769721}
-  - component: {fileID: 5513595705338987225}
+  - component: {fileID: 6721399109901650581}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Mother
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e62cc6b3eaa8ef468bb0a9b22978edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 10
+  detectionRadius: 25
   DetectionLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -279,7 +279,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5513595705338987225
+--- !u!114 &6721399109901650581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultLayer:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 2048
   xRayLayer:
     serializedVersion: 2
     m_Bits: 512
