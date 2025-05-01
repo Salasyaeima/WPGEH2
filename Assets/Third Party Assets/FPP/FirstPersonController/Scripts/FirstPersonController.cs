@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -14,8 +15,6 @@ namespace StarterAssets
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
-		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 6.0f;
 		[Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
@@ -51,6 +50,18 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		[Header("Sprint Setting")]
+		public float SprintSpeed = 6.0f;
+		public AnimationCurve SprintCurve;
+		public float sprintDuration;
+		public float maxSprintDuration = 2f;
+		public float SprintTransitionDuration = 1f;
+		public bool sprintLock;
+
+		
+
+
+		
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -59,6 +70,8 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+		private float _sprintTimer = 0f;
+		private bool _wasSprintingLastFrame = false;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -115,6 +128,8 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			Debug.Log("Durasi speed saat ini: "+ sprintDuration);
+
 		}
 
 		private void LateUpdate()
@@ -154,7 +169,37 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false)
+			{
+				
+				_sprintTimer = 1f;
+				sprintDuration += Time.deltaTime;
+				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
+			}
+			else
+			{
+				_sprintTimer -= Time.deltaTime;
+				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
+			}
+			// Sprint sudah sampe 2 detik
+			if(sprintDuration == maxSprintDuration)
+			{
+				_sprintTimer -= Time.deltaTime;
+				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
+				sprintLock = true;
+			}
+
+			if(sprintLock == true)
+			{
+				_input.sprint = false;
+				sprintDuration -= Time.deltaTime;
+				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
+				if(sprintDuration == 0f) sprintLock = false;
+			}
+
+			float curveT = _sprintTimer / SprintTransitionDuration;
+			float sprintFactor = SprintCurve.Evaluate(curveT);
+			float targetSpeed = Mathf.Lerp(SprintSpeed, MoveSpeed, sprintFactor);
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
