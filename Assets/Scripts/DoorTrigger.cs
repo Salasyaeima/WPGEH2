@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Door : Interactable
+public class DoorTrigger : MonoBehaviour
 {
     bool isOpen = false;
     Quaternion closedRotation;
@@ -14,37 +14,8 @@ public class Door : Interactable
     void Start()
     {
         closedRotation = transform.rotation;
-        openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0);
+        openRotation = closedRotation * Quaternion.Euler(0, 0, 90);
     }
-
-    public override string Description()
-    {
-        if (!isOpen)
-        {
-            return "Press {E} to open the door.";
-        }
-        else
-        {
-            return "Press {E} to close the door.";
-        }
-    }
-
-    public override void Interact()
-    {
-        if (!isAnimating)
-        {
-            StartCoroutine(AnimateDoor());
-        }
-    }
-
-    public void OpenAutomatically()
-    {
-        if (!isOpen && !isAnimating)
-        {
-            StartCoroutine(AnimateDoor());
-        }
-    }
-
 
     IEnumerator AnimateDoor()
     {
@@ -63,5 +34,21 @@ public class Door : Interactable
         transform.rotation = targetRotation;
         isOpen = !isOpen;
         isAnimating = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Mother") && !isOpen && !isAnimating)
+        {
+            StartCoroutine(AnimateDoor());
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Mother") && isOpen && !isAnimating)
+        {
+            StartCoroutine(AnimateDoor());
+        }
     }
 }

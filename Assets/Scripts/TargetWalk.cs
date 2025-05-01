@@ -101,10 +101,10 @@ public class TargetWalk : MonoBehaviour
 
         mother.position = Vector3.MoveTowards(mother.position, waypoints[currentWaypoint].position, moveSpeed * Time.deltaTime);
 
-        if (lastReachedWaypoint == 8 && currentWaypoint == 9)
+        if (lastReachedWaypoint == 9 && currentWaypoint == 10)
         {
-            float totalDistance = Vector3.Distance(waypoints[8].position, waypoints[9].position);
-            float currentDistance = Vector3.Distance(mother.position, waypoints[8].position);
+            float totalDistance = Vector3.Distance(waypoints[9].position, waypoints[10].position);
+            float currentDistance = Vector3.Distance(mother.position, waypoints[9].position);
             float progress = currentDistance / totalDistance;
 
             if (progress >= 0.75f && !hasTriggeredHandPhoneTransform)
@@ -119,11 +119,11 @@ public class TargetWalk : MonoBehaviour
             isMoving = false;
             lastReachedWaypoint = currentWaypoint;
 
-            if (lastReachedWaypoint == 7)
+            if (lastReachedWaypoint == 8)
             {
                 videoPlayer.SetDirectAudioMute(0, false);
             }
-            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 9 || lastReachedWaypoint == 10 || lastReachedWaypoint == 13)
+            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 7 || lastReachedWaypoint == 10 || lastReachedWaypoint == 11 || lastReachedWaypoint == 14)
             {
                 StopAutoMove();
             }
@@ -163,12 +163,16 @@ public class TargetWalk : MonoBehaviour
         {
             SetState(CharacterState.LookingAround);
         }
+        else if (lastReachedWaypoint == 7)
+        {
+            SetState(CharacterState.Idlee);
+        }
 
-        else if (lastReachedWaypoint == 9)
+        else if (lastReachedWaypoint == 10)
         {
             SetState(CharacterState.Angry);
         }
-        else if (lastReachedWaypoint == 10)
+        else if (lastReachedWaypoint == 11)
         {
             SetState(CharacterState.PickingUp);
             pickupCoroutine = StartCoroutine(PickupItemWithDelay(3f));
@@ -238,9 +242,9 @@ public class TargetWalk : MonoBehaviour
         if (handBone != null)
         {
             pickupItem.transform.SetParent(handBone);
-            pickupItem.transform.localPosition = pickupItemPosition;
-            pickupItem.transform.localRotation = pickupItemRotation;
-            pickupItem.transform.localScale = pickupItemScale;
+            // pickupItem.transform.localPosition = pickupItemPosition;
+            // pickupItem.transform.localRotation = pickupItemRotation;
+            // pickupItem.transform.localScale = pickupItemScale;
             videoPlayer.enabled = false;
             videoPlayer.SetDirectAudioMute(0, true);
             yield return StartCoroutine(Idle(3f));
