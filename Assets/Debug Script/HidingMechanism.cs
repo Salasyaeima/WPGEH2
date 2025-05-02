@@ -3,8 +3,11 @@ using Cinemachine;
 using Unity.Behavior;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 public class HidingMechanism : Interactable
 {
+    [Header("Define the KeyCode for interactions")]
+    public string keyCode;
     [SerializeField]
     private GameObject player;
     [SerializeField]
@@ -16,10 +19,12 @@ public class HidingMechanism : Interactable
     [SerializeField]
     private List<GameObject> models;
     private CinemachineVirtualCamera thisCamera;
+    [SerializeField]
     private float timer;
-    private bool coolDown;
+    [SerializeField]
+    private float coolDown;
+    public bool isCoolDown;
     private bool isHiding;
-    private Vector3 playersLastPos;
     private LineOfSight lineOfSight;
 
     void Start()
@@ -33,16 +38,21 @@ public class HidingMechanism : Interactable
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.E))
+        if (isHiding)
         {
-            if (isHiding)
-            {
-                isHiding = false;
-                NotHiddenWhenChased();
-                PerformHide(isHiding);
-            }
+            timer += Time.deltaTime;
         }
+        OnButtonCooldown();
+        Hide();
+        // if (Input.GetKeyDown(KeyCode.E) && player.transform.position == this.transform.position)
+        // {
+        //     if (isHiding)
+        //     {
+        //         isHiding = false;
+        //         NotHiddenWhenChased();
+        //         PerformHide(isHiding);
+        //     }
+        // }
     }
 
     public override string Description()
@@ -53,7 +63,7 @@ public class HidingMechanism : Interactable
         }
         else
         {
-            return "Tekan {E} untuk berinteraksi.";
+            return "Tekan {" + keyCode.ToUpper() + "} untuk berinteraksi.";
         }
     }
 
@@ -67,11 +77,23 @@ public class HidingMechanism : Interactable
         }
     }
 
+    private void Hide()
+    {
+        if (!isCoolDown)
+        {
+            if (isHiding)
+            {
+                isHiding = false;
+                NotHiddenWhenChased();
+                PerformHide(isHiding);
+            }
+        }
+    }
+
     private void PerformHide(bool condition)
     {
         if (isHiding)
         {
-            playersLastPos = player.transform.position;
             EnterHide();
         }
         else
@@ -86,13 +108,13 @@ public class HidingMechanism : Interactable
         SetActiveModels(true, false);
         SetCameraPriority(playersCamera, thisCamera);
 
-        player.transform.position = playersLastPos;
+        player.transform.position = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z - 3f);
+        player.transform.rotation = Quaternion.LookRotation(this.transform.forward);
         Debug.Log("Exit Hide");
     }
 
     private void EnterHide()
     {
-        // playersLastPos = player.transform.position;
         SetActiveModels(false, true);
         SetCameraPriority(thisCamera, playersCamera);
 
@@ -100,43 +122,9 @@ public class HidingMechanism : Interactable
         Debug.Log("Enter Hide");
     }
 
-    // IEnumerator EnableRendererAfterBlend()
-    // {
-    //     yield return new WaitForSeconds(cameraBrain.m_DefaultBlend.m_Time);
-    //     Renderer renderer = player.GetComponentInChildren<Renderer>();
-    //     if (renderer != null)
-    //     {
-    //         renderer.enabled = true;
-    //     }
-    // }
-
     private void SwitchComponents(bool condition)
     {
         player.SetActive(condition);
-        // MonoBehaviour[] components = player.GetComponentsInChildren<MonoBehaviour>();
-        // Collider[] colliders = player.GetComponentsInChildren<Collider>();
-        // Renderer renderer = player.GetComponentInChildren<Renderer>();
-
-        // if (components != null)
-        // {
-        //     foreach (MonoBehaviour component in components)
-        //     {
-        //         component.enabled = condition;
-        //     }
-        // }
-
-        // if (colliders != null)
-        // {
-        //     foreach (Collider collider in colliders)
-        //     {
-        //         collider.enabled = condition;
-        //     }
-        // }
-
-        // if (renderer != null)
-        // {
-        //     renderer.enabled = enableRenderer;
-        // }
     }
 
     private void SetCameraPriority(CinemachineVirtualCamera camera1, CinemachineVirtualCamera camera2)
@@ -161,5 +149,16 @@ public class HidingMechanism : Interactable
         {
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", player);
         }
+    }
+
+    private void OnButtonCooldown()
+    {
+        if(Input.GetKeyDown(keyCode) && timer >= coolDown)
+        {
+           isCoolDown = false;
+           timer = 0f;
+           return;
+        }
+        isCoolDown = true;
     }
 }
