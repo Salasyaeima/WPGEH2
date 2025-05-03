@@ -101,7 +101,7 @@ public class TargetWalk : MonoBehaviour
 
         mother.position = Vector3.MoveTowards(mother.position, waypoints[currentWaypoint].position, moveSpeed * Time.deltaTime);
 
-        if (lastReachedWaypoint == 10 && currentWaypoint == 11)
+        if (lastReachedWaypoint == 10)
         {
             float totalDistance = Vector3.Distance(waypoints[10].position, waypoints[11].position);
             float currentDistance = Vector3.Distance(mother.position, waypoints[10].position);
@@ -123,7 +123,7 @@ public class TargetWalk : MonoBehaviour
             {
                 videoPlayer.SetDirectAudioMute(0, false);
             }
-            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 7 || lastReachedWaypoint == 11 || lastReachedWaypoint == 12 || lastReachedWaypoint == 14)
+            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 7 || lastReachedWaypoint == 11 || lastReachedWaypoint == 14)
             {
                 StopAutoMove();
             }
@@ -147,6 +147,7 @@ public class TargetWalk : MonoBehaviour
         currentWaypoint = targetWaypoint;
         isMoving = true;
         autoMove = true;
+
         motherAnimator.Play("Walking");
 
         if (textDisplayManager != null)
@@ -250,8 +251,6 @@ public class TargetWalk : MonoBehaviour
 
         if (handBone != null)
         {
-            Debug.Log($"Before Parenting: HandBone Position={handBone.position}, Rotation={handBone.rotation}, Scale={handBone.localScale}");
-            Debug.Log($"PickupItem Values: Position={pickupItemPosition}, Rotation={pickupItemRotation}, Scale={pickupItemScale}");
             pickupItem.transform.SetParent(handBone, true);
             pickupItem.transform.localPosition = Vector3.zero;
             pickupItem.transform.localRotation = Quaternion.identity;
@@ -287,35 +286,13 @@ public class TargetWalk : MonoBehaviour
             mother.transform.rotation = Quaternion.Slerp(mother.transform.rotation, targetRotation, Time.deltaTime * 60f);
 
             Vector3 backwardDirection = -mother.transform.forward;
-            float backwardDistance = 1f;
-            mother.transform.position += backwardDirection * backwardDistance * Time.deltaTime * 60f;
+            float backwardDistance = 0.6f;
+            mother.transform.position += backwardDirection * backwardDistance;
         }
 
         SetState(CharacterState.Idleee);
     }
 
-    IEnumerator RotateToTarget(Transform target, float duration)
-    {
-        Quaternion referenceRotation = new Quaternion(-0.0420385301f, 0.509046674f, -0.00661452068f, -0.859686315f);
-        Vector3 referenceEuler = referenceRotation.eulerAngles;
-        float startXRotation = mother.eulerAngles.x;
-        float targetXRotation = 10.878f;
-        float startYRotation = mother.eulerAngles.y;
-        float startZRotation = mother.eulerAngles.z;
-        float time = 0;
-
-        while (time < duration)
-        {
-            float xRotation = Mathf.LerpAngle(startXRotation, targetXRotation, time / duration);
-            float yRotation = Mathf.LerpAngle(startYRotation, referenceEuler.y, time / duration);
-            float zRotation = Mathf.LerpAngle(startZRotation, referenceEuler.z, time / duration);
-            mother.rotation = Quaternion.Euler(xRotation, yRotation, zRotation);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        mother.rotation = Quaternion.Euler(targetXRotation, referenceEuler.y, referenceEuler.z);
-    }
     public bool IsMoving()
     {
         return isMoving;
