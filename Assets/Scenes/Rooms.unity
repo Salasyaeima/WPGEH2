@@ -18623,8 +18623,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!23 &1627868148884340886
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21891,6 +21892,10 @@ PrefabInstance:
       propertyPath: playerHand
       value: 
       objectReference: {fileID: 1404186845}
+    - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
+      propertyPath: interactionType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5843974285342560526, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_Name
       value: Kain
@@ -24973,8 +24978,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!23 &2799844773902957227
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28642,8 +28648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!23 &3445302107789238283
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28872,8 +28879,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!4 &3479331438984149235
 Transform:
   m_ObjectHideFlags: 0
@@ -29302,6 +29310,10 @@ PrefabInstance:
       propertyPath: playerHand
       value: 
       objectReference: {fileID: 1404186845}
+    - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
+      propertyPath: interactionType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5843974285342560526, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_Name
       value: Kain
@@ -33990,8 +34002,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!114 &4357283688778046708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34004,8 +34017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!4 &4357926792696858472
 Transform:
   m_ObjectHideFlags: 0
@@ -38878,6 +38892,10 @@ PrefabInstance:
       propertyPath: playerHand
       value: 
       objectReference: {fileID: 1404186845}
+    - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
+      propertyPath: interactionType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5843974285342560526, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_Name
       value: Kain
@@ -39405,6 +39423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3909725767089971493, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+    - {fileID: 108048336626456488, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4135013735270702856, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -47362,8 +47381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!23 &6880107003119468355
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48107,8 +48127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!23 &6994194665763873461
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -50922,8 +50943,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!4 &7418421460087582602
 Transform:
   m_ObjectHideFlags: 0
@@ -52418,6 +52440,10 @@ PrefabInstance:
       propertyPath: playerHand
       value: 
       objectReference: {fileID: 1404186845}
+    - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
+      propertyPath: interactionType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5843974285342560526, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_Name
       value: Kain
@@ -55512,8 +55538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329bb733e493b42b4af1ae2e4f3453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 2
   playerHand: {fileID: 1404186845}
+  isHeld: 0
 --- !u!1 &8330530036634998892
 GameObject:
   m_ObjectHideFlags: 0
