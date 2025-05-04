@@ -47,6 +47,13 @@ public class PlayerInteractions : MonoBehaviour
             successfullHit = false;
         }
 
+        if (heldItem != null && Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("Mouse dilepas!");
+            heldItem.Drop();
+            heldItem = null;
+        }
+
     }
 
     void HandleInteraction(Interactable interactable)
@@ -58,30 +65,14 @@ public class PlayerInteractions : MonoBehaviour
             case Interactable.InteractionType.Click:
                 if (Input.GetKeyDown(key))
                 {
-                    if (interactable is Item item)
-                    {
-                        if (heldItem == null)
-                        {
-                            item.Interact();
-                            heldItem = item;
-                        }
-                        else
-                        {
-                            heldItem.Drop();
-                            heldItem = null;
-                            item.Interact();
-                        }
-                    }
-                    else
-                    {
-                        interactable.Interact();
-                    }
+                    interactable.Interact();
                 }
                 break;
             case Interactable.InteractionType.Hold:
-                if (Input.GetKey(key))
+                if (Input.GetKey(key) && !heldItem)
                 {
                     interactable.increaseHoldTime();
+                    Debug.Log("Waktu: "+ interactable.HoldTime());
                     if (interactable.HoldTime() > holdTimeDuration)
                     {
                         interactable.Interact();
@@ -97,6 +88,20 @@ public class PlayerInteractions : MonoBehaviour
                     interactable.resetHoldTime();
                 }
                 holdProgress.fillAmount = interactable.HoldTime() / holdTimeDuration;
+                break;
+            case Interactable.InteractionType.Item:
+                if (interactable is Item item)
+                {
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("Mouse ditekan");
+                        if (heldItem == null)
+                        {
+                            item.Interact();
+                            heldItem = item;
+                        }
+                    }
+                }
                 break;
         }
     }
