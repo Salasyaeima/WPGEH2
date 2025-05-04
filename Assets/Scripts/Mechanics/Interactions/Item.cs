@@ -7,7 +7,7 @@ public class Item : Interactable
     private Rigidbody rb;
     private Collider itemCollider;
 
-    private bool isHeld = false;
+    public bool isHeld = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,13 +73,6 @@ public class Item : Interactable
 
     void Update()
     {
-        if (isHeld == true && PlayerInteractions.heldItem == this)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Drop();
-            }
 
-        }
     }
 }
