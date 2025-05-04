@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 //Press F for Interact
@@ -14,12 +15,12 @@ public class PlayerInteractions : MonoBehaviour
     bool successfullHit = false;
     int interactableMask;
     Camera cam;
+    bool isInteractionEnabled = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cam = Camera.main;
         interactableMask = ~LayerMask.GetMask("Player");
-        interactionText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,8 +28,8 @@ public class PlayerInteractions : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
         RaycastHit hit;
-        interactionText.gameObject.SetActive(successfullHit);
-        interactionHoldGo.SetActive(successfullHit);
+
+        isInteractionEnabled = true;
 
         if (Physics.Raycast(ray, out hit, interactionDistance, interactableMask))
         {
@@ -36,15 +37,34 @@ public class PlayerInteractions : MonoBehaviour
 
             if (interactable != null)
             {
-                HandleInteraction(interactable);
-                interactionText.text = interactable.Description();
-                interactionHoldGo.SetActive(interactable.interactionType == Interactable.InteractionType.Hold);
-                successfullHit = true;
+                if (SceneManager.GetActiveScene().name == "RoomsTutorial")
+                {
+                    isInteractionEnabled = interactable is TaskTutorialTake;
+                }
+
+                if (isInteractionEnabled)
+                {
+                    HandleInteraction(interactable);
+                    interactionText.text = interactable.Description();
+                    interactionText.gameObject.SetActive(true);
+                    interactionHoldGo.SetActive(interactable.interactionType == Interactable.InteractionType.Hold);
+                    successfullHit = true;
+                }
+            }
+            else
+            {
+                successfullHit = false;
             }
         }
         else
         {
             successfullHit = false;
+        }
+
+        if (!successfullHit || !isInteractionEnabled)
+        {
+            interactionText.gameObject.SetActive(false);
+            interactionHoldGo.SetActive(false);
         }
 
     }
