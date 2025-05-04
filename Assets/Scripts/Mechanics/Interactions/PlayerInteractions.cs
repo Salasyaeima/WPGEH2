@@ -73,8 +73,6 @@ public class PlayerInteractions : MonoBehaviour
             interactionText.gameObject.SetActive(false);
             interactionHoldGo.SetActive(false);
         }
-
-
     }
 
     void HandleInteraction(Interactable interactable)
