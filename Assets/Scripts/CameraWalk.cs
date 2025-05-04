@@ -35,15 +35,15 @@ public class CameraWalk : MonoBehaviour
 
         cameraPlayer.position = Vector3.MoveTowards(cameraPlayer.position, targetPosition, moveSpeed * Time.deltaTime);
 
-        Vector3 direction;
-        if (currentWaypoint + 1 < waypoints.Length && distanceToWaypoint < initialDistanceToWaypoint * rotationTriggerDistance)
-        {
-            direction = (waypoints[currentWaypoint + 1].position - cameraPlayer.position).normalized;
-        }
-        else
-        {
-            direction = (targetPosition - cameraPlayer.position).normalized;
-        }
+        Vector3 direction = (targetPosition - cameraPlayer.position).normalized;
+        // if (currentWaypoint + 1 < waypoints.Length && distanceToWaypoint < initialDistanceToWaypoint * rotationTriggerDistance)
+        // {
+        //     direction = (waypoints[currentWaypoint + 1].position - cameraPlayer.position).normalized;
+        // }
+        // else
+        // {
+        //     direction = (targetPosition - cameraPlayer.position).normalized;
+        // }
 
         if (direction != Vector3.zero)
         {
