@@ -43,7 +43,6 @@ public class TargetWalk : MonoBehaviour
     bool autoMove = false;
     Coroutine pickupCoroutine;
 
-    public event Action<int> OnWaypointReached;
 
     void Awake()
     {
