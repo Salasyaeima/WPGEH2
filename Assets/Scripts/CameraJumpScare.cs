@@ -107,8 +107,8 @@ public class CameraJumpScare : MonoBehaviour
             chromaticAberration.intensity.value = 0f;
 
 
-
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         TaskManager.Instance.panelResult.SetActive(true);
         Timer.Instance.CompleteGame();
     }

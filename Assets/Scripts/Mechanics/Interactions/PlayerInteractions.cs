@@ -11,6 +11,7 @@ public class PlayerInteractions : MonoBehaviour
     public GameObject interactionHoldGo;
     public UnityEngine.UI.Image holdProgress;
     public static Item heldItem = null;
+    public static bool canInteractWithClothes = false;
     Interactable interactable = null;
     bool successfullHit = false;
     int interactableMask;
@@ -39,7 +40,11 @@ public class PlayerInteractions : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().name == "RoomsTutorial")
                 {
-                    isInteractionEnabled = interactable is TaskTutorialTake;
+                    isInteractionEnabled = interactable is TaskTutorialTake ||
+                           (interactable is Item item &&
+                            item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
+                           (interactable is Interactable &&
+                            interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes);
                 }
 
                 if (isInteractionEnabled)

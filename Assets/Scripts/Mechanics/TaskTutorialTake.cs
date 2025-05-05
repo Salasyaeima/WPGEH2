@@ -1,8 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class TaskTutorialTake : Interactable
 {
-    bool isDone = false;
+    [SerializeField] GameObject taskList;
+    [SerializeField] GameObject windowQuest;
+    [SerializeField] TextMeshProUGUI taskTutorial;
+    public bool isDone = false;
 
     public override string Description()
     {
@@ -19,5 +23,8 @@ public class TaskTutorialTake : Interactable
     public override void Interact()
     {
         isDone = true;
+        taskList.SetActive(false);
+        windowQuest.SetActive(false);
+        taskTutorial.text = "* Tekan [T] untuk melihat tugas";
     }
 }

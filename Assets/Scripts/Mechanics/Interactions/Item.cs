@@ -68,6 +68,20 @@ public class Item : Interactable
 
     public override void Interact()
     {
+        ItemData itemData = GetComponent<ItemData>();
+
+        if (itemData != null && itemData.category == ItemData.ItemCategory.Clothes)
+        {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "RoomsTutorial")
+            {
+                if (!PlayerInteractions.canInteractWithClothes)
+                {
+                    Debug.Log("Kamu belum boleh ambil pakaian!");
+                    return;
+                }
+            }
+        }
+
         PickUp();
     }
 

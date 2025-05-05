@@ -1,14 +1,16 @@
+using TMPro;
 using UnityEngine;
 
-public class TaskPanelController : MonoBehaviour
+public class TaskPanelController1 : MonoBehaviour
 {
     public GameObject taskPanel;
-    CanvasGroup canvasGroup;
+
     bool isPanelOpen = false;
 
     void Start()
     {
         taskPanel.SetActive(false);
+
     }
 
     void Update()
