@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoadingScreen : MonoBehaviour
 {
     public static LoadingScreen Instance;
+    [SerializeField] GameObject p_loadingScreen; //parent loading screen
     [SerializeField] GameObject m_loadingScreen;
     [SerializeField] Slider progressBar;
     [SerializeField] private float timeDuration = 3f;
@@ -27,6 +28,10 @@ public class LoadingScreen : MonoBehaviour
 
     public void SwitchToScene(string nameScene)
     {
+        if(p_loadingScreen != null)
+        {
+            p_loadingScreen.SetActive(true);
+        }
         StartCoroutine(StartLoadingScreen(nameScene));
     }
 

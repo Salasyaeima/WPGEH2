@@ -7,7 +7,7 @@ public class Item : Interactable
     private Rigidbody rb;
     private Collider itemCollider;
 
-    private bool isHeld = false;
+    public bool isHeld = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,18 +68,25 @@ public class Item : Interactable
 
     public override void Interact()
     {
+        ItemData itemData = GetComponent<ItemData>();
+
+        if (itemData != null && itemData.category == ItemData.ItemCategory.Clothes)
+        {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "RoomsTutorial")
+            {
+                if (!PlayerInteractions.canInteractWithClothes)
+                {
+                    Debug.Log("Kamu belum boleh ambil pakaian!");
+                    return;
+                }
+            }
+        }
+
         PickUp();
     }
 
     void Update()
     {
-        if (isHeld == true && PlayerInteractions.heldItem == this)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Drop();
-            }
 
-        }
     }
 }

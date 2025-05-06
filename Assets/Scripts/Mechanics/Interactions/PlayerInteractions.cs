@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 //Press F for Interact
@@ -10,16 +11,17 @@ public class PlayerInteractions : MonoBehaviour
     public GameObject interactionHoldGo;
     public UnityEngine.UI.Image holdProgress;
     public static Item heldItem = null;
+    public static bool canInteractWithClothes = false;
     Interactable interactable = null;
     bool successfullHit = false;
     int interactableMask;
     Camera cam;
+    bool isInteractionEnabled = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cam = Camera.main;
         interactableMask = ~LayerMask.GetMask("Player");
-        interactionText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,8 +29,8 @@ public class PlayerInteractions : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
         RaycastHit hit;
-        interactionText.gameObject.SetActive(successfullHit);
-        interactionHoldGo.SetActive(successfullHit);
+
+        isInteractionEnabled = true;
 
         if (Physics.Raycast(ray, out hit, interactionDistance, interactableMask))
         {
@@ -36,10 +38,27 @@ public class PlayerInteractions : MonoBehaviour
 
             if (interactable != null)
             {
-                HandleInteraction(interactable);
-                interactionText.text = interactable.Description();
-                interactionHoldGo.SetActive(interactable.interactionType == Interactable.InteractionType.Hold);
-                successfullHit = true;
+                if (SceneManager.GetActiveScene().name == "RoomsTutorial")
+                {
+                    isInteractionEnabled = interactable is TaskTutorialTake ||
+                           (interactable is Item item &&
+                            item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
+                           (interactable is Interactable &&
+                            interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes);
+                }
+
+                if (isInteractionEnabled)
+                {
+                    HandleInteraction(interactable);
+                    interactionText.text = interactable.Description();
+                    interactionText.gameObject.SetActive(true);
+                    interactionHoldGo.SetActive(interactable.interactionType == Interactable.InteractionType.Hold);
+                    successfullHit = true;
+                }
+            }
+            else
+            {
+                successfullHit = false;
             }
         }
         else
@@ -47,57 +66,68 @@ public class PlayerInteractions : MonoBehaviour
             successfullHit = false;
         }
 
-    }
-
-    void HandleInteraction(Interactable interactable)
-    {
-        KeyCode key = KeyCode.E;
-
-        switch (interactable.interactionType)
+        if (!successfullHit || !isInteractionEnabled)
         {
-            case Interactable.InteractionType.Click:
-                if (Input.GetKeyDown(key))
-                {
-                    if (interactable is Item item)
+            interactionText.gameObject.SetActive(false);
+            interactionHoldGo.SetActive(false);
+
+            if (heldItem != null && Input.GetMouseButtonUp(0))
+            {
+                Debug.Log("Mouse dilepas!");
+                heldItem.Drop();
+                heldItem = null;
+            }
+
+        }
+
+        void HandleInteraction(Interactable interactable)
+        {
+            KeyCode key = KeyCode.E;
+
+            switch (interactable.interactionType)
+            {
+                case Interactable.InteractionType.Click:
+                    if (Input.GetKeyDown(key))
                     {
-                        if (heldItem == null)
+                        interactable.Interact();
+                    }
+                    break;
+                case Interactable.InteractionType.Hold:
+                    if (Input.GetKey(key) && !heldItem)
+                    {
+                        interactable.increaseHoldTime();
+                        Debug.Log("Waktu: " + interactable.HoldTime());
+                        if (interactable.HoldTime() > holdTimeDuration)
                         {
-                            item.Interact();
-                            heldItem = item;
+                            interactable.Interact();
+                            interactable.resetHoldTime();
                         }
-                        else
+                        else if (successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
                         {
-                            heldItem.Drop();
-                            heldItem = null;
-                            item.Interact();
+                            interactable.resetHoldTime();
                         }
                     }
                     else
                     {
-                        interactable.Interact();
-                    }
-                }
-                break;
-            case Interactable.InteractionType.Hold:
-                if (Input.GetKey(key))
-                {
-                    interactable.increaseHoldTime();
-                    if (interactable.HoldTime() > holdTimeDuration)
-                    {
-                        interactable.Interact();
                         interactable.resetHoldTime();
                     }
-                    else if (successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
+                    holdProgress.fillAmount = interactable.HoldTime() / holdTimeDuration;
+                    break;
+                case Interactable.InteractionType.Item:
+                    if (interactable is Item item)
                     {
-                        interactable.resetHoldTime();
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            Debug.Log("Mouse ditekan");
+                            if (heldItem == null)
+                            {
+                                item.Interact();
+                                heldItem = item;
+                            }
+                        }
                     }
-                }
-                else
-                {
-                    interactable.resetHoldTime();
-                }
-                holdProgress.fillAmount = interactable.HoldTime() / holdTimeDuration;
-                break;
+                    break;
+            }
         }
     }
 }

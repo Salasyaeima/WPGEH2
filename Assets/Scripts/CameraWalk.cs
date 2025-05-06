@@ -15,6 +15,8 @@ public class CameraWalk : MonoBehaviour
     void Start()
     {
         if (cameraPlayer == null) Debug.LogError("Camera transform not assigned.");
+        if (waypoints.Length == 0) Debug.LogError("No waypoints assigned.");
+        Debug.Log($"Starting movement to waypoint {currentWaypoint}");
         StartMovingToWaypoint(0);
     }
 
@@ -29,18 +31,19 @@ public class CameraWalk : MonoBehaviour
 
         Vector3 targetPosition = waypoints[currentWaypoint].position;
         float distanceToWaypoint = Vector3.Distance(cameraPlayer.position, targetPosition);
+        Debug.Log($"Moving to waypoint {currentWaypoint}, distance: {distanceToWaypoint}");
 
         cameraPlayer.position = Vector3.MoveTowards(cameraPlayer.position, targetPosition, moveSpeed * Time.deltaTime);
 
-        Vector3 direction;
-        if (currentWaypoint + 1 < waypoints.Length && distanceToWaypoint < initialDistanceToWaypoint * rotationTriggerDistance)
-        {
-            direction = (waypoints[currentWaypoint + 1].position - cameraPlayer.position).normalized;
-        }
-        else
-        {
-            direction = (targetPosition - cameraPlayer.position).normalized;
-        }
+        Vector3 direction = (targetPosition - cameraPlayer.position).normalized;
+        // if (currentWaypoint + 1 < waypoints.Length && distanceToWaypoint < initialDistanceToWaypoint * rotationTriggerDistance)
+        // {
+        //     direction = (waypoints[currentWaypoint + 1].position - cameraPlayer.position).normalized;
+        // }
+        // else
+        // {
+        //     direction = (targetPosition - cameraPlayer.position).normalized;
+        // }
 
         if (direction != Vector3.zero)
         {
