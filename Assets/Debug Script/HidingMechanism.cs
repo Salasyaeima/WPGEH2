@@ -44,15 +44,6 @@ public class HidingMechanism : Interactable
         }
         OnButtonCooldown();
         Hide();
-        // if (Input.GetKeyDown(KeyCode.E) && player.transform.position == this.transform.position)
-        // {
-        //     if (isHiding)
-        //     {
-        //         isHiding = false;
-        //         NotHiddenWhenChased();
-        //         PerformHide(isHiding);
-        //     }
-        // }
     }
 
     public override string Description()

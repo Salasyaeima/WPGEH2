@@ -36,7 +36,7 @@ public class Door : Interactable
             StartCoroutine(AnimateDoor());
         }
     }
-
+    
     public void OpenAutomatically()
     {
         if (!isOpen && !isAnimating)
