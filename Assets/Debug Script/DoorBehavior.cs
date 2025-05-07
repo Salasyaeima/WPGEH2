@@ -15,14 +15,13 @@ public class DoorBehavior : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter(Collider other)
-    {
+
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log("Bakso");
         if (other.gameObject.CompareTag("Mother"))
         {
             Debug.Log("Bokep");
             StartCoroutine(door.AnimateDoor());
         }
     }
-
-    
 }

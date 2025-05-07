@@ -46,7 +46,7 @@ public class Door : Interactable
     }
 
 
-    IEnumerator AnimateDoor()
+    public IEnumerator AnimateDoor()
     {
         isAnimating = true;
         float elapsed = 0f;

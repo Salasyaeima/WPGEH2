@@ -10,10 +10,11 @@ public class DoorTrigger : MonoBehaviour
 
     [SerializeField] float openAngle = 90f;
     [SerializeField] float animationDuration = 1f;
-
+    [SerializeField] GameObject doorEngsel;
+ 
     void Start()
     {
-        closedRotation = transform.rotation;
+        closedRotation = doorEngsel.transform.rotation;
         openRotation = closedRotation * Quaternion.Euler(0, 0, openAngle);
     }
 
@@ -27,18 +28,18 @@ public class DoorTrigger : MonoBehaviour
         while (elapsed < animationDuration)
         {
             elapsed += Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, elapsed / animationDuration);
+            doorEngsel.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, elapsed / animationDuration);
             yield return null;
         }
 
-        transform.rotation = targetRotation;
+        doorEngsel.transform.rotation = targetRotation;
         isOpen = !isOpen;
         isAnimating = false;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Mother") && !isOpen && !isAnimating)
+        if (other.gameObject.CompareTag("Mother") && !isOpen && !isAnimating)
         {
             StartCoroutine(AnimateDoor());
         }
@@ -46,7 +47,7 @@ public class DoorTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Mother") && isOpen && !isAnimating)
+        if (other.gameObject.CompareTag("Mother") && isOpen && !isAnimating)
         {
             StartCoroutine(AnimateDoor());
         }
