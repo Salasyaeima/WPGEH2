@@ -5248,9 +5248,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1327977161}
     - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: 'managedReferences[9082285075140444240]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[AreaCheck, Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: managedReferences[9082285075140444240].Name
+      value: New Area Check
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: managedReferences[7383935625716301861].m_Value
       value: 
       objectReference: {fileID: 543449882}
+    - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: managedReferences[9082285075140444240].m_Value
+      value: 
+      objectReference: {fileID: 1391487702}
+    - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[6]'
+      value: 9082285075140444240
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: managedReferences[9082285075140444240].GUID.m_Value0
+      value: 3587009524862641300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: managedReferences[9082285075140444240].GUID.m_Value1
+      value: 11098315677332697736
+      objectReference: {fileID: 0}
     - target: {fileID: 5231426775719088091, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: managedReferences[7383935633998741900].m_Value.Array.size
       value: 8
@@ -7006,6 +7034,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69161a0a4b05d2141844f46a4ae479c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1391487702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 107391924014228077, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+  m_PrefabInstance: {fileID: 1027731989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391487681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e62cc6b3eaa8ef468bb0a9b22978edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1391944216 stripped
