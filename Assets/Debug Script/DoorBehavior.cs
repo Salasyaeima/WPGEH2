@@ -21,7 +21,6 @@ public class DoorBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Mother"))
         {
             Debug.Log("Bokep");
-            StartCoroutine(door.AnimateDoor());
         }
     }
 }
