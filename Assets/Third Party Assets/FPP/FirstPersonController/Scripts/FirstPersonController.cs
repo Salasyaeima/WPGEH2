@@ -2,6 +2,7 @@
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 #endif
 
 namespace StarterAssets
@@ -58,7 +59,10 @@ namespace StarterAssets
 		public float SprintTransitionDuration = 1f;
 		public bool sprintLock;
 
-		
+
+		[Header("UI")]
+		public Slider energySlider;
+		public CanvasGroup canvasGroup;
 
 
 		
@@ -171,15 +175,20 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false)
 			{
-				
 				_sprintTimer = 1f;
 				sprintDuration += Time.deltaTime;
-				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
+				sprintDuration = Mathf.Clamp(maxSprintDuration, 0f, sprintDuration);
+				canvasGroup.alpha = _sprintTimer;
+				energySlider.value = sprintDuration/maxSprintDuration;
 			}
 			else
 			{
 				_sprintTimer -= Time.deltaTime;
 				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
+				sprintDuration -= Time.deltaTime;
+				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
+				canvasGroup.alpha = _sprintTimer;
+				energySlider.value = sprintDuration/maxSprintDuration;
 			}
 			// Sprint sudah sampe 2 detik
 			if(sprintDuration == maxSprintDuration)
