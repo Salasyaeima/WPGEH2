@@ -43,7 +43,6 @@ public class TargetWalk : MonoBehaviour
     bool autoMove = false;
     Coroutine pickupCoroutine;
 
-    public event Action<int> OnWaypointReached;
 
     void Awake()
     {
@@ -113,7 +112,6 @@ public class TargetWalk : MonoBehaviour
                 hasTriggeredHandPhoneTransform = true;
             }
         }
-        Debug.Log(lastReachedWaypoint);
         if (Vector3.Distance(mother.position, waypoints[currentWaypoint].position) < 0.1f)
         {
             isMoving = false;

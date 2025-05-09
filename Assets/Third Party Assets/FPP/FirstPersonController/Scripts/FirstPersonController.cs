@@ -58,10 +58,10 @@ namespace StarterAssets
 		public float SprintTransitionDuration = 1f;
 		public bool sprintLock;
 
-		
 
 
-		
+
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -77,7 +77,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-	
+
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
 #endif
@@ -91,11 +91,11 @@ namespace StarterAssets
 		{
 			get
 			{
-				#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM
 				return _playerInput.currentControlScheme == "KeyboardMouse";
-				#else
+#else
 				return false;
-				#endif
+#endif
 			}
 		}
 
@@ -128,8 +128,6 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-			Debug.Log("Durasi speed saat ini: "+ sprintDuration);
-
 		}
 
 		private void LateUpdate()
@@ -151,7 +149,7 @@ namespace StarterAssets
 			{
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-				
+
 				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
 				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
 
@@ -171,7 +169,7 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false)
 			{
-				
+
 				_sprintTimer = 1f;
 				sprintDuration += Time.deltaTime;
 				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
@@ -182,19 +180,19 @@ namespace StarterAssets
 				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
 			}
 			// Sprint sudah sampe 2 detik
-			if(sprintDuration == maxSprintDuration)
+			if (sprintDuration == maxSprintDuration)
 			{
 				_sprintTimer -= Time.deltaTime;
 				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
 				sprintLock = true;
 			}
 
-			if(sprintLock == true)
+			if (sprintLock == true)
 			{
 				_input.sprint = false;
 				sprintDuration -= Time.deltaTime;
 				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
-				if(sprintDuration == 0f) sprintLock = false;
+				if (sprintDuration == 0f) sprintLock = false;
 			}
 
 			float curveT = _sprintTimer / SprintTransitionDuration;
