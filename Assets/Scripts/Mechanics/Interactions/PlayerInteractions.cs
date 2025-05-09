@@ -44,7 +44,8 @@ public class PlayerInteractions : MonoBehaviour
                            (interactable is Item item &&
                             item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
                            (interactable is Interactable &&
-                            interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes);
+                            interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes) || (interactable is Interactable &&
+                            interactable.GetComponent<Door>()); ;
                 }
 
                 if (isInteractionEnabled)

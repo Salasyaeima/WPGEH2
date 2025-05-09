@@ -1,18 +1,23 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using Unity.AppUI.UI;
 
 public class TextDialogChild : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textDisplay;
+    [SerializeField] TextMeshProUGUI intruksi;
+    [SerializeField] GameObject target;
+    [SerializeField] Transform newTargetTransform;
     [SerializeField] string[] texts;
     [SerializeField] bool useAutoDisplay = true;
     [SerializeField] float textDuration = 2f;
 
-    private int currentTextIndex = 0;
-    private bool isDisplaying = false;
-    private float timer = 0f;
-    private bool isPermanentlyStopped = false;
-    private bool isPaused = false;
+    int currentTextIndex = 0;
+    bool isDisplaying = false;
+    float timer = 0f;
+    bool isPermanentlyStopped = false;
+    bool isPaused = false;
 
     void Awake()
     {
@@ -21,7 +26,7 @@ public class TextDialogChild : MonoBehaviour
 
     void OnEnable()
     {
-        StartDisplayingText();
+        StartCoroutine(DelayedStart());
     }
 
     void OnDisable()
@@ -70,11 +75,6 @@ public class TextDialogChild : MonoBehaviour
         else
         {
             Debug.Log($"{gameObject.name}: Text array has {texts.Length} elements");
-        }
-        Canvas canvas = textDisplay?.GetComponentInParent<Canvas>();
-        if (canvas == null || !canvas.isActiveAndEnabled)
-        {
-            Debug.LogError($"{gameObject.name}: TextMeshProUGUI is not in an active Canvas!");
         }
     }
 
@@ -126,18 +126,38 @@ public class TextDialogChild : MonoBehaviour
         textDisplay.gameObject.SetActive(false);
     }
 
+    IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(3f);
+        StartDisplayingText();
+    }
+
+    IEnumerator DelayedInstruksi()
+    {
+        yield return new WaitForSeconds(3f);
+        intruksi.enabled = true;
+        target.SetActive(true);
+    }
+    public IEnumerator ResumeInstruksi()
+    {
+        yield return new WaitForSeconds(3f);
+        ResumeDisplayingText();
+
+    }
     public void NextText()
     {
         currentTextIndex++;
 
         if (currentTextIndex == 5)
         {
-            StopDisplayingText();
+            PauseDisplayingText();
+            StartCoroutine(DelayedInstruksi());
             return;
         }
-        else if (currentTextIndex == 10)
+        else if (currentTextIndex == 9)
         {
-            StopDisplayingText();
+            PauseDisplayingText();
+            StartCoroutine(ShowInstruksiAfterDelay());
             return;
         }
 
@@ -151,6 +171,15 @@ public class TextDialogChild : MonoBehaviour
             StopDisplayingText();
         }
     }
+
+    IEnumerator ShowInstruksiAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        intruksi.text = "Ambil Tugas!";
+        intruksi.enabled = true;
+        ChangeTargetTransform();
+    }
+
 
     public void ContinueDisplayingText()
     {
@@ -170,7 +199,7 @@ public class TextDialogChild : MonoBehaviour
         isDisplaying = true;
         if (textDisplay != null)
         {
-            textDisplay.gameObject.SetActive(true);
+            textDisplay.enabled = true;
             textDisplay.text = texts[currentTextIndex];
             timer = 0f;
         }
@@ -193,7 +222,7 @@ public class TextDialogChild : MonoBehaviour
         isDisplaying = false;
         if (textDisplay != null)
         {
-            textDisplay.gameObject.SetActive(false);
+            textDisplay.enabled = false;
         }
     }
 
@@ -207,11 +236,16 @@ public class TextDialogChild : MonoBehaviour
 
         if (currentTextIndex < texts.Length)
         {
+            if (currentTextIndex == 7)
+            {
+                StartCoroutine(DelayedResumeAfterPause());
+                return;
+            }
             isDisplaying = true;
             isPaused = false;
             if (textDisplay != null)
             {
-                textDisplay.gameObject.SetActive(true);
+                textDisplay.enabled = true;
                 textDisplay.text = texts[currentTextIndex];
             }
             timer = 0f;
@@ -221,4 +255,30 @@ public class TextDialogChild : MonoBehaviour
             Debug.Log($"{gameObject.name}: No more text to resume");
         }
     }
+
+    void ChangeTargetTransform()
+    {
+        if (newTargetTransform != null)
+        {
+            target = newTargetTransform.gameObject;
+        }
+        else
+        {
+            Debug.LogWarning("Referensi newTargetTransform belum diatur.");
+        }
+    }
+
+    private IEnumerator DelayedResumeAfterPause()
+    {
+        yield return new WaitForSeconds(2f);
+        isDisplaying = true;
+        isPaused = false;
+        if (textDisplay != null)
+        {
+            textDisplay.enabled = true;
+            textDisplay.text = texts[currentTextIndex];
+        }
+        timer = 0f;
+    }
+
 }
