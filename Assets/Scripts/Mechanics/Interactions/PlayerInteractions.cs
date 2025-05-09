@@ -74,6 +74,12 @@ public class PlayerInteractions : MonoBehaviour
             StartCoroutine(delayDrop());
         }
 
+        if (!successfullHit || !isInteractionEnabled)
+        {
+            interactionText.gameObject.SetActive(false);
+            interactionHoldGo.SetActive(false);
+        }
+
     }
 
     void HandleInteraction(Interactable interactable)
@@ -130,12 +136,6 @@ public class PlayerInteractions : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         heldItem.Drop();
         heldItem = null;
-
-        if (!successfullHit || !isInteractionEnabled)
-        {
-            interactionText.gameObject.SetActive(false);
-            interactionHoldGo.SetActive(false);
-        }
     }
 }
-}
+
