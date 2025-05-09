@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -73,9 +74,7 @@ public class PlayerInteractions : MonoBehaviour
 
             if (heldItem != null && Input.GetMouseButtonUp(0))
             {
-                Debug.Log("Mouse dilepas!");
-                heldItem.Drop();
-                heldItem = null;
+                StartCoroutine(delayDrop());
             }
 
         }
@@ -118,7 +117,6 @@ public class PlayerInteractions : MonoBehaviour
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
-                            Debug.Log("Mouse ditekan");
                             if (heldItem == null)
                             {
                                 item.Interact();
@@ -129,5 +127,12 @@ public class PlayerInteractions : MonoBehaviour
                     break;
             }
         }
+    }
+
+    IEnumerator delayDrop()
+    {
+        yield return new WaitForSeconds(0.2f);
+        heldItem.Drop();
+        heldItem = null;
     }
 }
