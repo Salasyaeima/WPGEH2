@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -70,65 +71,71 @@ public class PlayerInteractions : MonoBehaviour
 
         if (heldItem != null && Input.GetMouseButtonUp(0))
         {
-            Debug.Log("Mouse dilepas!");
-            heldItem.Drop();
-            heldItem = null;
-
-            if (!successfullHit || !isInteractionEnabled)
-            {
-                interactionText.gameObject.SetActive(false);
-                interactionHoldGo.SetActive(false);
-            }
-
+            StartCoroutine(delayDrop());
         }
 
-        void HandleInteraction(Interactable interactable)
-        {
-            KeyCode key = KeyCode.E;
+    }
 
-            switch (interactable.interactionType)
-            {
-                case Interactable.InteractionType.Click:
-                    if (Input.GetKeyDown(key))
+    void HandleInteraction(Interactable interactable)
+    {
+        KeyCode key = KeyCode.E;
+
+        switch (interactable.interactionType)
+        {
+            case Interactable.InteractionType.Click:
+                if (Input.GetKeyDown(key))
+                {
+                    interactable.Interact();
+                }
+                break;
+            case Interactable.InteractionType.Hold:
+                if (Input.GetKey(key) && !heldItem)
+                {
+                    interactable.increaseHoldTime();
+                    Debug.Log("Waktu: " + interactable.HoldTime());
+                    if (interactable.HoldTime() > holdTimeDuration)
                     {
                         interactable.Interact();
+                        interactable.resetHoldTime();
                     }
-                    break;
-                case Interactable.InteractionType.Hold:
-                    if (Input.GetKey(key) && !heldItem)
-                    {
-                        interactable.increaseHoldTime();
-                        Debug.Log("Waktu: " + interactable.HoldTime());
-                        if (interactable.HoldTime() > holdTimeDuration)
-                        {
-                            interactable.Interact();
-                            interactable.resetHoldTime();
-                        }
-                        else if (successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
-                        {
-                            interactable.resetHoldTime();
-                        }
-                    }
-                    else
+                    else if (successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
                     {
                         interactable.resetHoldTime();
                     }
-                    holdProgress.fillAmount = interactable.HoldTime() / holdTimeDuration;
-                    break;
-                case Interactable.InteractionType.Item:
-                    if (interactable is Item item)
+                }
+                else
+                {
+                    interactable.resetHoldTime();
+                }
+                holdProgress.fillAmount = interactable.HoldTime() / holdTimeDuration;
+                break;
+            case Interactable.InteractionType.Item:
+                if (interactable is Item item)
+                {
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        if (Input.GetMouseButtonDown(0))
+                        if (heldItem == null)
                         {
-                            Debug.Log("Mouse ditekan");
-                            if (heldItem == null)
-                            {
-                                item.Interact();
-                                heldItem = item;
-                            }
+                            item.Interact();
+                            heldItem = item;
                         }
                     }
-                    break;
-            }
+                }
+                break;
         }
     }
+
+    IEnumerator delayDrop()
+    {
+        yield return new WaitForSeconds(0.2f);
+        heldItem.Drop();
+        heldItem = null;
+
+        if (!successfullHit || !isInteractionEnabled)
+        {
+            interactionText.gameObject.SetActive(false);
+            interactionHoldGo.SetActive(false);
+        }
+    }
+}
+}

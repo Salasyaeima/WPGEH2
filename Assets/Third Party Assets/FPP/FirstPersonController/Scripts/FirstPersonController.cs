@@ -2,6 +2,7 @@
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 #endif
 
 namespace StarterAssets
@@ -54,11 +55,15 @@ namespace StarterAssets
 		public float SprintSpeed = 6.0f;
 		public AnimationCurve SprintCurve;
 		public float sprintDuration;
+		[Tooltip("Ini max Energi")]
 		public float maxSprintDuration = 2f;
 		public float SprintTransitionDuration = 1f;
 		public bool sprintLock;
 
 
+		[Header("UI")]
+		public Slider energySlider;
+		public CanvasGroup canvasGroup;
 
 
 
@@ -128,6 +133,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
 		}
 
 		private void LateUpdate()
@@ -169,15 +175,20 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false)
 			{
-
-				_sprintTimer = 1f;
+				_sprintTimer += Time.deltaTime;
+				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
 				sprintDuration += Time.deltaTime;
 				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
+				canvasGroup.alpha = _sprintTimer;
+				energySlider.value = 1 - (sprintDuration / maxSprintDuration);
 			}
 			else
 			{
 				_sprintTimer -= Time.deltaTime;
 				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
+				sprintDuration -= Time.deltaTime;
+				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
+				canvasGroup.alpha = _sprintTimer;
 			}
 			// Sprint sudah sampe 2 detik
 			if (sprintDuration == maxSprintDuration)
@@ -197,7 +208,9 @@ namespace StarterAssets
 
 			float curveT = _sprintTimer / SprintTransitionDuration;
 			float sprintFactor = SprintCurve.Evaluate(curveT);
-			float targetSpeed = Mathf.Lerp(SprintSpeed, MoveSpeed, sprintFactor);
+			float targetSpeed = Mathf.Lerp(MoveSpeed, SprintSpeed, sprintFactor);
+
+			Debug.Log("Speed" + targetSpeed);
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 

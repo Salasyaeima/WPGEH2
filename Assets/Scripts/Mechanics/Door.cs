@@ -36,7 +36,7 @@ public class Door : Interactable
             StartCoroutine(AnimateDoor());
         }
     }
-
+    
     public void OpenAutomatically()
     {
         if (!isOpen && !isAnimating)
@@ -46,7 +46,7 @@ public class Door : Interactable
     }
 
 
-    IEnumerator AnimateDoor()
+    public IEnumerator AnimateDoor()
     {
         isAnimating = true;
         float elapsed = 0f;
