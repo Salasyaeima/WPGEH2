@@ -46,7 +46,7 @@ public class PlayerInteractions : MonoBehaviour
                             item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
                            (interactable is Interactable &&
                             interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes) || (interactable is Interactable &&
-                            interactable.GetComponent<Door>()); ;
+                            interactable.GetComponent<Door>() || (interactable is Interactable && interactable.GetComponent<BedInterect>()));
                 }
 
                 if (isInteractionEnabled)
@@ -98,7 +98,6 @@ public class PlayerInteractions : MonoBehaviour
                 if (Input.GetKey(key) && !heldItem)
                 {
                     interactable.increaseHoldTime();
-                    Debug.Log("Waktu: " + interactable.HoldTime());
                     if (interactable.HoldTime() > holdTimeDuration)
                     {
                         interactable.Interact();
@@ -134,8 +133,11 @@ public class PlayerInteractions : MonoBehaviour
     IEnumerator delayDrop()
     {
         yield return new WaitForSeconds(0.2f);
-        heldItem.Drop();
-        heldItem = null;
+        if (heldItem != null)
+        {
+            heldItem.Drop();
+            heldItem = null;
+        }
     }
 }
 

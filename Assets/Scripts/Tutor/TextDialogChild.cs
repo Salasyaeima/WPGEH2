@@ -5,19 +5,21 @@ using Unity.AppUI.UI;
 
 public class TextDialogChild : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textDisplay;
-    [SerializeField] TextMeshProUGUI intruksi;
-    [SerializeField] GameObject target;
+    [SerializeField] Window_QuestPointer windowQuest;
     [SerializeField] Transform newTargetTransform;
     [SerializeField] string[] texts;
-    [SerializeField] bool useAutoDisplay = true;
     [SerializeField] float textDuration = 2f;
+    public TextMeshProUGUI intruksi;
+    public bool useAutoDisplay = true;
+    public TextMeshProUGUI textDisplay;
 
     int currentTextIndex = 0;
     bool isDisplaying = false;
     float timer = 0f;
     bool isPermanentlyStopped = false;
     bool isPaused = false;
+
+
 
     void Awake()
     {
@@ -136,7 +138,7 @@ public class TextDialogChild : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         intruksi.enabled = true;
-        target.SetActive(true);
+        windowQuest.gameObject.SetActive(true);
     }
     public IEnumerator ResumeInstruksi()
     {
@@ -154,11 +156,21 @@ public class TextDialogChild : MonoBehaviour
             StartCoroutine(DelayedInstruksi());
             return;
         }
-        else if (currentTextIndex == 9)
+        else if (currentTextIndex == 7)
         {
             PauseDisplayingText();
             StartCoroutine(ShowInstruksiAfterDelay());
             return;
+        }
+
+        else if (currentTextIndex == 9)
+        {
+            ResumeDisplayingText();
+        }
+        else if (currentTextIndex == 10)
+        {
+            PauseDisplayingText();
+            intruksi.text = "Pergi Ke tempat tidur";
         }
 
         if (currentTextIndex < texts.Length && textDisplay != null)
@@ -174,7 +186,7 @@ public class TextDialogChild : MonoBehaviour
 
     IEnumerator ShowInstruksiAfterDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         intruksi.text = "Ambil Tugas!";
         intruksi.enabled = true;
         ChangeTargetTransform();
@@ -236,11 +248,6 @@ public class TextDialogChild : MonoBehaviour
 
         if (currentTextIndex < texts.Length)
         {
-            if (currentTextIndex == 7)
-            {
-                StartCoroutine(DelayedResumeAfterPause());
-                return;
-            }
             isDisplaying = true;
             isPaused = false;
             if (textDisplay != null)
@@ -258,27 +265,13 @@ public class TextDialogChild : MonoBehaviour
 
     void ChangeTargetTransform()
     {
-        if (newTargetTransform != null)
+        if (windowQuest != null && newTargetTransform != null)
         {
-            target = newTargetTransform.gameObject;
+            windowQuest.Show(newTargetTransform);
         }
         else
         {
             Debug.LogWarning("Referensi newTargetTransform belum diatur.");
         }
     }
-
-    private IEnumerator DelayedResumeAfterPause()
-    {
-        yield return new WaitForSeconds(2f);
-        isDisplaying = true;
-        isPaused = false;
-        if (textDisplay != null)
-        {
-            textDisplay.enabled = true;
-            textDisplay.text = texts[currentTextIndex];
-        }
-        timer = 0f;
-    }
-
 }

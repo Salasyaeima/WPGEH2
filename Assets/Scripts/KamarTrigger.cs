@@ -7,8 +7,8 @@ public class KamarTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Masuk");
             StartCoroutine(textDialog.ResumeInstruksi());
+            textDialog.intruksi.enabled = false;
         }
     }
 }

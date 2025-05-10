@@ -18,7 +18,6 @@ public class TextDisplayManager : MonoBehaviour
     int currentTextIndex = 0;
     float timer = 0f;
     bool isDisplaying = false;
-    public event Action<int> OnTextDisplayed;
 
     void Awake()
     {
