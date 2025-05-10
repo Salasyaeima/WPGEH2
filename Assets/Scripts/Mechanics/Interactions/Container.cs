@@ -4,20 +4,21 @@ using System.Collections.Generic;
 public class Container : Interactable, ITaskProvider
 {
     public Transform spawnPoint;
-    public GameObject baju;
+    public GameObject prefab;
     public GameObject emptyContainer;
     public GameObject fullContainer;
     public List<GameObject> storedItems = new List<GameObject>();
     public int maxCapacity = 2;
     TaskManager taskManager;
-    private int count = 0;
+    private float count = 0f;
     Room room;
 
     public enum ContainerType
     {
         toyContainer,
         Bookshelf,
-        wardrobe
+        wardrobe,
+        gudang
     }
 
     public ContainerType containerType;
@@ -57,27 +58,37 @@ public class Container : Interactable, ITaskProvider
         }
     }
 
-    void SpawnItem()
+    void PlaceClothes()
     {
+        
         Transform clothesTransform = PlayerInteractions.heldItem.transform.Find("Kain");
         Renderer clothesRenderer = clothesTransform.GetComponent<Renderer>();
         Color itemColor = clothesRenderer.material.color;
-
         Vector3 spawnPosition = spawnPoint.position + new Vector3(0, 0, count * 0.5f);
-        GameObject spawnedClothes = Instantiate(baju, spawnPosition, Quaternion.identity);
-        Transform spawnedClothesTransform = spawnedClothes.transform.Find("Kain");
+        GameObject spawnedPrefab = Instantiate(prefab, spawnPosition, Quaternion.identity);
+        
+        Transform spawnedPrefabTransform = spawnedPrefab.transform.Find("Kain");
 
-        if (spawnedClothesTransform != null)
+        if (spawnedPrefabTransform != null)
         {
-            Renderer spawnedClothesRenderer = spawnedClothesTransform.GetComponent<Renderer>();
-            if (spawnedClothesRenderer != null)
+            Renderer spawnedPrefabRenderer = spawnedPrefabTransform.GetComponent<Renderer>();
+            if (spawnedPrefabRenderer != null)
             {
-                spawnedClothesRenderer.material.mainTexture = clothesRenderer.material.mainTexture;
-                spawnedClothesRenderer.material.color = clothesRenderer.material.color;
+                spawnedPrefabRenderer.material.mainTexture = clothesRenderer.material.mainTexture;
+                spawnedPrefabRenderer.material.color = clothesRenderer.material.color;
             }
         }
 
         count++;
+        Destroy(PlayerInteractions.heldItem.gameObject);
+    }
+
+    void SpawnItem()
+    {
+        Vector3 spawnPosition = spawnPoint.position + new Vector3(0, 0, count);
+        GameObject spawnedPrefab = Instantiate(prefab, spawnPosition, Quaternion.identity);
+        spawnedPrefab.transform.SetParent(spawnPoint);
+        count+=2.7f;
         Destroy(PlayerInteractions.heldItem.gameObject);
     }
 
@@ -94,8 +105,14 @@ public class Container : Interactable, ITaskProvider
             }
             else if ((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
             {
-                SpawnItem();
+                PlaceClothes();
                 storedItems.Add(PlayerInteractions.heldItem.gameObject);
+                PlayerInteractions.heldItem = null;
+            }
+            else if((containerType == ContainerType.gudang && itemData.category == ItemData.ItemCategory.Box))
+            {
+                SpawnItem();
+                storedItems.Add(PlayerInteractions.heldItem.gameObject.gameObject);
                 PlayerInteractions.heldItem = null;
             }
         }

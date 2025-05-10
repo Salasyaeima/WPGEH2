@@ -6,7 +6,8 @@ public class ItemData : MonoBehaviour
     {
         Toy,
         Clothes,
-        Book
+        Book,
+        Box
     }
 
     public ItemCategory category;
