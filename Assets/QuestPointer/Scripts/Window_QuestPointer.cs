@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class Window_QuestPointer : MonoBehaviour
 {
-    [SerializeField] private Camera uiCamera;
-    [SerializeField] private Sprite arrowSprite;
-    [SerializeField] private Sprite crossSprite;
-    [SerializeField] private Transform target;
+    [SerializeField] Camera uiCamera;
+    [SerializeField] Sprite arrowSprite;
+    [SerializeField] Sprite crossSprite;
+    [SerializeField] Transform target;
 
-    private Vector3 targetPosition;
-    private RectTransform pointerRectTransform;
-    private Image pointerImage;
-    private bool isActive = false;
-    private Canvas canvas;
+    Vector3 targetPosition;
+    RectTransform pointerRectTransform;
+    Image pointerImage;
+    bool isActive = false;
+    Canvas canvas;
 
-    private void Awake()
+    void Awake()
     {
         canvas = GetComponentInParent<Canvas>();
         pointerRectTransform = transform.Find("Pointer").GetComponent<RectTransform>();
@@ -37,7 +37,7 @@ public class Window_QuestPointer : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         if (target != null)
         {
@@ -49,7 +49,7 @@ public class Window_QuestPointer : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         if (target != null && canvas != null)
         {

@@ -9,16 +9,27 @@ public class SleepyBlinkEffect : MonoBehaviour
     [SerializeField] Image eyelidBottom;
     [SerializeField] Image darkOverlay;
     [SerializeField] PostProcessVolume postProcessVolume;
+    [SerializeField] float delayBeforeFade = 5f;
+    [SerializeField] float fadeToBlackDuration = 2f;
+    [SerializeField] float resetDelay = 3f;
     Vignette vignette;
     DepthOfField depthOfField;
-    bool isBlinking = false;
+    bool isBlinking = true;
     float blinkTimer = 0f;
+    float sleepTimer = 0f;
+    float fadeTimer = 0f;
+    float resetTimer = 0f;
+    bool isFadingToBlack = false;
+    bool isFullyBlack = false;
+    bool startSleepCountdown = false;
+    bool startResetCountdown = false;
 
     float maxEyelidDistance;
     [SerializeField] float blinkSpeed = 1f;
 
     void Start()
     {
+        isBlinking = true;
         maxEyelidDistance = Screen.height / 2f;
 
 
@@ -65,23 +76,79 @@ public class SleepyBlinkEffect : MonoBehaviour
                 Debug.LogWarning("DepthOfField effect not found in PostProcessVolume profile.");
             }
         }
+    }
 
-        string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "CutScene")
-        {
-            isBlinking = true;
-        }
+    public void StartFadeToBlack()
+    {
+        startSleepCountdown = true;
+        isBlinking = true;
+        sleepTimer = 0f;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (startSleepCountdown)
         {
-            isBlinking = !isBlinking;
-            if (!isBlinking) blinkTimer = 0f;
+            sleepTimer += Time.deltaTime;
+            if (sleepTimer >= delayBeforeFade && !isFadingToBlack)
+            {
+                isFadingToBlack = true;
+                fadeTimer = 0f;
+            }
         }
 
-        if (isBlinking)
+        if (isFadingToBlack)
+        {
+            fadeTimer += Time.deltaTime;
+            float fadeAmount = fadeTimer / fadeToBlackDuration;
+
+            if (darkOverlay)
+            {
+                darkOverlay.enabled = true;
+                Color c = darkOverlay.color;
+                c.a = Mathf.Lerp(0f, 1f, fadeAmount);
+                darkOverlay.color = c;
+            }
+
+            if (fadeTimer >= fadeToBlackDuration)
+            {
+                isFadingToBlack = false;
+                isFullyBlack = true;
+                startResetCountdown = true;
+                if (eyelidTop)
+                {
+                    eyelidTop.enabled = false;
+                }
+                if (eyelidBottom)
+                {
+                    eyelidBottom.enabled = false;
+                }
+                if (darkOverlay)
+                {
+                    Color c = darkOverlay.color;
+                    c.a = 1f;
+                    darkOverlay.color = c;
+                }
+                Debug.Log("SleepyBlinkEffect: Screen is fully black");
+            }
+        }
+
+        if (startResetCountdown)
+        {
+            resetTimer += Time.deltaTime;
+            Debug.Log($"SleepyBlinkEffect: resetTimer: {resetTimer}/{resetDelay}");
+            if (resetTimer >= resetDelay)
+            {
+                isBlinking = false;
+                isFullyBlack = false;
+                startResetCountdown = false;
+                startSleepCountdown = false;
+                ResetEffects();
+                Debug.Log("SleepyBlinkEffect: Effects reset, mata terbuka");
+            }
+        }
+
+        if (isBlinking && !isFadingToBlack && !isFullyBlack)
         {
             blinkTimer += Time.deltaTime * blinkSpeed;
             float blinkAmount = Mathf.PingPong(blinkTimer, 1f);
@@ -118,7 +185,7 @@ public class SleepyBlinkEffect : MonoBehaviour
                 depthOfField.focusDistance.value = Mathf.Lerp(depthOfField.focusDistance.value, 5f, Time.deltaTime * 2f);
             }
         }
-        else
+        else if (!isFullyBlack)
         {
             if (eyelidTop)
             {
@@ -147,5 +214,55 @@ public class SleepyBlinkEffect : MonoBehaviour
                 depthOfField.focusDistance.value = Mathf.Lerp(depthOfField.focusDistance.value, 10f, Time.deltaTime * 5f);
             }
         }
+
+        if (isFullyBlack)
+        {
+            if (darkOverlay)
+            {
+                Color c = darkOverlay.color;
+                c.a = 1f;
+                darkOverlay.color = c;
+            }
+        }
+    }
+
+    void ResetEffects()
+    {
+        isBlinking = false;
+        isFullyBlack = false;
+        sleepTimer = 0f;
+        fadeTimer = 0f;
+        blinkTimer = 0f;
+        resetTimer = 0f;
+
+        if (eyelidTop)
+        {
+            eyelidTop.enabled = false;
+            eyelidTop.rectTransform.anchoredPosition = new Vector2(0, maxEyelidDistance);
+        }
+        if (eyelidBottom)
+        {
+            eyelidBottom.enabled = false;
+            eyelidBottom.rectTransform.anchoredPosition = new Vector2(0, -maxEyelidDistance);
+        }
+        if (darkOverlay)
+        {
+            darkOverlay.enabled = false;
+            Color c = darkOverlay.color;
+            c.a = 0f;
+            darkOverlay.color = c;
+        }
+
+        if (vignette)
+        {
+            vignette.intensity.value = 0f;
+        }
+        if (depthOfField)
+        {
+            depthOfField.aperture.value = 32f;
+            depthOfField.focusDistance.value = 10f;
+        }
+
+        gameObject.SetActive(false);
     }
 }

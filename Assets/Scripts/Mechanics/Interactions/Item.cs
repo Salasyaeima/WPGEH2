@@ -19,7 +19,7 @@ public class Item : Interactable
     {
         if (isHeld == false)
         {
-            return "Press {E} to interact.";
+            return "Press Left Mouse Button to interact.";
         }
         else
         {
