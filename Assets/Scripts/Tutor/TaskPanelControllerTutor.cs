@@ -10,9 +10,13 @@ public class TaskPanelControllerTutor : MonoBehaviour
     [SerializeField] GameObject panelProgress;
     [SerializeField] GameObject intruction2;
     [SerializeField] GameObject tutorControl;
-
+    [SerializeField] Container wardrobeContainer;
+    [SerializeField] TextDialogChild textDialogChild;
+    [SerializeField] GameObject blinkController;
+    bool hasSeenTasks = false;
     CanvasGroup canvasGroup;
     bool isPanelOpen = false;
+    bool hasProcessedFullContainer = false;
 
     void Start()
     {
@@ -27,6 +31,16 @@ public class TaskPanelControllerTutor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && taskTutorialTake.isDone)
         {
             TogglePanel();
+        }
+
+        if (wardrobeContainer != null &&
+       wardrobeContainer.containerType == Container.ContainerType.wardrobe &&
+       wardrobeContainer.storedItems.Count >= wardrobeContainer.maxCapacity &&
+            !hasProcessedFullContainer)
+        {
+            hasProcessedFullContainer = true;
+            infoText.text = "";
+            StartCoroutine(ContinueThenNext());
         }
     }
 
@@ -43,10 +57,14 @@ public class TaskPanelControllerTutor : MonoBehaviour
         {
             taskPanel.SetActive(false);
             infoText.text = "";
-            panelProgress.SetActive(true);
-            intruction2.SetActive(true);
 
-            StartCoroutine(ActivateTutorControlWithDelay(2f));
+            if (!hasSeenTasks)
+            {
+                StartCoroutine(ActivateTutorControlWithDelay(2f));
+                intruction2.SetActive(true);
+                panelProgress.SetActive(true);
+                hasSeenTasks = true;
+            }
         }
     }
 
@@ -63,8 +81,16 @@ public class TaskPanelControllerTutor : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        infoText.text = "Selesaikan tugas membersihkan mainan";
+        infoText.text = "Selesaikan tugas memasukkan baju";
         PlayerInteractions.canInteractWithClothes = true;
     }
+
+    IEnumerator ContinueThenNext()
+    {
+        textDialogChild.ResumeDisplayingText();
+        yield return new WaitForSeconds(3f);
+        blinkController.SetActive(true);
+    }
+
 
 }

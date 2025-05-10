@@ -210,7 +210,6 @@ namespace StarterAssets
 			float sprintFactor = SprintCurve.Evaluate(curveT);
 			float targetSpeed = Mathf.Lerp(MoveSpeed, SprintSpeed, sprintFactor);
 
-			Debug.Log("Speed" + targetSpeed);
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
