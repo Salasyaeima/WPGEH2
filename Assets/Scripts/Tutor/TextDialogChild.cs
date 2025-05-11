@@ -242,7 +242,6 @@ public class TextDialogChild : MonoBehaviour
     {
         if (isDisplaying)
         {
-            Debug.Log($"{gameObject.name}: ResumeDisplayingText called, but already displaying");
             return;
         }
 
