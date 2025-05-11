@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using StarterAssets;
 
 public class SleepyBlinkEffect : MonoBehaviour
 {
@@ -9,9 +11,11 @@ public class SleepyBlinkEffect : MonoBehaviour
     [SerializeField] Image eyelidBottom;
     [SerializeField] Image darkOverlay;
     [SerializeField] PostProcessVolume postProcessVolume;
+    [SerializeField] GameObject playerCapsule;
     [SerializeField] float delayBeforeFade = 5f;
     [SerializeField] float fadeToBlackDuration = 2f;
     [SerializeField] float resetDelay = 3f;
+    [SerializeField] Animator cameraWakesUp;
     Vignette vignette;
     DepthOfField depthOfField;
     bool isBlinking = true;
@@ -23,7 +27,7 @@ public class SleepyBlinkEffect : MonoBehaviour
     bool isFullyBlack = false;
     bool startSleepCountdown = false;
     bool startResetCountdown = false;
-
+    bool hasFadedToBlack = false;
     float maxEyelidDistance;
     [SerializeField] float blinkSpeed = 1f;
 
@@ -80,9 +84,17 @@ public class SleepyBlinkEffect : MonoBehaviour
 
     public void StartFadeToBlack()
     {
+        if (hasFadedToBlack) return;
+
         startSleepCountdown = true;
         isBlinking = true;
         sleepTimer = 0f;
+        Transform body = playerCapsule.transform.Find("PlayerCameraRoot");
+        if (body != null)
+        {
+            body.localEulerAngles = new Vector3(0f, 0f, 0f);
+        }
+        playerCapsule.SetActive(false);
     }
 
     void Update()
@@ -129,14 +141,12 @@ public class SleepyBlinkEffect : MonoBehaviour
                     c.a = 1f;
                     darkOverlay.color = c;
                 }
-                Debug.Log("SleepyBlinkEffect: Screen is fully black");
             }
         }
 
         if (startResetCountdown)
         {
             resetTimer += Time.deltaTime;
-            Debug.Log($"SleepyBlinkEffect: resetTimer: {resetTimer}/{resetDelay}");
             if (resetTimer >= resetDelay)
             {
                 isBlinking = false;
@@ -144,7 +154,6 @@ public class SleepyBlinkEffect : MonoBehaviour
                 startResetCountdown = false;
                 startSleepCountdown = false;
                 ResetEffects();
-                Debug.Log("SleepyBlinkEffect: Effects reset, mata terbuka");
             }
         }
 
@@ -230,6 +239,7 @@ public class SleepyBlinkEffect : MonoBehaviour
     {
         isBlinking = false;
         isFullyBlack = false;
+        isFadingToBlack = false;
         sleepTimer = 0f;
         fadeTimer = 0f;
         blinkTimer = 0f;
@@ -263,6 +273,34 @@ public class SleepyBlinkEffect : MonoBehaviour
             depthOfField.focusDistance.value = 10f;
         }
 
-        gameObject.SetActive(false);
+        StartCoroutine(TriggerWakeUp());
+    }
+
+    IEnumerator TriggerWakeUp()
+    {
+        yield return new WaitForSeconds(2f);
+        cameraWakesUp.Play("cameraWakesUp");
+        StartCoroutine(NonActiveCamera());
+    }
+
+    IEnumerator NonActiveCamera()
+    {
+        yield return new WaitForSeconds(10f);
+        playerCapsule.transform.position = new Vector3(-89, -3.86480188f, 135.710007f);
+        playerCapsule.transform.rotation = Quaternion.Euler(0f, 164f, 0f);
+        Transform body = playerCapsule.transform.Find("PlayerCameraRoot");
+        if (body != null)
+        {
+            body.localEulerAngles = new Vector3(0f, 0f, 0f);
+        }
+
+        FirstPersonController fpsController = playerCapsule.GetComponent<FirstPersonController>();
+        if (fpsController != null)
+        {
+            fpsController.ResetCinemachinePitch();
+        }
+
+        playerCapsule.SetActive(true);
+        cameraWakesUp.gameObject.SetActive(false);
     }
 }
