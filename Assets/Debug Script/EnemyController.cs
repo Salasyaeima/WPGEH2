@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Debug.Log(agent.hasPath);
-        if(agent.hasPath && agent.acceleration > 0)
+        if(agent.hasPath)
         {
             animator.SetBool("isIdle", false);
             if (lineOfSight.DetectedTarget != null || animator.GetFloat("isTowardsLastPos") > 0)
@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 180 * Time.deltaTime);
         }else if (!agent.hasPath)
         {
-            // animator.SetBool("isIdle", true);
+            animator.SetBool("isIdle", true);
         }
     }
 
