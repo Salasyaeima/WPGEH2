@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(agent.hasPath);
         if (agent.hasPath && agent.acceleration > 0)
         {
             animator.SetBool("isIdle", false);
@@ -40,7 +41,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (!agent.hasPath)
         {
-            // animator.SetBool("isIdle", true);
+            animator.SetBool("isIdle", true);
         }
     }
 

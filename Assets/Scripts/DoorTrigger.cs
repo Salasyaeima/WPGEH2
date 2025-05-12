@@ -10,7 +10,15 @@ public class DoorTrigger : MonoBehaviour
 
     [SerializeField] float openAngle = 90f;
     [SerializeField] float animationDuration = 1f;
+    [Header("The Center of Rotation")]
     [SerializeField] GameObject doorEngsel;
+    [Header("Trigger Collider Settings")]
+    [SerializeField] Vector3 colliderCenter;
+    [SerializeField] Vector3 colliderSizing;
+    [SerializeField] LayerMask detectionLayer;
+
+    private Collider currentOverlap;
+    private Collider previousOverlap;
  
     void Start()
     {
@@ -18,11 +26,36 @@ public class DoorTrigger : MonoBehaviour
         openRotation = closedRotation * Quaternion.Euler(0, 0, openAngle);
     }
 
+    void Update()
+    {
+        CheckDoorTriggerBox();
+    }
+
+    void CheckDoorTriggerBox()
+    {
+        Collider[] boxColliders = Physics.OverlapBox(transform.position + colliderCenter, colliderSizing/2, transform.rotation, detectionLayer);
+        currentOverlap = null;
+        if (boxColliders.Length > 0)
+        {
+            currentOverlap = boxColliders[0];
+            if (previousOverlap != currentOverlap)
+            {
+                if (!isAnimating)
+                {
+                    StartCoroutine(AnimateDoor());
+                }
+            }
+            previousOverlap = currentOverlap;
+            return;
+        }
+        previousOverlap = null;
+    }
+
     IEnumerator AnimateDoor()
     {
         isAnimating = true;
         float elapsed = 0f;
-        Quaternion startRotation = transform.rotation;
+        Quaternion startRotation = doorEngsel.transform.rotation;
         Quaternion targetRotation = isOpen ? closedRotation : openRotation;
 
         while (elapsed < animationDuration)
@@ -37,19 +70,9 @@ public class DoorTrigger : MonoBehaviour
         isAnimating = false;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnDrawGizmos()
     {
-        if (other.gameObject.CompareTag("Mother") && !isOpen && !isAnimating)
-        {
-            StartCoroutine(AnimateDoor());
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Mother") && isOpen && !isAnimating)
-        {
-            StartCoroutine(AnimateDoor());
-        }
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(transform.position + colliderCenter, colliderSizing); 
     }
 }
