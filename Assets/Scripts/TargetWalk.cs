@@ -100,17 +100,9 @@ public class TargetWalk : MonoBehaviour
 
         mother.position = Vector3.MoveTowards(mother.position, waypoints[currentWaypoint].position, moveSpeed * Time.deltaTime);
 
-        if (lastReachedWaypoint == 10)
+        if (lastReachedWaypoint == 10 && !hasTriggeredHandPhoneTransform)
         {
-            float totalDistance = Vector3.Distance(waypoints[10].position, waypoints[11].position);
-            float currentDistance = Vector3.Distance(mother.position, waypoints[10].position);
-            float progress = currentDistance / totalDistance;
-
-            if (progress >= 0.237f && !hasTriggeredHandPhoneTransform)
-            {
-                SetHandPhoneTransform();
-                hasTriggeredHandPhoneTransform = true;
-            }
+            StartCoroutine(TriggerHandPhoneAfterDelay(0.58f));
         }
         if (Vector3.Distance(mother.position, waypoints[currentWaypoint].position) < 0.1f)
         {
@@ -131,6 +123,16 @@ public class TargetWalk : MonoBehaviour
                 currentWaypoint++;
                 StartMovingToWaypoint(currentWaypoint);
             }
+        }
+    }
+
+    IEnumerator TriggerHandPhoneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (!hasTriggeredHandPhoneTransform)
+        {
+            SetHandPhoneTransform();
+            hasTriggeredHandPhoneTransform = true;
         }
     }
 
