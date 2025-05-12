@@ -23,21 +23,22 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(agent.hasPath);
-        if(agent.hasPath && agent.acceleration > 0)
+        if (agent.hasPath && agent.acceleration > 0)
         {
             animator.SetBool("isIdle", false);
             if (lineOfSight.DetectedTarget != null || animator.GetFloat("isTowardsLastPos") > 0)
             {
                 animator.SetFloat("SpeedMagnitude", 1, 0.5f, Time.deltaTime);
-            }else
+            }
+            else
             {
                 animator.SetFloat("SpeedMagnitude", 0, -0.5f, Time.deltaTime);
             }
 
-            dir = (agent.steeringTarget + new Vector3(0f, transform.position.y - agent.steeringTarget.y ,0f) - transform.position).normalized;
+            dir = (agent.steeringTarget + new Vector3(0f, transform.position.y - agent.steeringTarget.y, 0f) - transform.position).normalized;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 180 * Time.deltaTime);
-        }else if (!agent.hasPath)
+        }
+        else if (!agent.hasPath)
         {
             // animator.SetBool("isIdle", true);
         }
@@ -50,7 +51,7 @@ public class EnemyController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if(agent.hasPath)
+        if (agent.hasPath)
             Debug.DrawRay(transform.position, dir);
     }
 }

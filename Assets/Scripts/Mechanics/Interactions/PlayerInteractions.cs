@@ -11,7 +11,7 @@ public class PlayerInteractions : MonoBehaviour
     public TMPro.TextMeshProUGUI interactionText;
     public GameObject interactionHoldGo;
     public UnityEngine.UI.Image holdProgress;
-    public static Item heldItem = null;
+    public static Interactable heldItem = null;
     public static bool canInteractWithClothes = false;
     Interactable interactable = null;
     bool successfullHit = false;
@@ -69,15 +69,65 @@ public class PlayerInteractions : MonoBehaviour
         }
 
 
-        if (heldItem != null && Input.GetMouseButtonUp(0))
+        if (heldItem != null)
         {
-            StartCoroutine(delayDrop());
+            if (heldItem.interactionType == Interactable.InteractionType.Item && Input.GetMouseButtonUp(0))
+            {
+                StartCoroutine(delayDrop());
+            }
+            else if (heldItem.interactionType == Interactable.InteractionType.Click && Input.GetKeyDown(KeyCode.E) && !successfullHit)
+            {
+                StartCoroutine(delayDrop());
+            }
         }
 
-        if (!successfullHit || !isInteractionEnabled)
+        if (heldItem is Broom broom)
+        {
+            Animator broomAnimator = broom.GetBroomAnimator();
+
+            bool isSweeping = Input.GetMouseButton(0);
+
+            if (broomAnimator != null)
+            {
+                broomAnimator.SetBool("IsSweeping", isSweeping);
+            }
+
+            if (isSweeping)
+            {
+                Transform sweepPoint = broom.GetSweepPoint();
+                float sweepRadius = broom.GetSweepRadius();
+                LayerMask dirtLayer = broom.GetDirtLayer();
+
+                if (sweepPoint != null)
+                {
+                    Collider[] hits = Physics.OverlapSphere(sweepPoint.position, sweepRadius, dirtLayer);
+                    foreach (Collider dirtCollider in hits)
+                    {
+                        if (dirtCollider.CompareTag("Dirt"))
+                        {
+                            Destroy(dirtCollider.gameObject, 2f);
+                            Debug.Log("Cleaned dirt: " + dirtCollider.name);
+                        }
+                    }
+                }
+            }
+
+            if (!successfullHit || !isInteractionEnabled)
+            {
+                interactionText.gameObject.SetActive(false);
+                interactionHoldGo.SetActive(false);
+            }
+        }
+
+        if (!successfullHit)
         {
             interactionText.gameObject.SetActive(false);
             interactionHoldGo.SetActive(false);
+        }
+
+        if (heldItem is Broom)
+        {
+            interactionText.gameObject.SetActive(true);
         }
 
     }

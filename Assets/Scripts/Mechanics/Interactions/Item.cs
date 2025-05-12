@@ -56,7 +56,7 @@ public class Item : Interactable
         transform.SetParent(playerHand);
     }
 
-    public void Drop()
+    public override void Drop()
     {
         transform.SetParent(null);
         rb.isKinematic = false;
