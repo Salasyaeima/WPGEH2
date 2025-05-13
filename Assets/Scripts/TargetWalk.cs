@@ -16,7 +16,7 @@ public class TargetWalk : MonoBehaviour
 
     [SerializeField] Transform mother;
     [SerializeField] GameObject anak;
-    [SerializeField] Transform[] waypoints;
+    [SerializeField] WaypointData[] waypoints;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float rotationSpeed = 5f;
     [SerializeField] TextDisplayManager textDisplayManager;
@@ -28,11 +28,7 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] Transform HandPhone;
 
-    Vector3 pickupItemPosition;
-    [SerializeField] Quaternion pickupItemRotation = new Quaternion(0.39892f, 0.84423f, 0.15338f, 0.32344f); // Ganti dengan nilai lokal yang benar
-    [SerializeField] Vector3 pickupItemScale = new Vector3(0.21f, 0.21f, 0.21f); // Ganti dengan nilai lokal yang benar
-
-    public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp, Idleee };
+    public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp, Idleee }
     CharacterState currentState = CharacterState.Idlee;
 
     bool hasTriggeredHandPhoneTransform = false;
@@ -42,7 +38,14 @@ public class TargetWalk : MonoBehaviour
     bool isMoving = false;
     bool autoMove = false;
     Coroutine pickupCoroutine;
+    Vector3 targetPosition;
 
+    static readonly int IdleeHash = Animator.StringToHash("Idlee");
+    static readonly int WalkingHash = Animator.StringToHash("Walking");
+    static readonly int LookingAroundHash = Animator.StringToHash("LookingAround");
+    static readonly int AngryHash = Animator.StringToHash("Angry");
+    static readonly int PickUpHash = Animator.StringToHash("Pick Up");
+    static readonly int IdleeeHash = Animator.StringToHash("Idleee");
 
     void Awake()
     {
@@ -87,24 +90,16 @@ public class TargetWalk : MonoBehaviour
         if (handBone == null) Debug.LogWarning("Hand bone not assigned for pickup.");
         if (modelUpdate == null || modelMarah == null) Debug.LogWarning("Model references not assigned.");
         if (HandPhone == null) Debug.LogWarning("HandPhone not assigned.");
-        // if (HandPhoneLayar == null) Debug.LogWarning("HandPhoneLayar not assigned.");
     }
 
     void MoveToWaypoint()
     {
         if (currentWaypoint >= waypoints.Length) return;
 
-        Vector3 direction = (waypoints[currentWaypoint].position - mother.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        mother.rotation = Quaternion.Slerp(mother.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+        Vector3 direction = targetPosition - mother.position;
+        float sqrDistance = direction.sqrMagnitude;
 
-        mother.position = Vector3.MoveTowards(mother.position, waypoints[currentWaypoint].position, moveSpeed * Time.deltaTime);
-
-        if (lastReachedWaypoint == 10 && !hasTriggeredHandPhoneTransform)
-        {
-            StartCoroutine(TriggerHandPhoneAfterDelay(0.58f));
-        }
-        if (Vector3.Distance(mother.position, waypoints[currentWaypoint].position) < 0.1f)
+        if (sqrDistance < 0.01f)
         {
             isMoving = false;
             lastReachedWaypoint = currentWaypoint;
@@ -113,16 +108,28 @@ public class TargetWalk : MonoBehaviour
             {
                 videoPlayer.SetDirectAudioMute(0, false);
             }
+
             if (lastReachedWaypoint == 6 || lastReachedWaypoint == 7 || lastReachedWaypoint == 11 || lastReachedWaypoint == 14)
             {
                 StopAutoMove();
             }
-
             else if (autoMove && currentWaypoint + 1 < waypoints.Length)
             {
                 currentWaypoint++;
                 StartMovingToWaypoint(currentWaypoint);
             }
+        }
+        else
+        {
+            direction = direction.normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            mother.rotation = Quaternion.Slerp(mother.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+            mother.position = Vector3.MoveTowards(mother.position, targetPosition, moveSpeed * Time.deltaTime);
+
+            // if (lastReachedWaypoint == 10 && !hasTriggeredHandPhoneTransform)
+            // {
+            //     StartCoroutine(TriggerHandPhoneAfterDelay(0.58f));
+            // }
         }
     }
 
@@ -144,15 +151,17 @@ public class TargetWalk : MonoBehaviour
             Debug.LogError($"Waypoint index {targetWaypoint} out of range. Total waypoints: {waypoints.Length}");
             return;
         }
+
         currentWaypoint = targetWaypoint;
+        targetPosition = waypoints[currentWaypoint].waypoint.position;
         isMoving = true;
         autoMove = true;
 
-        motherAnimator.Play("Walking");
+        SetState(CharacterState.Walking);
 
         if (textDisplayManager != null)
         {
-            textDisplayManager?.StopDisplayingText();
+            textDisplayManager.StopDisplayingText();
         }
     }
 
@@ -160,6 +169,13 @@ public class TargetWalk : MonoBehaviour
     {
         isMoving = false;
         autoMove = false;
+
+        if (pickupCoroutine != null)
+        {
+            StopCoroutine(pickupCoroutine);
+            pickupCoroutine = null;
+        }
+
         if (lastReachedWaypoint == 6)
         {
             SetState(CharacterState.LookingAround);
@@ -168,7 +184,6 @@ public class TargetWalk : MonoBehaviour
         {
             SetState(CharacterState.Idlee);
         }
-
         else if (lastReachedWaypoint == 11)
         {
             Vector3 lookDirection = lookTarget.transform.position - mother.transform.position;
@@ -185,7 +200,6 @@ public class TargetWalk : MonoBehaviour
         }
 
         textDisplayManager?.StartDisplayingText();
-
     }
 
     IEnumerator WaitAndContinue(float waitTime)
@@ -213,36 +227,33 @@ public class TargetWalk : MonoBehaviour
         pickupCoroutine = StartCoroutine(PickupItemWithDelay(1f));
     }
 
-
-
     void SetState(CharacterState newState)
     {
         currentState = newState;
-        string animation = currentState switch
+        int animationHash = currentState switch
         {
-            CharacterState.Walking => "Walking",
-            CharacterState.LookingAround => "LookingAround",
-            CharacterState.Angry => "Angry",
-            CharacterState.PickingUp => "Pick Up",
-            CharacterState.Idleee => "Idleee",
-            _ => "Idlee"
+            CharacterState.Walking => WalkingHash,
+            CharacterState.LookingAround => LookingAroundHash,
+            CharacterState.Angry => AngryHash,
+            CharacterState.PickingUp => PickUpHash,
+            CharacterState.Idleee => IdleeeHash,
+            _ => IdleeHash
         };
-        motherAnimator.Play(animation);
+        motherAnimator.CrossFade(animationHash, 0.1f); // Transisi halus
     }
 
-    void SetHandPhoneTransform()
+    public void SetHandPhoneTransform()
     {
         if (HandPhone == null)
         {
-            Debug.LogWarning("HandPhone or HandPhoneLayar not assigned!");
+            Debug.LogWarning("HandPhone not assigned!");
             return;
         }
-        anak.SetActive(false);
 
+        anak.SetActive(false);
         HandPhone.position = new Vector3(-32.40999984741211f, -1.3025000095367432f, 124.66999816894531f);
         HandPhone.rotation = new Quaternion(0.0915236547589302f, -0.6859381794929504f, -0.09547333419322968f, 0.7155396938323975f);
         HandPhone.localScale = new Vector3(1.0f, 0.970300018787384f, 1.1936999559402466f);
-
     }
 
     IEnumerator PickupItemWithDelay(float delay)
@@ -255,10 +266,8 @@ public class TargetWalk : MonoBehaviour
             pickupItem.transform.localPosition = Vector3.zero;
             pickupItem.transform.localRotation = Quaternion.identity;
 
-            pickupItemPosition = pickupItem.transform.position;
             videoPlayer.SetDirectAudioMute(0, true);
             yield return StartCoroutine(Idle(1.5f));
-
         }
         else
         {
@@ -271,13 +280,12 @@ public class TargetWalk : MonoBehaviour
     IEnumerator Idle(float delay)
     {
         yield return new WaitForSeconds(delay);
+
         handBone.localPosition = new Vector3(0.00115f, 0.00044f, -0.00059f);
         handBone.localRotation = new Quaternion(0.673387945f, -0.00628960039f, -0.00370098976f, 0.739253342f);
         handBone.localScale = new Vector3(0.00208880496f, 0.00175327586f, 0.00212146551f);
 
-
         Vector3 lookDirection = lookTarget.transform.position - mother.transform.position;
-
         if (lookDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
@@ -293,16 +301,6 @@ public class TargetWalk : MonoBehaviour
         SetState(CharacterState.Idleee);
     }
 
-    public bool IsMoving()
-    {
-        return isMoving;
-    }
-
-    public int GetCurrentWaypoint()
-    {
-        return currentWaypoint;
-    }
-
     public void ShowAngryModel()
     {
         modelUpdate.SetActive(false);
@@ -312,4 +310,7 @@ public class TargetWalk : MonoBehaviour
 
         SetState(CharacterState.Idleee);
     }
+
+    public bool IsMoving() => isMoving;
+    public int GetCurrentWaypoint() => currentWaypoint;
 }
