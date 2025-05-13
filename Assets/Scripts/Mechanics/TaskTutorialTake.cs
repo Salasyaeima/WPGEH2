@@ -5,7 +5,7 @@ public class TaskTutorialTake : Interactable
 {
     [SerializeField] GameObject taskList;
     [SerializeField] GameObject windowQuest;
-    [SerializeField] TextMeshProUGUI taskTutorial;
+    [SerializeField] TextDialogChild taskTutorial;
     public bool isDone = false;
 
     public override string Description()
@@ -25,6 +25,7 @@ public class TaskTutorialTake : Interactable
         isDone = true;
         taskList.SetActive(false);
         windowQuest.SetActive(false);
-        taskTutorial.text = "* Tekan [T] untuk melihat tugas";
+        taskTutorial.intruksi.text = "Tekan [T] untuk melihat tugas";
+        taskTutorial.playerInteractions.canInteract = false;
     }
 }

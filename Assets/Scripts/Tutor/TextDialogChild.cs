@@ -5,8 +5,13 @@ using Unity.AppUI.UI;
 
 public class TextDialogChild : MonoBehaviour
 {
-    [SerializeField] Window_QuestPointer windowQuest;
+    [SerializeField] GameObject mother;
+    public Window_QuestPointer windowQuest;
     [SerializeField] Transform newTargetTransform;
+    [SerializeField] private Transform[] targetTransforms;
+    [SerializeField] GameObject cameraPendukung;
+    [SerializeField] GameObject blinkController;
+    public PlayerInteractions playerInteractions;
     [SerializeField] string[] texts;
     [SerializeField] float textDuration = 2f;
     public TextMeshProUGUI intruksi;
@@ -49,13 +54,6 @@ public class TextDialogChild : MonoBehaviour
             {
                 timer += Time.unscaledDeltaTime;
                 if (timer >= textDuration)
-                {
-                    NextText();
-                }
-            }
-            else
-            {
-                if (Input.GetMouseButtonDown(0))
                 {
                     NextText();
                 }
@@ -138,6 +136,7 @@ public class TextDialogChild : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         intruksi.enabled = true;
+        playerInteractions.canInteract = true;
         windowQuest.gameObject.SetActive(true);
     }
     public IEnumerator ResumeInstruksi()
@@ -149,6 +148,11 @@ public class TextDialogChild : MonoBehaviour
     public void NextText()
     {
         currentTextIndex++;
+
+        if (currentTextIndex != 5 && currentTextIndex != 7 && currentTextIndex != 10 && currentTextIndex != 21)
+        {
+            playerInteractions.canInteract = false;
+        }
 
         if (currentTextIndex == 5)
         {
@@ -162,7 +166,10 @@ public class TextDialogChild : MonoBehaviour
             StartCoroutine(ShowInstruksiAfterDelay());
             return;
         }
-
+        else if (currentTextIndex == 8)
+        {
+            blinkController.SetActive(true);
+        }
         else if (currentTextIndex == 9)
         {
             ResumeDisplayingText();
@@ -170,7 +177,35 @@ public class TextDialogChild : MonoBehaviour
         else if (currentTextIndex == 10)
         {
             PauseDisplayingText();
+            intruksi.enabled = true;
+            playerInteractions.canInteract = true;
             intruksi.text = "Pergi Ke tempat tidur";
+            newTargetTransform = targetTransforms[0];
+            ChangeTargetTransform();
+        }
+        else if (currentTextIndex == 14)
+        {
+            mother.SetActive(true);
+        }
+        else if (currentTextIndex == 15)
+        {
+            cameraPendukung.SetActive(true);
+            StartCoroutine(DisableCameraAfterSeconds(1f));
+        }
+        else if (currentTextIndex == 17)
+        {
+            intruksi.enabled = true;
+            intruksi.text = "Sembunyi Ke Kardus";
+            playerInteractions.canInteract = true;
+            newTargetTransform = targetTransforms[1];
+            ChangeTargetTransform();
+            windowQuest.gameObject.SetActive(true);
+            PauseDisplayingText();
+        }
+        else if (currentTextIndex == 21)
+        {
+            PauseDisplayingText();
+            // mother.GetComponent<MotherTutorial>().StartMovingToWaypoint()
         }
 
         if (currentTextIndex < texts.Length && textDisplay != null)
@@ -184,10 +219,17 @@ public class TextDialogChild : MonoBehaviour
         }
     }
 
+    IEnumerator DisableCameraAfterSeconds(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        cameraPendukung.SetActive(false);
+    }
+
     IEnumerator ShowInstruksiAfterDelay()
     {
         yield return new WaitForSeconds(2f);
         intruksi.text = "Ambil Tugas!";
+        playerInteractions.canInteract = true;
         intruksi.enabled = true;
         ChangeTargetTransform();
     }

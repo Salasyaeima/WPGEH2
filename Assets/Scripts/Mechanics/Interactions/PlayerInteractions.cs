@@ -13,6 +13,7 @@ public class PlayerInteractions : MonoBehaviour
     public UnityEngine.UI.Image holdProgress;
     public static Interactable heldItem = null;
     public static bool canInteractWithClothes = false;
+    public bool canInteract = false;
     Interactable interactable = null;
     bool successfullHit = false;
     int interactableMask;
@@ -41,12 +42,22 @@ public class PlayerInteractions : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().name == "RoomsTutorial")
                 {
-                    isInteractionEnabled = interactable is TaskTutorialTake ||
-                           (interactable is Item item &&
-                            item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
-                           (interactable is Interactable &&
-                            interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes) || (interactable is Interactable &&
-                            interactable.GetComponent<Door>() || (interactable is Interactable && interactable.GetComponent<BedInterect>()));
+                    if (canInteract)
+                    {
+                        isInteractionEnabled =
+                            (interactable is TaskTutorialTake) ||
+                            (interactable is Item item &&
+                                item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
+                            (interactable is Interactable &&
+                                interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes) ||
+                            (interactable is Interactable && interactable.GetComponent<Door>()) ||
+                            (interactable is Interactable && interactable.GetComponent<BedInterect>() && canInteractWithClothes) ||
+                            (interactable is Interactable && interactable.GetComponent<HidingMechanism>());
+                    }
+                    else
+                    {
+                        isInteractionEnabled = false;
+                    }
                 }
 
                 if (isInteractionEnabled)
@@ -66,6 +77,7 @@ public class PlayerInteractions : MonoBehaviour
         else
         {
             successfullHit = false;
+            isInteractionEnabled = false;
         }
 
 

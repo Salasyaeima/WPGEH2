@@ -16,6 +16,7 @@ public class SleepyBlinkEffect : MonoBehaviour
     [SerializeField] float fadeToBlackDuration = 2f;
     [SerializeField] float resetDelay = 3f;
     [SerializeField] Animator cameraWakesUp;
+    public TextDialogChild textDialogChild;
     Vignette vignette;
     DepthOfField depthOfField;
     bool isBlinking = true;
@@ -35,7 +36,6 @@ public class SleepyBlinkEffect : MonoBehaviour
     {
         isBlinking = true;
         maxEyelidDistance = Screen.height / 2f;
-
 
         if (eyelidTop != null)
         {
@@ -302,5 +302,12 @@ public class SleepyBlinkEffect : MonoBehaviour
 
         playerCapsule.SetActive(true);
         cameraWakesUp.gameObject.SetActive(false);
+        StartCoroutine(ResumeText());
+    }
+
+    IEnumerator ResumeText()
+    {
+        yield return new WaitForSeconds(1f);
+        textDialogChild.ResumeDisplayingText();
     }
 }

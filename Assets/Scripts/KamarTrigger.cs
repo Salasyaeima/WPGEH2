@@ -9,6 +9,8 @@ public class KamarTrigger : MonoBehaviour
         {
             StartCoroutine(textDialog.ResumeInstruksi());
             textDialog.intruksi.enabled = false;
+            textDialog.playerInteractions.canInteract = false;
+            textDialog.windowQuest.gameObject.SetActive(false);
         }
     }
 }
