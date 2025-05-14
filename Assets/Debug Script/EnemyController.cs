@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (agent.hasPath && agent.acceleration > 0)
+        if (agent.hasPath)
         {
             animator.SetBool("isIdle", false);
             if (lineOfSight.DetectedTarget != null || animator.GetFloat("isTowardsLastPos") > 0)
@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
             dir = (agent.steeringTarget + new Vector3(0f, transform.position.y - agent.steeringTarget.y, 0f) - transform.position).normalized;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 180 * Time.deltaTime);
         }
-        else if (!agent.hasPath)
+        else if (!agent.hasPath && animator.GetFloat("isTowardsLastPos") <= 0 && animator.GetFloat("PatrolMagnitude") <= 0 && animator.GetFloat("SpeedMagnitude") <= 0)
         {
             animator.SetBool("isIdle", true);
         }
