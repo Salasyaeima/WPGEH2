@@ -10,9 +10,8 @@ public class HidingMechanism : Interactable
     public string keyCode;
     [SerializeField]
     public bool isHiding;
-    private GameObject player;
     [SerializeField]
-    private GameObject enemy;
+    private GameObject player;
     [SerializeField]
     private CinemachineVirtualCamera playersCamera;
     [SerializeField]
@@ -25,12 +24,10 @@ public class HidingMechanism : Interactable
     [SerializeField]
     private float coolDown;
     public bool isCoolDown;
-    private LineOfSight lineOfSight;
 
     void Start()
     {
         thisCamera = GetComponentInChildren<CinemachineVirtualCamera>();
-        lineOfSight = enemy.GetComponent<LineOfSight>();
 
         SetCameraPriority(playersCamera, thisCamera);
         SetActiveModels(true, false);
@@ -101,7 +98,6 @@ public class HidingMechanism : Interactable
 
         player.transform.position = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z - 3f);
         player.transform.rotation = Quaternion.LookRotation(this.transform.forward);
-        Debug.Log("Exit Hide");
     }
 
     private void EnterHide()
@@ -110,7 +106,6 @@ public class HidingMechanism : Interactable
         SetCameraPriority(thisCamera, playersCamera);
 
         player.transform.position = this.transform.position;
-        Debug.Log("Enter Hide");
     }
 
     private void SwitchComponents(bool condition)

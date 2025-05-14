@@ -15118,26 +15118,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hiding Box
       objectReference: {fileID: 0}
-    - target: {fileID: 136291039557319945, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 764869006155171196, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8263798347470586164, guid: 98308f2b816b9fa44a24e8c12e200864, type: 3}
-    - target: {fileID: 886524670494809646, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3452158
-      objectReference: {fileID: 0}
-    - target: {fileID: 886524670494809646, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3452154
-      objectReference: {fileID: 0}
-    - target: {fileID: 886524670494809646, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3452158
-      objectReference: {fileID: 0}
     - target: {fileID: 886524670494809646, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.4376545
@@ -15178,30 +15158,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3467261379264753781, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: m_Priority
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4262738813609375965, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.518
-      objectReference: {fileID: 0}
-    - target: {fileID: 4414488967284507256, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8263798347470586164, guid: 98308f2b816b9fa44a24e8c12e200864, type: 3}
-    - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 1391487681}
     - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 543449882}
-    - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
-      propertyPath: behavior
-      value: 
-      objectReference: {fileID: 6026185145718736116, guid: 79fc47f47a121b04fae1fa00838c708c, type: 2}
     - target: {fileID: 8519986784188051910, guid: b192be8716e7e1044abcd8f6d5f6aac3, type: 3}
       propertyPath: playersCamera
       value: 
@@ -15982,6 +15942,10 @@ PrefabInstance:
       propertyPath: m_DefaultBlend.m_Time
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9018249871969862650, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_DefaultBlend.m_Style
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16502,6 +16466,7 @@ MonoBehaviour:
   interactionText: {fileID: 950518758}
   interactionHoldGo: {fileID: 458388421}
   holdProgress: {fileID: 458388423}
+  currentInteractionMode: 6
   canInteract: 0
 --- !u!4 &135756641613574981 stripped
 Transform:

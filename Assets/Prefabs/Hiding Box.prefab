@@ -79,8 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 0
   keyCode: e
-  player: {fileID: 0}
-  enemy: {fileID: 0}
+  isHiding: 0
   playersCamera: {fileID: 0}
   behavior: {fileID: 6026185145718736116, guid: 79fc47f47a121b04fae1fa00838c708c, type: 2}
   models:
@@ -138,7 +137,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 20
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
