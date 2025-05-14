@@ -9,6 +9,7 @@ public class HidingMechanism : Interactable
     [Header("Define the KeyCode for interactions")]
     public string keyCode;
     [SerializeField]
+    public bool isHiding;
     private GameObject player;
     [SerializeField]
     private GameObject enemy;
@@ -24,7 +25,6 @@ public class HidingMechanism : Interactable
     [SerializeField]
     private float coolDown;
     public bool isCoolDown;
-    private bool isHiding;
     private LineOfSight lineOfSight;
 
     void Start()
@@ -144,11 +144,11 @@ public class HidingMechanism : Interactable
 
     private void OnButtonCooldown()
     {
-        if(Input.GetKeyDown(keyCode) && timer >= coolDown)
+        if (Input.GetKeyDown(keyCode) && timer >= coolDown)
         {
-           isCoolDown = false;
-           timer = 0f;
-           return;
+            isCoolDown = false;
+            timer = 0f;
+            return;
         }
         isCoolDown = true;
     }

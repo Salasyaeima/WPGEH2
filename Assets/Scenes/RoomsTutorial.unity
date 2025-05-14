@@ -1471,6 +1471,17 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1143654862}
   m_SourcePrefab: {fileID: 100100000, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+--- !u!114 &542022928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8069064604534975777, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+  m_PrefabInstance: {fileID: 542022927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceeb7c4552eeca24885c6a9d48f34a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &543449882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -2924,7 +2935,7 @@ MonoBehaviour:
   panelProgress: {fileID: 1834811002}
   intruction2: {fileID: 227472029}
   tutorControl: {fileID: 1239494273}
-  wardrobeContainer: {fileID: 0}
+  wardrobeContainer: {fileID: 1220450655}
   textDialogChild: {fileID: 4039424907246016871}
   blinkController: {fileID: 1418240779}
 --- !u!4 &970515175
@@ -3549,6 +3560,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8742821572534964488, guid: 11a6514494a95414a991b982a2686d55, type: 3}
   m_PrefabInstance: {fileID: 542022927}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1220450655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2953388165999599517, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+  m_PrefabInstance: {fileID: 542022927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220450652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e788e6af5a5bab4fb1b64e3662c2844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1239494273
 GameObject:
   m_ObjectHideFlags: 0
@@ -6149,19 +6171,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -168.75
+      value: -77.3
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.30528808
+      value: -3.1003404
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 121.16
+      value: 140.83261
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.69088244
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6169,7 +6191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.72296715
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.z
@@ -6189,7 +6211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: field of view
-      value: 60
+      value: 60.000004
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: far clip plane
@@ -6305,24 +6327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e087ecce43ebbff45a1b360637807d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &135756641613574980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543449882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319445a10d6d2a4419a3f6169c372bb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdTimeDuration: 5
-  interactionDistance: 5
-  interactionText: {fileID: 950518758}
-  interactionHoldGo: {fileID: 458388421}
-  holdProgress: {fileID: 458388423}
-  canInteract: 0
 --- !u!4 &135756641613574981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -11185,6 +11189,7 @@ MonoBehaviour:
   - {fileID: 663632961}
   cameraPendukung: {fileID: 391299754}
   blinkController: {fileID: 1418240779}
+  hidingMechanism: {fileID: 542022928}
   playerInteractions: {fileID: 135756641613574991}
   texts:
   - Hmmm. . .
@@ -13551,9 +13556,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1404186845}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 135756641613574980}
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 135756641613574985}
@@ -18696,7 +18698,6 @@ SceneRoots:
   - {fileID: 542022927}
   - {fileID: 1018339797}
   - {fileID: 543450651615787811}
-  - {fileID: 970515175}
   - {fileID: 1296812378}
   - {fileID: 2080478112}
   - {fileID: 2021240250}
@@ -18706,3 +18707,4 @@ SceneRoots:
   - {fileID: 4226851417280496541}
   - {fileID: 1865791171}
   - {fileID: 369722256}
+  - {fileID: 970515175}

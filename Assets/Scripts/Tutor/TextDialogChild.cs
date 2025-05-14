@@ -11,6 +11,8 @@ public class TextDialogChild : MonoBehaviour
     [SerializeField] private Transform[] targetTransforms;
     [SerializeField] GameObject cameraPendukung;
     [SerializeField] GameObject blinkController;
+    [SerializeField] private HidingMechanism hidingMechanism;
+    private bool lastHidingState;
     public PlayerInteractions playerInteractions;
     [SerializeField] string[] texts;
     [SerializeField] float textDuration = 2f;
@@ -24,11 +26,13 @@ public class TextDialogChild : MonoBehaviour
     bool isPermanentlyStopped = false;
     bool isPaused = false;
 
-
-
     void Awake()
     {
         ValidateReferences();
+        if (hidingMechanism != null)
+        {
+            lastHidingState = hidingMechanism.isHiding;
+        }
     }
 
     void OnEnable()
@@ -126,25 +130,7 @@ public class TextDialogChild : MonoBehaviour
         textDisplay.gameObject.SetActive(false);
     }
 
-    IEnumerator DelayedStart()
-    {
-        yield return new WaitForSeconds(3f);
-        StartDisplayingText();
-    }
 
-    IEnumerator DelayedInstruksi()
-    {
-        yield return new WaitForSeconds(3f);
-        intruksi.enabled = true;
-        playerInteractions.canInteract = true;
-        windowQuest.gameObject.SetActive(true);
-    }
-    public IEnumerator ResumeInstruksi()
-    {
-        yield return new WaitForSeconds(3f);
-        ResumeDisplayingText();
-
-    }
     public void NextText()
     {
         currentTextIndex++;
@@ -179,6 +165,7 @@ public class TextDialogChild : MonoBehaviour
             PauseDisplayingText();
             intruksi.enabled = true;
             playerInteractions.canInteract = true;
+            playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.BedOnly);
             intruksi.text = "Pergi Ke tempat tidur";
             newTargetTransform = targetTransforms[0];
             ChangeTargetTransform();
@@ -197,15 +184,16 @@ public class TextDialogChild : MonoBehaviour
             intruksi.enabled = true;
             intruksi.text = "Sembunyi Ke Kardus";
             playerInteractions.canInteract = true;
+            playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.HidingOnly);
             newTargetTransform = targetTransforms[1];
             ChangeTargetTransform();
             windowQuest.gameObject.SetActive(true);
             PauseDisplayingText();
+            // StartCoroutine(CheckHidingState());
         }
         else if (currentTextIndex == 21)
         {
             PauseDisplayingText();
-            // mother.GetComponent<MotherTutorial>().StartMovingToWaypoint()
         }
 
         if (currentTextIndex < texts.Length && textDisplay != null)
@@ -219,6 +207,26 @@ public class TextDialogChild : MonoBehaviour
         }
     }
 
+    IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(3f);
+        StartDisplayingText();
+    }
+
+    IEnumerator DelayedInstruksi()
+    {
+        yield return new WaitForSeconds(3f);
+        intruksi.enabled = true;
+        playerInteractions.canInteract = true;
+        playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.DoorOnly);
+        windowQuest.gameObject.SetActive(true);
+    }
+    public IEnumerator ResumeInstruksi()
+    {
+        yield return new WaitForSeconds(3f);
+        ResumeDisplayingText();
+    }
+
     IEnumerator DisableCameraAfterSeconds(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -230,6 +238,7 @@ public class TextDialogChild : MonoBehaviour
         yield return new WaitForSeconds(2f);
         intruksi.text = "Ambil Tugas!";
         playerInteractions.canInteract = true;
+        playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.TaskOnly);
         intruksi.enabled = true;
         ChangeTargetTransform();
     }
@@ -314,5 +323,25 @@ public class TextDialogChild : MonoBehaviour
         {
             Debug.LogWarning("Referensi newTargetTransform belum diatur.");
         }
+    }
+
+    IEnumerator CheckHidingState()
+    {
+        if (hidingMechanism == null)
+        {
+            yield break;
+        }
+
+        while (!hidingMechanism.isHiding)
+        {
+            yield return null;
+        }
+
+        if (intruksi != null)
+        {
+            intruksi.enabled = false;
+        }
+
+
     }
 }

@@ -84,6 +84,7 @@ public class TaskPanelControllerTutor : MonoBehaviour
         infoText.text = "Selesaikan tugas memasukkan baju";
         PlayerInteractions.canInteractWithClothes = true;
         textDialogChild.playerInteractions.canInteract = true;
+        textDialogChild.playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.clothesOnly);
     }
 
     IEnumerator ContinueThenNext()
