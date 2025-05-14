@@ -10,11 +10,13 @@ public class Door : Interactable
 
     [SerializeField] float openAngle = 90f;
     [SerializeField] float animationDuration = 1f;
+    Collider door;
 
     void Start()
     {
-        closedRotation = transform.rotation;
-        openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0);
+        door = GetComponentInChildren<Collider>();
+        closedRotation = door.transform.rotation;
+        openRotation = closedRotation * Quaternion.Euler(0, 0, openAngle);
     }
 
     public override string Description()
@@ -46,21 +48,21 @@ public class Door : Interactable
     }
 
 
-    public IEnumerator AnimateDoor()
+    IEnumerator AnimateDoor()
     {
         isAnimating = true;
         float elapsed = 0f;
-        Quaternion startRotation = transform.rotation;
+        Quaternion startRotation = door.transform.rotation;
         Quaternion targetRotation = isOpen ? closedRotation : openRotation;
 
         while (elapsed < animationDuration)
         {
             elapsed += Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, elapsed / animationDuration);
+            door.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, elapsed / animationDuration);
             yield return null;
         }
 
-        transform.rotation = targetRotation;
+        door.transform.rotation = targetRotation;
         isOpen = !isOpen;
         isAnimating = false;
     }

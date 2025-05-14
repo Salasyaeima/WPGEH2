@@ -8,7 +8,7 @@ public class DoorTrigger : MonoBehaviour
     Quaternion openRotation;
     bool isAnimating = false;
 
-    [SerializeField] float openAngle = 90f;
+    [SerializeField] float openAngle;
     [SerializeField] float animationDuration = 1f;
     [Header("The Center of Rotation")]
     [SerializeField] GameObject doorEngsel;
