@@ -13,10 +13,14 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+		[Header("OOT")]
+		public Button reloadButton;
+		public Image endScreen;
 
 		[Header("Script Refrence")]
 		[Tooltip("Refrensi ke script lain")]
 		public StarterAssetsInputs starterAssetsInputs;
+		private LoadingScreen loadingScreen;
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -115,6 +119,7 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+			
 		}
 
 		private void Start()
@@ -130,6 +135,15 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			loadingScreen = GameObject.Find("LoadingScreenManager").GetComponent<LoadingScreen>();
+
+			if(endScreen != null)
+			{
+				reloadButton.onClick.AddListener(() => loadingScreen.SwitchToScene("Rooms"));
+			}
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
 		}
 
 		private void Update()
