@@ -384,7 +384,7 @@ MonoBehaviour:
   m_text: Ini progres tugasmu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e5e0fc9897687b4793f430eb7fad478, type: 2}
-  m_sharedMaterial: {fileID: -6910378190852954149, guid: 84e1f1cfdbbd128439ba6bf4d7229fa5, type: 2}
+  m_sharedMaterial: {fileID: 4816165532930008734, guid: 3e5e0fc9897687b4793f430eb7fad478, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6171,19 +6171,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -77.3
+      value: -168.75
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1003404
+      value: 0.30528808
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 140.83261
+      value: 121.16
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.69088244
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6191,7 +6191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.72296715
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.z
@@ -6211,7 +6211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: field of view
-      value: 60.000004
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: far clip plane
@@ -9735,7 +9735,7 @@ Animator:
   m_GameObject: {fileID: 3333941269337122412}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f82f47c8edb27204da1ce254f6c41dff, type: 3}
-  m_Controller: {fileID: 9100000, guid: d3e5827bf2fe70940bb26e15e0c74a9c, type: 2}
+  m_Controller: {fileID: 9100000, guid: cf141b1ffcfdb454c8a686992c1099e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13373,6 +13373,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: endScreen
+      value: 
+      objectReference: {fileID: 131737732}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -13389,6 +13393,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1199583808}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: reloadButton
+      value: 
+      objectReference: {fileID: 1063661080}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: GroundedRadius
       value: 1.14
       objectReference: {fileID: 0}
@@ -13396,6 +13404,10 @@ PrefabInstance:
       propertyPath: GroundLayers.m_Bits
       value: 4096
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: starterAssetsInputs
+      value: 
+      objectReference: {fileID: 135756641613574975}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintTransitionDuration
       value: 1
