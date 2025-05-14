@@ -35,6 +35,7 @@ public class DoorTrigger : MonoBehaviour
     {
         Collider[] boxColliders = Physics.OverlapBox(transform.position + colliderCenter, colliderSizing/2, transform.rotation, detectionLayer);
         currentOverlap = null;
+
         if (boxColliders.Length > 0)
         {
             currentOverlap = boxColliders[0];
