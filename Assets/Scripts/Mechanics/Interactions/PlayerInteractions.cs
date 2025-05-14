@@ -13,13 +13,24 @@ public class PlayerInteractions : MonoBehaviour
     public UnityEngine.UI.Image holdProgress;
     public static Interactable heldItem = null;
     public static bool canInteractWithClothes = false;
+    public InteractionMode currentInteractionMode = InteractionMode.Default;
     public bool canInteract = false;
     Interactable interactable = null;
     bool successfullHit = false;
     int interactableMask;
     Camera cam;
     bool isInteractionEnabled = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public enum InteractionMode
+    {
+        None,
+        DoorOnly,
+        BedOnly,
+        HidingOnly,
+        TaskOnly,
+        clothesOnly,
+        Default
+    }
     void Start()
     {
         cam = Camera.main;
@@ -44,15 +55,42 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     if (canInteract)
                     {
-                        isInteractionEnabled =
-                            (interactable is TaskTutorialTake) ||
-                            (interactable is Item item &&
-                                item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
-                            (interactable is Interactable &&
-                                interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes) ||
-                            (interactable is Interactable && interactable.GetComponent<Door>()) ||
-                            (interactable is Interactable && interactable.GetComponent<BedInterect>() && canInteractWithClothes) ||
-                            (interactable is Interactable && interactable.GetComponent<HidingMechanism>());
+                        switch (currentInteractionMode)
+                        {
+                            case InteractionMode.DoorOnly:
+                                isInteractionEnabled = (interactable is Interactable && interactable.GetComponent<Door>());
+                                break;
+                            case InteractionMode.TaskOnly:
+                                isInteractionEnabled = (interactable is Interactable && interactable.GetComponent<TaskTutorialTake>());
+                                break;
+                            case InteractionMode.clothesOnly:
+                                isInteractionEnabled = (interactable is Item item &&
+                                        item.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
+                                    (interactable is Interactable &&
+                                        interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes);
+                                break;
+                            case InteractionMode.BedOnly:
+                                isInteractionEnabled = (interactable is Interactable && interactable.GetComponent<BedInterect>());
+                                break;
+                            case InteractionMode.HidingOnly:
+                                isInteractionEnabled = (interactable is Interactable && interactable.GetComponent<HidingMechanism>());
+                                break;
+                            case InteractionMode.None:
+                                isInteractionEnabled = false;
+                                break;
+                            case InteractionMode.Default:
+                            default:
+                                isInteractionEnabled =
+                                    (interactable is TaskTutorialTake) ||
+                                    (interactable is Item item1 &&
+                                        item1.GetComponent<ItemData>()?.category == ItemData.ItemCategory.Clothes && canInteractWithClothes) ||
+                                    (interactable is Interactable &&
+                                        interactable.GetComponent<Container>()?.containerType == Container.ContainerType.wardrobe && canInteractWithClothes) ||
+                                    (interactable is Interactable && interactable.GetComponent<Door>()) ||
+                                    (interactable is Interactable && interactable.GetComponent<BedInterect>() && canInteractWithClothes) ||
+                                    (interactable is Interactable && interactable.GetComponent<HidingMechanism>());
+                                break;
+                        }
                     }
                     else
                     {
@@ -200,6 +238,11 @@ public class PlayerInteractions : MonoBehaviour
             heldItem.Drop();
             heldItem = null;
         }
+    }
+
+    public void SetInteractionMode(InteractionMode mode)
+    {
+        currentInteractionMode = mode;
     }
 }
 
