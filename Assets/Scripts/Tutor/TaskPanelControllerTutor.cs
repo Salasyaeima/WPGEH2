@@ -83,6 +83,7 @@ public class TaskPanelControllerTutor : MonoBehaviour
         Cursor.visible = false;
         infoText.text = "Selesaikan tugas memasukkan baju";
         PlayerInteractions.canInteractWithClothes = true;
+        textDialogChild.playerInteractions.canInteract = true;
     }
 
     IEnumerator ContinueThenNext()

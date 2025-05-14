@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using System;
+using System.Collections;
 
 public class TextDisplayManager : MonoBehaviour
 {
@@ -9,15 +9,17 @@ public class TextDisplayManager : MonoBehaviour
     {
         [TextArea] public string text;
         public bool triggerAngryModel;
+        public float duration = 3f; // Durasi spesifik untuk setiap teks
     }
-    [SerializeField] TextMeshProUGUI textUI;
-    [SerializeField] TargetWalk targetWalk;
+
+    [SerializeField] private TextMeshProUGUI textMeshPro;
+    [SerializeField] private TargetWalk targetWalk;
     [SerializeField] private TextData[] textList;
-    [SerializeField] bool useAutoDisplay = true;
-    [SerializeField] float displayDuration = 3f;
-    int currentTextIndex = 0;
-    float timer = 0f;
-    bool isDisplaying = false;
+    [SerializeField] private bool useAutoDisplay = true;
+
+    private int currentTextIndex = 0;
+    private bool isDisplaying = false;
+    private Coroutine displayCoroutine;
 
     void Awake()
     {
@@ -26,41 +28,36 @@ public class TextDisplayManager : MonoBehaviour
 
     void Start()
     {
-        if (textUI != null)
+        if (textMeshPro != null)
         {
-            textUI.gameObject.SetActive(false);
+            textMeshPro.gameObject.SetActive(false);
         }
     }
 
     void Update()
     {
-        if (isDisplaying)
+        if (isDisplaying && !useAutoDisplay)
         {
-            if (useAutoDisplay)
+            if (Input.GetMouseButtonDown(0))
             {
-                timer += Time.deltaTime;
-                if (timer >= displayDuration)
-                {
-                    NextText();
-                }
-            }
-            else
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    NextText();
-                }
+                NextText();
             }
         }
     }
 
-    void ValidateReferences()
+    /// <summary>
+    /// Memvalidasi referensi yang diperlukan dan mencatat peringatan jika ada yang hilang.
+    /// </summary>
+    private void ValidateReferences()
     {
-        if (textUI == null) Debug.LogError("TextMeshProUGUI is not assigned in TextDisplayManager!");
+        if (textMeshPro == null) Debug.LogError("TextMeshProUGUI is not assigned in TextDisplayManager!");
         if (targetWalk == null) Debug.LogError("TargetWalk is not assigned in TextDisplayManager!");
         if (textList == null || textList.Length == 0) Debug.LogWarning("Text list is empty in TextDisplayManager!");
     }
 
+    /// <summary>
+    /// Memulai menampilkan teks saat ini dalam daftar.
+    /// </summary>
     public void StartDisplayingText()
     {
         if (textList.Length == 0)
@@ -76,17 +73,30 @@ public class TextDisplayManager : MonoBehaviour
         }
 
         isDisplaying = true;
-        textUI.gameObject.SetActive(true);
-        textUI.text = textList[currentTextIndex].text;
-        timer = 0f;
+        textMeshPro.gameObject.SetActive(true);
+        textMeshPro.text = textList[currentTextIndex].text;
+
+        if (useAutoDisplay && displayCoroutine == null)
+        {
+            displayCoroutine = StartCoroutine(AutoDisplayText());
+        }
     }
 
+    /// <summary>
+    /// Menghentikan tampilan teks dan memajukan indeks teks.
+    /// </summary>
     public void StopDisplayingText()
     {
-        if (!isDisplaying || textUI == null) return;
+        if (!isDisplaying || textMeshPro == null) return;
 
         isDisplaying = false;
-        textUI.gameObject.SetActive(false);
+        textMeshPro.gameObject.SetActive(false);
+
+        if (displayCoroutine != null)
+        {
+            StopCoroutine(displayCoroutine);
+            displayCoroutine = null;
+        }
 
         if (currentTextIndex < textList.Length)
         {
@@ -94,31 +104,79 @@ public class TextDisplayManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Menampilkan teks berikutnya atau menghentikan tampilan jika tidak ada teks lagi.
+    /// </summary>
     private void NextText()
     {
-        currentTextIndex++;
-        if (currentTextIndex < textList.Length && textUI != null)
+        if (displayCoroutine != null)
         {
-            textUI.text = textList[currentTextIndex].text;
+            StopCoroutine(displayCoroutine);
+            displayCoroutine = null;
+        }
+
+        currentTextIndex++;
+        if (currentTextIndex < textList.Length && textMeshPro != null)
+        {
+            textMeshPro.text = textList[currentTextIndex].text;
             CheckAngryState();
-            timer = 0f;
+            if (useAutoDisplay)
+            {
+                displayCoroutine = StartCoroutine(AutoDisplayText());
+            }
+
         }
         else
         {
             isDisplaying = false;
-            textUI.gameObject.SetActive(false);
+            textMeshPro.gameObject.SetActive(false);
         }
     }
 
-    void CheckAngryState()
+    /// <summary>
+    /// Coroutine untuk menangani tampilan teks otomatis berdasarkan durasi.
+    /// </summary>
+    private IEnumerator AutoDisplayText()
+    {
+        yield return new WaitForSeconds(textList[currentTextIndex].duration);
+        NextText();
+    }
+
+    /// <summary>
+    /// Memeriksa apakah teks saat ini harus memicu model angry pada TargetWalk.
+    /// </summary>
+    private void CheckAngryState()
     {
         if (currentTextIndex < textList.Length && textList[currentTextIndex].triggerAngryModel)
         {
-            targetWalk?.ShowAngryModel();
+            if (targetWalk != null)
+            {
+                targetWalk.ShowAngryModel();
+            }
+            else
+            {
+                Debug.LogWarning("TargetWalk is null, cannot trigger angry model!");
+            }
         }
     }
-    public bool IsDisplaying()
+
+    /// <summary>
+    /// Mengatur ulang indeks teks ke awal untuk mengulang urutan teks.
+    /// </summary>
+    public void ResetTextIndex()
     {
-        return isDisplaying;
+        currentTextIndex = 0;
+        isDisplaying = false;
+        if (textMeshPro != null)
+        {
+            textMeshPro.gameObject.SetActive(false);
+        }
+        if (displayCoroutine != null)
+        {
+            StopCoroutine(displayCoroutine);
+            displayCoroutine = null;
+        }
     }
+
+    public bool IsDisplaying() => isDisplaying;
 }

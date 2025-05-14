@@ -1226,41 +1226,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370cdd163eba56343ad0423ed929ef6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textUI: {fileID: 856360262}
+  textMeshPro: {fileID: 856360262}
   targetWalk: {fileID: 1820767001}
   textList:
   - text: Aduh kenapa kamar ini berantakan sekali sih?!
     triggerAngryModel: 0
+    duration: 3
   - text: Kemana Andy?!, kenapa kamarnya dibiarkan seperti ini!?!?
     triggerAngryModel: 0
+    duration: 3
   - text: '"Ini gimana sih, tugas bersihkannya udah dibuat tapi nggak dikerjain juga!'
     triggerAngryModel: 0
+    duration: 3
   - text: Hadehh... Andy, Andy!
     triggerAngryModel: 0
+    duration: 3
   - text: Andy! ini hasilnya kalau kerjaannya cuma main HP! Kamarmu jadi jorok gitu!
     triggerAngryModel: 0
+    duration: 3
   - text: Iyaa, Bu. . . Maaf ya. Nanti aku bersihin kok.
     triggerAngryModel: 0
+    duration: 3
   - text: Kamu ini, nanti-nanti aja terus! Cepat beresin sana!
     triggerAngryModel: 0
+    duration: 3
   - text: Heh!!! Sini Hp Kamu!
     triggerAngryModel: 0
+    duration: 3
   - text: Ehh-! Ibu jangan lah
     triggerAngryModel: 0
+    duration: 3
   - text: Masa langsung dirampas sih bu
     triggerAngryModel: 0
+    duration: 3
   - text: Cepat bereskan kamarmu! ibu mau pergi dulu
     triggerAngryModel: 0
+    duration: 3
   - text: Kalau ibu masih lihat kamu baru mau bersihin, Awas Kamu!
     triggerAngryModel: 1
+    duration: 3
   - text: Ehh-! Iya Buu
     triggerAngryModel: 0
+    duration: 3
   - text: Jangan cuman kamar kamu saja tapi semuanya!
     triggerAngryModel: 0
+    duration: 3
   - text: Yaudah Ibu pergi dulu, Bye
     triggerAngryModel: 0
+    duration: 3
   useAutoDisplay: 1
-  displayDuration: 3
 --- !u!1 &865701600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,19 +1605,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 733208565}

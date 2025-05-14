@@ -26,6 +26,8 @@ public class BedInterect : Interactable
         if (sleepyBlinkEffect != null)
         {
             sleepyBlinkEffect.StartFadeToBlack();
+            sleepyBlinkEffect.textDialogChild.intruksi.enabled = false;
+            sleepyBlinkEffect.textDialogChild.windowQuest.gameObject.SetActive(false);
         }
         isBed = true;
     }
