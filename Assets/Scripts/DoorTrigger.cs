@@ -8,7 +8,7 @@ public class DoorTrigger : MonoBehaviour
     Quaternion openRotation;
     bool isAnimating = false;
 
-    [SerializeField] float openAngle = 90f;
+    [SerializeField] float openAngle;
     [SerializeField] float animationDuration = 1f;
     [Header("The Center of Rotation")]
     [SerializeField] GameObject doorEngsel;
@@ -35,6 +35,7 @@ public class DoorTrigger : MonoBehaviour
     {
         Collider[] boxColliders = Physics.OverlapBox(transform.position + colliderCenter, colliderSizing/2, transform.rotation, detectionLayer);
         currentOverlap = null;
+
         if (boxColliders.Length > 0)
         {
             currentOverlap = boxColliders[0];
