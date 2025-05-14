@@ -28,7 +28,7 @@ public class LoadingScreen : MonoBehaviour
 
     public void SwitchToScene(string nameScene)
     {
-        if(p_loadingScreen != null)
+        if (p_loadingScreen != null)
         {
             p_loadingScreen.SetActive(true);
         }
@@ -43,8 +43,6 @@ public class LoadingScreen : MonoBehaviour
 
         yield return StartCoroutine(SwitchToSceneAsyc(nameScene));
     }
-
-
 
     IEnumerator SwitchToSceneAsyc(string nameScene)
     {
