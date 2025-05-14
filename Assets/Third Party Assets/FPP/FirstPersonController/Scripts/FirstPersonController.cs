@@ -13,6 +13,10 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+
+		[Header("Script Refrence")]
+		[Tooltip("Refrensi ke script lain")]
+		public StarterAssetsInputs starterAssetsInputs;
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -173,7 +177,7 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false)
+			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false && starterAssetsInputs.move != Vector2.zero)
 			{
 				_sprintTimer += Time.deltaTime;
 				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);

@@ -243,6 +243,7 @@ MonoBehaviour:
   fadeToBlackDuration: 2
   resetDelay: 3
   cameraWakesUp: {fileID: 0}
+  textDialogChild: {fileID: 0}
   blinkSpeed: 1
 --- !u!4 &44676777
 Transform:
@@ -7535,6 +7536,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.018002572
       objectReference: {fileID: 0}
+    - target: {fileID: 6719911298906339078, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: blackBackground
+      value: 
+      objectReference: {fileID: 1194233612}
     - target: {fileID: 6721399109901650581, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: sight
       value: 
@@ -7682,6 +7687,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5513595705338987225, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
     - {fileID: 6721399109901650581, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+    - {fileID: 7850336330210479510, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3188759169954384289, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
@@ -17095,6 +17101,7 @@ MonoBehaviour:
   interactionText: {fileID: 950518758}
   interactionHoldGo: {fileID: 458388421}
   holdProgress: {fileID: 458388423}
+  canInteract: 0
 --- !u!4 &135756641613574981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -44505,6 +44512,10 @@ PrefabInstance:
       propertyPath: GroundLayers.m_Bits
       value: 4097
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: starterAssetsInputs
+      value: 
+      objectReference: {fileID: 135756641613574975}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintTransitionDuration
       value: 1
