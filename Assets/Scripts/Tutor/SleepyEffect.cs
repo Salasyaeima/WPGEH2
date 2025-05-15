@@ -85,7 +85,7 @@ public class SleepyBlinkEffect : MonoBehaviour
     public void StartFadeToBlack()
     {
         if (hasFadedToBlack) return;
-
+        cameraWakesUp.Play("CameraSleep");
         startSleepCountdown = true;
         isBlinking = true;
         sleepTimer = 0f;

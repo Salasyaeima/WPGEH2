@@ -189,7 +189,7 @@ public class TextDialogChild : MonoBehaviour
             ChangeTargetTransform();
             windowQuest.gameObject.SetActive(true);
             PauseDisplayingText();
-            // StartCoroutine(CheckHidingState());
+            StartCoroutine(CheckHidingState());
         }
         else if (currentTextIndex == 21)
         {

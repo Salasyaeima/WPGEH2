@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -54,8 +55,6 @@ public class CameraJumpScare : MonoBehaviour
             float y = Random.Range(-1f, 1f) * shakeMagnitude;
             cameraTransform.localPosition = originalPos + new Vector3(x, y, 0f);
 
-            cameraTransform.localPosition = originalPos + new Vector3(x, y, 0f);
-
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -65,6 +64,7 @@ public class CameraJumpScare : MonoBehaviour
 
     IEnumerator VignetteFlash(float targetIntensity, float duration)
     {
+        if (vignette == null) yield break;
         float elapsed = 0f;
         float startIntensity = vignette.intensity.value;
 
@@ -110,7 +110,10 @@ public class CameraJumpScare : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         TaskManager.Instance.panelResult.SetActive(true);
-        Timer.Instance.CompleteGame();
+        if (Timer.Instance != null)
+        {
+            Timer.Instance.CompleteGame();
+        }
     }
 
 
