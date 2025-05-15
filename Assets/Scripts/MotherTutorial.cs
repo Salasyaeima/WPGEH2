@@ -10,15 +10,26 @@ public class MotherTutorial : MonoBehaviour
     }
 
     [SerializeField] Transform character;
+    [SerializeField] Transform child;
     [SerializeField] WaypointData[] waypoints;
     [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float chaseSpeed = 3.5f;
     [SerializeField] float rotationSpeed = 5f;
-
+    [SerializeField] float detectionRange = 10f;
+    [SerializeField] float detectionAngle = 60f;
     [SerializeField] TextDialogChild textDialogChild;
+    [SerializeField] LayerMask childLayer;
     [SerializeField] Animator motherAnim;
+    [SerializeField] HidingMechanism hidingMechanism;
+    [SerializeField] Camera playerCamera;
+    [SerializeField] Camera playerCameraJumpScare;
+    [SerializeField] Animator jumpscareAnimator;
+    [SerializeField] CameraJumpScare cameraJumpScare;
+    [SerializeField] SleepyBlinkEffect sleepyBlinkEffect;
     int currentWaypoint = 0;
     bool isMoving = false;
     bool isPaused = false;
+    bool isChasing = false;
     Vector3 targetPosition;
 
     void Start()
@@ -31,9 +42,29 @@ public class MotherTutorial : MonoBehaviour
 
     void Update()
     {
-        if (isMoving && !isPaused)
+        if (!isPaused)
         {
-            MoveToWaypoint();
+            if (DetectChild() && !hidingMechanism.isHiding)
+            {
+                isChasing = true;
+                isMoving = false;
+                targetPosition = child.position;
+                motherAnim.Play("RunningI");
+            }
+            else if (isChasing && (!DetectChild() || hidingMechanism.isHiding))
+            {
+                isChasing = false;
+                StartMovingToWaypoint(currentWaypoint);
+            }
+
+            if (isChasing)
+            {
+                ChaseChild();
+            }
+            else if (isMoving)
+            {
+                MoveToWaypoint();
+            }
         }
     }
 
@@ -46,6 +77,30 @@ public class MotherTutorial : MonoBehaviour
             isMoving = true;
             motherAnim.Play("Walking");
         }
+    }
+
+    bool DetectChild()
+    {
+        if (hidingMechanism.isHiding)
+        {
+            return false;
+        }
+
+        Vector3 directionToChild = (child.position - character.position).normalized;
+        float distanceToChild = Vector3.Distance(character.position, child.position);
+        float angleToChild = Vector3.Angle(character.forward, directionToChild);
+
+        if (distanceToChild <= detectionRange && angleToChild <= detectionAngle / 2f)
+        {
+            if (Physics.Raycast(character.position, directionToChild, out RaycastHit hit, detectionRange, childLayer))
+            {
+                if (hit.transform == child)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     void MoveToWaypoint()
@@ -85,11 +140,25 @@ public class MotherTutorial : MonoBehaviour
         }
     }
 
+    void ChaseChild()
+    {
+        targetPosition = child.position;
+        Vector3 direction = (targetPosition - character.position).normalized;
+
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        character.rotation = Quaternion.Slerp(character.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+
+        character.position = Vector3.MoveTowards(character.position, targetPosition, chaseSpeed * Time.deltaTime);
+    }
+
     IEnumerator ResumeAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        StartMovingToWaypoint(currentWaypoint + 1);
-        textDialogChild.PauseDisplayingText();
+        if (!isChasing)
+        {
+            StartMovingToWaypoint(currentWaypoint + 1);
+            textDialogChild.PauseDisplayingText();
+        }
     }
 
     public void PauseMoving()
@@ -100,5 +169,26 @@ public class MotherTutorial : MonoBehaviour
     public void ResumeMoving()
     {
         isPaused = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            textDialogChild.windowQuest.gameObject.SetActive(false);
+            textDialogChild.intruksi.enabled = false;
+            isPaused = true;
+            cameraJumpScare.gameObject.SetActive(true);
+            jumpscareAnimator.Play("Scene");
+            playerCamera.enabled = false;
+            playerCameraJumpScare.enabled = true;
+            StartCoroutine(Reset());
+        }
+    }
+
+    IEnumerator Reset()
+    {
+        yield return new WaitForSeconds(3f);
+        LoadingScreen.Instance.SwitchToScene("RoomsTutorial");
     }
 }
