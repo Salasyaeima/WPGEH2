@@ -168,6 +168,8 @@ public class Container : Interactable, ITaskProvider
                 return "Masukkan barang ke dalam kotak mainan";
             case ContainerType.wardrobe:
                 return "Simpan pakaian di dalam lemari";
+            case ContainerType.gudang:
+                return "Masukkan kardus ke rak";
             default:
                 return "";
         }

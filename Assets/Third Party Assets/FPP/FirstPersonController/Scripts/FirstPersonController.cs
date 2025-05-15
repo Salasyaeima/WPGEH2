@@ -20,6 +20,7 @@ namespace StarterAssets
 		[Header("Script Refrence")]
 		[Tooltip("Refrensi ke script lain")]
 		public StarterAssetsInputs starterAssetsInputs;
+		public HidingMechanism hidingMechanism;
 		private LoadingScreen loadingScreen;
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -222,6 +223,11 @@ namespace StarterAssets
 				sprintDuration -= Time.deltaTime;
 				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
 				if (sprintDuration == 0f) sprintLock = false;
+			}
+
+			if (hidingMechanism.isHiding == true)
+			{
+				canvasGroup.alpha = 0;
 			}
 
 			float curveT = _sprintTimer / SprintTransitionDuration;
