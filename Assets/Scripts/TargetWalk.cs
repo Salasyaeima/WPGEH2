@@ -125,11 +125,6 @@ public class TargetWalk : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             mother.rotation = Quaternion.Slerp(mother.rotation, lookRotation, rotationSpeed * Time.deltaTime);
             mother.position = Vector3.MoveTowards(mother.position, targetPosition, moveSpeed * Time.deltaTime);
-
-            // if (lastReachedWaypoint == 10 && !hasTriggeredHandPhoneTransform)
-            // {
-            //     StartCoroutine(TriggerHandPhoneAfterDelay(0.58f));
-            // }
         }
     }
 
@@ -313,4 +308,8 @@ public class TargetWalk : MonoBehaviour
 
     public bool IsMoving() => isMoving;
     public int GetCurrentWaypoint() => currentWaypoint;
+    public void LoadingScreenManager()
+    {
+        LoadingScreen.Instance.SwitchToScene("RoomsTutorial");
+    }
 }

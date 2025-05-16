@@ -1,14 +1,14 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenu.uss?fileID=7433441132597879392&amp;guid=12deee7453a5e7b4c81ee57587acc8ab&amp;type=3#MainMenu" />
-    <engine:VisualElement name="Title" style="flex-grow: 1; top: 75px; right: 50px; height: 178px;">
-        <engine:Label text="Anak Durhaka" name="title" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;); font-size: 100px; color: rgb(255, 255, 255); left: 150px; top: 200px; justify-content: flex-start; align-self: auto; -unity-text-align: upper-left; width: 929px; height: 128px;" />
+    <engine:VisualElement name="Title" style="flex-grow: 1; top: 75px; right: 55px; height: 49px; width: 318px; flex-direction: column-reverse;">
+        <engine:Label text="Anak Durhaka" name="title" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;); font-size: 88px; color: rgb(255, 255, 255); left: 150px; top: 200px; justify-content: flex-start; align-self: auto; -unity-text-align: upper-left; width: 929px; height: 128px;" />
     </engine:VisualElement>
     <engine:VisualElement name="MainMenu" class="button-container" style="right: auto; align-items: flex-start; left: 75px; top: 20px; width: 717px;">
         <engine:Button name="Start" text="Start" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;); font-size: 70px;" />
         <engine:Button name="Option" text="Option" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;); font-size: 70px;" />
         <engine:Button name="Exit" text="Exit" class="menu-button" style="-unity-font-definition: url(&quot;project://database/Assets/Prefabs/cleanow/Cleanow.otf?fileID=12800000&amp;guid=a684f55bee2ec8a408a4d6ad64e22ad0&amp;type=3#Cleanow&quot;); font-size: 70px;" />
     </engine:VisualElement>
-    <engine:VisualElement name="SettingMenu" focusable="false" enabled="true" class="slider-container" style="flex-grow: 1; flex-direction: column; align-items: center; justify-content: center; width: 2204px; position: absolute;">
+    <engine:VisualElement name="SettingMenu" focusable="false" enabled="true" class="slider-container" style="flex-grow: 1; flex-direction: column; align-items: center; justify-content: center; width: 2204px; position: absolute; height: 537px;">
         <engine:Slider label="Slider" value="42" high-value="100" name="Volume" class="option-slider" />
         <engine:Slider label="Slider" value="42" high-value="100" name="Brightness" class="option-slider" />
     </engine:VisualElement>
