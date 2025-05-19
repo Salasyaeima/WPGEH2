@@ -47,6 +47,7 @@ public class LoadingScreen : MonoBehaviour
     IEnumerator SwitchToSceneAsyc(string nameScene)
     {
         AsyncOperation asycLoad = SceneManager.LoadSceneAsync(nameScene);
+        Time.timeScale = 1f;
         while (!asycLoad.isDone)
         {
             progressBar.value = asycLoad.progress;

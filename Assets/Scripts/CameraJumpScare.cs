@@ -13,6 +13,7 @@ public class CameraJumpScare : MonoBehaviour
     [SerializeField] float shakeDuration = 0.5f;
     [SerializeField] float shakeMagnitude = 0.1f;
     [SerializeField] Volume postProcessVolume;
+    [SerializeField] Sight sight;
     Vignette vignette;
     ChromaticAberration chromaticAberration;
     Coroutine shakeCoroutine;
@@ -108,6 +109,8 @@ public class CameraJumpScare : MonoBehaviour
 
 
         Cursor.lockState = CursorLockMode.None;
+        sight.enabled = false;
+        Time.timeScale = 0f;
         Cursor.visible = true;
         TaskManager.Instance.panelResult.SetActive(true);
         if (Timer.Instance != null)

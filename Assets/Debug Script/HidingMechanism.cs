@@ -4,12 +4,19 @@ using Unity.Behavior;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using StarterAssets;
+using Unity.AppUI.UI;
+using UnityEngine.UI;
 public class HidingMechanism : Interactable
 {
+    [Header("Script Refrence")]
+    [SerializeField] StarterAssetsInputs starterAssetsInputs;
     [Header("Define the KeyCode for interactions")]
     public string keyCode;
     [SerializeField]
     public bool isHiding;
+    [SerializeField] Slider energi;
+    [SerializeField] CanvasGroup energiTransparant;
     [SerializeField]
     private GameObject player;
     [SerializeField]
@@ -60,9 +67,13 @@ public class HidingMechanism : Interactable
         if (!isHiding)
         {
             isHiding = true;
+            starterAssetsInputs.move = Vector2.zero;
+            starterAssetsInputs.sprint = false;
+            energiTransparant.alpha = 0;
             NotHiddenWhenChased();
             PerformHide(isHiding);
         }
+        
     }
 
     private void Hide()
