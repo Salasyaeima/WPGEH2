@@ -37,6 +37,7 @@ public class TargetWalk : MonoBehaviour
     int lastReachedWaypoint = -1;
     bool isMoving = false;
     bool autoMove = false;
+    bool isMuted;
     Coroutine pickupCoroutine;
     Vector3 targetPosition;
 
@@ -58,6 +59,16 @@ public class TargetWalk : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        if (pickupCoroutine != null)
+        {
+            StopCoroutine(pickupCoroutine);
+            pickupCoroutine = null;
+        }
+        StopAllCoroutines();
+    }
+
     void Start()
     {
         isMoving = false;
@@ -68,7 +79,7 @@ public class TargetWalk : MonoBehaviour
         SetCursorVisibility(false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isMoving)
         {
@@ -103,38 +114,64 @@ public class TargetWalk : MonoBehaviour
         {
             isMoving = false;
             lastReachedWaypoint = currentWaypoint;
-
-            if (lastReachedWaypoint == 8)
-            {
-                videoPlayer.SetDirectAudioMute(0, false);
-            }
-
-            if (lastReachedWaypoint == 6 || lastReachedWaypoint == 7 || lastReachedWaypoint == 11 || lastReachedWaypoint == 14)
-            {
-                StopAutoMove();
-            }
-            else if (autoMove && currentWaypoint + 1 < waypoints.Length)
-            {
-                currentWaypoint++;
-                StartMovingToWaypoint(currentWaypoint);
-            }
+            HandleWaypointReached();
         }
         else
         {
-            direction = direction.normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            mother.rotation = Quaternion.Slerp(mother.rotation, lookRotation, rotationSpeed * Time.deltaTime);
-            mother.position = Vector3.MoveTowards(mother.position, targetPosition, moveSpeed * Time.deltaTime);
+            mother.position = Vector3.MoveTowards(mother.position, targetPosition, moveSpeed * Time.fixedDeltaTime);
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction.normalized);
+                mother.rotation = Quaternion.Slerp(mother.rotation, lookRotation, rotationSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 
-    IEnumerator TriggerHandPhoneAfterDelay(float delay)
+    void HandleWaypointReached()
     {
-        yield return new WaitForSeconds(delay);
-        if (!hasTriggeredHandPhoneTransform)
+        if (lastReachedWaypoint == 8 && videoPlayer != null)
         {
-            SetHandPhoneTransform();
-            hasTriggeredHandPhoneTransform = true;
+            isMuted = false;
+            videoPlayer.SetDirectAudioMute(0, isMuted);
+        }
+
+        switch (lastReachedWaypoint)
+        {
+            case 6:
+                SetState(CharacterState.LookingAround);
+                StopAutoMove();
+                break;
+            case 7:
+                SetState(CharacterState.Idlee);
+                StopAutoMove();
+                break;
+            case 11:
+                Vector3 lookDirection = lookTarget.position - mother.position;
+                lookDirection.y = 0f;
+                mother.rotation = Quaternion.LookRotation(lookDirection);
+                SetState(CharacterState.Angry);
+                pickupCoroutine = StartCoroutine(PickupAfterDelay(9f));
+                StopAutoMove();
+                break;
+            case 13:
+                if (currentWaypoint + 1 < waypoints.Length)
+                {
+                    currentWaypoint++;
+                    StartMovingToWaypoint(currentWaypoint);
+                }
+                else
+                {
+                    Debug.LogWarning("No more waypoints to move to!");
+                }
+                break;
+            default:
+                if (autoMove && currentWaypoint + 1 < waypoints.Length)
+                {
+                    SetState(CharacterState.Walking);
+                    currentWaypoint++;
+                    StartMovingToWaypoint(currentWaypoint);
+                }
+                break;
         }
     }
 
@@ -190,7 +227,6 @@ public class TargetWalk : MonoBehaviour
         }
         else if (lastReachedWaypoint == 13)
         {
-            SetState(CharacterState.Idlee);
             StartCoroutine(WaitAndContinue(78f));
         }
 
@@ -284,12 +320,12 @@ public class TargetWalk : MonoBehaviour
         if (lookDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-            Quaternion downwardRotation = Quaternion.Euler(70f, 0f, 0f);
+            Quaternion downwardRotation = Quaternion.Euler(72f, 0f, 0f);
             targetRotation = targetRotation * downwardRotation;
             mother.transform.rotation = Quaternion.Slerp(mother.transform.rotation, targetRotation, Time.deltaTime * 60f);
 
             Vector3 backwardDirection = -mother.transform.forward;
-            float backwardDistance = 0.6f;
+            float backwardDistance = 1f;
             mother.transform.position += backwardDirection * backwardDistance;
         }
 
@@ -301,7 +337,6 @@ public class TargetWalk : MonoBehaviour
         modelUpdate.SetActive(false);
         modelMarah.SetActive(true);
         motherAnimator = modelMarah.GetComponent<Animator>();
-        mother = modelMarah.transform;
 
         SetState(CharacterState.Idleee);
     }
