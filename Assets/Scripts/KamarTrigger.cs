@@ -4,10 +4,12 @@ using UnityEngine;
 public class KamarTrigger : MonoBehaviour
 {
     [SerializeField] TextDialogChild textDialog;
+    bool hasTriggered = false;
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasTriggered)
         {
+            hasTriggered = true;
             StartCoroutine(textDialog.ResumeInstruksi());
             textDialog.intruksi.enabled = false;
             textDialog.playerInteractions.canInteract = false;
