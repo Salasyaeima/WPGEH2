@@ -2094,7 +2094,7 @@ Transform:
   m_GameObject: {fileID: 1171657674}
   serializedVersion: 2
   m_LocalRotation: {x: 0.008559178, y: -0.9399854, z: 0.02434303, w: 0.34023762}
-  m_LocalPosition: {x: 80.20467, y: -6.2555246, z: 64.97549}
+  m_LocalPosition: {x: 80.20467, y: -4.65, z: 64.97549}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8135,51 +8135,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3211330409705780200}
   m_Mesh: {fileID: 4909182658251476040, guid: 3c0df7cd755afd942991bb3779b2b103, type: 3}
---- !u!23 &690670775367642650
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6228394676729004104}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 207fecd2547249141a21d33fba4f2a6d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!4 &691799997935159042
 Transform:
   m_ObjectHideFlags: 0
@@ -21081,7 +21036,7 @@ Transform:
   m_GameObject: {fileID: 6771698618125816713}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 17.989998, y: -2.73675, z: 11.910199}
+  m_LocalPosition: {x: 17.989998, y: -1.79, z: 11.08}
   m_LocalScale: {x: 82.60905, y: 89.87479, z: 73.98928}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30517,14 +30472,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!33 &4111237383477351984
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6228394676729004104}
-  m_Mesh: {fileID: -5960537306340998633, guid: 798ee7b680e70e542a88022d3c5c8a8a, type: 3}
 --- !u!1 &4113590652135756705
 GameObject:
   m_ObjectHideFlags: 0
@@ -36541,21 +36488,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5119523228675064548
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6228394676729004104}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.6044578, y: 0.3669205, z: -0.56047946, w: 0.43111837}
-  m_LocalPosition: {x: -0.065308616, y: 0.0021131337, z: 0.048899405}
-  m_LocalScale: {x: 0.0121052135, y: 0.013515474, z: 0.011126596}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7298450899711385972}
-  m_LocalEulerAnglesHint: {x: 111.17401, y: 90, z: 6.3090057}
 --- !u!23 &5121609037938721997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43273,24 +43205,6 @@ Transform:
   - {fileID: 3018654276284762058}
   m_Father: {fileID: 2326468255754314960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6228394676729004104
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5119523228675064548}
-  - component: {fileID: 4111237383477351984}
-  - component: {fileID: 690670775367642650}
-  m_Layer: 0
-  m_Name: Buku Polos 2 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
 --- !u!23 &6237279988674360953
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49438,7 +49352,6 @@ Transform:
   - {fileID: 2825726387281288761}
   - {fileID: 6453740609491442786}
   - {fileID: 8080395429336701775}
-  - {fileID: 5119523228675064548}
   - {fileID: 6800476285969807945}
   m_Father: {fileID: 2734590062575538557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
