@@ -1,7 +1,12 @@
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BedInterect : Interactable
 {
+    [SerializeField] StarterAssetsInputs starterAssetsInputs;
+    [SerializeField] Slider energi;
+    [SerializeField] CanvasGroup energiTransparant;
     [SerializeField] GameObject cameraSleep;
     [SerializeField] SleepyBlinkEffect sleepyBlinkEffect;
     bool isBed = false;
@@ -19,6 +24,9 @@ public class BedInterect : Interactable
 
     public override void Interact()
     {
+        starterAssetsInputs.move = Vector2.zero;
+        starterAssetsInputs.sprint = false;
+        energiTransparant.alpha = 0;
         if (cameraSleep != null)
         {
             cameraSleep.SetActive(true);

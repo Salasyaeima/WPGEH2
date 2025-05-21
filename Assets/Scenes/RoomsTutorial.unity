@@ -1500,6 +1500,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4824083188713091240}
     - target: {fileID: 8069064604534975777, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: energi
+      value: 
+      objectReference: {fileID: 1199583808}
+    - target: {fileID: 8069064604534975777, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 543449882}
@@ -1507,6 +1511,14 @@ PrefabInstance:
       propertyPath: playersCamera
       value: 
       objectReference: {fileID: 1391944216}
+    - target: {fileID: 8069064604534975777, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: energiTransparant
+      value: 
+      objectReference: {fileID: 1199583807}
+    - target: {fileID: 8069064604534975777, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: starterAssetsInputs
+      value: 
+      objectReference: {fileID: 135756641613574975}
     m_RemovedComponents:
     - {fileID: 8584270925887163991, guid: 11a6514494a95414a991b982a2686d55, type: 3}
     - {fileID: 1388085681704594747, guid: 11a6514494a95414a991b982a2686d55, type: 3}
@@ -3489,6 +3501,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 0
+  starterAssetsInputs: {fileID: 135756641613574975}
+  energi: {fileID: 1199583808}
+  energiTransparant: {fileID: 1199583807}
   cameraSleep: {fileID: 1353338218}
   sleepyBlinkEffect: {fileID: 1418240780}
 --- !u!4 &1143654863 stripped
