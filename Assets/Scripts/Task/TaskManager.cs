@@ -7,6 +7,7 @@ public class TaskManager : MonoBehaviour
 {
     public static TaskManager Instance;
     public List<Task> tasks = new List<Task>();
+    private Dictionary<Room, List<Task>> roomTasks = new Dictionary<Room, List<Task>>();
     public GameObject taskUIPrefab;
     public Transform taskListParent;
     public Image progressBar;
@@ -54,16 +55,51 @@ public class TaskManager : MonoBehaviour
     {
         if (!tasksShown)
         {
-            foreach (Task task in tasks)
+            foreach (Transform child in taskListParent)
             {
-                GameObject taskUI = Instantiate(taskUIPrefab, taskListParent);
-                TaskUI taskUIComponent = taskUI.GetComponent<TaskUI>();
-                taskUIComponent.Initialize(task, FindProviderForTask(task));
+                Destroy(child.gameObject);
             }
+
+            foreach (var roomTask in roomTasks)
+            {
+                Room room = roomTask.Key;
+                List<Task> tasksInRoom = roomTask.Value;
+
+                if (tasksInRoom.Count > 0)
+                {
+                    GameObject roomHeader = Instantiate(taskUIPrefab, taskListParent);
+                    roomText = roomHeader.GetComponentInChildren<TextMeshProUGUI>();
+                    if (roomText != null)
+                    {
+                        roomText.text = room.roomName;
+                        roomText.fontStyle = FontStyles.Bold | FontStyles.Underline;
+                        roomText.fontSize = 40;
+                        TaskUI taskUI = roomHeader.GetComponent<TaskUI>();
+                        if (taskUI != null) Destroy(taskUI);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"taskUIPrefab untuk {room.roomName} tidak memiliki TextMeshProUGUI!");
+                    }
+
+                    foreach (Task task in tasksInRoom)
+                    {
+                        GameObject taskUI = Instantiate(taskUIPrefab, taskListParent);
+                        TaskUI taskUIComponent = taskUI.GetComponent<TaskUI>();
+                        taskUIComponent.Initialize(task, FindProviderForTask(task));
+                    }
+                }
+                else
+                {
+                    Debug.Log($"Tidak ada tugas untuk ruangan: {room.roomName}");
+                }
+            }
+
             tasksShown = true;
             UpdateProgressBar();
         }
     }
+
 
     public void CompleteTask(Task task)
     {
@@ -161,6 +197,15 @@ public class TaskManager : MonoBehaviour
         }
         Task newTask = new Task { taskName = taskName, isCompleted = false, room = room };
         tasks.Add(newTask);
+
+        if (room != null)
+        {
+            if (!roomTasks.ContainsKey(room))
+            {
+                roomTasks[room] = new List<Task>();
+            }
+            roomTasks[room].Add(newTask);
+        }
     }
 
     ITaskProvider FindProviderForTask(Task task)
