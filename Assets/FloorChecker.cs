@@ -28,6 +28,7 @@ public class FloorChecker : MonoBehaviour
 
         if (dirtColliders.Length == 0)
         {
+
             isDone = true;
             Task task = FindTaskByName(broom.GetTaskName());
             if (task != null && !task.isCompleted)
