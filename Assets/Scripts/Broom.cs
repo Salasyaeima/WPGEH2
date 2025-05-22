@@ -1,42 +1,15 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Broom : Interactable, ITaskProvider
+public class Broom : Interactable
 {
     [SerializeField] GameObject broomInHand;
     [SerializeField] GameObject broomInRoom;
     [SerializeField] Transform playerHand;
     [SerializeField] Transform sweepPoint;
-    [SerializeField] GameObject roomBroom;
     [SerializeField] float sweepRadius = 0.5f;
     [SerializeField] LayerMask dirtLayer;
     [SerializeField] Animator broomAnimator;
-    [SerializeField] string taskName = "Bersihkan Lantai";
-    [SerializeField] float sweepRotationSpeed = 30f;
-    TaskManager taskManager;
-    Room room;
     bool isHeld = false;
-    Quaternion originalRotation;
-
-    void Start()
-    {
-        taskManager = TaskManager.Instance;
-        room = GetComponentInParent<Room>();
-        if (room == null)
-        {
-            Debug.LogWarning($"{name} tidak menemukan Room di parent!");
-        }
-
-        if (taskManager != null)
-        {
-            taskManager.RegisterTask(taskName, this, room);
-        }
-
-        if (broomInHand != null)
-        {
-            originalRotation = broomInHand.transform.localRotation;
-        }
-    }
 
     public override void Interact()
     {
@@ -50,10 +23,6 @@ public class Broom : Interactable, ITaskProvider
             isHeld = true;
             PlayerInteractions.heldItem = this;
         }
-        else if (isHeld)
-        {
-            Drop();
-        }
     }
 
     public override void Drop()
@@ -62,14 +31,10 @@ public class Broom : Interactable, ITaskProvider
         {
             broomInHand.SetActive(false);
             broomInRoom.SetActive(true);
-            broomInRoom.transform.SetParent(roomBroom.transform);
+            broomInRoom.transform.SetParent(null);
             transform.SetParent(null);
             isHeld = false;
             PlayerInteractions.heldItem = null;
-            if (broomInHand != null)
-            {
-                broomInHand.transform.localRotation = originalRotation;
-            }
         }
     }
 
@@ -77,9 +42,9 @@ public class Broom : Interactable, ITaskProvider
     {
         if (!isHeld)
         {
-            return "Press {E} to pick up the broom";
+            return "Press E to pick up the broom";
         }
-        return "Press {E} to drop the broom";
+        return "Press E to drop the broom";
     }
 
     public Transform GetSweepPoint()
@@ -100,30 +65,5 @@ public class Broom : Interactable, ITaskProvider
     public Animator GetBroomAnimator()
     {
         return broomAnimator;
-    }
-
-    public string GetTaskName()
-    {
-        if (room != null)
-        {
-            return $"{taskName}";
-        }
-        return taskName;
-    }
-
-    void Update()
-    {
-        if (isHeld)
-        {
-            if (Input.GetMouseButton(0) && broomInHand != null)
-            {
-                float rotationAngle = Mathf.Sin(Time.time * sweepRotationSpeed) * 10f;
-                broomInHand.transform.localRotation = originalRotation * Quaternion.Euler(0, rotationAngle, 0);
-            }
-            else if (broomInHand != null)
-            {
-                broomInHand.transform.localRotation = originalRotation;
-            }
-        }
     }
 }

@@ -9,7 +9,7 @@ public class TextDisplayManager : MonoBehaviour
     {
         [TextArea] public string text;
         public bool triggerAngryModel;
-        public float duration = 3f;
+        public float duration = 3f; // Durasi spesifik untuk setiap teks
     }
 
     [SerializeField] private TextMeshProUGUI textMeshPro;
@@ -45,6 +45,9 @@ public class TextDisplayManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Memvalidasi referensi yang diperlukan dan mencatat peringatan jika ada yang hilang.
+    /// </summary>
     private void ValidateReferences()
     {
         if (textMeshPro == null) Debug.LogError("TextMeshProUGUI is not assigned in TextDisplayManager!");
@@ -52,6 +55,9 @@ public class TextDisplayManager : MonoBehaviour
         if (textList == null || textList.Length == 0) Debug.LogWarning("Text list is empty in TextDisplayManager!");
     }
 
+    /// <summary>
+    /// Memulai menampilkan teks saat ini dalam daftar.
+    /// </summary>
     public void StartDisplayingText()
     {
         if (textList.Length == 0)
@@ -76,6 +82,9 @@ public class TextDisplayManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Menghentikan tampilan teks dan memajukan indeks teks.
+    /// </summary>
     public void StopDisplayingText()
     {
         if (!isDisplaying || textMeshPro == null) return;
@@ -95,6 +104,9 @@ public class TextDisplayManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Menampilkan teks berikutnya atau menghentikan tampilan jika tidak ada teks lagi.
+    /// </summary>
     private void NextText()
     {
         if (displayCoroutine != null)
@@ -121,12 +133,18 @@ public class TextDisplayManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine untuk menangani tampilan teks otomatis berdasarkan durasi.
+    /// </summary>
     private IEnumerator AutoDisplayText()
     {
         yield return new WaitForSeconds(textList[currentTextIndex].duration);
         NextText();
     }
 
+    /// <summary>
+    /// Memeriksa apakah teks saat ini harus memicu model angry pada TargetWalk.
+    /// </summary>
     private void CheckAngryState()
     {
         if (currentTextIndex < textList.Length && textList[currentTextIndex].triggerAngryModel)
@@ -142,7 +160,9 @@ public class TextDisplayManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Mengatur ulang indeks teks ke awal untuk mengulang urutan teks.
+    /// </summary>
     public void ResetTextIndex()
     {
         currentTextIndex = 0;

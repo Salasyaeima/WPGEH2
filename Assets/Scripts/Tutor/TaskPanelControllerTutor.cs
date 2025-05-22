@@ -6,7 +6,6 @@ public class TaskPanelControllerTutor : MonoBehaviour
 {
     public GameObject taskPanel;
     public TaskTutorialTake taskTutorialTake;
-    public bool isShow = true;
     [SerializeField] TextMeshProUGUI infoText;
     [SerializeField] GameObject panelProgress;
     [SerializeField] GameObject intruction2;
@@ -29,7 +28,7 @@ public class TaskPanelControllerTutor : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && taskTutorialTake.isDone && isShow)
+        if (Input.GetKeyDown(KeyCode.T) && taskTutorialTake.isDone)
         {
             TogglePanel();
         }
@@ -57,7 +56,6 @@ public class TaskPanelControllerTutor : MonoBehaviour
         else
         {
             taskPanel.SetActive(false);
-            isShow = false;
             infoText.text = "";
 
             if (!hasSeenTasks)
