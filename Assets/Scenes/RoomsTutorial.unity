@@ -1487,6 +1487,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -16.98
       objectReference: {fileID: 0}
+    - target: {fileID: 7284035105663378077, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: roomName
+      value: Ruangan Gudang
+      objectReference: {fileID: 0}
     - target: {fileID: 7344905100505551885, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: playerHand
       value: 
@@ -1519,6 +1523,10 @@ PrefabInstance:
       propertyPath: starterAssetsInputs
       value: 
       objectReference: {fileID: 135756641613574975}
+    - target: {fileID: 8472444313694295596, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: roomName
+      value: Ruangan Kamar
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8584270925887163991, guid: 11a6514494a95414a991b982a2686d55, type: 3}
     - {fileID: 1388085681704594747, guid: 11a6514494a95414a991b982a2686d55, type: 3}
@@ -3101,6 +3109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskPanel: {fileID: 917873785}
   taskTutorialTake: {fileID: 2080478113}
+  isShow: 1
   infoText: {fileID: 2135280799}
   panelProgress: {fileID: 1834811002}
   intruction2: {fileID: 227472029}
@@ -3180,7 +3189,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ruangan Kamar Tidur
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a36c3d024de219d4a979d8e964892863, type: 2}
   m_sharedMaterial: {fileID: 3760815708824893911, guid: a36c3d024de219d4a979d8e964892863, type: 2}
@@ -11378,8 +11387,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29323ded77c772d4ab05eabc2121ca4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mother: {fileID: 4824083188713091240}
   windowQuest: {fileID: 2113635145}
+  intruksi: {fileID: 2135280799}
+  useAutoDisplay: 1
+  textDisplay: {fileID: 4340560018098155908}
+  playerInteractions: {fileID: 135756641613574991}
+  mother: {fileID: 4824083188713091240}
   newTargetTransform: {fileID: 2080478112}
   targetTransforms:
   - {fileID: 131111720}
@@ -11387,7 +11400,6 @@ MonoBehaviour:
   cameraPendukung: {fileID: 391299754}
   blinkController: {fileID: 1418240779}
   hidingMechanism: {fileID: 542022928}
-  playerInteractions: {fileID: 135756641613574991}
   texts:
   - Hmmm. . .
   - Apalah Ibu ini, padahal tadi lagi seru banget main Fanny!
@@ -11412,9 +11424,6 @@ MonoBehaviour:
   - Awas, ya! Kalau kelihatan tapi belum dibereskan juga, Ibu pukul kamu!
   - Aduh, gawat! Aku harus segera membereskannya.
   textDuration: 3
-  intruksi: {fileID: 2135280799}
-  useAutoDisplay: 1
-  textDisplay: {fileID: 4340560018098155908}
 --- !u!1 &4041790693897951970
 GameObject:
   m_ObjectHideFlags: 0

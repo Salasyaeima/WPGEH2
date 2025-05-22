@@ -137,11 +137,16 @@ public class TaskManager : MonoBehaviour
 
     void UpdateTaskInfo()
     {
-        if (taskText != null)
+        if (taskText != null && tasks != null)
             taskText.text = $"{completedTasks}/{tasks.Count} Task";
-        if (roomText != null)
+
+        if (totalTask != null && tasks != null)
+            totalTask.text = $"Total Tugas: {tasks.Count}";
+
+        if (roomText != null && rooms != null)
             roomText.text = $"{completedRooms}/{rooms.Length} Ruangan";
     }
+
 
     void UpdateTasksPerRoom()
     {
@@ -187,14 +192,6 @@ public class TaskManager : MonoBehaviour
 
     public void RegisterTask(string taskName, ITaskProvider provider, Room room = null)
     {
-        foreach (Task existingTask in tasks)
-        {
-            if (existingTask.taskName == taskName)
-            {
-                Debug.LogWarning($"Task '{taskName}' sudah ada, skip registrasi.");
-                return;
-            }
-        }
         Task newTask = new Task { taskName = taskName, isCompleted = false, room = room };
         tasks.Add(newTask);
 
@@ -206,6 +203,8 @@ public class TaskManager : MonoBehaviour
             }
             roomTasks[room].Add(newTask);
         }
+
+        UpdateTaskInfo();
     }
 
     ITaskProvider FindProviderForTask(Task task)

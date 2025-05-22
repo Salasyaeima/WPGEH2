@@ -5,21 +5,21 @@ using Unity.AppUI.UI;
 
 public class TextDialogChild : MonoBehaviour
 {
-    [SerializeField] GameObject mother;
     public Window_QuestPointer windowQuest;
-    [SerializeField] Transform newTargetTransform;
-    [SerializeField] private Transform[] targetTransforms;
-    [SerializeField] GameObject cameraPendukung;
-    [SerializeField] GameObject blinkController;
-    [SerializeField] private HidingMechanism hidingMechanism;
-    private bool lastHidingState;
-    public PlayerInteractions playerInteractions;
-    [SerializeField] string[] texts;
-    [SerializeField] float textDuration = 2f;
     public TextMeshProUGUI intruksi;
     public bool useAutoDisplay = true;
     public TextMeshProUGUI textDisplay;
+    public PlayerInteractions playerInteractions;
+    [SerializeField] GameObject mother;
+    [SerializeField] Transform newTargetTransform;
+    [SerializeField] Transform[] targetTransforms;
+    [SerializeField] GameObject cameraPendukung;
+    [SerializeField] GameObject blinkController;
+    [SerializeField] HidingMechanism hidingMechanism;
+    [SerializeField] string[] texts;
+    [SerializeField] float textDuration = 2f;
 
+    bool lastHidingState;
     int currentTextIndex = 0;
     bool isDisplaying = false;
     float timer = 0f;
@@ -75,10 +75,6 @@ public class TextDialogChild : MonoBehaviour
         if (texts == null || texts.Length == 0)
         {
             Debug.LogWarning($"{gameObject.name}: Text array is empty!");
-        }
-        else
-        {
-            Debug.Log($"{gameObject.name}: Text array has {texts.Length} elements");
         }
     }
 
@@ -167,6 +163,7 @@ public class TextDialogChild : MonoBehaviour
             playerInteractions.canInteract = true;
             playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.BedOnly);
             intruksi.text = "Pergi Ke tempat tidur";
+
             newTargetTransform = targetTransforms[0];
             ChangeTargetTransform();
         }
@@ -277,7 +274,6 @@ public class TextDialogChild : MonoBehaviour
     {
         if (!isDisplaying)
         {
-            Debug.Log($"{gameObject.name}: PauseDisplayingText called, but not displaying");
             return;
         }
 
@@ -342,6 +338,13 @@ public class TextDialogChild : MonoBehaviour
             intruksi.enabled = false;
         }
 
-
+        while (currentTextIndex < 22)
+        {
+            if (!hidingMechanism.isHiding)
+            {
+                hidingMechanism.Interact();
+            }
+            yield return null;
+        }
     }
 }
