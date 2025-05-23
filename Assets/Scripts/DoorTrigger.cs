@@ -1,9 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    bool isOpen = false;
+        bool isOpen = false;
     Quaternion closedRotation;
     Quaternion openRotation;
     bool isAnimating = false;
@@ -12,14 +15,11 @@ public class DoorTrigger : MonoBehaviour
     [SerializeField] float animationDuration = 1f;
     [Header("The Center of Rotation")]
     [SerializeField] GameObject doorEngsel;
-    [Header("Trigger Collider Settings")]
-    [SerializeField] Vector3 colliderCenter;
-    [SerializeField] Vector3 colliderSizing;
-    [SerializeField] LayerMask detectionLayer;
+    // [Header("Trigger Collider Settings")]
+    // [SerializeField] Vector3 colliderCenter;
+    // [SerializeField] Vector3 colliderSizing;
+    // [SerializeField] LayerMask detectionLayer;
 
-    private Collider currentOverlap;
-    private Collider previousOverlap;
- 
     void Start()
     {
         closedRotation = doorEngsel.transform.rotation;
@@ -28,28 +28,76 @@ public class DoorTrigger : MonoBehaviour
 
     void Update()
     {
-        CheckDoorTriggerBox();
+        // CheckDoorTriggerBox();
+        Debug.Log(isOpen);
     }
 
-    void CheckDoorTriggerBox()
-    {
-        Collider[] boxColliders = Physics.OverlapBox(transform.position + colliderCenter, colliderSizing/2, transform.rotation, detectionLayer);
-        currentOverlap = null;
+    // void CheckDoorTriggerBox()
+    // {
+    //     Collider[] boxColliders = Physics.OverlapBox(transform.position + colliderCenter, colliderSizing / 2, transform.rotation, detectionLayer);
+    //     List<Collider> trackedColliders = new List<Collider>();
+    //     string state = null;
 
-        if (boxColliders.Length > 0)
-        {
-            currentOverlap = boxColliders[0];
-            if (previousOverlap != currentOverlap)
-            {
-                if (!isAnimating)
-                {
-                    StartCoroutine(AnimateDoor());
-                }
-            }
-            previousOverlap = currentOverlap;
-            return;
-        }
-        previousOverlap = null;
+    //     if (boxColliders.Length > 0)
+    //     {
+    //         foreach (Collider collider in boxColliders)
+    //         {
+    //             if (!trackedColliders.Contains(collider))
+    //             {
+    //                 Debug.Log("Masuk");
+    //                 trackedColliders.Add(collider);
+    //             }
+    //         }
+
+    //         foreach (Collider collider in trackedColliders)
+    //         {
+    //             if (boxColliders.Contains(collider))
+    //             {
+    //                 if (!isOpen)
+    //                 {
+    //                     Debug.Log("Stay");
+    //                     StartCoroutine(AnimateDoor());
+    //                 }
+    //                 Debug.Log("Stay");
+    //             }
+    //         }
+
+    //         for (int i = 0; i < trackedColliders.Count; i++)
+    //         {
+    //             Debug.Log(trackedColliders[i].gameObject);
+    //             if (!boxColliders.Contains(trackedColliders[i]))
+    //             {
+
+    //                 Debug.Log("Keluar");
+    //                 // trackedColliders.Remove(collider);
+    //             }
+    //         }
+
+    //         // for (int i = trackedColliders.Count - 1; i >= 0; i--)
+    //         // {
+    //         //     if (!boxColliders.Contains(trackedColliders[i]))
+    //         //     {
+    //         //         if (isOpen)
+    //         //         {
+    //         //             StartCoroutine(AnimateDoor());
+    //         //         }
+    //         //         Debug.Log("Keluar");
+    //         //         trackedColliders.RemoveAt(i);
+    //         //     }
+    //         // }
+    //     }
+    // }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!isOpen)
+        StartCoroutine(AnimateDoor());
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (isOpen) 
+            StartCoroutine(AnimateDoor());
     }
 
     IEnumerator AnimateDoor()
@@ -74,6 +122,6 @@ public class DoorTrigger : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(transform.position + colliderCenter, colliderSizing); 
+        // Gizmos.DrawWireCube(transform.position + colliderCenter, colliderSizing); 
     }
 }

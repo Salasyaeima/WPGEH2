@@ -89,7 +89,7 @@ public class LineOfSight : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(lastPosition, 0.3f);
-            Gizmos.DrawSphere(transform.position + Vector3.up * detectionHeight, 0.3f);
+            Gizmos.DrawSphere(transform.position + Vector3.up * detectionHeight, 1f);
         }
     }
 }
