@@ -89,6 +89,7 @@ public class LineOfSight : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(lastPosition, 0.3f);
+            // Gizmos.DrawLine(transform.position, Quaternion.Euler - transform.position);
             Gizmos.DrawSphere(transform.position + Vector3.up * detectionHeight, 1f);
         }
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-        bool isOpen = false;
+    bool isOpen = false;
     Quaternion closedRotation;
     Quaternion openRotation;
     bool isAnimating = false;
@@ -91,7 +91,7 @@ public class DoorTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!isOpen)
-        StartCoroutine(AnimateDoor());
+            StartCoroutine(AnimateDoor());
     }
 
     void OnTriggerExit(Collider other)
