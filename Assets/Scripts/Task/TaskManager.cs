@@ -132,7 +132,6 @@ public class TaskManager : MonoBehaviour
             if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
             {
                 panelResult.SetActive(true);
-                Timer.Instance.CompleteGame();
             }
         }
     }
@@ -245,7 +244,8 @@ public class TaskManager : MonoBehaviour
         if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
         {
             panelResult.SetActive(true);
-            Timer.Instance.CompleteGame();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

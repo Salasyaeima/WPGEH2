@@ -98,6 +98,7 @@ public class PlayerInteractions : MonoBehaviour
                     }
                 }
 
+
                 if (isInteractionEnabled)
                 {
                     HandleInteraction(interactable);
@@ -106,10 +107,22 @@ public class PlayerInteractions : MonoBehaviour
                     interactionHoldGo.SetActive(interactable.interactionType == Interactable.InteractionType.Hold);
                     successfullHit = true;
                 }
+                else if (heldItem is Broom)
+                {
+                    interactionText.text = heldItem.Description();
+                    interactionText.gameObject.SetActive(true);
+                    interactionHoldGo.SetActive(false);
+                    successfullHit = false;
+                }
+                else
+                {
+                    successfullHit = false;
+                }
             }
             else
             {
                 successfullHit = false;
+                isInteractionEnabled = false;
             }
         }
         else
