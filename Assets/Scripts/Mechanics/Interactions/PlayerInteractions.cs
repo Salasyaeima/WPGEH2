@@ -131,44 +131,6 @@ public class PlayerInteractions : MonoBehaviour
             }
         }
 
-        if (heldItem is Broom broom)
-        {
-            Animator broomAnimator = broom.GetBroomAnimator();
-
-            bool isSweeping = Input.GetMouseButton(0);
-
-            if (broomAnimator != null)
-            {
-                broomAnimator.SetBool("IsSweeping", isSweeping);
-            }
-
-            if (isSweeping)
-            {
-                Transform sweepPoint = broom.GetSweepPoint();
-                float sweepRadius = broom.GetSweepRadius();
-                LayerMask dirtLayer = broom.GetDirtLayer();
-
-                if (sweepPoint != null)
-                {
-                    Collider[] hits = Physics.OverlapSphere(sweepPoint.position, sweepRadius, dirtLayer);
-                    foreach (Collider dirtCollider in hits)
-                    {
-                        if (dirtCollider.CompareTag("Dirt"))
-                        {
-                            Destroy(dirtCollider.gameObject, 2f);
-                            Debug.Log("Cleaned dirt: " + dirtCollider.name);
-                        }
-                    }
-                }
-            }
-
-            if (!successfullHit || !isInteractionEnabled)
-            {
-                interactionText.gameObject.SetActive(false);
-                interactionHoldGo.SetActive(false);
-            }
-        }
-
         if (!successfullHit)
         {
             interactionText.gameObject.SetActive(false);

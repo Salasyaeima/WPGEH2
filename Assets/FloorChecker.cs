@@ -1,39 +1,51 @@
-using System.Collections;
 using UnityEngine;
 
 public class FloorChecker : MonoBehaviour
 {
-    [SerializeField] BoxCollider floorChecker;
-    [SerializeField] LayerMask dirtLayer;
+    [SerializeField] string DirtTag = "Dirt";
     [SerializeField] Broom broom;
     TaskManager taskManager;
     bool isDone = false;
+    Collider areaCollider;
 
     void Start()
     {
         taskManager = TaskManager.Instance;
-        StartCoroutine(CheckFloorRoutine());
+        areaCollider = GetComponent<Collider>();
+        if (areaCollider == null)
+        {
+            Debug.LogError("FloorChecker perlu Collider!");
+        }
     }
 
-    public void CheckFloor()
+    void Update()
     {
-        if (isDone || floorChecker == null) return;
+        if (isDone) return;
 
-        Collider[] dirtColliders = Physics.OverlapBox(
-            floorChecker.bounds.center,
-            floorChecker.bounds.extents,
-            floorChecker.transform.rotation,
-            dirtLayer
-        );
-
-        if (dirtColliders.Length == 0)
+        Collider[] colliders = Physics.OverlapBox(areaCollider.bounds.center, areaCollider.bounds.extents, Quaternion.identity);
+        bool hasDirt = false;
+        foreach (Collider col in colliders)
         {
+            if (col.CompareTag(DirtTag))
+            {
+                hasDirt = true;
+                break;
+            }
+        }
 
+        if (!hasDirt)
+        {
+            Debug.Log("Semua kotoran di ruangan ini sudah bersih!");
             isDone = true;
             Task task = FindTaskByName(broom.GetTaskName());
             if (task != null && !task.isCompleted)
             {
+                Debug.Log($"Menyelesaikan task: {broom.GetTaskName()}");
                 taskManager.CompleteTask(task);
+            }
+            else
+            {
+                Debug.LogWarning($"Task '{broom.GetTaskName()}' tidak ditemukan atau sudah selesai!");
             }
         }
     }
@@ -48,12 +60,9 @@ public class FloorChecker : MonoBehaviour
         return null;
     }
 
-    IEnumerator CheckFloorRoutine()
+    void OnDrawGizmos()
     {
-        while (!isDone)
-        {
-            CheckFloor();
-            yield return new WaitForSeconds(0.5f);
-        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.size);
     }
 }

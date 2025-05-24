@@ -31,11 +31,13 @@ public class TaskManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+        completedTasks = 0;
     }
 
     void Start()
     {
         rooms = Object.FindObjectsByType<Room>(FindObjectsSortMode.None);
+        UpdateProgressBar();
         UpdateTaskInfo();
         UpdateTasksPerRoom();
     }
@@ -174,7 +176,7 @@ public class TaskManager : MonoBehaviour
                         completedTasksInRoom++;
                 }
             }
-            tasksPerRoom.text = $"Tugas di Ruangan Ini: {completedTasksInRoom}/{tasksInRoom}";
+            tasksPerRoom.text = $"Tugas yang tersisa di Ruangan Ini: {completedTasksInRoom}/{tasksInRoom}";
         }
     }
 
@@ -188,13 +190,17 @@ public class TaskManager : MonoBehaviour
             int percentage = Mathf.RoundToInt(progress * 100f);
             detailProgression.text = $"{percentage}% Tugas Selesai";
         }
+        else
+        {
+            progressBar.fillAmount = 0f;
+            detailProgression.text = "0% Tugas Selesai";
+        }
     }
 
     public void RegisterTask(string taskName, ITaskProvider provider, Room room = null)
     {
         Task newTask = new Task { taskName = taskName, isCompleted = false, room = room };
         tasks.Add(newTask);
-
         if (room != null)
         {
             if (!roomTasks.ContainsKey(room))
@@ -205,6 +211,7 @@ public class TaskManager : MonoBehaviour
         }
 
         UpdateTaskInfo();
+        UpdateProgressBar();
     }
 
     ITaskProvider FindProviderForTask(Task task)
