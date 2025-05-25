@@ -49,6 +49,15 @@ public class PlayerInteractions : MonoBehaviour
         {
             interactable = hit.collider.GetComponentInParent<Interactable>();
 
+            if (heldItem is Broom)
+            {
+                interactionText.text = heldItem.Description();
+                interactionText.gameObject.SetActive(true);
+                interactionHoldGo.SetActive(false);
+                successfullHit = false;
+                return;
+            }
+
             if (interactable != null)
             {
                 if (SceneManager.GetActiveScene().name == "RoomsTutorial")
@@ -106,13 +115,6 @@ public class PlayerInteractions : MonoBehaviour
                     interactionText.gameObject.SetActive(true);
                     interactionHoldGo.SetActive(interactable.interactionType == Interactable.InteractionType.Hold);
                     successfullHit = true;
-                }
-                else if (heldItem is Broom)
-                {
-                    interactionText.text = heldItem.Description();
-                    interactionText.gameObject.SetActive(true);
-                    interactionHoldGo.SetActive(false);
-                    successfullHit = false;
                 }
                 else
                 {
@@ -172,20 +174,24 @@ public class PlayerInteractions : MonoBehaviour
             case Interactable.InteractionType.Hold:
                 if (Input.GetKey(key) && !heldItem)
                 {
+                    interactable.OnHoldStart();
                     interactable.increaseHoldTime();
                     if (interactable.HoldTime() > holdTimeDuration)
                     {
                         interactable.Interact();
                         interactable.resetHoldTime();
+                        interactable.OnHoldEnd();
                     }
                     else if (successfullHit == false && interactable.interactionType == Interactable.InteractionType.Hold)
                     {
                         interactable.resetHoldTime();
+                        interactable.OnHoldEnd();
                     }
                 }
                 else
                 {
                     interactable.resetHoldTime();
+                    interactable.OnHoldEnd();
                 }
                 holdProgress.fillAmount = interactable.HoldTime() / holdTimeDuration;
                 break;

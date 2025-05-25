@@ -1701,6 +1701,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: 90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &60899495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,7 +2155,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.5
+  m_VoxelSize: 0.56666666
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8e7ab1f1957e18d4e868c8de0c821da2, type: 2}
   m_BuildHeightMesh: 0
@@ -2298,11 +2300,6 @@ MonoBehaviour:
   openAngle: 90
   animationDuration: 1
   doorEngsel: {fileID: 1565266410}
-  colliderCenter: {x: 0, y: -2.72, z: -3}
-  colliderSizing: {x: 8, y: 3.87, z: 5}
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!23 &92239728
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7517,6 +7514,7 @@ MonoBehaviour:
   interactionType: 1
   emptyContainer: {fileID: 316108677}
   fullContainer: {fileID: 2144276587}
+  interectionHoldSFXName: Cloth_sound
   containerType: 1
 --- !u!65 &316108680
 BoxCollider:
@@ -7966,6 +7964,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: -90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &330079414
 GameObject:
   m_ObjectHideFlags: 0
@@ -9913,6 +9913,7 @@ MonoBehaviour:
   interactionType: 1
   emptyContainer: {fileID: 395532098}
   fullContainer: {fileID: 1835420235}
+  interectionHoldSFXName: Cloth_sound
   containerType: 3
 --- !u!1001 &395598813
 PrefabInstance:
@@ -10716,6 +10717,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: -90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &415736117
 GameObject:
   m_ObjectHideFlags: 0
@@ -13970,11 +13973,6 @@ MonoBehaviour:
   openAngle: -90
   animationDuration: 1
   doorEngsel: {fileID: 1307139183}
-  colliderCenter: {x: 0, y: -2.72, z: -3}
-  colliderSizing: {x: 8, y: 3.87, z: 4.77}
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!23 &588919054
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16641,11 +16639,6 @@ MonoBehaviour:
   openAngle: 90
   animationDuration: 1
   doorEngsel: {fileID: 1160106494}
-  colliderCenter: {x: -3, y: -2.72, z: 0}
-  colliderSizing: {x: 4.77, y: 3.87, z: 8}
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!23 &660762808
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17944,11 +17937,6 @@ MonoBehaviour:
   openAngle: -90
   animationDuration: 1
   doorEngsel: {fileID: 1655788985}
-  colliderCenter: {x: 0, y: -2.72, z: 3}
-  colliderSizing: {x: 8, y: 3.87, z: 4.77}
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!208 &699038207
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -18136,6 +18124,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708409524}
   m_Mesh: {fileID: 997389114819614186, guid: 56310febe4fed6942bc32e2adfb11384, type: 3}
+--- !u!1 &709482205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 709482207}
+  - component: {fileID: 709482206}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &709482206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709482205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb6e82c7fd6dcc419c3050ad3e25e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxClips:
+  - {fileID: 8300000, guid: ebe8580bf25d8d640a521d54374fa6b2, type: 3}
+  - {fileID: 8300000, guid: e756de9831df2d54db842456ef0d5e5e, type: 3}
+  - {fileID: 8300000, guid: 4d9904731e34e2247a8bec53bf0ce576, type: 3}
+  - {fileID: 8300000, guid: 4cbe743e20ed7db4b96bd80c9d83a21d, type: 3}
+  - {fileID: 8300000, guid: 890549a5f2176924080bb27d2010a7a2, type: 3}
+  - {fileID: 8300000, guid: 4d4b565d1188ad9459638682dab0e3bf, type: 3}
+  - {fileID: 8300000, guid: a874da84863d00f4884c8a8328b70806, type: 3}
+  - {fileID: 8300000, guid: 1fe19e5f1391983468c0fa35c1bf14bc, type: 3}
+  - {fileID: 8300000, guid: 083d1a5fc44b6064ebac857235f0b783, type: 3}
+  mainMenuBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
+  mainGameBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
+  bgmVolume: 1
+  fadeDuration: 1
+--- !u!4 &709482207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709482205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 51.68899, y: 0.47491476, z: 139.18036}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &709696974
 GameObject:
   m_ObjectHideFlags: 0
@@ -22600,12 +22646,8 @@ MonoBehaviour:
   broomInHand: {fileID: 0}
   broomInRoom: {fileID: 904204166}
   playerHand: {fileID: 0}
-  sweepPoint: {fileID: 0}
-  sweepRadius: 0.5
-  dirtLayer:
-    serializedVersion: 2
-    m_Bits: 32768
-  broomAnimator: {fileID: 0}
+  roomBroom: {fileID: 0}
+  taskName: Bersihkan Lantai
 --- !u!54 &904204169
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31115,6 +31157,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: -90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &1170292060
 GameObject:
   m_ObjectHideFlags: 0
@@ -49952,11 +49996,6 @@ MonoBehaviour:
   openAngle: 90
   animationDuration: 1
   doorEngsel: {fileID: 1408437522}
-  colliderCenter: {x: -3, y: -2.72, z: 0}
-  colliderSizing: {x: 4.77, y: 3.87, z: 8}
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!23 &1906333005
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -50726,6 +50765,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: -90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &1931964679
 GameObject:
   m_ObjectHideFlags: 0
@@ -57106,3 +57147,4 @@ SceneRoots:
   - {fileID: 1154680683}
   - {fileID: 1199659927}
   - {fileID: 666310995}
+  - {fileID: 709482207}

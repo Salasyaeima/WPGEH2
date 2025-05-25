@@ -10,6 +10,9 @@ public class Door : Interactable
 
     [SerializeField] float openAngle = 90f;
     [SerializeField] float animationDuration = 1f;
+    [SerializeField] string openDoorSFX = "Buka_Pintu";
+    [SerializeField] string closeDoorSFX = "Tutup_Pintu";
+
     Collider door;
 
     void Start()
@@ -35,10 +38,18 @@ public class Door : Interactable
     {
         if (!isAnimating)
         {
+            if (isOpen)
+            {
+                AudioManager.instance.PlaySFX(closeDoorSFX);
+            }
+            else
+            {
+                AudioManager.instance.PlaySFX(openDoorSFX);
+            }
             StartCoroutine(AnimateDoor());
         }
     }
-    
+
     public void OpenAutomatically()
     {
         if (!isOpen && !isAnimating)

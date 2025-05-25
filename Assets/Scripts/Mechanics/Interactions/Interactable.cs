@@ -23,6 +23,10 @@ public abstract class Interactable : MonoBehaviour
     public float HoldTime() => holdTime;
     public float isHolding() => isHold = holdTime;
 
+    public virtual void OnHoldStart() { }
+    public virtual void OnHoldEnd() { }
+
+
 
 
 
