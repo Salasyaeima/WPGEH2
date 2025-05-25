@@ -16,7 +16,6 @@ public partial class SetWaypointsBasedOnStateAction : Action
     protected override Status OnUpdate()
     {
         Waypoint.Value = Place.Value[IndexofItems];
-        Debug.Log(Waypoint.Value);
         return Status.Success;
     }
 }
