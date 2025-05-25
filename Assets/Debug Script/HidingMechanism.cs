@@ -31,6 +31,8 @@ public class HidingMechanism : Interactable
     [SerializeField]
     private float coolDown;
     public bool isCoolDown;
+    [SerializeField] string enterBox = "Masuk_Box";
+    [SerializeField] string exitBox = "Keluar_Box";
 
     void Start()
     {
@@ -73,7 +75,7 @@ public class HidingMechanism : Interactable
             NotHiddenWhenChased();
             PerformHide(isHiding);
         }
-        
+
     }
 
     private void Hide()
@@ -94,10 +96,12 @@ public class HidingMechanism : Interactable
         if (isHiding)
         {
             EnterHide();
+            AudioManager.instance.PlaySFX(enterBox);
         }
         else
         {
             ExitHide();
+            AudioManager.instance.PlaySFX(exitBox);
         }
         SwitchComponents(!condition);
     }

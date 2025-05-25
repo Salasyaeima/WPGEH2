@@ -74,7 +74,11 @@ namespace StarterAssets
 		public Slider energySlider;
 		public CanvasGroup canvasGroup;
 
-
+		[Header("Audio Settings")]
+		[SerializeField] string[] footstepSFXNames = { "Footstep_Left", "Footstep_Right" };
+		[SerializeField] float walkFootstepInterval = 0.5f;
+		[SerializeField] float sprintFootstepInterval = 0.3f;
+		private float footstepTimer = 0f;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -120,7 +124,7 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-			
+
 		}
 
 		private void Start()
@@ -139,7 +143,7 @@ namespace StarterAssets
 
 			loadingScreen = GameObject.Find("LoadingScreenManager").GetComponent<LoadingScreen>();
 
-			if(endScreen != null)
+			if (endScreen != null)
 			{
 				reloadButton.onClick.AddListener(() => loadingScreen.SwitchToScene("Rooms"));
 			}
@@ -191,6 +195,23 @@ namespace StarterAssets
 
 		private void Move()
 		{
+			bool isMoving = _input.move.sqrMagnitude > 0.0001f && Grounded && !hidingMechanism.isHiding;
+
+			if (isMoving)
+			{
+				float interval = _input.sprint ? sprintFootstepInterval : walkFootstepInterval;
+				footstepTimer += Time.deltaTime;
+				if (footstepTimer >= interval)
+				{
+					AudioManager.instance.PlayRandomSFX(footstepSFXNames);
+					footstepTimer -= interval;
+				}
+			}
+			else
+			{
+				footstepTimer = 0f;
+			}
+
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false && starterAssetsInputs.move != Vector2.zero)
 			{

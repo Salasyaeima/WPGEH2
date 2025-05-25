@@ -1732,6 +1732,162 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172983587}
   m_Mesh: {fileID: 3806124249047384536, guid: 613a157a205f83d4699be38b7ead58fa, type: 3}
+--- !u!1 &179861571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179861574}
+  - component: {fileID: 179861573}
+  - component: {fileID: 179861572}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &179861572
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179861571}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &179861573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179861571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb6e82c7fd6dcc419c3050ad3e25e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxClips:
+  - {fileID: 8300000, guid: ebe8580bf25d8d640a521d54374fa6b2, type: 3}
+  - {fileID: 8300000, guid: e756de9831df2d54db842456ef0d5e5e, type: 3}
+  - {fileID: 8300000, guid: 4d9904731e34e2247a8bec53bf0ce576, type: 3}
+  - {fileID: 8300000, guid: 4cbe743e20ed7db4b96bd80c9d83a21d, type: 3}
+  - {fileID: 8300000, guid: 890549a5f2176924080bb27d2010a7a2, type: 3}
+  - {fileID: 8300000, guid: 4d4b565d1188ad9459638682dab0e3bf, type: 3}
+  - {fileID: 8300000, guid: a874da84863d00f4884c8a8328b70806, type: 3}
+  - {fileID: 8300000, guid: 1fe19e5f1391983468c0fa35c1bf14bc, type: 3}
+  - {fileID: 8300000, guid: 083d1a5fc44b6064ebac857235f0b783, type: 3}
+  mainMenuBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
+  mainGameBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
+  bgmVolume: 1
+  fadeDuration: 1
+--- !u!4 &179861574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179861571}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.77716, y: 9.821426, z: 70.69711}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185566538
 GameObject:
   m_ObjectHideFlags: 0
@@ -5545,6 +5701,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: -90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &661885357
 GameObject:
   m_ObjectHideFlags: 0
@@ -7963,6 +8121,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: -90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &832887704
 GameObject:
   m_ObjectHideFlags: 0
@@ -16792,6 +16952,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: -90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &1391347766
 GameObject:
   m_ObjectHideFlags: 0
@@ -17311,6 +17473,7 @@ MonoBehaviour:
   broomAnimator: {fileID: 1400606834}
   sweepRotationSpeed: 5
   sweepTimeRequired: 2
+  sweepSFXName: Nyapu
 --- !u!1 &1404186844
 GameObject:
   m_ObjectHideFlags: 0
@@ -18112,6 +18275,7 @@ MonoBehaviour:
   roomText: {fileID: 857270161}
   detailProgression: {fileID: 370127306}
   player: {fileID: 543449882}
+  TaskResultSFX: Task_Selesai
   panelResult: {fileID: 131737730}
 --- !u!4 &1450977757
 Transform:
@@ -19877,6 +20041,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: 90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!1 &1595704526
 GameObject:
   m_ObjectHideFlags: 0
@@ -21327,6 +21493,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: 90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!65 &1712320774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33611,6 +33779,7 @@ MonoBehaviour:
   interactionType: 1
   emptyContainer: {fileID: 8234087274957563681}
   fullContainer: {fileID: 6850933865929256550}
+  interectionHoldSFXName: Cloth_sound
   containerType: 1
 --- !u!1 &1587130481054074534
 GameObject:
@@ -46978,6 +47147,7 @@ MonoBehaviour:
   interactionType: 1
   emptyContainer: {fileID: 8036328319244497330}
   fullContainer: {fileID: 2971681118671948532}
+  interectionHoldSFXName: Cloth_sound
   containerType: 3
 --- !u!1 &3885090118634148092
 GameObject:
@@ -73036,6 +73206,8 @@ MonoBehaviour:
   interactionType: 0
   openAngle: 90
   animationDuration: 1
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!33 &8564221056060816165
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -76685,3 +76857,4 @@ SceneRoots:
   - {fileID: 1433480856}
   - {fileID: 1228369873}
   - {fileID: 661885361}
+  - {fileID: 179861574}

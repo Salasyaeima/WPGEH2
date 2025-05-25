@@ -9,8 +9,10 @@ public class BroomInHand : MonoBehaviour
     [SerializeField] Animator broomAnimator;
     [SerializeField] float sweepRotationSpeed = 30f;
     [SerializeField] float sweepTimeRequired = 2f;
+    [SerializeField] string sweepSFXName = "sweep_sfx";
     Quaternion originalRotation;
     Dictionary<Collider, float> dirtTimers = new Dictionary<Collider, float>();
+    bool wasSweeping = false;
 
     void Start()
     {
@@ -34,6 +36,16 @@ public class BroomInHand : MonoBehaviour
         {
             broomAnimator.SetBool("IsSweeping", isSweeping);
         }
+
+        if (isSweeping && !wasSweeping)
+        {
+            AudioManager.instance.PlayLoopingSFX(sweepSFXName);
+        }
+        else if (!isSweeping && wasSweeping)
+        {
+            AudioManager.instance.StopLoopingSFX(sweepSFXName);
+        }
+        wasSweeping = isSweeping;
 
         if (isSweeping && sweepPoint != null)
         {

@@ -17,6 +17,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI roomText;
     [SerializeField] TextMeshProUGUI detailProgression;
     [SerializeField] GameObject player;
+    [SerializeField] string TaskResultSFX = "Task_Selesai";
     public GameObject panelResult;
 
     Room[] rooms;
@@ -109,6 +110,7 @@ public class TaskManager : MonoBehaviour
         {
             task.isCompleted = true;
             completedTasks++;
+            AudioManager.instance.PlaySFX(TaskResultSFX);
 
             foreach (Transform child in taskListParent)
             {

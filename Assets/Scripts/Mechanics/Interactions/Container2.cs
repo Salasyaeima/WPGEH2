@@ -5,9 +5,12 @@ public class Container2 : Interactable, ITaskProvider
 {
     public GameObject emptyContainer;
     public GameObject fullContainer;
+    [SerializeField] string interectionHoldSFXName = "Cloth_sound";
     TaskManager taskManager;
     Room room;
     bool isDone = false;
+    bool isHolding = false;
+
 
     public enum ContainerType
     {
@@ -49,6 +52,7 @@ public class Container2 : Interactable, ITaskProvider
     public override void Interact()
     {
         isDone = true;
+
     }
 
     void Update()
@@ -96,5 +100,21 @@ public class Container2 : Interactable, ITaskProvider
             default:
                 return "";
         }
+    }
+
+    public override void OnHoldStart()
+    {
+        if (!isHolding)
+        {
+            isHolding = true;
+            AudioManager.instance.PlayLoopingSFX(interectionHoldSFXName);
+        }
+    }
+
+    public override void OnHoldEnd()
+    {
+        isHolding = false;
+        AudioManager.instance.StopLoopingSFX(interectionHoldSFXName);
+
     }
 }
