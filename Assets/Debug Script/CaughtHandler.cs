@@ -7,6 +7,7 @@ public class CaughtHandler : MonoBehaviour
     [SerializeField] Camera playerCameraJumpScare;
     Animator jumpscareAnimator;
     [SerializeField] CameraJumpScare cameraJumpScare;
+    [SerializeField] Broom broom;
 
     void Start()
     {
@@ -14,6 +15,10 @@ public class CaughtHandler : MonoBehaviour
     }
     public void PerformCaught()
     {
+        if(broom.isHeld == true)
+        {
+            broom.Drop();
+        }
         playerCamera.enabled = false;
         playerCameraJumpScare.enabled = true;
         jumpscareAnimator.Play("Scene");

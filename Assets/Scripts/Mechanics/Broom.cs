@@ -10,7 +10,7 @@ public class Broom : Interactable, ITaskProvider
     [SerializeField] string taskName = "Bersihkan Lantai";
     TaskManager taskManager;
     Room room;
-    bool isHeld = false;
+    public bool isHeld = false;
 
     void Start()
     {

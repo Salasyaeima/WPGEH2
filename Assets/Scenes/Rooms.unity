@@ -5159,7 +5159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 657105027}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: SweepPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10059,6 +10059,7 @@ MonoBehaviour:
   playerHand: {fileID: 1691368644}
   roomBroom: {fileID: 959259234}
   taskName: Bersihkan Lantai
+  isHeld: 0
 --- !u!54 &959259237
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11712,6 +11713,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5129585268526314336, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: broom
+      value: 
+      objectReference: {fileID: 1546433818}
     - target: {fileID: 5129585268526314336, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: playerCamera
       value: 
@@ -16435,7 +16440,7 @@ GameObject:
   - component: {fileID: 1400606829}
   - component: {fileID: 1400606834}
   - component: {fileID: 1400606835}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SapuInHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17653,7 +17658,7 @@ GameObject:
   - component: {fileID: 1459046789}
   - component: {fileID: 1459046788}
   - component: {fileID: 1459046787}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Plane.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18607,7 +18612,7 @@ GameObject:
   - component: {fileID: 1546433820}
   - component: {fileID: 1546433819}
   - component: {fileID: 1546433818}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SapuInKamar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18649,6 +18654,7 @@ MonoBehaviour:
   playerHand: {fileID: 1691368644}
   roomBroom: {fileID: 1546433816}
   taskName: Bersihkan Lantai
+  isHeld: 0
 --- !u!54 &1546433819
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18762,7 +18768,7 @@ GameObject:
   - component: {fileID: 1562606731}
   - component: {fileID: 1562606733}
   - component: {fileID: 1562606732}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21638,7 +21644,7 @@ GameObject:
   - component: {fileID: 1815068293}
   - component: {fileID: 1815068292}
   - component: {fileID: 1815068291}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Plane.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21745,7 +21751,7 @@ GameObject:
   - component: {fileID: 1826170237}
   - component: {fileID: 1826170239}
   - component: {fileID: 1826170238}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30864,7 +30870,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8699848229769112130}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -34673,7 +34679,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2634047682154315079}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -37458,7 +37464,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4392588314722132660}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -39108,7 +39114,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8601503275530755461}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -40599,7 +40605,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6644278577899835672}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -46578,7 +46584,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3960765510949793003}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -47234,7 +47240,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4261217570487624491}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -51322,7 +51328,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7872860889571231710}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -51657,7 +51663,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2312239480800947680}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -56973,7 +56979,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194843944112915495}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -59511,7 +59517,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5212286504479388340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -61858,7 +61864,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6938615818014258001}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
