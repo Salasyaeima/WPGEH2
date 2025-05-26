@@ -34,7 +34,8 @@ public class PlayerInteractions : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        interactableMask = ~LayerMask.GetMask("Player");
+        interactableMask = ~LayerMask.GetMask("Player", "ObstacleLayer");
+        ResetInterectionState();
     }
 
     // Update is called once per frame
@@ -224,6 +225,13 @@ public class PlayerInteractions : MonoBehaviour
     public void SetInteractionMode(InteractionMode mode)
     {
         currentInteractionMode = mode;
+    }
+
+    void ResetInterectionState()
+    {
+        heldItem = null;
+        canInteractWithClothes = false;
+        currentInteractionMode = InteractionMode.Default;
     }
 }
 
