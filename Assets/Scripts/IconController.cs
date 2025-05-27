@@ -18,6 +18,7 @@ public class IconController : MonoBehaviour
     [SerializeField] float shakeAmplitudo = 2f;
     [SerializeField] float shakeFrequency = 2f;
     [SerializeField] CinemachineVirtualCamera vCam;
+    [SerializeField] string heartRate = "detakJantung";
     CinemachineBasicMultiChannelPerlin noise;
     Vignette vignette;
     GameObject mother;
@@ -81,10 +82,12 @@ public class IconController : MonoBehaviour
         if (distanceToMother <= playerVisionRadius)
         {
             isMotherVisible = true;
+            AudioManager.instance.PlayLoopingSFX(heartRate);
         }
         else
         {
             isMotherVisible = false;
+            AudioManager.instance.StopLoopingSFX(heartRate);
         }
 
 

@@ -8,6 +8,7 @@ public class Sight : MonoBehaviour
     [SerializeField] Volume volume;
     [SerializeField] Transform objectToLock;
     [SerializeField] StarterAssetsInputs starterAssetInput;
+    [SerializeField] string xRaySound = "focusLoop";
     Vector3 lockedPos;
     ColorAdjustments colorAdjust;
     public bool xrayActive = false;
@@ -31,11 +32,13 @@ public class Sight : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             xrayActive = true;
+            AudioManager.instance.PlayLoopingSFX(xRaySound);
             starterAssetInput.move = new Vector2(0, 0);
             colorAdjust.saturation.value = -100f;
         }
         else
         {
+            AudioManager.instance.StopLoopingSFX(xRaySound);
             xrayActive = false;
             colorAdjust.saturation.value = 0f;
         }

@@ -2538,6 +2538,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a874da84863d00f4884c8a8328b70806, type: 3}
   - {fileID: 8300000, guid: 1fe19e5f1391983468c0fa35c1bf14bc, type: 3}
   - {fileID: 8300000, guid: 083d1a5fc44b6064ebac857235f0b783, type: 3}
+  - {fileID: 8300000, guid: b5aa427b2e32e394e855210effb2d7f5, type: 3}
+  - {fileID: 8300000, guid: b859a9cdaeaf3a84a83ea42742f289f1, type: 3}
+  - {fileID: 8300000, guid: 7807271564db753479d734700684fb4a, type: 3}
   mainMenuBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
   mainGameBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
   bgmVolume: 1
@@ -28952,6 +28955,7 @@ MonoBehaviour:
   shakeAmplitudo: 0.5
   shakeFrequency: 2.5
   vCam: {fileID: 1391944216}
+  heartRate: detakJantung
 --- !u!1001 &1902743907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32856,6 +32860,7 @@ MonoBehaviour:
   volume: {fileID: 2135677328}
   objectToLock: {fileID: 135756641613574981}
   starterAssetInput: {fileID: 135756641613574975}
+  xRaySound: focusLoop
   xrayActive: 0
 --- !u!33 &144860520328179316
 MeshFilter:
