@@ -28,5 +28,6 @@ public class CaughtHandler : MonoBehaviour
         playerCameraJumpScare.enabled = true;
         jumpscareAnimator.Play("Scene");
         cameraJumpScare.StartShakeAndZoom();
+        // AudioManager.instance.StopAllAudio();
     }
 }

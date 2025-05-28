@@ -200,4 +200,29 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("BGM Clip baru tidak valid!");
         }
     }
+
+    public void StopAllAudio()
+    {
+        if (bgmSource != null && bgmSource.isPlaying)
+        {
+            bgmSource.Stop();
+        }
+
+        foreach (var source in audioSources)
+        {
+            if (source.isPlaying)
+            {
+                source.Stop();
+            }
+        }
+
+        foreach (var kvp in loopingSources)
+        {
+            if (kvp.Value.isPlaying)
+            {
+                kvp.Value.Stop();
+            }
+        }
+    }
+
 }
