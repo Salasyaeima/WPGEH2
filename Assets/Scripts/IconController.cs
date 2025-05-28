@@ -22,8 +22,7 @@ public class IconController : MonoBehaviour
     CinemachineBasicMultiChannelPerlin noise;
     Vignette vignette;
     GameObject mother;
-
-
+    bool heartbeatPlaying = false;
 
     void Start()
     {
@@ -82,12 +81,27 @@ public class IconController : MonoBehaviour
         if (distanceToMother <= playerVisionRadius)
         {
             isMotherVisible = true;
-            AudioManager.instance.PlayLoopingSFX(heartRate);
         }
         else
         {
             isMotherVisible = false;
-            AudioManager.instance.StopLoopingSFX(heartRate);
+        }
+
+        if (distanceToMother <= playerAlertRadius)
+        {
+            if (!heartbeatPlaying)
+            {
+                AudioManager.instance.PlayLoopingSFX(heartRate);
+                heartbeatPlaying = true;
+            }
+        }
+        else
+        {
+            if (heartbeatPlaying)
+            {
+                AudioManager.instance.StopLoopingSFX(heartRate);
+                heartbeatPlaying = false;
+            }
         }
 
 

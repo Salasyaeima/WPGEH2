@@ -8,7 +8,7 @@ public class Sight : MonoBehaviour
     [SerializeField] Volume volume;
     [SerializeField] Transform objectToLock;
     [SerializeField] StarterAssetsInputs starterAssetInput;
-    [SerializeField] string xRaySound = "focusLoop";
+    [SerializeField] string xRaySound = "focusloop";
     Vector3 lockedPos;
     ColorAdjustments colorAdjust;
     public bool xrayActive = false;

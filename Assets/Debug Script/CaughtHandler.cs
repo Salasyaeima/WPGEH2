@@ -15,7 +15,7 @@ public class CaughtHandler : MonoBehaviour
     }
     public void PerformCaught()
     {
-        if(broom.isHeld == true)
+        if (broom.isHeld == true)
         {
             broom.Drop();
         }
@@ -23,5 +23,6 @@ public class CaughtHandler : MonoBehaviour
         playerCameraJumpScare.enabled = true;
         jumpscareAnimator.Play("Scene");
         cameraJumpScare.StartShakeAndZoom();
+        // AudioManager.instance.StopAllAudio();
     }
 }
