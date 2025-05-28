@@ -2155,7 +2155,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.56666666
+  m_VoxelSize: 0.45666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8e7ab1f1957e18d4e868c8de0c821da2, type: 2}
   m_BuildHeightMesh: 0
@@ -18154,17 +18154,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxClips:
-  - {fileID: 8300000, guid: ebe8580bf25d8d640a521d54374fa6b2, type: 3}
-  - {fileID: 8300000, guid: e756de9831df2d54db842456ef0d5e5e, type: 3}
-  - {fileID: 8300000, guid: 4d9904731e34e2247a8bec53bf0ce576, type: 3}
-  - {fileID: 8300000, guid: 4cbe743e20ed7db4b96bd80c9d83a21d, type: 3}
-  - {fileID: 8300000, guid: 890549a5f2176924080bb27d2010a7a2, type: 3}
-  - {fileID: 8300000, guid: 4d4b565d1188ad9459638682dab0e3bf, type: 3}
-  - {fileID: 8300000, guid: a874da84863d00f4884c8a8328b70806, type: 3}
-  - {fileID: 8300000, guid: 1fe19e5f1391983468c0fa35c1bf14bc, type: 3}
-  - {fileID: 8300000, guid: 083d1a5fc44b6064ebac857235f0b783, type: 3}
-  mainMenuBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
-  mainGameBGM: {fileID: 8300000, guid: d06fab9265332634a86046f3e341f58c, type: 3}
+  - {fileID: 8300000, guid: adbff08b727b1a84db8778eb0d358e7a, type: 3}
+  - {fileID: 8300000, guid: 67aac4c98a9bd724a92b078069594887, type: 3}
+  - {fileID: 8300000, guid: 98a9b6869bf87c7489bafa0237c75b90, type: 3}
+  - {fileID: 8300000, guid: ef2dd9a686df42447ac2072132f9595e, type: 3}
+  - {fileID: 8300000, guid: 63141acbb7b4fe14287c01ecf2c7ab4e, type: 3}
+  - {fileID: 8300000, guid: feb8d7ab42e5ad44eae09f34140f62b0, type: 3}
+  - {fileID: 8300000, guid: 491e9a72bc9f7c34b8625a329bb9372e, type: 3}
+  - {fileID: 8300000, guid: 5d07f72d1bcf65a4889a4aa1f9470926, type: 3}
+  - {fileID: 8300000, guid: 198308c4217449f42b4befbc71afaf5a, type: 3}
+  - {fileID: 8300000, guid: b5aa427b2e32e394e855210effb2d7f5, type: 3}
+  - {fileID: 8300000, guid: b859a9cdaeaf3a84a83ea42742f289f1, type: 3}
+  - {fileID: 8300000, guid: 7807271564db753479d734700684fb4a, type: 3}
+  mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
+  mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 1
   fadeDuration: 1
 --- !u!4 &709482207
@@ -22648,6 +22651,7 @@ MonoBehaviour:
   playerHand: {fileID: 0}
   roomBroom: {fileID: 0}
   taskName: Bersihkan Lantai
+  isHeld: 0
 --- !u!54 &904204169
 Rigidbody:
   m_ObjectHideFlags: 0
