@@ -15365,6 +15365,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1327977158}
     - target: {fileID: 5129585268526314336, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: interactionsText
+      value: 
+      objectReference: {fileID: 950518758}
+    - target: {fileID: 5129585268526314336, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: playerInteractions
+      value: 
+      objectReference: {fileID: 135756641613574980}
+    - target: {fileID: 5129585268526314336, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: playerCameraJumpScare
       value: 
       objectReference: {fileID: 1327977161}
@@ -26709,7 +26717,7 @@ GameObject:
   - component: {fileID: 1712320772}
   - component: {fileID: 1712320773}
   - component: {fileID: 1712320774}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Engsel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55429,6 +55437,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: endScreen
       value: 
       objectReference: {fileID: 131737732}
@@ -55438,7 +55450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: canvasGroup
@@ -70314,10 +70326,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 130687
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
