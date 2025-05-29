@@ -18,7 +18,9 @@ public class TaskManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI detailProgression;
     [SerializeField] GameObject player;
     [SerializeField] string TaskResultSFX = "Task_Selesai";
+    [SerializeField] TextMeshProUGUI nextScene;
     public GameObject panelResult;
+    [SerializeField] Button resultButton;
 
     Room[] rooms;
     int completedRooms = 0;
@@ -41,6 +43,20 @@ public class TaskManager : MonoBehaviour
         UpdateProgressBar();
         UpdateTaskInfo();
         UpdateTasksPerRoom();
+
+        if (resultButton != null)
+        {
+            resultButton.onClick.RemoveAllListeners();
+            resultButton.onClick.AddListener(() =>
+            {
+                OnResultButtonClicked();
+                resultButton.interactable = false;
+            });
+        }
+        else
+        {
+            Debug.LogWarning("ResultButton tidak diatur di Inspector!");
+        }
     }
 
     public GameObject Player
@@ -241,13 +257,27 @@ public class TaskManager : MonoBehaviour
                 completedRooms++;
         }
         UpdateTaskInfo();
-        Debug.Log($"Ruangan selesai: {completedRooms}/{rooms.Length}");
 
         if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
         {
             panelResult.SetActive(true);
+            nextScene.text = "Lihat Ending";
+            Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
     }
+
+    public void OnResultButtonClicked()
+    {
+        if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
+        {
+            LoadingScreen.Instance.SwitchToScene("EndingCutScene");
+        }
+        else
+        {
+            LoadingScreen.Instance.SwitchToScene("Rooms");
+        }
+    }
+
 }

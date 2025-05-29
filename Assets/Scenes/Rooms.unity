@@ -14886,7 +14886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2733105442133321480, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2733105442133321480, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: m_TagString
@@ -19486,6 +19486,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1299982174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8469347622579568879, guid: 16275b8361dbec446b2971b434a024a6, type: 3}
+  m_PrefabInstance: {fileID: 5229697327989925684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1302711380
 GameObject:
   m_ObjectHideFlags: 0
@@ -22688,7 +22699,9 @@ MonoBehaviour:
   detailProgression: {fileID: 370127306}
   player: {fileID: 543449882}
   TaskResultSFX: Task_Selesai
+  nextScene: {fileID: 1299982174}
   panelResult: {fileID: 131737730}
+  resultButton: {fileID: 1063661080}
 --- !u!4 &1450977757
 Transform:
   m_ObjectHideFlags: 0
@@ -54367,16 +54380,24 @@ PrefabInstance:
       value: 54.5
       objectReference: {fileID: 0}
     - target: {fileID: 3408821978285591979, guid: 16275b8361dbec446b2971b434a024a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408821978285591979, guid: 16275b8361dbec446b2971b434a024a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3408821978285591979, guid: 16275b8361dbec446b2971b434a024a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1902743908}
+      objectReference: {fileID: 1450977756}
     - target: {fileID: 3408821978285591979, guid: 16275b8361dbec446b2971b434a024a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchToScene
+      value: OnResultButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408821978285591979, guid: 16275b8361dbec446b2971b434a024a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TaskManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5452442179093973072, guid: 16275b8361dbec446b2971b434a024a6, type: 3}
       propertyPath: m_AnchoredPosition.x

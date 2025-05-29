@@ -12,7 +12,6 @@ public class Room : MonoBehaviour
         if (completedTasks < totalTasks)
         {
             completedTasks++;
-            Debug.Log($"Task selesai di {roomName}: {completedTasks}/{totalTasks}");
             if (completedTasks >= totalTasks && !isCompleted)
             {
                 isCompleted = true;
