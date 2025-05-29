@@ -58,7 +58,6 @@ public class AudioManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         AudioClip targetBGM = null;
-        Debug.Log(scene.name);
         if (scene.name == "MainMenu")
         {
             targetBGM = mainMenuBGM;
