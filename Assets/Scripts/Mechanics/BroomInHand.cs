@@ -21,7 +21,9 @@ public class BroomInHand : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        bool isSweeping = Input.GetMouseButton(0);
+
+        if (isSweeping)
         {
             float rotationAngle = Mathf.Sin(Time.time * sweepRotationSpeed) * 5f;
             transform.localRotation = originalRotation * Quaternion.Euler(0, rotationAngle, 0);
@@ -31,7 +33,6 @@ public class BroomInHand : MonoBehaviour
             transform.localRotation = originalRotation;
         }
 
-        bool isSweeping = Input.GetMouseButton(0);
         if (broomAnimator != null)
         {
             broomAnimator.SetBool("IsSweeping", isSweeping);
@@ -47,48 +48,29 @@ public class BroomInHand : MonoBehaviour
         }
         wasSweeping = isSweeping;
 
-        if (isSweeping && sweepPoint != null)
-        {
-            Collider[] hits = Physics.OverlapSphere(sweepPoint.position, sweepRadius, dirtLayer);
-            foreach (Collider dirtCollider in hits)
-            {
-                if (dirtCollider.CompareTag("Dirt"))
-                {
-                    if (!dirtTimers.ContainsKey(dirtCollider))
-                    {
-                        dirtTimers[dirtCollider] = 0f;
-                    }
-                    dirtTimers[dirtCollider] += Time.deltaTime;
-
-                    if (dirtTimers[dirtCollider] >= sweepTimeRequired)
-                    {
-                        Destroy(dirtCollider.gameObject);
-                        dirtTimers.Remove(dirtCollider);
-                    }
-                }
-            }
-
-            List<Collider> toRemove = new List<Collider>();
-            foreach (var dirt in dirtTimers.Keys)
-            {
-                if (!System.Array.Exists(hits, hit => hit == dirt))
-                {
-                    toRemove.Add(dirt);
-                }
-            }
-            foreach (var dirt in toRemove)
-            {
-                dirtTimers.Remove(dirt);
-            }
-        }
-        else
+        if (!isSweeping)
         {
             dirtTimers.Clear();
         }
     }
+    public void HandleDirt(Collider dirtCollider)
+    {
+        if (!dirtCollider.CompareTag("Dirt") || !Input.GetMouseButton(0))
+            return;
 
-    public Transform GetSweepPoint() => sweepPoint;
-    public float GetSweepRadius() => sweepRadius;
-    public LayerMask GetDirtLayer() => dirtLayer;
+        if (!dirtTimers.ContainsKey(dirtCollider))
+        {
+            dirtTimers[dirtCollider] = 0f;
+        }
+
+        dirtTimers[dirtCollider] += Time.deltaTime;
+
+        if (dirtTimers[dirtCollider] >= sweepTimeRequired)
+        {
+            Destroy(dirtCollider.gameObject);
+            dirtTimers.Remove(dirtCollider);
+        }
+    }
+
     public Animator GetBroomAnimator() => broomAnimator;
 }
