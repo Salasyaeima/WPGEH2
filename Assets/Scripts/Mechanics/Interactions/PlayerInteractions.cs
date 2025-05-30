@@ -20,6 +20,7 @@ public class PlayerInteractions : MonoBehaviour
     int interactableMask;
     Camera cam;
     bool isInteractionEnabled = true;
+    bool isHittingDirt = false;
 
     public enum InteractionMode
     {
@@ -34,7 +35,7 @@ public class PlayerInteractions : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        interactableMask = ~LayerMask.GetMask("Player", "ObstacleLayer");
+        interactableMask = ~LayerMask.GetMask("Player", "ObstacleLayer") | LayerMask.GetMask("Dirt");
         ResetInterectionState();
     }
 
@@ -50,12 +51,34 @@ public class PlayerInteractions : MonoBehaviour
         {
             interactable = hit.collider.GetComponentInParent<Interactable>();
 
-            if (heldItem is Broom)
+            if (heldItem is Broom broom)
             {
-                interactionText.text = heldItem.Description();
+                if (hit.collider.CompareTag("Dirt"))
+                {
+                    isHittingDirt = true;
+                    interactionText.text = "Press left mouse to sweep";
+                }
+                else
+                {
+                    isHittingDirt = false;
+                    interactionText.text = broom.Description();
+                }
                 interactionText.gameObject.SetActive(true);
                 interactionHoldGo.SetActive(false);
                 successfullHit = false;
+
+                if (hit.collider.CompareTag("Dirt") && Input.GetMouseButton(0))
+                {
+                    BroomInHand broomInHand = FindObjectOfType<BroomInHand>();
+                    if (broomInHand != null)
+                    {
+                        broomInHand.HandleDirt(hit.collider);
+                    }
+                    else
+                    {
+                        Debug.LogError("BroomInHand tidak ditemukan!");
+                    }
+                }
                 return;
             }
 
@@ -132,6 +155,14 @@ public class PlayerInteractions : MonoBehaviour
         {
             successfullHit = false;
             isInteractionEnabled = false;
+
+            if (heldItem is Broom broom)
+            {
+                isHittingDirt = false;
+                interactionText.text = broom.Description();
+                interactionText.gameObject.SetActive(true);
+                interactionHoldGo.SetActive(false);
+            }
         }
 
 

@@ -59,16 +59,12 @@ public class Broom : Interactable, ITaskProvider
 
     public override string Description()
     {
-        return isHeld ? "Tekan {E} untuk meletakkan sapu" : "Tekan {E} untuk mengambil sapu";
+        return isHeld ? "Tekan {E} untuk menjatuhkan" : "Tekan {E} untuk mengambil";
     }
 
     public string GetTaskName()
     {
         return room != null ? $"{taskName}" : taskName;
     }
-
-    public Transform GetSweepPoint() => broomInHand.GetComponent<BroomInHand>().GetSweepPoint();
-    public float GetSweepRadius() => broomInHand.GetComponent<BroomInHand>().GetSweepRadius();
-    public LayerMask GetDirtLayer() => broomInHand.GetComponent<BroomInHand>().GetDirtLayer();
     public Animator GetBroomAnimator() => broomInHand.GetComponent<BroomInHand>().GetBroomAnimator();
 }
