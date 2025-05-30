@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 12542263}
   - component: {fileID: 12542265}
   - component: {fileID: 12542264}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi_1_LEME_wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,8 +677,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: d9e3f80da0412204f88092eb2d963fd4, type: 2}
     - target: {fileID: 4391296605866398709, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391296605866398709, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511776207044493820, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4511776207044493820, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
       propertyPath: m_IsActive
@@ -743,6 +751,10 @@ PrefabInstance:
     - target: {fileID: 6768168909938564355, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
       propertyPath: m_Name
       value: Lemari Tertutup Ibu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768168909938564355, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6768168909938564355, guid: 2e210019ff0cb104eb45bebe0cda6051, type: 3}
       propertyPath: m_IsActive
@@ -1583,10 +1595,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65407
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -2217,7 +2229,7 @@ GameObject:
   - component: {fileID: 172983588}
   - component: {fileID: 172983590}
   - component: {fileID: 172983589}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi_1_LEME_wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,10 +2722,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 67584
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 63359
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3455,10 +3467,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65407
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3861,7 +3873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 281613169}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6097,10 +6109,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65407
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -9034,8 +9046,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: d8a7cfcc717690342bae27b5b0fac244, type: 2}
     - target: {fileID: 769181463788608743, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 769181463788608743, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792076065601306654, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2792076065601306654, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9049,6 +9069,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a5c39ecec11fba14ab7e43742cc57248, type: 2}
+    - target: {fileID: 3280583583429204432, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3280583583429204432, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -9114,12 +9138,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: d8a7cfcc717690342bae27b5b0fac244, type: 2}
     - target: {fileID: 5140394056435393490, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140394056435393490, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6931995004160167454, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_Name
       value: Tempat Tidur Ibu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931995004160167454, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6931995004160167454, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_IsActive
@@ -9134,8 +9166,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: d8a7cfcc717690342bae27b5b0fac244, type: 2}
     - target: {fileID: 7609300147431834593, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609300147431834593, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887283103858360860, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8887283103858360860, guid: 495d4d7de9c410346ada2f4b166917f8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12428,7 +12468,7 @@ GameObject:
   - component: {fileID: 926638736}
   - component: {fileID: 926638735}
   - component: {fileID: 926638734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SOFA (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12632,10 +12672,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65407
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -12709,7 +12749,7 @@ GameObject:
   - component: {fileID: 939960063}
   - component: {fileID: 939960065}
   - component: {fileID: 939960064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Atas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14087,7 +14127,7 @@ GameObject:
   - component: {fileID: 992184774}
   - component: {fileID: 992184776}
   - component: {fileID: 992184775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14103,7 +14143,7 @@ Transform:
   m_GameObject: {fileID: 992184773}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.306, y: 0.404, z: 0.08}
+  m_LocalPosition: {x: 0.906, y: 0.404, z: 0.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14121,10 +14161,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2816
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -14886,7 +14926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2733105442133321480, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2733105442133321480, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: m_TagString
@@ -19595,7 +19635,7 @@ GameObject:
   - component: {fileID: 1310086278}
   - component: {fileID: 1310086277}
   - component: {fileID: 1310086276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bawah
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20116,7 +20156,7 @@ GameObject:
   - component: {fileID: 1330685816}
   - component: {fileID: 1330685818}
   - component: {fileID: 1330685817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi_1_LEME_fabric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21262,10 +21302,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65407
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -22461,12 +22501,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8380157826906577798, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8380157826906577798, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: -6941397303058906870, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6941397303058906870, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -5568371526223589888, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22477,8 +22529,16 @@ PrefabInstance:
       value: MEJA TV 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504746162607587024, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2504746162607587024, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22489,12 +22549,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 3179d5ee451e11f4ebe21be95af20ad5, type: 2}
     - target: {fileID: 7577480634786706238, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577480634786706238, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8184453659726231179, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184453659726231179, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700725330082129686, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8700725330082129686, guid: 4ba947097a8ca07468a86bfc72178193, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23175,10 +23247,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65407
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -23365,7 +23437,7 @@ GameObject:
   - component: {fileID: 1479687192}
   - component: {fileID: 1479687191}
   - component: {fileID: 1479687190}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SOFA (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23536,7 +23608,7 @@ GameObject:
   - component: {fileID: 1479916500}
   - component: {fileID: 1479916502}
   - component: {fileID: 1479916501}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23552,7 +23624,7 @@ Transform:
   m_GameObject: {fileID: 1479916499}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.389, y: 0.404, z: -0.062}
+  m_LocalPosition: {x: -0.851, y: 0.404, z: -0.062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23570,10 +23642,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2816
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -23722,7 +23794,7 @@ GameObject:
   - component: {fileID: 1490848875}
   - component: {fileID: 1490848877}
   - component: {fileID: 1490848876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25255,7 +25327,7 @@ GameObject:
   - component: {fileID: 1608180939}
   - component: {fileID: 1608180942}
   - component: {fileID: 1608180941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25341,7 +25413,7 @@ GameObject:
   - component: {fileID: 1612318074}
   - component: {fileID: 1612318076}
   - component: {fileID: 1612318075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi_1_LEME_fabric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26115,7 +26187,7 @@ GameObject:
   - component: {fileID: 1679124145}
   - component: {fileID: 1679124147}
   - component: {fileID: 1679124146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi_1_LEME_wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26780,10 +26852,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 67584
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 63359
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -26888,10 +26960,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65407
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -28799,7 +28871,7 @@ GameObject:
   - component: {fileID: 1896014734}
   - component: {fileID: 1896014736}
   - component: {fileID: 1896014735}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi_1_LEME_fabric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31993,7 +32065,7 @@ GameObject:
   - component: {fileID: 2144420394}
   - component: {fileID: 2144420396}
   - component: {fileID: 2144420395}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kursi (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32009,7 +32081,7 @@ Transform:
   m_GameObject: {fileID: 2144420393}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.146, y: 0.404, z: 1.103}
+  m_LocalPosition: {x: -0.146, y: 0.404, z: 1.038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32027,10 +32099,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2816
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -33313,7 +33385,7 @@ GameObject:
   - component: {fileID: 1945130571}
   - component: {fileID: 1945130570}
   - component: {fileID: 1945130569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SOFA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33338,10 +33410,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -33990,7 +34062,7 @@ GameObject:
   - component: {fileID: 8507121069410419907}
   - component: {fileID: 3219507620774470316}
   - component: {fileID: 4510742674172290336}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 006_srb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34158,7 +34230,7 @@ GameObject:
   - component: {fileID: 4805997557076839449}
   - component: {fileID: 6502061499292010140}
   - component: {fileID: 1493181227133966083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Garpu3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37020,6 +37092,7 @@ GameObject:
   - component: {fileID: 8216262129573206827}
   - component: {fileID: 1121690772984831001}
   - component: {fileID: 7262015372283168021}
+  - component: {fileID: 8216262129573206828}
   m_Layer: 0
   m_Name: BAK MANDI
   m_TagString: Untagged
@@ -37132,7 +37205,7 @@ GameObject:
   - component: {fileID: 5573587533651137585}
   - component: {fileID: 8991121676871908574}
   - component: {fileID: 2691563291944055140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KACA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37150,7 +37223,7 @@ GameObject:
   - component: {fileID: 4535006279729990173}
   - component: {fileID: 4058520801711303228}
   - component: {fileID: 8749516220684392341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.002_Pot_holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37489,10 +37562,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -37610,10 +37683,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -37633,7 +37706,7 @@ GameObject:
   - component: {fileID: 8857659916409729156}
   - component: {fileID: 9192910238438015800}
   - component: {fileID: 2805100901142246994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg_Oak_Natural
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38219,7 +38292,7 @@ GameObject:
   - component: {fileID: 8163103741555158874}
   - component: {fileID: 3057945092316843669}
   - component: {fileID: 1052260022537759938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Garpu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38616,10 +38689,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -38984,7 +39057,7 @@ GameObject:
   - component: {fileID: 2622556534046451496}
   - component: {fileID: 579280428097175271}
   - component: {fileID: 6825215233549658617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.002_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39309,7 +39382,7 @@ Transform:
   m_GameObject: {fileID: 6938615818014258001}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000013767877, y: 0.7071068, z: 0.7071067, w: 0.00000013767878}
-  m_LocalPosition: {x: -0.03578328, y: 0.0039469716, z: 0.00003206238}
+  m_LocalPosition: {x: -0.03578328, y: 0.00271, z: 0.00003}
   m_LocalScale: {x: 2.1656754, y: 2.1656754, z: 2.1656754}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39514,7 +39587,7 @@ GameObject:
   - component: {fileID: 6091627990201316942}
   - component: {fileID: 144860520328179316}
   - component: {fileID: 6304035044650620313}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piring3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39855,7 +39928,7 @@ GameObject:
   - component: {fileID: 3580372809499228724}
   - component: {fileID: 5905692331729732057}
   - component: {fileID: 2390131226894467991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sink_iron_brushed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39873,7 +39946,7 @@ GameObject:
   - component: {fileID: 9128301891650638457}
   - component: {fileID: 889719794302519767}
   - component: {fileID: 6590306169337965460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Taplak Meja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40210,7 +40283,7 @@ GameObject:
   - component: {fileID: 5246494463033508924}
   - component: {fileID: 1113348151191307484}
   - component: {fileID: 3315236200540766694}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meja_Oak_Natural
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41283,7 +41356,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3113652893185860979}
-  m_Layer: 0
+  - component: {fileID: 3113652893185860980}
+  m_Layer: 6
   m_Name: meja makan 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41721,7 +41795,7 @@ GameObject:
   - component: {fileID: 4668949926901242298}
   - component: {fileID: 5421207533506908420}
   - component: {fileID: 8448099492266627147}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sendok3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42091,7 +42165,7 @@ GameObject:
   - component: {fileID: 6303296946584380937}
   - component: {fileID: 8331093099334112951}
   - component: {fileID: 8331093099334112952}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'MEJA KACA '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42168,7 +42242,7 @@ GameObject:
   - component: {fileID: 2317770006389877294}
   - component: {fileID: 3167295815224521770}
   - component: {fileID: 2354290457813879229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 007_bplast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42620,6 +42694,7 @@ GameObject:
   - component: {fileID: 4669703326392076427}
   - component: {fileID: 5867591200326965895}
   - component: {fileID: 2522361304912391868}
+  - component: {fileID: 5867591200326965896}
   m_Layer: 0
   m_Name: GAYUNG
   m_TagString: Untagged
@@ -43021,7 +43096,7 @@ GameObject:
   - component: {fileID: 5265332785715590488}
   - component: {fileID: 997587055476960344}
   - component: {fileID: 1434788618262347431}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 005_spk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43062,10 +43137,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -44454,10 +44529,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -44811,7 +44886,7 @@ GameObject:
   - component: {fileID: 7473909730666205351}
   - component: {fileID: 2466669201170369457}
   - component: {fileID: 7156079496754670955}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.005_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45362,7 +45437,7 @@ GameObject:
   - component: {fileID: 7418421460087582602}
   - component: {fileID: 2593153530182767690}
   - component: {fileID: 7799210531975291921}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sink_parts_Iron_brushed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45432,6 +45507,27 @@ Transform:
   - {fileID: 281613169}
   m_Father: {fileID: 687631460}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3113652893185860980
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341373055949193161}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 2816
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.855456, y: 1.2148265, z: 1.4766948}
+  m_Center: {x: 0.026687842, y: 0.107411176, z: -0.015577404}
 --- !u!23 &3115937250153189538
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46464,10 +46560,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 67584
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 63359
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -48277,7 +48373,7 @@ GameObject:
   - component: {fileID: 7889222330423410282}
   - component: {fileID: 8591665850043719147}
   - component: {fileID: 2014565437224016356}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube_Smeared_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49060,7 +49156,7 @@ GameObject:
   - component: {fileID: 392038756730235717}
   - component: {fileID: 5119440558105386431}
   - component: {fileID: 798997047434405998}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50595,7 +50691,7 @@ GameObject:
   - component: {fileID: 2308347507085804592}
   - component: {fileID: 419011822912744735}
   - component: {fileID: 4289520042019679591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TEMPAT SAMPAH 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51032,7 +51128,7 @@ GameObject:
   - component: {fileID: 784002309823463637}
   - component: {fileID: 3861671592792971712}
   - component: {fileID: 5693313891780739040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.012_Wood.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51111,10 +51207,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128895
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -51263,7 +51359,6 @@ GameObject:
   - component: {fileID: 1102102134980954657}
   - component: {fileID: 3798875263360213849}
   - component: {fileID: 4393459871602890717}
-  - component: {fileID: 7045380076114807435}
   m_Layer: 0
   m_Name: Plane.001
   m_TagString: Untagged
@@ -52114,7 +52209,7 @@ GameObject:
   - component: {fileID: 6957982467878900208}
   - component: {fileID: 277409368841577382}
   - component: {fileID: 1694187703426630420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TAPLAK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52294,7 +52389,7 @@ Transform:
   m_GameObject: {fileID: 2634047682154315079}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.006615639, y: 0.011784762, z: 0.010462035}
+  m_LocalPosition: {x: -0.006615639, y: 0.01109, z: 0.00995}
   m_LocalScale: {x: 0.24999282, y: 0.24999283, z: 0.24999283}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52526,33 +52621,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2856793428194851047}
   m_Mesh: {fileID: 4224634350726116895, guid: b5e0197aa1c68f04e8fe659a9019e112, type: 3}
---- !u!54 &4762646563665599611
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8553587887648626933}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!4 &4766232563028820576
 Transform:
   m_ObjectHideFlags: 0
@@ -52877,7 +52945,7 @@ GameObject:
   - component: {fileID: 8965520697073063946}
   - component: {fileID: 3837521504676556706}
   - component: {fileID: 2842234235608382123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.003_Material.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53055,7 +53123,7 @@ GameObject:
   - component: {fileID: 1006885058735947250}
   - component: {fileID: 8261133731050198329}
   - component: {fileID: 3967587416826813677}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53575,7 +53643,7 @@ GameObject:
   - component: {fileID: 5308006034972336425}
   - component: {fileID: 6495403206152424687}
   - component: {fileID: 5089167241702204181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.002_Main_color_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54253,6 +54321,7 @@ GameObject:
   - component: {fileID: 6948204865017292419}
   - component: {fileID: 2094367457220969679}
   - component: {fileID: 7890839245766926003}
+  - component: {fileID: 7890839245766926004}
   m_Layer: 0
   m_Name: TOILET
   m_TagString: Untagged
@@ -54606,7 +54675,7 @@ GameObject:
   - component: {fileID: 8560069332751581103}
   - component: {fileID: 1668547194272089828}
   - component: {fileID: 3028941125386182561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.005_Wood.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54920,7 +54989,7 @@ GameObject:
   - component: {fileID: 6520821446670038286}
   - component: {fileID: 6379857931349583047}
   - component: {fileID: 4980748676231254847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Garpu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57326,7 +57395,7 @@ GameObject:
   - component: {fileID: 1702974138639022067}
   - component: {fileID: 7658774205245073791}
   - component: {fileID: 5760411043851436341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.008_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58040,7 +58109,7 @@ GameObject:
   - component: {fileID: 2456182566378400795}
   - component: {fileID: 3678567301399069236}
   - component: {fileID: 6775793158001192248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 003_ekr1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58258,6 +58327,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2634047682154315079}
   m_Mesh: {fileID: 8252951126778261544, guid: 97eb1f9638e3f1541ac9032b9b43e39e, type: 3}
+--- !u!65 &5867591200326965896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634047682154315079}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.027410707, y: 0.011072995, z: 0.0090745725}
+  m_Center: {x: -0.0058171432, y: -0.0052284887, z: 0.0045372844}
 --- !u!4 &5877680809678900168
 Transform:
   m_ObjectHideFlags: 0
@@ -59277,7 +59367,7 @@ GameObject:
   - component: {fileID: 9193573953442291515}
   - component: {fileID: 3789304967769089165}
   - component: {fileID: 1161759699839211269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.011_Wood.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59815,7 +59905,7 @@ Transform:
   m_GameObject: {fileID: 6644278577899835672}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000013767877, y: 0.7071068, z: 0.7071067, w: 0.00000013767878}
-  m_LocalPosition: {x: -0.03578328, y: 0.0037074946, z: 0.00003206238}
+  m_LocalPosition: {x: -0.03578328, y: 0.00256, z: 0.00003}
   m_LocalScale: {x: 2.1656754, y: 2.1656754, z: 2.1656754}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61196,7 +61286,7 @@ GameObject:
   - component: {fileID: 6300954095598812561}
   - component: {fileID: 6144018743727598221}
   - component: {fileID: 6902581988859858174}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piring2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61302,7 +61392,7 @@ GameObject:
   - component: {fileID: 5368251452651855933}
   - component: {fileID: 3357120963263240289}
   - component: {fileID: 6656528052597401409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TV TABUNG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62068,10 +62158,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128894
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -62266,7 +62356,7 @@ GameObject:
   - component: {fileID: 1684315079812198662}
   - component: {fileID: 3946938484766532665}
   - component: {fileID: 8150937968179603983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.006_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62407,7 +62497,7 @@ GameObject:
   - component: {fileID: 6182310923655275956}
   - component: {fileID: 431695982927768968}
   - component: {fileID: 6184076764551089893}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.002_Cetekan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62528,7 +62618,7 @@ Transform:
   m_GameObject: {fileID: 5212286504479388340}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000013767878, y: 0.7071068, z: 0.7071067, w: 0.00000013767877}
-  m_LocalPosition: {x: -0.03578331, y: 0.00370749, z: 0.000032057687}
+  m_LocalPosition: {x: -0.03578331, y: 0.00269, z: 0.00003}
   m_LocalScale: {x: 2.1656756, y: 2.1656756, z: 2.1656756}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62545,7 +62635,7 @@ GameObject:
   - component: {fileID: 2214379143635109978}
   - component: {fileID: 1848239771112330873}
   - component: {fileID: 2230594723073692836}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.028
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62728,7 +62818,7 @@ GameObject:
   - component: {fileID: 514189199005764506}
   - component: {fileID: 5419514319987671794}
   - component: {fileID: 2922232252116847513}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sendok1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63092,33 +63182,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1927809239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &7045380076114807435
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4446206624449011419}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &7053116332792504654
 GameObject:
   m_ObjectHideFlags: 0
@@ -63212,10 +63275,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 67584
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 63359
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -63309,7 +63372,7 @@ GameObject:
   - component: {fileID: 856925332109931382}
   - component: {fileID: 5597553135994225090}
   - component: {fileID: 3920017041923021212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.010_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63782,7 +63845,7 @@ GameObject:
   - component: {fileID: 7887834288599408530}
   - component: {fileID: 4924016182932005933}
   - component: {fileID: 2562424187775533234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63907,7 +63970,7 @@ GameObject:
   - component: {fileID: 3479331438984149235}
   - component: {fileID: 3334983175967605383}
   - component: {fileID: 6781234565173574115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64392,7 +64455,7 @@ GameObject:
   - component: {fileID: 1749518651869516265}
   - component: {fileID: 1292290918721436907}
   - component: {fileID: 2174331030675570774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Penahan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64745,7 +64808,7 @@ GameObject:
   - component: {fileID: 2573201237563895477}
   - component: {fileID: 2747288277590823471}
   - component: {fileID: 8525101694622727253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sendok2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66595,7 +66658,7 @@ GameObject:
   - component: {fileID: 2093597343402420831}
   - component: {fileID: 6621328532763659002}
   - component: {fileID: 2244692983695023340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66648,7 +66711,7 @@ GameObject:
   - component: {fileID: 7608665483737824569}
   - component: {fileID: 3129658446071750936}
   - component: {fileID: 1505585600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MEJA RUANG TAMU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66843,6 +66906,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7890839245766926004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212286504479388340}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0048459764, y: 0.007814413, z: 0.0067723626}
+  m_Center: {x: -0.000019026922, y: 0.0038965966, z: -0.00016682206}
 --- !u!1 &7896169109827798897
 GameObject:
   m_ObjectHideFlags: 0
@@ -67283,7 +67367,7 @@ GameObject:
   - component: {fileID: 7427991598411030704}
   - component: {fileID: 7152698001951948728}
   - component: {fileID: 3686679598609792386}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.007_Wood.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67484,7 +67568,7 @@ GameObject:
   - component: {fileID: 8961062409079631931}
   - component: {fileID: 5884514356252939154}
   - component: {fileID: 2884635560120968684}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68136,6 +68220,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8532320899919347714}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8216262129573206828
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194843944112915495}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.030054634, y: 0.015952807, z: 0.019999998}
+  m_Center: {x: 0.0050273174, y: -0.0020235954, z: -0.0000000027939677}
 --- !u!4 &8221996766635362809
 Transform:
   m_ObjectHideFlags: 0
@@ -68162,10 +68267,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 67584
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 63359
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -68475,7 +68580,7 @@ GameObject:
   - component: {fileID: 6187220552316357244}
   - component: {fileID: 52104310310319281}
   - component: {fileID: 8193748940339984379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.001_Material.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69549,7 +69654,7 @@ GameObject:
   - component: {fileID: 3633691991890891688}
   - component: {fileID: 7484850399303988480}
   - component: {fileID: 1934996678293371767}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69665,7 +69770,7 @@ GameObject:
   - component: {fileID: 8036358460984095776}
   - component: {fileID: 6144109973470760281}
   - component: {fileID: 188056164663876692}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.002_Main_color_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69831,7 +69936,6 @@ GameObject:
   - component: {fileID: 5337974994524688102}
   - component: {fileID: 4527279093747908069}
   - component: {fileID: 6853157299306666466}
-  - component: {fileID: 4762646563665599611}
   m_Layer: 0
   m_Name: Cube.005
   m_TagString: Untagged
@@ -71196,7 +71300,7 @@ GameObject:
   - component: {fileID: 4837805443620882323}
   - component: {fileID: 1222101459723398521}
   - component: {fileID: 4293055578818390537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.014_Ceramic_Glazed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71829,7 +71933,7 @@ GameObject:
   - component: {fileID: 8662126086968106140}
   - component: {fileID: 3589088589135555839}
   - component: {fileID: 6834092888379534149}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.004_Ceramic_Glazed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72068,7 +72172,7 @@ GameObject:
   - component: {fileID: 2878119185117135814}
   - component: {fileID: 2974574500626439248}
   - component: {fileID: 2522813160787192450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.002_Burner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
