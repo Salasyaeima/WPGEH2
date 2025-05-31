@@ -29,7 +29,8 @@ public class MotherTutorial : MonoBehaviour
     int currentWaypoint = 0;
     bool isMoving = false;
     bool isPaused = false;
-    bool isChasing = false;
+    public bool isChasing = false;
+    bool hasDetectedPlayer = false;
     Vector3 targetPosition;
 
     void Start()
@@ -46,15 +47,24 @@ public class MotherTutorial : MonoBehaviour
         {
             if (DetectChild() && !hidingMechanism.isHiding)
             {
+                hasDetectedPlayer = true;
                 isChasing = true;
                 isMoving = false;
                 targetPosition = child.position;
                 motherAnim.Play("RunningI");
+                textDialogChild.PauseDisplayingText();
             }
-            else if (isChasing && (!DetectChild() || hidingMechanism.isHiding))
+            else if (isChasing && (!DetectChild() || hidingMechanism.isHiding) && !hasDetectedPlayer)
             {
                 isChasing = false;
                 StartMovingToWaypoint(currentWaypoint);
+                textDialogChild.ResumeDisplayingText();
+            }
+
+            if (hasDetectedPlayer)
+            {
+                isChasing = true;
+                ChaseChild();
             }
 
             if (isChasing)
@@ -175,6 +185,7 @@ public class MotherTutorial : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            textDialogChild.StopDisplayingText();
             textDialogChild.windowQuest.gameObject.SetActive(false);
             textDialogChild.intruksi.enabled = false;
             isPaused = true;

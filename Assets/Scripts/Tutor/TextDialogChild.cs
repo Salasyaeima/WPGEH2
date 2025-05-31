@@ -16,6 +16,7 @@ public class TextDialogChild : MonoBehaviour
     [SerializeField] GameObject cameraPendukung;
     [SerializeField] GameObject blinkController;
     [SerializeField] HidingMechanism hidingMechanism;
+    [SerializeField] MotherTutorial motherTutorial;
     [SerializeField] string[] texts;
     [SerializeField] float textDuration = 2f;
 
@@ -52,7 +53,7 @@ public class TextDialogChild : MonoBehaviour
 
     void Update()
     {
-        if (isDisplaying && !isPaused)
+        if (isDisplaying && !isPaused && !motherTutorial.isChasing)
         {
             if (useAutoDisplay)
             {
