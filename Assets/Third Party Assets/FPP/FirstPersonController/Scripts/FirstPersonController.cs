@@ -142,7 +142,7 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 
-			loadingScreen = GameObject.Find("LoadingScreenManager").GetComponent<LoadingScreen>();
+			// loadingScreen = GameObject.Find("LoadingScreenManager").GetComponent<LoadingScreen>();
 
 			if (endScreen != null)
 			{
@@ -202,10 +202,18 @@ namespace StarterAssets
 			{
 				float interval = _input.sprint ? sprintFootstepInterval : walkFootstepInterval;
 				footstepTimer += Time.deltaTime;
+
 				if (!wasMovingLastFrame || footstepTimer >= interval)
 				{
 					AudioManager.instance.PlayWalkingSFX(footstepSFXNames[0], footstepSFXNames[1]);
-					footstepTimer -= interval;
+					if (!wasMovingLastFrame)
+					{
+						footstepTimer = 0f;
+					}
+					else
+					{
+						footstepTimer -= interval;
+					}
 				}
 			}
 			else

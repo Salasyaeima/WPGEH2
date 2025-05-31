@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using StarterAssets;
 
 public class CaughtHandler : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CaughtHandler : MonoBehaviour
     [SerializeField] CameraJumpScare cameraJumpScare;
     [SerializeField] Broom broom;
     [SerializeField] PlayerInteractions playerInteractions;
+    [SerializeField] FirstPersonController firstPersonController;
     [SerializeField] TMP_Text interactionsText;
 
     void Start()
@@ -23,6 +25,7 @@ public class CaughtHandler : MonoBehaviour
             broom.Drop();
         }
         playerInteractions.enabled = false;
+        firstPersonController.enabled = false;
         interactionsText.gameObject.SetActive(false);
         playerCamera.enabled = false;
         playerCameraJumpScare.enabled = true;
