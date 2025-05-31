@@ -12,14 +12,14 @@ public class TextDisplayManager : MonoBehaviour
         public float duration = 3f;
     }
 
-    [SerializeField] private TextMeshProUGUI textMeshPro;
-    [SerializeField] private TargetWalk targetWalk;
-    [SerializeField] private TextData[] textList;
-    [SerializeField] private bool useAutoDisplay = true;
+    [SerializeField] TextMeshProUGUI textMeshPro;
+    [SerializeField] TargetWalk targetWalk;
+    [SerializeField] TextData[] textList;
+    [SerializeField] bool useAutoDisplay = true;
 
-    private int currentTextIndex = 0;
-    private bool isDisplaying = false;
-    private Coroutine displayCoroutine;
+    int currentTextIndex = 0;
+    bool isDisplaying = false;
+    Coroutine displayCoroutine;
 
     void Awake()
     {

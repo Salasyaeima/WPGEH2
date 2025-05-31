@@ -26,10 +26,12 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] GameObject modelUpdate;
     [SerializeField] GameObject modelMarah;
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] AudioSource videoPlayerAudio;
     [SerializeField] Transform HandPhone;
 
     public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp, Idleee }
-    CharacterState currentState = CharacterState.Idlee;
+    public CharacterState currentState = CharacterState.Idlee;
+    public bool isMuted { get; private set; } = true;
 
     bool hasTriggeredHandPhoneTransform = false;
     Animator motherAnimator;
@@ -37,7 +39,6 @@ public class TargetWalk : MonoBehaviour
     int lastReachedWaypoint = -1;
     bool isMoving = false;
     bool autoMove = false;
-    bool isMuted;
     Coroutine pickupCoroutine;
     Vector3 targetPosition;
 
@@ -72,9 +73,12 @@ public class TargetWalk : MonoBehaviour
     void Start()
     {
         isMoving = false;
-        if (videoPlayer != null)
+        if (videoPlayer != null && videoPlayerAudio != null)
         {
+            videoPlayer.Play(); // Mulai video dari awal
             videoPlayer.SetDirectAudioMute(0, true);
+            videoPlayerAudio.mute = true;
+            videoPlayerAudio.volume = 0f;
         }
         SetCursorVisibility(false);
     }
@@ -98,6 +102,7 @@ public class TargetWalk : MonoBehaviour
         if (mother == null) Debug.LogError("Mother transform not assigned.");
         if (waypoints == null || waypoints.Length == 0) Debug.LogError("Waypoints array is empty or not assigned.");
         if (videoPlayer == null) Debug.LogWarning("VideoPlayer not assigned.");
+        if (videoPlayerAudio == null) Debug.LogWarning("VideoPlayer AudioSource not assigned.");
         if (handBone == null) Debug.LogWarning("Hand bone not assigned for pickup.");
         if (modelUpdate == null || modelMarah == null) Debug.LogWarning("Model references not assigned.");
         if (HandPhone == null) Debug.LogWarning("HandPhone not assigned.");
@@ -129,10 +134,9 @@ public class TargetWalk : MonoBehaviour
 
     void HandleWaypointReached()
     {
-        if (lastReachedWaypoint == 8 && videoPlayer != null)
+        if (lastReachedWaypoint == 8 && videoPlayer != null && videoPlayerAudio != null)
         {
             isMuted = false;
-            videoPlayer.SetDirectAudioMute(0, isMuted);
         }
 
         switch (lastReachedWaypoint)
@@ -270,7 +274,7 @@ public class TargetWalk : MonoBehaviour
             CharacterState.Idleee => IdleeeHash,
             _ => IdleeHash
         };
-        motherAnimator.CrossFade(animationHash, 0.1f); // Transisi halus
+        motherAnimator.CrossFade(animationHash, 0.1f);
     }
 
     public void SetHandPhoneTransform()
@@ -297,7 +301,13 @@ public class TargetWalk : MonoBehaviour
             pickupItem.transform.localPosition = Vector3.zero;
             pickupItem.transform.localRotation = Quaternion.identity;
 
-            videoPlayer.SetDirectAudioMute(0, true);
+            if (videoPlayer != null && videoPlayerAudio != null)
+            {
+                isMuted = true;
+                videoPlayer.SetDirectAudioMute(0, true);
+                videoPlayerAudio.mute = true;
+                videoPlayerAudio.volume = 0f;
+            }
             yield return StartCoroutine(Idle(1.5f));
         }
         else
@@ -334,6 +344,8 @@ public class TargetWalk : MonoBehaviour
 
     public void ShowAngryModel()
     {
+        modelMarah.transform.position = modelUpdate.transform.position;
+        modelMarah.transform.rotation = modelUpdate.transform.rotation;
         modelUpdate.SetActive(false);
         modelMarah.SetActive(true);
         motherAnimator = modelMarah.GetComponent<Animator>();
