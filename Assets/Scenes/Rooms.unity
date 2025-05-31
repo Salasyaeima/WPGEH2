@@ -2540,6 +2540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb6e82c7fd6dcc419c3050ad3e25e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSources: []
   sfxClips:
   - {fileID: 8300000, guid: adbff08b727b1a84db8778eb0d358e7a, type: 3}
   - {fileID: 8300000, guid: 67aac4c98a9bd724a92b078069594887, type: 3}
@@ -55610,6 +55611,10 @@ PrefabInstance:
       propertyPath: starterAssetsInputs
       value: 
       objectReference: {fileID: 135756641613574975}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: sprintFootstepInterval
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintTransitionDuration
       value: 1

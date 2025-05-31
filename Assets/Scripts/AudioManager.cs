@@ -6,15 +6,15 @@ using System.Collections;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    List<AudioSource> audioSources = new List<AudioSource>();
-    Dictionary<string, AudioSource> loopingSources = new Dictionary<string, AudioSource>();
+    public List<AudioSource> audioSources = new List<AudioSource>();
+    public Dictionary<string, AudioSource> loopingSources = new Dictionary<string, AudioSource>();
     public List<AudioClip> sfxClips;
     [SerializeField] AudioClip mainMenuBGM;
     [SerializeField] AudioClip mainGameBGM;
     AudioSource bgmSource;
     [SerializeField] float bgmVolume = 0.5f;
     [SerializeField] float fadeDuration = 1.0f;
-
+    bool isRightStep = false;
 
     void Awake()
     {
@@ -221,6 +221,42 @@ public class AudioManager : MonoBehaviour
             {
                 kvp.Value.Stop();
             }
+        }
+    }
+
+    public void PlayWalkingSFX(string leftClipName, string rightClipName)
+    {
+        AudioClip clip = sfxClips.Find(s => s.name == (isRightStep ? rightClipName : leftClipName));
+        if (clip == null)
+        {
+            Debug.LogWarning($"SFX {(isRightStep ? rightClipName : leftClipName)} tidak ditemukan!");
+            return;
+        }
+
+        AudioSource walkingSource;
+        if (!loopingSources.ContainsKey("Walking"))
+        {
+            walkingSource = gameObject.AddComponent<AudioSource>();
+            walkingSource.playOnAwake = false;
+            walkingSource.loop = false;
+            loopingSources["Walking"] = walkingSource;
+        }
+        else
+        {
+            walkingSource = loopingSources["Walking"];
+        }
+
+        walkingSource.panStereo = isRightStep ? 0.5f : -0.5f;
+        walkingSource.PlayOneShot(clip);
+        isRightStep = !isRightStep;
+    }
+
+    public void StopWalkingSFX()
+    {
+        if (loopingSources.ContainsKey("Walking"))
+        {
+            loopingSources["Walking"].Stop();
+            loopingSources.Remove("Walking");
         }
     }
 
