@@ -78,7 +78,8 @@ namespace StarterAssets
 		[SerializeField] string[] footstepSFXNames = { "Footstep_Left", "Footstep_Right" };
 		[SerializeField] float walkFootstepInterval = 0.5f;
 		[SerializeField] float sprintFootstepInterval = 0.3f;
-		private float footstepTimer = 0f;
+		float footstepTimer = 0f;
+		bool wasMovingLastFrame = false;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -201,16 +202,19 @@ namespace StarterAssets
 			{
 				float interval = _input.sprint ? sprintFootstepInterval : walkFootstepInterval;
 				footstepTimer += Time.deltaTime;
-				if (footstepTimer >= interval)
+				if (!wasMovingLastFrame || footstepTimer >= interval)
 				{
-					AudioManager.instance.PlayRandomSFX(footstepSFXNames);
+					AudioManager.instance.PlayWalkingSFX(footstepSFXNames[0], footstepSFXNames[1]);
 					footstepTimer -= interval;
 				}
 			}
 			else
 			{
+				AudioManager.instance.StopWalkingSFX();
 				footstepTimer = 0f;
 			}
+
+			wasMovingLastFrame = isMoving;
 
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			if (_input.sprint && sprintDuration != maxSprintDuration && sprintLock == false && starterAssetsInputs.move != Vector2.zero)
