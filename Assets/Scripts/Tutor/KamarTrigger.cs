@@ -4,6 +4,7 @@ using UnityEngine;
 public class KamarTrigger : MonoBehaviour
 {
     [SerializeField] TextDialogChild textDialog;
+    [SerializeField] GameObject boxPenghalang;
     bool hasTriggered = false;
     void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class KamarTrigger : MonoBehaviour
             textDialog.intruksi.enabled = false;
             textDialog.playerInteractions.canInteract = false;
             textDialog.windowQuest.gameObject.SetActive(false);
+            boxPenghalang.SetActive(true);
         }
     }
 
@@ -22,7 +24,6 @@ public class KamarTrigger : MonoBehaviour
         if (other.CompareTag("Mother"))
         {
             StartCoroutine(ResumeTextDialog());
-
         }
     }
 
