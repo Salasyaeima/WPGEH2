@@ -14,6 +14,8 @@ public class CameraJumpScare : MonoBehaviour
     [SerializeField] float shakeMagnitude = 0.1f;
     [SerializeField] Volume postProcessVolume;
     [SerializeField] Sight sight;
+    [SerializeField] AudioSource jumpScareAudioSource;
+    [SerializeField] AudioClip soundScare;
     Vignette vignette;
     ChromaticAberration chromaticAberration;
     Coroutine shakeCoroutine;
@@ -39,8 +41,17 @@ public class CameraJumpScare : MonoBehaviour
         if (hasStarted) return;
         hasStarted = true;
 
+        if (jumpScareAudioSource != null && soundScare != null)
+        {
+            jumpScareAudioSource.PlayOneShot(soundScare);
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource atau AudioClip untuk jumpscare tidak diatur!");
+        }
+
         shakeCoroutine = StartCoroutine(Shake());
-        StartCoroutine(VignetteFlash(0.50f, 0.5f));
+        StartCoroutine(VignetteFlash(0.50f, 1.5f));
         StartCoroutine(ChromaticAberrationEffect());
         StartCoroutine(ActiveBackgroundBlack());
     }
@@ -84,13 +95,13 @@ public class CameraJumpScare : MonoBehaviour
         if (chromaticAberration == null) yield break;
 
         chromaticAberration.intensity.value = 1f;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.3f);
         chromaticAberration.intensity.value = 0f;
     }
 
     IEnumerator ActiveBackgroundBlack()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.8f);
         blackBackground.SetActive(true);
 
         yield return new WaitForSeconds(0.8f);

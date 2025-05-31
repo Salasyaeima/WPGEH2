@@ -168,8 +168,23 @@ public class AudioManager : MonoBehaviour
     {
         if (loopingSources.ContainsKey(sfxName))
         {
-            loopingSources[sfxName].Stop();
+            StartCoroutine(FadeOutLoopingSFX(sfxName));
         }
+    }
+
+    IEnumerator FadeOutLoopingSFX(string sfxName)
+    {
+        AudioSource source = loopingSources[sfxName];
+        float startVolume = source.volume;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, 0f, elapsed / fadeDuration);
+            yield return null;
+        }
+        source.Stop();
+        source.volume = 1f;
     }
 
     public void PlayBGM()
@@ -184,8 +199,22 @@ public class AudioManager : MonoBehaviour
     {
         if (bgmSource != null)
         {
-            bgmSource.Stop();
+            StartCoroutine(FadeOutBGM());
         }
+    }
+
+    IEnumerator FadeOutBGM()
+    {
+        float startVolume = bgmSource.volume;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            bgmSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / fadeDuration);
+            yield return null;
+        }
+        bgmSource.Stop();
+        bgmSource.volume = bgmVolume;
     }
 
     public void SetBGM(AudioClip newBgmClip)
@@ -202,9 +231,46 @@ public class AudioManager : MonoBehaviour
 
     public void StopAllAudio()
     {
-        if (bgmSource != null && bgmSource.isPlaying)
+        StartCoroutine(FadeOutAllAudio());
+    }
+
+    IEnumerator FadeOutAllAudio()
+    {
+        float startBGMVolume = bgmSource.volume;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / fadeDuration;
+
+            if (bgmSource != null && bgmSource.isPlaying)
+            {
+                bgmSource.volume = Mathf.Lerp(startBGMVolume, 0f, t);
+            }
+
+            foreach (var source in audioSources)
+            {
+                if (source.isPlaying)
+                {
+                    source.volume = Mathf.Lerp(source.volume, 0f, t);
+                }
+            }
+
+            foreach (var kvp in loopingSources)
+            {
+                if (kvp.Value.isPlaying)
+                {
+                    kvp.Value.volume = Mathf.Lerp(kvp.Value.volume, 0f, t);
+                }
+            }
+
+            yield return null;
+        }
+
+        if (bgmSource != null)
         {
             bgmSource.Stop();
+            bgmSource.volume = bgmVolume;
         }
 
         foreach (var source in audioSources)
@@ -212,6 +278,7 @@ public class AudioManager : MonoBehaviour
             if (source.isPlaying)
             {
                 source.Stop();
+                source.volume = 1f;
             }
         }
 
@@ -220,6 +287,7 @@ public class AudioManager : MonoBehaviour
             if (kvp.Value.isPlaying)
             {
                 kvp.Value.Stop();
+                kvp.Value.volume = 1f;
             }
         }
     }
@@ -255,9 +323,24 @@ public class AudioManager : MonoBehaviour
     {
         if (loopingSources.ContainsKey("Walking"))
         {
-            loopingSources["Walking"].Stop();
-            loopingSources.Remove("Walking");
+            StartCoroutine(FadeOutWalkingSFX());
         }
+    }
+
+    IEnumerator FadeOutWalkingSFX()
+    {
+        AudioSource source = loopingSources["Walking"];
+        float startVolume = source.volume;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, 0f, elapsed / fadeDuration);
+            yield return null;
+        }
+        source.Stop();
+        source.volume = 1f;
+        loopingSources.Remove("Walking");
     }
 
 }
