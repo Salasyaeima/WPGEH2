@@ -17,7 +17,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI roomText;
     [SerializeField] TextMeshProUGUI detailProgression;
     [SerializeField] GameObject player;
-    [SerializeField] string TaskResultSFX = "Task_Selesai";
+    [SerializeField] string TaskResultSFX = "Instrument";
     [SerializeField] TextMeshProUGUI nextScene;
     public GameObject panelResult;
     [SerializeField] Button resultButton;
