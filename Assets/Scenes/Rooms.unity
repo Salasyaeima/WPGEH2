@@ -15415,6 +15415,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 135756641613574980}
     - target: {fileID: 5129585268526314336, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
+      propertyPath: firstPersonController
+      value: 
+      objectReference: {fileID: 135756641613574987}
+    - target: {fileID: 5129585268526314336, guid: d54f067ebd0c8174ea9d9723b1391259, type: 3}
       propertyPath: playerCameraJumpScare
       value: 
       objectReference: {fileID: 1327977161}
@@ -33073,6 +33077,17 @@ MonoBehaviour:
   starterAssetInput: {fileID: 135756641613574975}
   xRaySound: focusloop
   xrayActive: 0
+--- !u!114 &135756641613574987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 5393215579111688471}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543449882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &144860520328179316
 MeshFilter:
   m_ObjectHideFlags: 0
