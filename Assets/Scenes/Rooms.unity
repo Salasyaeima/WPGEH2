@@ -20037,8 +20037,8 @@ MonoBehaviour:
   cameraTransform: {fileID: 1327977157}
   playerCamera: {fileID: 1327977161}
   blackBackground: {fileID: 1194233612}
-  shakeDuration: 0.1
-  shakeMagnitude: 0.005
+  shakeDuration: 1.44
+  shakeMagnitude: 0.015
   postProcessVolume: {fileID: 2135677328}
   sight: {fileID: 135756641613574985}
   jumpScareAudioSource: {fileID: 1327977163}
@@ -29142,9 +29142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconEye: {fileID: 1902643382}
-  panicRadius: 8
-  playerVisionRadius: 14
-  playerAlertRadius: 20
+  panicRadius: 10
+  playerVisionRadius: 16
+  playerAlertRadius: 22
   motherTag: Mother
   obstacleLayer:
     serializedVersion: 2
@@ -29152,8 +29152,9 @@ MonoBehaviour:
   player: {fileID: 543449882}
   volume: {fileID: 2135677328}
   maxIntensity: 0.5
-  shakeAmplitudo: 0.5
-  shakeFrequency: 2.5
+  vignetteTransitionSpeed: 2
+  shakeAmplitudo: 1
+  shakeFrequency: 6
   vCam: {fileID: 1391944216}
   heartRate: detakJantung
 --- !u!1001 &1902743907

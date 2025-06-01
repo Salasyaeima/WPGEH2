@@ -15,6 +15,7 @@ public class IconController : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Volume volume;
     [SerializeField] float maxIntensity = 0.8f;
+    [SerializeField] float vignetteTransitionSpeed = 2f;
     [SerializeField] float shakeAmplitudo = 2f;
     [SerializeField] float shakeFrequency = 2f;
     [SerializeField] CinemachineVirtualCamera vCam;
@@ -68,7 +69,7 @@ public class IconController : MonoBehaviour
             iconEye.enabled = false;
         }
 
-        if (distanceToMother <= panicRadius)
+        if (distanceToMother <= playerAlertRadius)
         {
             CameraShaking();
         }
@@ -123,15 +124,8 @@ public class IconController : MonoBehaviour
             Debug.LogWarning("Komponen AreaCheck pada Mother tidak ditemukan!");
         }
 
-        if (isMotherVisible || isPlayerVisibleToMother)
-        {
-            vignette.intensity.value = maxIntensity;
-        }
-        else
-        {
-            vignette.intensity.value = 0f;
-        }
-
+        float targetIntensity = (isMotherVisible || isPlayerVisibleToMother) ? maxIntensity : 0f;
+        vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, targetIntensity, Time.deltaTime * vignetteTransitionSpeed);
     }
 
     void OnDrawGizmosSelected()
