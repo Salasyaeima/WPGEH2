@@ -5,6 +5,7 @@ public class Item : Interactable
 {
     [SerializeField] Transform playerHand;
     [SerializeField] string interectionSFXName = "Ambilbarang";
+    [SerializeField] string dorpSFXName = "LepasBarang";
 
     private Rigidbody rb;
     private Collider itemCollider;
@@ -60,6 +61,7 @@ public class Item : Interactable
 
     public override void Drop()
     {
+        AudioManager.instance.PlaySFX(dorpSFXName, 0.3f);
         transform.SetParent(null);
         rb.isKinematic = false;
         rb.useGravity = true;
@@ -71,7 +73,7 @@ public class Item : Interactable
     public override void Interact()
     {
         ItemData itemData = GetComponent<ItemData>();
-        AudioManager.instance.PlaySFX(interectionSFXName, 0.5f);
+        AudioManager.instance.PlaySFX(interectionSFXName, 0.3f);
 
 
         if (itemData != null && itemData.category == ItemData.ItemCategory.Clothes)

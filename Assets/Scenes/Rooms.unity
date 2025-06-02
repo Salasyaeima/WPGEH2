@@ -2556,7 +2556,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7807271564db753479d734700684fb4a, type: 3}
   - {fileID: 8300000, guid: e16a10fb83f3048469bd7401785a3d34, type: 3}
   - {fileID: 8300000, guid: d2265fcc0321cae4e9757111aee8dabb, type: 3}
-  - {fileID: 8300000, guid: bc20a64c6b4029746b00003ebeda80ab, type: 3}
+  - {fileID: 8300000, guid: d44e6eb57a5d0124286a41bd608b5396, type: 3}
+  - {fileID: 8300000, guid: a02dca722275dc8488637caf112d9954, type: 3}
   mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 1
@@ -4538,6 +4539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &331548281
 BoxCollider:
@@ -7062,6 +7064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &590596801
 BoxCollider:
@@ -8033,6 +8036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &666720853
 BoxCollider:
@@ -8241,6 +8245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &675842426
 BoxCollider:
@@ -13945,6 +13950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &986670738
 BoxCollider:
@@ -29494,6 +29500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &1905069325
 BoxCollider:
@@ -32531,7 +32538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 131.95041
+      value: 128.537
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38581,6 +38588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &1627868148884340886
 MeshRenderer:
@@ -42217,7 +42225,7 @@ MonoBehaviour:
   fullContainer: {fileID: 8078477056463697350}
   storedItems: []
   maxCapacity: 9
-  interectionSFXName: Ambilbarang
+  interectionSFXName: LepasBarang
   containerType: 0
 --- !u!23 &2535540699065558548
 MeshRenderer:
@@ -43521,6 +43529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &2799844773902957227
 MeshRenderer:
@@ -47019,6 +47028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &3445302107789238283
 MeshRenderer:
@@ -47299,6 +47309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!4 &3479331438984149235
 Transform:
@@ -51197,6 +51208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!114 &4357283688778046708
 MonoBehaviour:
@@ -51212,6 +51224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!4 &4357926792696858472
 Transform:
@@ -55835,7 +55848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 131.95041
+      value: 128.537
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62339,6 +62352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &6880107003119468355
 MeshRenderer:
@@ -63014,6 +63028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &6994194665763873461
 MeshRenderer:
@@ -64657,7 +64672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 131.95041
+      value: 128.537
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65252,6 +65267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!4 &7418421460087582602
 Transform:
@@ -68537,6 +68553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &8238762403618745215
 BoxCollider:
@@ -68836,6 +68853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &8331093099334112951
 MeshRenderer:

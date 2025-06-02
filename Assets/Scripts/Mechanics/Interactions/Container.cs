@@ -156,7 +156,7 @@ public class Container : Interactable, ITaskProvider
 
     void PlayCollectSound()
     {
-        AudioManager.instance.PlaySFX(interectionSFXName, 0.5f);
+        AudioManager.instance.PlaySFX(interectionSFXName, 0.3f);
     }
 
     void Update()
