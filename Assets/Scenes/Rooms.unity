@@ -2556,9 +2556,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7807271564db753479d734700684fb4a, type: 3}
   - {fileID: 8300000, guid: e16a10fb83f3048469bd7401785a3d34, type: 3}
   - {fileID: 8300000, guid: d2265fcc0321cae4e9757111aee8dabb, type: 3}
+  - {fileID: 8300000, guid: bc20a64c6b4029746b00003ebeda80ab, type: 3}
   mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 1
+  cutsceneBGMVolume: 0.3
   fadeDuration: 1
 --- !u!4 &179861574
 Transform:
@@ -34636,12 +34638,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2844429334150175948}
-  - {fileID: 8532320899919347714}
-  - {fileID: 543450653062089614}
   - {fileID: 1986643676}
+  - {fileID: 8532320899919347714}
+  - {fileID: 1430698306}
+  - {fileID: 543450653062089614}
   - {fileID: 4931218027326186516}
   - {fileID: 1587680379}
-  - {fileID: 1430698306}
   - {fileID: 2113778379}
   - {fileID: 1541979659}
   - {fileID: 687631460}
@@ -35297,7 +35299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &722145412181879940
 GameObject:
   m_ObjectHideFlags: 0
@@ -42273,6 +42275,7 @@ MonoBehaviour:
   fullContainer: {fileID: 8078477056463697350}
   storedItems: []
   maxCapacity: 9
+  interectionSFXName: Ambilbarang
   containerType: 0
 --- !u!23 &2535540699065558548
 MeshRenderer:
@@ -65680,6 +65683,7 @@ MonoBehaviour:
   fullContainer: {fileID: 1633741804}
   storedItems: []
   maxCapacity: 7
+  interectionSFXName: Ambilbarang
   containerType: 3
 --- !u!33 &7484850399303988480
 MeshFilter:
@@ -66133,7 +66137,8 @@ MonoBehaviour:
   emptyContainer: {fileID: 126133905849850110}
   fullContainer: {fileID: 5899449898407856333}
   storedItems: []
-  maxCapacity: 5
+  maxCapacity: 0
+  interectionSFXName: Ambilbarang
   containerType: 2
 --- !u!4 &7604917403780598355
 Transform:
