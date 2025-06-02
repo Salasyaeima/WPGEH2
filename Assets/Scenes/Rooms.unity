@@ -4540,6 +4540,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!65 &331548281
 BoxCollider:
@@ -7065,6 +7066,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!65 &590596801
 BoxCollider:
@@ -8037,6 +8039,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!65 &666720853
 BoxCollider:
@@ -8246,6 +8249,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!65 &675842426
 BoxCollider:
@@ -13470,6 +13474,8 @@ MonoBehaviour:
   playerHand: {fileID: 1691368644}
   roomBroom: {fileID: 959259234}
   taskName: Bersihkan Lantai Gudang
+  interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!54 &959259237
 Rigidbody:
@@ -13951,6 +13957,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!65 &986670738
 BoxCollider:
@@ -19752,6 +19759,8 @@ MonoBehaviour:
   playerHand: {fileID: 1691368644}
   roomBroom: {fileID: 1319945888}
   taskName: Bersihkan Lantai Ruang Tamu
+  interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!54 &1319945891
 Rigidbody:
@@ -24295,6 +24304,8 @@ MonoBehaviour:
   playerHand: {fileID: 1691368644}
   roomBroom: {fileID: 1546433816}
   taskName: Bersihkan Lantai Kamar
+  interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!54 &1546433819
 Rigidbody:
@@ -29501,6 +29512,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!65 &1905069325
 BoxCollider:
@@ -34255,7 +34267,7 @@ Transform:
   m_GameObject: {fileID: 8710591980483700654}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
-  m_LocalPosition: {x: -0.06571001, y: 0.08023998, z: 0.019599983}
+  m_LocalPosition: {x: -0.0117, y: 0.0802, z: -0.01316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37737,7 +37749,7 @@ Transform:
   m_GameObject: {fileID: 1379237952039132370}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08389001, y: 0.066110015, z: 0.020029997}
+  m_LocalPosition: {x: -0.0516, y: 0.0331, z: -0.0134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38589,6 +38601,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!23 &1627868148884340886
 MeshRenderer:
@@ -41021,7 +41034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.8
+      value: 6.31
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -41029,7 +41042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.58
+      value: 12.74
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -41985,7 +41998,7 @@ Transform:
   m_GameObject: {fileID: 4541874256265941289}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.060010012, y: 0.07677999, z: 0.019239984}
+  m_LocalPosition: {x: 0.0192, y: 0.0768, z: -0.01222}
   m_LocalScale: {x: 0.015241994, y: 0.015241995, z: 0.01524199}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42579,7 +42592,7 @@ Transform:
   m_GameObject: {fileID: 7835595311984490436}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05742, y: 0.085729994, z: 0.019599993}
+  m_LocalPosition: {x: 0.0571, y: 0.2323, z: -0.0132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43530,6 +43543,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!23 &2799844773902957227
 MeshRenderer:
@@ -47029,6 +47043,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!23 &3445302107789238283
 MeshRenderer:
@@ -47310,6 +47325,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!4 &3479331438984149235
 Transform:
@@ -47517,15 +47533,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.857851
+      value: -1.85
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.88
+      value: -4.94
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4435978
+      value: -1.92
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48585,7 +48601,7 @@ Transform:
   m_GameObject: {fileID: 4393048176846863582}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49991274, y: -0.50008726, z: -0.49991274, w: 0.50008726}
-  m_LocalPosition: {x: 0.0043953806, y: -0.013510004, z: -0.0036299974}
+  m_LocalPosition: {x: 0.0064, y: -0.01348, z: -0.0036}
   m_LocalScale: {x: 0.010675671, y: 0.010675671, z: 0.010675668}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51209,6 +51225,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!114 &4357283688778046708
 MonoBehaviour:
@@ -51225,6 +51242,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!4 &4357926792696858472
 Transform:
@@ -55337,15 +55355,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.4394264
+      value: 13.41
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.48
+      value: -4.83
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.25
+      value: 8.67
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58007,7 +58025,7 @@ Transform:
   m_GameObject: {fileID: 7780678098867550544}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.100789994, y: 0.118800014, z: 0.020899994}
+  m_LocalPosition: {x: 0.1006, y: 0.1188, z: -0.01124}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58306,7 +58324,7 @@ Transform:
   m_GameObject: {fileID: 8462440935273462734}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07077, y: 0.066110015, z: 0.020029997}
+  m_LocalPosition: {x: 0.0359, y: -0.0077, z: -0.0147}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58773,7 +58791,7 @@ Transform:
   m_GameObject: {fileID: 1280513724133147690}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.073099986, y: 0.07677999, z: 0.019239984}
+  m_LocalPosition: {x: -0.0917, y: 0.1034, z: -0.0142}
   m_LocalScale: {x: 0.015241994, y: 0.015241995, z: 0.01524199}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62353,6 +62371,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!23 &6880107003119468355
 MeshRenderer:
@@ -63029,6 +63048,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!23 &6994194665763873461
 MeshRenderer:
@@ -64004,7 +64024,7 @@ Transform:
   m_GameObject: {fileID: 3211719120210782802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.076340005, y: 0.066110015, z: 0.020029997}
+  m_LocalPosition: {x: -0.0596, y: 0.178, z: -0.0134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65268,6 +65288,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!4 &7418421460087582602
 Transform:
@@ -66389,7 +66410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.56
+      value: 17.74
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -66397,7 +66418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.2
+      value: -1.63
       objectReference: {fileID: 0}
     - target: {fileID: 7654726599798145795, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68554,6 +68575,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!65 &8238762403618745215
 BoxCollider:
@@ -68854,6 +68876,7 @@ MonoBehaviour:
   interactionType: 2
   playerHand: {fileID: 1404186845}
   interectionSFXName: Ambilbarang
+  dorpSFXName: LepasBarang
   isHeld: 0
 --- !u!23 &8331093099334112951
 MeshRenderer:
@@ -71868,7 +71891,7 @@ Transform:
   m_GameObject: {fileID: 5340420925902694977}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49991274, y: -0.50008726, z: -0.49991274, w: 0.50008726}
-  m_LocalPosition: {x: -0.08112442, y: 0.1131817, z: 0.025518049}
+  m_LocalPosition: {x: 0.0696, y: 0.2753, z: -0.008}
   m_LocalScale: {x: 0.010675671, y: 0.010675671, z: 0.010675668}
   m_ConstrainProportionsScale: 0
   m_Children:
