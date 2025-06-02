@@ -142,7 +142,7 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 
-			// loadingScreen = GameObject.Find("LoadingScreenManager").GetComponent<LoadingScreen>();
+			loadingScreen = GameObject.Find("LoadingScreenManager").GetComponent<LoadingScreen>();
 
 			if (endScreen != null)
 			{
@@ -381,5 +381,14 @@ namespace StarterAssets
 		{
 			_cinemachineTargetPitch = 0f;
 		}
+
+		public void DisableInput()
+    {
+        _input.move = Vector2.zero;
+        _input.look = Vector2.zero;
+        _input.jump = false;
+        _input.sprint = false;
+        _playerInput.enabled = false; 	
+    }
 	}
 }
