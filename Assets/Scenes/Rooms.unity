@@ -4538,6 +4538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &331548281
 BoxCollider:
@@ -7062,6 +7063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &590596801
 BoxCollider:
@@ -8033,6 +8035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &666720853
 BoxCollider:
@@ -8241,6 +8244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &675842426
 BoxCollider:
@@ -11674,7 +11678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 0cd0b1d264c0fa543ba3fe183a956d00, type: 3}
       propertyPath: m_CastShadows
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 0cd0b1d264c0fa543ba3fe183a956d00, type: 3}
       propertyPath: m_RenderingLayerMask
@@ -13945,6 +13949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &986670738
 BoxCollider:
@@ -29494,6 +29499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &1905069325
 BoxCollider:
@@ -34997,7 +35003,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7086255661383713406}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -36275,7 +36281,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132565522038942105}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -37118,7 +37124,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7303609433625000765}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -38581,6 +38587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &1627868148884340886
 MeshRenderer:
@@ -39866,7 +39873,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3490760133056983858}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -40549,8 +40556,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114283754330233424}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.107452944, y: -0.83422285, z: 0.5116962, w: 0.17519471}
-  m_LocalPosition: {x: -154.5194, y: 16.108456, z: 157.41113}
+  m_LocalRotation: {x: -0.22423953, y: -0.75575566, z: 0.5230489, w: -0.32399064}
+  m_LocalPosition: {x: -163.2232, y: 7.357614, z: 127.05223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43417,7 +43424,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72851745968914366}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -43521,6 +43528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &2799844773902957227
 MeshRenderer:
@@ -44903,7 +44911,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4392588314722132660}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -45054,7 +45062,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3783643683060065616}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -45132,7 +45140,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3257218895475776852}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -46018,7 +46026,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3856967409984318918}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -46467,7 +46475,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3047679056587808825}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -46574,7 +46582,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8601503275530755461}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -47019,6 +47027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &3445302107789238283
 MeshRenderer:
@@ -47299,6 +47308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!4 &3479331438984149235
 Transform:
@@ -47952,7 +47962,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5842280730032137494}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -51197,6 +51207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!114 &4357283688778046708
 MonoBehaviour:
@@ -51212,6 +51223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!4 &4357926792696858472
 Transform:
@@ -52413,7 +52425,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664616756235403984}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -54024,7 +54036,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3960765510949793003}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -54697,7 +54709,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4261217570487624491}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -55474,7 +55486,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5665626704175163420}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -56482,7 +56494,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3782167546695074196}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -58504,7 +58516,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2834199544581613429}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -58811,7 +58823,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7872860889571231710}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -58970,7 +58982,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8613876333360363473}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -59146,7 +59158,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2312239480800947680}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -60149,7 +60161,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69010126697208429}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -60471,7 +60483,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484866916749503426}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -60720,7 +60732,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6573861336839771419}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -61609,7 +61621,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4446318074578898402}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -61654,7 +61666,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240927110891354472}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -62339,6 +62351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &6880107003119468355
 MeshRenderer:
@@ -63014,6 +63027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &6994194665763873461
 MeshRenderer:
@@ -64004,7 +64018,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5208455446448291305}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -64097,7 +64111,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8580012806242557778}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -64716,7 +64730,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601198912823839572}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -64872,7 +64886,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3366647412269968145}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -65252,6 +65266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!4 &7418421460087582602
 Transform:
@@ -67784,7 +67799,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2210336897696114550}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -68537,6 +68552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!65 &8238762403618745215
 BoxCollider:
@@ -68836,6 +68852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 2
   playerHand: {fileID: 1404186845}
+  interectionSFXName: Ambilbarang
   isHeld: 0
 --- !u!23 &8331093099334112951
 MeshRenderer:
