@@ -13,6 +13,7 @@ public class CaughtHandler : MonoBehaviour
     [SerializeField] PlayerInteractions playerInteractions;
     [SerializeField] FirstPersonController firstPersonController;
     [SerializeField] TMP_Text interactionsText;
+    [SerializeField] GameObject progression;
 
     void Start()
     {
@@ -24,8 +25,9 @@ public class CaughtHandler : MonoBehaviour
         {
             broom.Drop();
         }
+        progression.SetActive(false);
         playerInteractions.enabled = false;
-        firstPersonController.enabled = false;
+        firstPersonController.DisableInput();
         interactionsText.gameObject.SetActive(false);
         playerCamera.enabled = false;
         playerCameraJumpScare.enabled = true;
