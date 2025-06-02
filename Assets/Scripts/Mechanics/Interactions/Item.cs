@@ -4,6 +4,8 @@ using System.Collections;
 public class Item : Interactable
 {
     [SerializeField] Transform playerHand;
+    [SerializeField] string interectionSFXName = "Ambilbarang";
+
     private Rigidbody rb;
     private Collider itemCollider;
 
@@ -69,6 +71,8 @@ public class Item : Interactable
     public override void Interact()
     {
         ItemData itemData = GetComponent<ItemData>();
+        AudioManager.instance.PlaySFX(interectionSFXName, 0.5f);
+
 
         if (itemData != null && itemData.category == ItemData.ItemCategory.Clothes)
         {
