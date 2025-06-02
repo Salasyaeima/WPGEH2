@@ -5319,6 +5319,7 @@ MonoBehaviour:
   player: {fileID: 543449882}
   volume: {fileID: 2135677328}
   maxIntensity: 0.5
+  vignetteTransitionSpeed: 2
   shakeAmplitudo: 0.5
   shakeFrequency: 2.5
   vCam: {fileID: 1391944216}
@@ -6011,9 +6012,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b859a9cdaeaf3a84a83ea42742f289f1, type: 3}
   - {fileID: 8300000, guid: 7807271564db753479d734700684fb4a, type: 3}
   - {fileID: 8300000, guid: d2265fcc0321cae4e9757111aee8dabb, type: 3}
+  - {fileID: 8300000, guid: bc20a64c6b4029746b00003ebeda80ab, type: 3}
   mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 1
+  cutsceneBGMVolume: 0.3
   fadeDuration: 1
 --- !u!4 &2017054628
 Transform:
@@ -12507,6 +12510,7 @@ MonoBehaviour:
   fullContainer: {fileID: 1659512085}
   storedItems: []
   maxCapacity: 5
+  interectionSFXName: Ambilbarang
   containerType: 2
 --- !u!4 &482713720026826664
 Transform:
@@ -39498,6 +39502,7 @@ MonoBehaviour:
   fullContainer: {fileID: 1736317134519748117}
   storedItems: []
   maxCapacity: 9
+  interectionSFXName: Ambilbarang
   containerType: 0
 --- !u!1 &2524130388256804070
 GameObject:
@@ -45079,6 +45084,7 @@ MonoBehaviour:
   fullContainer: {fileID: 8475690060567647651}
   storedItems: []
   maxCapacity: 1
+  interectionSFXName: Ambilbarang
   containerType: 2
 --- !u!4 &2953691568294796390
 Transform:
@@ -55404,6 +55410,7 @@ MonoBehaviour:
   fullContainer: {fileID: 3164644041871769654}
   storedItems: []
   maxCapacity: 7
+  interectionSFXName: Ambilbarang
   containerType: 3
 --- !u!33 &3700106406648913776
 MeshFilter:
@@ -78331,6 +78338,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: endScreen
       value: 
       objectReference: {fileID: 131737732}
@@ -87949,6 +87960,7 @@ MonoBehaviour:
   fullContainer: {fileID: 3438153567184542146}
   storedItems: []
   maxCapacity: 9
+  interectionSFXName: Ambilbarang
   containerType: 0
 --- !u!33 &6082904931269635050
 MeshFilter:
@@ -108855,6 +108867,7 @@ MonoBehaviour:
   fullContainer: {fileID: 7132010309518509613}
   storedItems: []
   maxCapacity: 7
+  interectionSFXName: Ambilbarang
   containerType: 3
 --- !u!23 &7732645888368596700
 MeshRenderer:

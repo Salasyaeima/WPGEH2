@@ -2777,6 +2777,7 @@ MonoBehaviour:
   audioSource: {fileID: 1237491658}
   player: {fileID: 1820766999}
   maxDistance: 100
+  targetWalk: {fileID: 1820767001}
 --- !u!1 &1242584642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3694,7 +3695,9 @@ MonoBehaviour:
   modelUpdate: {fileID: 3697568475751675484}
   modelMarah: {fileID: 919132148178342205}
   videoPlayer: {fileID: 1237491654}
+  videoPlayerAudio: {fileID: 1237491658}
   HandPhone: {fileID: 1873185232}
+  currentState: 0
 --- !u!136 &1820767002
 CapsuleCollider:
   m_ObjectHideFlags: 0

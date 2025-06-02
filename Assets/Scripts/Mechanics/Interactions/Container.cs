@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Container : Interactable, ITaskProvider
 {
@@ -9,6 +10,8 @@ public class Container : Interactable, ITaskProvider
     public GameObject fullContainer;
     public List<GameObject> storedItems = new List<GameObject>();
     public int maxCapacity = 2;
+    [SerializeField] string interectionSFXName = "Ambilbarang";
+
     TaskManager taskManager;
     private float count = 0f;
     Room room;
@@ -35,6 +38,23 @@ public class Container : Interactable, ITaskProvider
         if (taskManager != null)
         {
             taskManager.RegisterTask(GetBaseTaskName(), this, room); // Pake base name
+
+            if (SceneManager.GetActiveScene().name == "Rooms" && containerType == ContainerType.wardrobe)
+            {
+                storedItems.Clear();
+                for (int i = 0; i < maxCapacity; i++)
+                {
+                    storedItems.Add(null);
+                }
+                emptyContainer.SetActive(false);
+                fullContainer.SetActive(true);
+                string taskToComplete = GetBaseTaskName();
+                Task task = FindTaskByName(taskToComplete);
+                if (task != null && !task.isCompleted)
+                {
+                    taskManager.CompleteTask(task, playSound: false);
+                }
+            }
         }
     }
 
@@ -102,18 +122,21 @@ public class Container : Interactable, ITaskProvider
                 MoveItem();
                 storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
+                PlayCollectSound();
             }
             else if ((containerType == ContainerType.wardrobe && itemData.category == ItemData.ItemCategory.Clothes))
             {
                 PlaceClothes();
                 storedItems.Add(PlayerInteractions.heldItem.gameObject);
                 PlayerInteractions.heldItem = null;
+                PlayCollectSound();
             }
-            else if((containerType == ContainerType.gudang && itemData.category == ItemData.ItemCategory.Box))
+            else if ((containerType == ContainerType.gudang && itemData.category == ItemData.ItemCategory.Box))
             {
                 SpawnItem();
                 storedItems.Add(PlayerInteractions.heldItem.gameObject.gameObject);
                 PlayerInteractions.heldItem = null;
+                PlayCollectSound();
             }
         }
     }
@@ -129,6 +152,11 @@ public class Container : Interactable, ITaskProvider
         PlayerInteractions.heldItem.transform.position = spawnPoint.position;
         rb.isKinematic = false;
         rb.useGravity = true;
+    }
+
+    void PlayCollectSound()
+    {
+        AudioManager.instance.PlaySFX(interectionSFXName, 0.5f);
     }
 
     void Update()

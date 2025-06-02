@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip mainGameBGM;
     AudioSource bgmSource;
     [SerializeField] float bgmVolume = 0.5f;
+    [SerializeField] float cutsceneBGMVolume = 0.3f; 
     [SerializeField] float fadeDuration = 1.0f;
     bool isRightStep = false;
 
@@ -49,7 +50,6 @@ public class AudioManager : MonoBehaviour
         OnSceneLoaded(currentScene, LoadSceneMode.Single);
     }
 
-
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -58,22 +58,33 @@ public class AudioManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         AudioClip targetBGM = null;
+        float targetVolume = bgmVolume;
+
         if (scene.name == "MainMenu")
         {
             targetBGM = mainMenuBGM;
+            targetVolume = bgmVolume; 
         }
         else if (scene.name == "RoomsTutorial" || scene.name == "Rooms")
         {
             targetBGM = mainGameBGM;
+            bgmVolume = 1f;
+            targetVolume = bgmVolume; 
+        }
+        else if (scene.name == "CutScene") 
+        {
+            targetBGM = mainMenuBGM; 
+            targetVolume = cutsceneBGMVolume; 
         }
 
-        if (targetBGM != null && bgmSource.clip != targetBGM)
+        if (targetBGM != null && (bgmSource.clip != targetBGM || bgmSource.volume != targetVolume))
         {
-            StartCoroutine(FadeAndSwitchBGM(targetBGM));
+            StartCoroutine(FadeAndSwitchBGM(targetBGM, targetVolume));
         }
         else if (targetBGM != null && !bgmSource.isPlaying)
         {
             bgmSource.clip = targetBGM;
+            bgmSource.volume = targetVolume;
             bgmSource.Play();
         }
         else if (targetBGM == null)
@@ -82,7 +93,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    IEnumerator FadeAndSwitchBGM(AudioClip newClip)
+    IEnumerator FadeAndSwitchBGM(AudioClip newClip, float targetVolume)
     {
         if (bgmSource.isPlaying)
         {
@@ -103,14 +114,12 @@ public class AudioManager : MonoBehaviour
         while (elapsedFadeIn < fadeDuration)
         {
             elapsedFadeIn += Time.deltaTime;
-            bgmSource.volume = Mathf.Lerp(0f, bgmVolume, elapsedFadeIn / fadeDuration);
+            bgmSource.volume = Mathf.Lerp(0f, targetVolume, elapsedFadeIn / fadeDuration);
             yield return null;
         }
     }
 
-
-
-    public void PlaySFX(string sfxName)
+    public void PlaySFX(string sfxName, float volume = 1f)
     {
         AudioClip clip = sfxClips.Find(s => s.name == sfxName);
         if (clip == null)
@@ -122,6 +131,7 @@ public class AudioManager : MonoBehaviour
         AudioSource availableSource = audioSources.Find(s => !s.isPlaying);
         if (availableSource != null)
         {
+            availableSource.volume = volume;
             availableSource.PlayOneShot(clip);
         }
         else
@@ -191,6 +201,7 @@ public class AudioManager : MonoBehaviour
     {
         if (bgmSource != null && bgmSource.clip != null && !bgmSource.isPlaying)
         {
+            bgmSource.volume = bgmVolume; 
             bgmSource.Play();
         }
     }
@@ -217,15 +228,25 @@ public class AudioManager : MonoBehaviour
         bgmSource.volume = bgmVolume;
     }
 
-    public void SetBGM(AudioClip newBgmClip)
+    public void SetBGM(AudioClip newBgmClip, float volume = -1f)
     {
         if (newBgmClip != null)
         {
-            StartCoroutine(FadeAndSwitchBGM(newBgmClip));
+            float targetVolume = volume >= 0f ? Mathf.Clamp01(volume) : bgmVolume;
+            StartCoroutine(FadeAndSwitchBGM(newBgmClip, targetVolume));
         }
         else
         {
             Debug.LogWarning("BGM Clip baru tidak valid!");
+        }
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        bgmVolume = Mathf.Clamp01(volume);
+        if (bgmSource != null)
+        {
+            bgmSource.volume = bgmVolume;
         }
     }
 
@@ -342,5 +363,4 @@ public class AudioManager : MonoBehaviour
         source.volume = 1f;
         loopingSources.Remove("Walking");
     }
-
 }

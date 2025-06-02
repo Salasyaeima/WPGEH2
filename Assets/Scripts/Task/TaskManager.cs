@@ -120,13 +120,16 @@ public class TaskManager : MonoBehaviour
     }
 
 
-    public void CompleteTask(Task task)
+    public void CompleteTask(Task task, bool playSound = true)
     {
         if (!task.isCompleted)
         {
             task.isCompleted = true;
             completedTasks++;
-            AudioManager.instance.PlaySFX(TaskResultSFX);
+            if (playSound) 
+            {
+                AudioManager.instance.PlaySFX(TaskResultSFX);
+            }
 
             foreach (Transform child in taskListParent)
             {
