@@ -8,6 +8,8 @@ public class Broom : Interactable, ITaskProvider
     [SerializeField] Transform playerHand;
     [SerializeField] GameObject roomBroom;
     [SerializeField] string taskName = "Bersihkan Lantai";
+    [SerializeField] string interectionSFXName = "Ambilbarang";
+    [SerializeField] string dorpSFXName = "LepasBarang";
     TaskManager taskManager;
     Room room;
     public bool isHeld = false;
@@ -31,6 +33,7 @@ public class Broom : Interactable, ITaskProvider
     {
         if (!isHeld && broomInHand != null && broomInRoom != null && playerHand != null)
         {
+            AudioManager.instance.PlaySFX(interectionSFXName, 0.3f);
             broomInHand.SetActive(true);
             broomInRoom.SetActive(false);
             broomInRoom.transform.SetParent(playerHand);
@@ -49,6 +52,7 @@ public class Broom : Interactable, ITaskProvider
     {
         if (isHeld && broomInHand != null && broomInRoom != null)
         {
+            AudioManager.instance.PlaySFX(dorpSFXName, 0.3f);
             broomInHand.SetActive(false);
             broomInRoom.SetActive(true);
             broomInRoom.transform.SetParent(null);
