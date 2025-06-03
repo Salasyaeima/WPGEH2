@@ -8735,6 +8735,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d2265fcc0321cae4e9757111aee8dabb, type: 3}
   - {fileID: 8300000, guid: d44e6eb57a5d0124286a41bd608b5396, type: 3}
   - {fileID: 8300000, guid: a02dca722275dc8488637caf112d9954, type: 3}
+  - {fileID: 8300000, guid: 1d7223c372237ff44a197a9ef93035f2, type: 3}
   mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 1
@@ -79559,6 +79560,14 @@ PrefabInstance:
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintCurve.m_Curve.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: 'footstepSFXNames.Array.data[0]'
+      value: footstep
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: 'footstepSFXNames.Array.data[1]'
+      value: footstep
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintCurve.m_Curve.Array.data[0].time
