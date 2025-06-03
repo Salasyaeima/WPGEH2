@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -662,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: playerHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 403711106}
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: interactionType
       value: 2
@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -1685,7 +1685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -1851,6 +1851,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &403711106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5749407438960701583, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 5393215579111688471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &404106381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,7 +2259,7 @@ PrefabInstance:
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: playerHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 403711106}
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: interactionType
       value: 2
@@ -4989,7 +4994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -6119,7 +6124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -6419,7 +6424,7 @@ PrefabInstance:
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: playerHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 403711106}
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: interactionType
       value: 2
@@ -6708,7 +6713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -7944,7 +7949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -8018,7 +8023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -8436,7 +8441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
@@ -8522,7 +8527,7 @@ PrefabInstance:
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: playerHand
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 403711106}
     - target: {fileID: 5077241987369550938, guid: 2a8cb36480f01c8408e6df4a6cacb64d, type: 3}
       propertyPath: interactionType
       value: 2
@@ -8726,8 +8731,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b5aa427b2e32e394e855210effb2d7f5, type: 3}
   - {fileID: 8300000, guid: b859a9cdaeaf3a84a83ea42742f289f1, type: 3}
   - {fileID: 8300000, guid: 7807271564db753479d734700684fb4a, type: 3}
+  - {fileID: 8300000, guid: e16a10fb83f3048469bd7401785a3d34, type: 3}
   - {fileID: 8300000, guid: d2265fcc0321cae4e9757111aee8dabb, type: 3}
-  - {fileID: 8300000, guid: bc20a64c6b4029746b00003ebeda80ab, type: 3}
+  - {fileID: 8300000, guid: d44e6eb57a5d0124286a41bd608b5396, type: 3}
+  - {fileID: 8300000, guid: a02dca722275dc8488637caf112d9954, type: 3}
   mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 1
@@ -9242,7 +9249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 2
-  playerHand: {fileID: 0}
+  playerHand: {fileID: 403711106}
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
   isHeld: 0
