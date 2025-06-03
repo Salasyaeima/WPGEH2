@@ -76,6 +76,7 @@ namespace StarterAssets
 
 		[Header("Audio Settings")]
 		[SerializeField] string[] footstepSFXNames = { "Footstep_Left", "Footstep_Right" };
+		[SerializeField] string tiredSFXName = "Capek";
 		[SerializeField] float walkFootstepInterval = 0.5f;
 		[SerializeField] float sprintFootstepInterval = 0.3f;
 		float footstepTimer = 0f;
@@ -252,6 +253,7 @@ namespace StarterAssets
 
 			if (sprintLock == true)
 			{
+				// AudioManager.instance.PlaySFX(tiredSFXName, 0.2f);
 				_input.sprint = false;
 				sprintDuration -= Time.deltaTime;
 				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);

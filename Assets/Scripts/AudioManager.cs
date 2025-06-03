@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] float cutsceneBGMVolume = 0.3f; 
     [SerializeField] float fadeDuration = 1.0f;
     bool isRightStep = false;
+    
 
     void Awake()
     {
