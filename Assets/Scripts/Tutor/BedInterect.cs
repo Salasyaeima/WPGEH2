@@ -1,3 +1,4 @@
+using System.Collections;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class BedInterect : Interactable
     [SerializeField] CanvasGroup energiTransparant;
     [SerializeField] GameObject cameraSleep;
     [SerializeField] SleepyBlinkEffect sleepyBlinkEffect;
+    [SerializeField] string interectionHoldSFXName = "Cloth_sound";
+
     bool isBed = false;
     public override string Description()
     {
@@ -24,6 +27,8 @@ public class BedInterect : Interactable
 
     public override void Interact()
     {
+        AudioManager.instance.PlaySFX(interectionHoldSFXName);
+        StartCoroutine(StopSoundAfterSeconds(3f));
         starterAssetsInputs.move = Vector2.zero;
         starterAssetsInputs.sprint = false;
         energiTransparant.alpha = 0;
@@ -39,4 +44,11 @@ public class BedInterect : Interactable
         }
         isBed = true;
     }
+
+    IEnumerator StopSoundAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        AudioManager.instance.StopAllAudio();
+    }
+
 }
