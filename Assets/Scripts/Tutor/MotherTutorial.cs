@@ -57,6 +57,7 @@ public class MotherTutorial : MonoBehaviour
             else if (isChasing && (!DetectChild() || hidingMechanism.isHiding) && !hasDetectedPlayer)
             {
                 isChasing = false;
+                hasDetectedPlayer = false;
                 StartMovingToWaypoint(currentWaypoint);
                 textDialogChild.ResumeDisplayingText();
             }
@@ -202,4 +203,11 @@ public class MotherTutorial : MonoBehaviour
         yield return new WaitForSeconds(3f);
         LoadingScreen.Instance.SwitchToScene("RoomsTutorial");
     }
+
+    public void StopChasing()
+    {
+        isChasing = false;
+        hasDetectedPlayer = false;
+        StartMovingToWaypoint(currentWaypoint);
+    }   
 }

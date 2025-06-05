@@ -344,6 +344,9 @@ public class TextDialogChild : MonoBehaviour
             if (!hidingMechanism.isHiding)
             {
                 hidingMechanism.Interact();
+                hidingMechanism.EnterHide();
+                AudioManager.instance.StopAllAudio();
+                motherTutorial.StopChasing();
             }
             yield return null;
         }

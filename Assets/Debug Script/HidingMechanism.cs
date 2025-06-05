@@ -115,7 +115,7 @@ public class HidingMechanism : Interactable
         player.transform.rotation = Quaternion.LookRotation(this.transform.forward);
     }
 
-    private void EnterHide()
+    public void EnterHide()
     {
         SetActiveModels(false, true);
         SetCameraPriority(thisCamera, playersCamera);
