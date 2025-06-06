@@ -17,6 +17,11 @@ public class TextDialogChild : MonoBehaviour
     [SerializeField] GameObject blinkController;
     [SerializeField] HidingMechanism hidingMechanism;
     [SerializeField] MotherTutorial motherTutorial;
+    [SerializeField] string hmmSFXName = "Menghela";
+    [SerializeField] string ckSFXName = "Ck";
+    [SerializeField] string memghelaSFXName = "Menghela";
+    [SerializeField] string hoamSFXName = "Hoaaam";
+    [SerializeField] string heehSFXName = "HEEHHH";
     [SerializeField] string[] texts;
     [SerializeField] float textDuration = 2f;
 
@@ -98,6 +103,12 @@ public class TextDialogChild : MonoBehaviour
             return;
         }
 
+        if (currentTextIndex == 0)
+        {
+            AudioManager.instance.PlaySFX(hmmSFXName, 0.1f);
+        }
+       
+
         isDisplaying = true;
         isPaused = false;
         if (textDisplay != null)
@@ -133,9 +144,9 @@ public class TextDialogChild : MonoBehaviour
         currentTextIndex++;
 
         if (currentTextIndex != 5 && currentTextIndex != 7 && currentTextIndex != 10 && currentTextIndex != 21)
-        {
-            playerInteractions.canInteract = false;
-        }
+            {
+                playerInteractions.canInteract = false;
+            }
 
         if (currentTextIndex == 5)
         {
@@ -159,6 +170,7 @@ public class TextDialogChild : MonoBehaviour
         }
         else if (currentTextIndex == 10)
         {
+            AudioManager.instance.PlaySFX(hoamSFXName, 0.1f);
             PauseDisplayingText();
             intruksi.enabled = true;
             playerInteractions.canInteract = true;
@@ -293,21 +305,34 @@ public class TextDialogChild : MonoBehaviour
             return;
         }
 
+        if (currentTextIndex == 5)
+        {
+            AudioManager.instance.PlaySFX(ckSFXName, 0.05f);
+        }
+        else if (currentTextIndex == 7)
+        {
+            AudioManager.instance.PlaySFX(memghelaSFXName, 0.05f);
+        }
+        else if (currentTextIndex == 10)
+        {
+            AudioManager.instance.PlaySFX(heehSFXName, 0.03f);
+        }
+
         if (currentTextIndex < texts.Length)
-        {
-            isDisplaying = true;
-            isPaused = false;
-            if (textDisplay != null)
             {
-                textDisplay.enabled = true;
-                textDisplay.text = texts[currentTextIndex];
+                isDisplaying = true;
+                isPaused = false;
+                if (textDisplay != null)
+                {
+                    textDisplay.enabled = true;
+                    textDisplay.text = texts[currentTextIndex];
+                }
+                timer = 0f;
             }
-            timer = 0f;
-        }
-        else
-        {
-            Debug.Log($"{gameObject.name}: No more text to resume");
-        }
+            else
+            {
+                Debug.Log($"{gameObject.name}: No more text to resume");
+            }
     }
 
     void ChangeTargetTransform()
@@ -343,7 +368,6 @@ public class TextDialogChild : MonoBehaviour
         {
             if (!hidingMechanism.isHiding)
             {
-                hidingMechanism.Interact();
                 hidingMechanism.EnterHide();
                 AudioManager.instance.StopAllAudio();
                 motherTutorial.StopChasing();

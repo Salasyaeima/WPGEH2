@@ -4556,6 +4556,7 @@ MonoBehaviour:
   energiTransparant: {fileID: 1199583807}
   cameraSleep: {fileID: 1353338218}
   sleepyBlinkEffect: {fileID: 1418240780}
+  interectionHoldSFXName: Cloth_sound
 --- !u!1 &1155813275
 GameObject:
   m_ObjectHideFlags: 0
@@ -8736,6 +8737,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d44e6eb57a5d0124286a41bd608b5396, type: 3}
   - {fileID: 8300000, guid: a02dca722275dc8488637caf112d9954, type: 3}
   - {fileID: 8300000, guid: 1d7223c372237ff44a197a9ef93035f2, type: 3}
+  - {fileID: 8300000, guid: 3115e034dd9d6eb46967cf7ef94a24c0, type: 3}
+  - {fileID: 8300000, guid: a7b9a81a7e7ecc04789b46574e6dba28, type: 3}
+  - {fileID: 8300000, guid: 4636eb875d12922488f8efcc5cc12b10, type: 3}
+  - {fileID: 8300000, guid: 51007278cdaa0e140bbaea012c9b35a6, type: 3}
+  - {fileID: 8300000, guid: 6ba2a98cf1a2f1142a853d377ece1981, type: 3}
+  - {fileID: 8300000, guid: d0b9d71ffad9d1843830d4e51abacf94, type: 3}
   mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 1
@@ -9109,6 +9116,7 @@ MonoBehaviour:
   taskList: {fileID: 2080478108}
   windowQuest: {fileID: 2113635143}
   taskTutorial: {fileID: 4039424907246016871}
+  interectionSFXName: Ambilbarang
   isDone: 0
 --- !u!1 &2111308611
 GameObject:
@@ -15283,7 +15291,7 @@ MonoBehaviour:
   emptyContainer: {fileID: 593195745}
   fullContainer: {fileID: 1659512085}
   storedItems: []
-  maxCapacity: 5
+  maxCapacity: 1
   interectionSFXName: Ambilbarang
   containerType: 2
 --- !u!4 &482713720026826664
@@ -62184,6 +62192,11 @@ MonoBehaviour:
   blinkController: {fileID: 1418240779}
   hidingMechanism: {fileID: 1523520017}
   motherTutorial: {fileID: 5605961324908519992}
+  hmmSFXName: Ngeluh
+  ckSFXName: Ck
+  memghelaSFXName: Menghela
+  hoamSFXName: Hoaaam
+  heehSFXName: HEEHHH
   texts:
   - Hmmm. . .
   - Apalah Ibu ini, padahal tadi lagi seru banget main Fanny!
@@ -62195,8 +62208,8 @@ MonoBehaviour:
   - 'Yaampun Masih banyak lagii ternyata padahal udah capek '
   - Hmm. . . aduh aku malah ngantuk lagi.
   - 'Tidur dulu bentar deh, baru beresin. '
-  - 'Hoaaamm. . . '
-  - "Aduh \u2014 EH ASTAGAA, INI JAM BERAPAA?!!"
+  - HEEEEHHHH
+  - ADUH ASTAGAA, INI JAM BERAPAA?!!
   - Kelamaan tidur yaampun!
   - Harus cepet-cepet beresin sebelum Ibu dateng!
   - Eh, bunyi apa itu?
@@ -93368,6 +93381,7 @@ MonoBehaviour:
   energiTransparant: {fileID: 1199583807}
   cameraSleep: {fileID: 1353338218}
   sleepyBlinkEffect: {fileID: 1418240780}
+  interectionHoldSFXName: Cloth_sound
 --- !u!23 &6440736225785982597
 MeshRenderer:
   m_ObjectHideFlags: 0
