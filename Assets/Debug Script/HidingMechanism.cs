@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using StarterAssets;
 using Unity.AppUI.UI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class HidingMechanism : Interactable
 {
     [Header("Script Refrence")]
@@ -33,6 +34,7 @@ public class HidingMechanism : Interactable
     public bool isCoolDown;
     [SerializeField] string enterBox = "Masuk_Box";
     [SerializeField] string exitBox = "Keluar_Box";
+    bool isInTutorialScene;
 
     void Start()
     {
@@ -40,6 +42,8 @@ public class HidingMechanism : Interactable
 
         SetCameraPriority(playersCamera, thisCamera);
         SetActiveModels(true, false);
+
+        isInTutorialScene = SceneManager.GetActiveScene().name == "RoomsTutorial";
     }
 
     void Update()
@@ -49,7 +53,11 @@ public class HidingMechanism : Interactable
             timer += Time.deltaTime;
         }
         OnButtonCooldown();
-        Hide();
+
+        if (!isInTutorialScene || !isHiding)
+        {
+            Hide();
+        }
     }
 
     public override string Description()
@@ -80,7 +88,7 @@ public class HidingMechanism : Interactable
 
     private void Hide()
     {
-        if (!isCoolDown)
+        if (!isCoolDown && !isInTutorialScene)
         {
             if (isHiding)
             {
