@@ -22,6 +22,7 @@ public class TextDialogChild : MonoBehaviour
     [SerializeField] string memghelaSFXName = "Menghela";
     [SerializeField] string hoamSFXName = "Hoaaam";
     [SerializeField] string heehSFXName = "HEEHHH";
+    [SerializeField] string duhSFXName = "Duh";
     [SerializeField] string[] texts;
     [SerializeField] float textDuration = 2f;
 
@@ -316,6 +317,10 @@ public class TextDialogChild : MonoBehaviour
         else if (currentTextIndex == 10)
         {
             AudioManager.instance.PlaySFX(heehSFXName, 0.03f);
+        }
+        else if (currentTextIndex == 21)
+        {
+            AudioManager.instance.PlaySFX(duhSFXName, 0.03f);
         }
 
         if (currentTextIndex < texts.Length)

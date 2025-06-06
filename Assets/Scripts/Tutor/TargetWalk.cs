@@ -28,6 +28,9 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] AudioSource videoPlayerAudio;
     [SerializeField] Transform HandPhone;
+    [SerializeField] string marahSFXName = "Marahibu";
+    [SerializeField] string hdehSFXName = "HeIbu";
+
 
     public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp, Idleee }
     public CharacterState currentState = CharacterState.Idlee;
@@ -214,10 +217,12 @@ public class TargetWalk : MonoBehaviour
 
         if (lastReachedWaypoint == 6)
         {
+            AudioManager.instance.PlaySFX(marahSFXName, 0.15f);
             SetState(CharacterState.LookingAround);
         }
         else if (lastReachedWaypoint == 7)
         {
+            AudioManager.instance.PlaySFX(hdehSFXName, 0.15f);
             SetState(CharacterState.Idlee);
         }
         else if (lastReachedWaypoint == 11)

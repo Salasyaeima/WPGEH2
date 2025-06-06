@@ -16,6 +16,7 @@ public class TextDisplayManager : MonoBehaviour
     [SerializeField] TargetWalk targetWalk;
     [SerializeField] TextData[] textList;
     [SerializeField] bool useAutoDisplay = true;
+    
 
     int currentTextIndex = 0;
     bool isDisplaying = false;
