@@ -1,44 +1,55 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Audio;
 
 public class MainMenuFunction : MonoBehaviour
 {
-    private VisualElement settingPanel;
-    Button startButton;
-    Button optionButton;
-    Button exitButton;
+    [SerializeField] public Slider bgmSlider;
+    [SerializeField] public Slider sfxSlider;
+    public AudioMixer mainMixer;
+    
 
-    private void OnEnable()
+    private void Start()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
-
-        startButton = root.Q<Button>("Start");
-        optionButton = root.Q<Button>("Option");
-        exitButton = root.Q<Button>("Exit");
-        settingPanel = root.Q<VisualElement>("SettingMenu");
-        settingPanel.style.display = DisplayStyle.None;
-
-        startButton.clicked += startButtonClicked;
-        optionButton.clicked += optionButtonClicked;
+        LoadVolumeSettings();
     }
 
-    private void OnDisable()
+    public void SetBGMVolume(float volume)
     {
-        startButton.clicked -= startButtonClicked;
-        optionButton.clicked -= optionButtonClicked;
+        if (volume > 0.001f)
+        {
+            mainMixer.SetFloat("BGMVol", Mathf.Log10(volume) * 20);
+        }
+        else
+        {
+            mainMixer.SetFloat("BGMVol", -80f);
+        }
+        PlayerPrefs.SetFloat("BGMVolValue", volume);
     }
 
-    void startButtonClicked(){
-        LoadingScreen.Instance.SwitchToScene("CutScene");
+    public void SetSFXVolume(float volume)
+    {
+        if (volume > 0.001f)
+        {
+            mainMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
+        }
+        else
+        {
+            mainMixer.SetFloat("SFXVol", -80f);
+        }
+        PlayerPrefs.SetFloat("SFXVolValue", volume);
     }
 
-    void optionButtonClicked(){
-        startButton.style.display = DisplayStyle.None;
-        exitButton.style.display = DisplayStyle.None;
-        optionButton.style.display = DisplayStyle.None;
-        
-        settingPanel.style.display = DisplayStyle.Flex;
+    private void LoadVolumeSettings()
+    {
+        float bgmVolume = PlayerPrefs.GetFloat("BGMVolValue", 0.75f);
+        bgmSlider.value = bgmVolume;
+        SetBGMVolume(bgmVolume);
+
+        float sfxVolume = PlayerPrefs.GetFloat("SFXVolValue", 0.75f);
+        sfxSlider.value = sfxVolume;
+        SetSFXVolume(sfxVolume);
     }
 }

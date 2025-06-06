@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public List<AudioSource> audioSources = new List<AudioSource>();
     public Dictionary<string, AudioSource> loopingSources = new Dictionary<string, AudioSource>();
     public List<AudioClip> sfxClips;
+    public AudioMixerGroup bgmMixerGroups;
+    public AudioMixerGroup sfxMixerGroups;
     [SerializeField] AudioClip mainMenuBGM;
     [SerializeField] AudioClip mainGameBGM;
     AudioSource bgmSource;
@@ -36,11 +39,13 @@ public class AudioManager : MonoBehaviour
             source.playOnAwake = false;
             source.loop = false;
             audioSources.Add(source);
+            source.outputAudioMixerGroup = sfxMixerGroups;
         }
 
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.playOnAwake = false;
         bgmSource.loop = true;
+        
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -60,22 +65,28 @@ public class AudioManager : MonoBehaviour
     {
         AudioClip targetBGM = null;
         float targetVolume = bgmVolume;
+        AudioMixerGroup targetMixerGroups = bgmMixerGroups;
 
         if (scene.name == "MainMenu")
         {
             targetBGM = mainMenuBGM;
-            targetVolume = bgmVolume; 
+            targetVolume = bgmVolume;
         }
         else if (scene.name == "RoomsTutorial" || scene.name == "Rooms")
         {
             targetBGM = mainGameBGM;
             bgmVolume = 1f;
-            targetVolume = bgmVolume; 
+            targetVolume = bgmVolume;
         }
-        else if (scene.name == "CutScene") 
+        else if (scene.name == "CutScene")
         {
-            targetBGM = mainMenuBGM; 
-            targetVolume = cutsceneBGMVolume; 
+            targetBGM = mainMenuBGM;
+            targetVolume = cutsceneBGMVolume;
+        }
+
+        if (targetMixerGroups != null)
+        {
+            bgmSource.outputAudioMixerGroup = targetMixerGroups;
         }
 
         if (targetBGM != null && (bgmSource.clip != targetBGM || bgmSource.volume != targetVolume))
@@ -134,6 +145,7 @@ public class AudioManager : MonoBehaviour
         {
             availableSource.volume = volume;
             availableSource.PlayOneShot(clip);
+            availableSource.outputAudioMixerGroup = sfxMixerGroups;
         }
         else
         {
@@ -202,7 +214,7 @@ public class AudioManager : MonoBehaviour
     {
         if (bgmSource != null && bgmSource.clip != null && !bgmSource.isPlaying)
         {
-            bgmSource.volume = bgmVolume; 
+            bgmSource.volume = bgmVolume;
             bgmSource.Play();
         }
     }
@@ -329,6 +341,7 @@ public class AudioManager : MonoBehaviour
             walkingSource = gameObject.AddComponent<AudioSource>();
             walkingSource.playOnAwake = false;
             walkingSource.loop = false;
+            walkingSource.outputAudioMixerGroup = sfxMixerGroups;
             loopingSources["Walking"] = walkingSource;
         }
         else
