@@ -38,10 +38,6 @@ public class EnemyController : MonoBehaviour
             dir = (agent.steeringTarget + new Vector3(0f, transform.position.y - agent.steeringTarget.y, 0f) - transform.position).normalized;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 180 * Time.deltaTime);
         }
-        else if (!agent.hasPath)
-        {
-            animator.SetBool("isIdle", true);
-        }
     }
 
     public void PlayFootstepSound()

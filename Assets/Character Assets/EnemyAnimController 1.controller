@@ -300,18 +300,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isIdle
     m_EventTreshold: 0
-  - m_ConditionMode: 4
-    m_ConditionEvent: SpeedMagnitude
-    m_EventTreshold: 0.1
-  - m_ConditionMode: 4
-    m_ConditionEvent: isTowardsLastPos
-    m_EventTreshold: 0.1
-  - m_ConditionMode: 4
-    m_ConditionEvent: PatrolMagnitude
-    m_EventTreshold: 0.1
-  - m_ConditionMode: 4
-    m_ConditionEvent: Temp
-    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7864157241382554131}
   m_Solo: 0

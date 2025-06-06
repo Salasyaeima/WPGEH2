@@ -58,6 +58,8 @@ public class HidingMechanism : Interactable
         {
             Hide();
         }
+
+        Debug.Log(isHiding);
     }
 
     public override string Description()
@@ -153,10 +155,12 @@ public class HidingMechanism : Interactable
         if (player.CompareTag("isChased") && isHiding)
         {
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", this.gameObject);
+            this.gameObject.layer = 11;
         }
         else
         {
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", player);
+            this.gameObject.layer = 0;
         }
     }
 

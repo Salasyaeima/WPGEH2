@@ -21,6 +21,7 @@ public class CaughtHandler : MonoBehaviour
     }
     public void PerformCaught()
     {
+        Debug.Log("GetCaugh");
         if (broom.isHeld == true)
         {
             broom.Drop();
