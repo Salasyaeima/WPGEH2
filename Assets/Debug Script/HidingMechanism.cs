@@ -58,8 +58,6 @@ public class HidingMechanism : Interactable
         {
             Hide();
         }
-
-        Debug.Log(isHiding);
     }
 
     public override string Description()
