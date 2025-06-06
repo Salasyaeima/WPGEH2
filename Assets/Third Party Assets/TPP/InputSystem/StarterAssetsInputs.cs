@@ -46,7 +46,6 @@ namespace StarterAssets
 		}
 #endif
 
-
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
@@ -67,15 +66,23 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 
-		private void OnApplicationFocus(bool hasFocus)
-		{
-			SetCursorState(cursorLocked);
-		}
+		// KOMENTARI BAGIAN INI BIAR NGGAK MENGGANGGU CURSOR KITA
+		// private void OnApplicationFocus(bool hasFocus)
+		// {
+		// 	SetCursorState(cursorLocked);
+		// }
 
 		private void SetCursorState(bool newState)
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			Cursor.visible = !newState;
+		}
+
+		// Dipanggil dari PauseManager
+		public void SetCursorStateExternal(bool isLocked)
+		{
+			cursorLocked = isLocked;
+			SetCursorState(isLocked);
 		}
 	}
-
 }
