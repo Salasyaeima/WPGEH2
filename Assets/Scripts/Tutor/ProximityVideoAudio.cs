@@ -8,7 +8,7 @@ public class ProximityVideoAudio : MonoBehaviour
     public Transform player;
     public float maxDistance = 10f;
     public TargetWalk targetWalk;
-    float maxVolume = 0.3811f;
+    float maxVolume = 0.01f;
 
     void Start()
     {
@@ -31,7 +31,6 @@ public class ProximityVideoAudio : MonoBehaviour
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance <= maxDistance)
             {
-                Debug.Log(distance);
                 audioSource.mute = false;
                 audioSource.volume = Mathf.Clamp(maxVolume * (1 - distance / maxDistance), 0f, maxVolume);
             }
