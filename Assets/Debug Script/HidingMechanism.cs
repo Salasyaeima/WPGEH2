@@ -28,6 +28,8 @@ public class HidingMechanism : Interactable
     private List<GameObject> models;
     private CinemachineVirtualCamera thisCamera;
     [SerializeField]
+    private Vector3 outLocation;
+    [SerializeField]
     private float timer;
     [SerializeField]
     private float coolDown;
@@ -35,6 +37,7 @@ public class HidingMechanism : Interactable
     [SerializeField] string enterBox = "Masuk_Box";
     [SerializeField] string exitBox = "Keluar_Box";
     bool isInTutorialScene;
+
 
     void Start()
     {
@@ -119,7 +122,7 @@ public class HidingMechanism : Interactable
         SetActiveModels(true, false);
         SetCameraPriority(playersCamera, thisCamera);
 
-        player.transform.position = new Vector3(this.transform.position.x, player.transform.position.y, this.transform.position.z - 3f);
+        player.transform.position = new Vector3(this.transform.position.x + outLocation.x, this.transform.position.y + outLocation.y, this.transform.position.z + outLocation.z);
         player.transform.rotation = Quaternion.LookRotation(this.transform.forward);
     }
 
@@ -171,5 +174,10 @@ public class HidingMechanism : Interactable
             return;
         }
         isCoolDown = true;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(new Vector3(this.transform.position.x + outLocation.x, this.transform.position.y + outLocation.y, this.transform.position.z + outLocation.z), 1);
     }
 }
