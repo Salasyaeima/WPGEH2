@@ -1,9 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Behavior;
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private BehaviorGraph behavior;
     [SerializeField]
     private LineOfSight lineOfSight;
     [SerializeField]
@@ -12,6 +17,11 @@ public class EnemyController : MonoBehaviour
     private AudioClip footstepSfx;
     private Animator animator;
     private Vector3 dir;
+
+    void Awake()
+    {
+        behavior.BlackboardReference.SetVariableValue<GameObject>("Target", player);
+    }
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
