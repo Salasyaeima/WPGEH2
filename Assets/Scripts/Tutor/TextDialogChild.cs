@@ -23,6 +23,7 @@ public class TextDialogChild : MonoBehaviour
     [SerializeField] string hoamSFXName = "Hoaaam";
     [SerializeField] string heehSFXName = "HEEHHH";
     [SerializeField] string duhSFXName = "Duh";
+    [SerializeField] string pintuSFXName = "Buka_Pintu";
     [SerializeField] string[] texts;
     [SerializeField] float textDuration = 2f;
 
@@ -183,6 +184,7 @@ public class TextDialogChild : MonoBehaviour
         }
         else if (currentTextIndex == 14)
         {
+            AudioManager.instance.PlaySFX(pintuSFXName, 0.5f);
             mother.SetActive(true);
         }
         else if (currentTextIndex == 15)
