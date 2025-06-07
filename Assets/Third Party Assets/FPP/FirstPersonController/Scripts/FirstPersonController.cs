@@ -81,6 +81,7 @@ namespace StarterAssets
 		[SerializeField] float sprintFootstepInterval = 0.3f;
 		float footstepTimer = 0f;
 		bool wasMovingLastFrame = false;
+		bool kecapekan = false;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -249,15 +250,21 @@ namespace StarterAssets
 				_sprintTimer -= Time.deltaTime;
 				_sprintTimer = Mathf.Clamp(_sprintTimer, 0f, SprintTransitionDuration);
 				sprintLock = true;
+				kecapekan = true;
 			}
 
 			if (sprintLock == true)
 			{
-				// AudioManager.instance.PlaySFX(tiredSFXName, 0.2f);
 				_input.sprint = false;
 				sprintDuration -= Time.deltaTime;
 				sprintDuration = Mathf.Clamp(sprintDuration, 0f, maxSprintDuration);
-				if (sprintDuration == 0f) sprintLock = false;
+				if (sprintLock == true && kecapekan == true)
+				{
+					AudioManager.instance.PlaySFX(tiredSFXName, 0.2f);
+					kecapekan = false;
+				}
+				if (sprintDuration == 0f)sprintLock = false;
+					
 			}
 
 			if (hidingMechanism.isHiding == true)
