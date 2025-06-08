@@ -3,18 +3,17 @@ using UnityEngine.Playables;
 
 public class FootstepAudio : MonoBehaviour
 {
-    [SerializeField] private AudioClip leftFootClip;  // Audio untuk langkah kiri
-    [SerializeField] private AudioClip rightFootClip; // Audio untuk langkah kanan
-    [SerializeField] private float stepInterval = 0.5f; // Interval antar langkah (detik)
+    [SerializeField] private AudioClip leftFootClip;  
+    [SerializeField] private AudioClip rightFootClip; 
+    [SerializeField] private float stepInterval = 0.5f; 
 
     private AudioSource audioSource;
-    private bool isPlaying = false; // Status apakah suara sedang diputar
-    private bool isLeftStep = true; // Menentukan langkah awal (kiri/kanan)
+    private bool isPlaying = false; 
+    private bool isLeftStep = true; 
     private float stepTimer = 0f;
 
     void Start()
     {
-        // Ambil komponen AudioSource dari GameObject
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -24,45 +23,39 @@ public class FootstepAudio : MonoBehaviour
 
     void Update()
     {
-        // Jika suara sedang aktif, putar langkah secara otomatis
         if (isPlaying)
         {
             stepTimer += Time.deltaTime;
             if (stepTimer >= stepInterval)
             {
                 PlayFootstep();
-                stepTimer = 0f; // Reset timer
+                stepTimer = 0f;
             }
         }
     }
 
     void PlayFootstep()
     {
-        // Pilih audio berdasarkan langkah kiri/kanan
         AudioClip clipToPlay = isLeftStep ? leftFootClip : rightFootClip;
 
-        // Pastikan AudioClip tidak null
         if (clipToPlay != null)
         {
             audioSource.PlayOneShot(clipToPlay);
         }
 
-        // Ganti langkah berikutnya (kiri -> kanan, kanan -> kiri)
         isLeftStep = !isLeftStep;
     }
 
-    // Fungsi untuk memulai suara (dipanggil dari Timeline)
     public void StartFootsteps()
     {
         isPlaying = true;
-        stepTimer = 0f; // Reset timer saat memulai
+        stepTimer = 0f; 
     }
 
-    // Fungsi untuk menghentikan suara (dipanggil dari Timeline)
     public void StopFootsteps()
     {
         isPlaying = false;
         audioSource.Stop();
-        stepTimer = 0f; // Reset timer saat berhenti
+        stepTimer = 0f; 
     }
 }
