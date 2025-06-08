@@ -26,11 +26,11 @@ public class Door : Interactable
     {
         if (!isOpen)
         {
-            return "Press {E} to open the door.";
+            return "Tekan {E} untuk membuka.";
         }
         else
         {
-            return "Press {E} to close the door.";
+            return "Tekan {E} untuk menutup.";
         }
     }
 
