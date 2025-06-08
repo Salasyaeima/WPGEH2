@@ -22,7 +22,7 @@ public class Item : Interactable
     {
         if (isHeld == false)
         {
-            return "Press Left Mouse Button to interact.";
+            return "Tahan {Klik Kiri} Mengambil";
         }
         else
         {

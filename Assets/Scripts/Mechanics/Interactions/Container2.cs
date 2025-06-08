@@ -41,7 +41,7 @@ public class Container2 : Interactable, ITaskProvider
     {
         if (isDone == false)
         {
-            return "Hold {E} to interact.";
+            return "Tahan {E} Berinteraksi.";
         }
         else
         {

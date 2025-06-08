@@ -56,7 +56,7 @@ public class PlayerInteractions : MonoBehaviour
                 if (hit.collider.CompareTag("Dirt"))
                 {
                     isHittingDirt = true;
-                    interactionText.text = "Press left mouse to sweep";
+                    interactionText.text = "Tahan {Klik Kiri} Menyapu";
                 }
                 else
                 {
