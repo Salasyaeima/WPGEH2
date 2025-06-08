@@ -14,7 +14,7 @@ public class TaskTutorialTake : Interactable
     {
         if (isDone == false)
         {
-            return "Press {E} to interact.";
+            return "Tekan {E} untuk mengambil.";
         }
         else
         {
