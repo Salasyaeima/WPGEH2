@@ -4,8 +4,10 @@ using UnityEngine;
 public class TaskPanelController1 : MonoBehaviour
 {
     public GameObject taskPanel;
+    [SerializeField] string paperSFXName = "paper";
 
     bool isPanelOpen = false;
+
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class TaskPanelController1 : MonoBehaviour
 
     void TogglePanel()
     {
+        AudioManager.instance.PlaySFX(paperSFXName);
         isPanelOpen = !isPanelOpen;
         if (isPanelOpen)
         {
