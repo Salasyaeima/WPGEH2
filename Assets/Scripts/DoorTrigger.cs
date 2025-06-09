@@ -12,6 +12,9 @@ public class DoorTrigger : MonoBehaviour
     [SerializeField] float animationDuration = 1f;
     [Header("The Center of Rotation")]
     [SerializeField] GameObject doorEngsel;
+    [SerializeField] string openDoorSFX = "Buka_Pintu";
+    [SerializeField] string closeDoorSFX = "Tutup_Pintu";
+
 
     void Start()
     {
@@ -22,13 +25,20 @@ public class DoorTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!isOpen)
+        {
+            AudioManager.instance.PlaySFX(openDoorSFX, 0.10f);
             StartCoroutine(AnimateDoor());
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (isOpen) 
+        if (isOpen)
+        {
+            AudioManager.instance.PlaySFX(closeDoorSFX, 0.10f);
             StartCoroutine(AnimateDoor());
+
+        }
     }
 
     IEnumerator AnimateDoor()
