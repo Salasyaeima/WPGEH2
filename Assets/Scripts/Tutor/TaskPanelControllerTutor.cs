@@ -14,6 +14,8 @@ public class TaskPanelControllerTutor : MonoBehaviour
     [SerializeField] Container wardrobeContainer;
     [SerializeField] TextDialogChild textDialogChild;
     [SerializeField] GameObject blinkController;
+    [SerializeField] string paperSFXName = "paper";
+
     bool hasSeenTasks = false;
     CanvasGroup canvasGroup;
     bool isPanelOpen = false;
@@ -47,6 +49,7 @@ public class TaskPanelControllerTutor : MonoBehaviour
 
     void TogglePanel()
     {
+        AudioManager.instance.PlaySFX(paperSFXName);
         isPanelOpen = !isPanelOpen;
         if (isPanelOpen)
         {
