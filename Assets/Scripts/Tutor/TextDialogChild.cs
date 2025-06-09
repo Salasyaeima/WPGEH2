@@ -24,6 +24,7 @@ public class TextDialogChild : MonoBehaviour
     [SerializeField] string heehSFXName = "HEEHHH";
     [SerializeField] string duhSFXName = "Duh";
     [SerializeField] string pintuSFXName = "Buka_Pintu";
+    [SerializeField] string hmmIbuSFXName = "HmmIbu";
     [SerializeField] string[] texts;
     [SerializeField] float textDuration = 2f;
 
@@ -204,6 +205,7 @@ public class TextDialogChild : MonoBehaviour
             PauseDisplayingText();
             StartCoroutine(CheckHidingState());
         }
+        
         else if (currentTextIndex == 21)
         {
             PauseDisplayingText();
@@ -319,6 +321,10 @@ public class TextDialogChild : MonoBehaviour
         else if (currentTextIndex == 10)
         {
             AudioManager.instance.PlaySFX(heehSFXName, 0.03f);
+        }
+        else if (currentTextIndex == 18)
+        {
+            AudioManager.instance.PlaySFX(hmmIbuSFXName, 0.5f);
         }
         else if (currentTextIndex == 21)
         {

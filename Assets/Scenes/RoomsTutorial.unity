@@ -760,7 +760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 722, y: 202}
+  m_AnchoredPosition: {x: 841.1, y: 274.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227472031
@@ -785,8 +785,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ini progres tugasmu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3e5e0fc9897687b4793f430eb7fad478, type: 2}
-  m_sharedMaterial: {fileID: 4816165532930008734, guid: 3e5e0fc9897687b4793f430eb7fad478, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
+  m_sharedMaterial: {fileID: -8606871794169907001, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -810,8 +810,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 46.5
+  m_fontSizeBase: 46.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -851,7 +851,7 @@ MonoBehaviour:
   m_margin: {x: -107.71417, y: 0, z: -267.29004, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &227472032
@@ -2429,6 +2429,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a02dca722275dc8488637caf112d9954, type: 3}
   - {fileID: 8300000, guid: 1d7223c372237ff44a197a9ef93035f2, type: 3}
   - {fileID: 8300000, guid: 0e3b732a7306d55459a8bdf3ed6694aa, type: 3}
+  - {fileID: 8300000, guid: 0e3b732a7306d55459a8bdf3ed6694aa, type: 3}
+  - {fileID: 8300000, guid: d8da003b6f159bf49a022f3d6f778eda, type: 3}
+  - {fileID: 8300000, guid: 7833e7627b4caab45a5a6c60f2e5d9f2, type: 3}
   bgmMixerGroups: {fileID: 0}
   sfxMixerGroups: {fileID: 0}
   mainMenuBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
@@ -4957,6 +4960,7 @@ MonoBehaviour:
   wardrobeContainer: {fileID: 481341582053047349}
   textDialogChild: {fileID: 4039424907246016871}
   blinkController: {fileID: 1418240779}
+  paperSFXName: paper
 --- !u!4 &970515175
 Transform:
   m_ObjectHideFlags: 0
@@ -9493,16 +9497,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832165525}
-  m_LocalRotation: {x: 0, y: -0, z: 0.82412547, w: -0.5664073}
+  m_LocalRotation: {x: -0, y: -0, z: -0.902727, w: -0.43021378}
   m_LocalPosition: {x: 0, y: 0, z: -248}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8415, y: 1.8415, z: 1.8415}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 227472030}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1670.962}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -216, y: 122}
+  m_AnchoredPosition: {x: -313, y: -45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832165527
@@ -9525,7 +9529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4db56b9e6193b8f4395d71c8e14ebbba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7922318a73842dc4d96762493e913efb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11764,6 +11768,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ba2a98cf1a2f1142a853d377ece1981, type: 3}
   - {fileID: 8300000, guid: d0b9d71ffad9d1843830d4e51abacf94, type: 3}
   - {fileID: 8300000, guid: 4f5d25b327f6a054287e87e4d39272f5, type: 3}
+  - {fileID: 8300000, guid: d8da003b6f159bf49a022f3d6f778eda, type: 3}
   bgmMixerGroups: {fileID: 0}
   sfxMixerGroups: {fileID: 0}
   mainMenuBGM: {fileID: 8300000, guid: 0ddbed7f2f1d1ae4096e59ff344414a4, type: 3}
