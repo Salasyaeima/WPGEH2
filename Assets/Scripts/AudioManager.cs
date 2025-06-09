@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour
         }
         else if (scene.name == "CutScene")
         {
-            targetBGM = mainMenuBGM;
+            targetBGM = mainGameBGM;
             targetVolume = cutsceneBGMVolume;
         }
 

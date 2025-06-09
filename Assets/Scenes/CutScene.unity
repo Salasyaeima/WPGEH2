@@ -1897,12 +1897,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f5d25b327f6a054287e87e4d39272f5, type: 3}
   - {fileID: 8300000, guid: 7833e7627b4caab45a5a6c60f2e5d9f2, type: 3}
   - {fileID: 8300000, guid: 822062332b6878044b4e1181df6c9aa5, type: 3}
+  - {fileID: 8300000, guid: 1d7223c372237ff44a197a9ef93035f2, type: 3}
+  - {fileID: 8300000, guid: 3a10801b2bddad8429a3a1a2eee7b10b, type: 3}
+  - {fileID: 8300000, guid: 39798ea9d909a0049b39c381eb25570a, type: 3}
   bgmMixerGroups: {fileID: 0}
   sfxMixerGroups: {fileID: 0}
   mainMenuBGM: {fileID: 8300000, guid: 0ddbed7f2f1d1ae4096e59ff344414a4, type: 3}
   mainGameBGM: {fileID: 8300000, guid: 039efa9e4eef2e743807508a72609571, type: 3}
   bgmVolume: 0.5
-  cutsceneBGMVolume: 0.05
+  cutsceneBGMVolume: 0.5
   fadeDuration: 1
 --- !u!4 &677711462
 Transform:
@@ -2630,6 +2633,8 @@ MonoBehaviour:
     triggerAngryModel: 0
     duration: 3
   useAutoDisplay: 1
+  yaaSFXName: Iyahh
+  EehhSFXName: Eehh
 --- !u!1 &865701600
 GameObject:
   m_ObjectHideFlags: 0
@@ -5800,7 +5805,7 @@ Transform:
   m_GameObject: {fileID: 1532326513}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.32, y: -0.46000004, z: -0.8}
+  m_LocalPosition: {x: 42.74, y: -0.46000004, z: -0.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7298,6 +7303,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 1237491654}
   videoPlayerAudio: {fileID: 1237491658}
   HandPhone: {fileID: 1873185232}
+  footstepSFXName: footstep
+  footstepInterval: 0.6
   marahSFXName: HmmIbu
   hdehSFXName: HeIbu
   currentState: 0
@@ -7940,7 +7947,7 @@ Transform:
   m_GameObject: {fileID: 1873185231}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.74152, z: -0, w: 0.67093086}
-  m_LocalPosition: {x: -33.143147, y: -1.68, z: 124.63338}
+  m_LocalPosition: {x: -33.143147, y: -1.29, z: 124.63338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13832,7 +13839,7 @@ Transform:
   m_GameObject: {fileID: 919132148135064948}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.04991422, z: -0, w: 0.9987535}
-  m_LocalPosition: {x: -33.61, y: -2.0149999, z: 121.65}
+  m_LocalPosition: {x: -33.61, y: -1.64, z: 121.65}
   m_LocalScale: {x: 5.0723324, y: 5.0723324, z: 5.0723324}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23425,6 +23432,8 @@ MonoBehaviour:
   openAngle: 90
   animationDuration: 1
   doorEngsel: {fileID: 3220314638556793890}
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!33 &1853243072473700166
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27899,21 +27908,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2496456956757348474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188129574049683605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c4091963d6038f48820d19ab0a96cf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openAngle: -90
-  animationDuration: 1
-  doorEngsel: {fileID: 4828496768159869433}
 --- !u!4 &2507568219139855637
 Transform:
   m_ObjectHideFlags: 0
@@ -30844,6 +30838,8 @@ MonoBehaviour:
   openAngle: -90
   animationDuration: 1
   doorEngsel: {fileID: 7892256459966179949}
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!4 &2867433557307001324
 Transform:
   m_ObjectHideFlags: 0
@@ -43272,6 +43268,8 @@ MonoBehaviour:
   openAngle: -90
   animationDuration: 1
   doorEngsel: {fileID: 7041515994143008437}
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!65 &4310803285290464494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50220,7 +50218,6 @@ GameObject:
   - component: {fileID: 460662340186354462}
   - component: {fileID: 8024298032565980128}
   - component: {fileID: 1428726460211667751}
-  - component: {fileID: 2496456956757348474}
   - component: {fileID: 7942302321193331903}
   m_Layer: 6
   m_Name: PINTU.006
@@ -50369,6 +50366,8 @@ MonoBehaviour:
   openAngle: 90
   animationDuration: 1
   doorEngsel: {fileID: 1019235289503019987}
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!4 &5220661797880470481
 Transform:
   m_ObjectHideFlags: 0
@@ -62394,6 +62393,8 @@ MonoBehaviour:
   openAngle: 90
   animationDuration: 1
   doorEngsel: {fileID: 1992361009}
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!65 &6797673298837548884
 BoxCollider:
   m_ObjectHideFlags: 0

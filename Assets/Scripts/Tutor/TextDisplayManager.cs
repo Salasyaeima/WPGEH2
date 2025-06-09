@@ -16,6 +16,9 @@ public class TextDisplayManager : MonoBehaviour
     [SerializeField] TargetWalk targetWalk;
     [SerializeField] TextData[] textList;
     [SerializeField] bool useAutoDisplay = true;
+    [SerializeField] string yaaSFXName = "Iyahh";
+    [SerializeField] string EehhSFXName = "Eehh";
+
     
 
     int currentTextIndex = 0;
@@ -119,6 +122,15 @@ public class TextDisplayManager : MonoBehaviour
         {
             isDisplaying = false;
             textMeshPro.gameObject.SetActive(false);
+        }
+
+        if (currentTextIndex == 5)
+        {
+            AudioManager.instance.PlaySFX(yaaSFXName, 0.05f);
+        }
+        else if (currentTextIndex == 8)
+        {
+            AudioManager.instance.PlaySFX(EehhSFXName, 0.05f);
         }
     }
 

@@ -28,8 +28,11 @@ public class TargetWalk : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] AudioSource videoPlayerAudio;
     [SerializeField] Transform HandPhone;
+    [SerializeField] string footstepSFXName = "Footstep";
+    [SerializeField] float footstepInterval = 0.5f;
     [SerializeField] string marahSFXName = "Marahibu";
     [SerializeField] string hdehSFXName = "HeIbu";
+
 
 
     public enum CharacterState { Idlee, Walking, LookingAround, Angry, PickingUp, Idleee }
@@ -43,6 +46,7 @@ public class TargetWalk : MonoBehaviour
     bool isMoving = false;
     bool autoMove = false;
     Coroutine pickupCoroutine;
+    Coroutine footstepCoroutine;
     Vector3 targetPosition;
 
     static readonly int IdleeHash = Animator.StringToHash("Idlee");
@@ -78,7 +82,7 @@ public class TargetWalk : MonoBehaviour
         isMoving = false;
         if (videoPlayer != null && videoPlayerAudio != null)
         {
-            videoPlayer.Play(); // Mulai video dari awal
+            videoPlayer.Play(); 
             videoPlayer.SetDirectAudioMute(0, true);
             videoPlayerAudio.mute = true;
             videoPlayerAudio.volume = 0f;
@@ -88,9 +92,21 @@ public class TargetWalk : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isMoving)
+        if (isMoving && currentState == CharacterState.Walking)
         {
             MoveToWaypoint();
+            if (footstepCoroutine == null)
+            {
+                footstepCoroutine = StartCoroutine(PlayFootstepSound());
+            }
+        }
+        else
+        {
+            if (footstepCoroutine != null)
+            {
+                StopCoroutine(footstepCoroutine);
+                footstepCoroutine = null;
+            }
         }
     }
 
@@ -217,16 +233,17 @@ public class TargetWalk : MonoBehaviour
 
         if (lastReachedWaypoint == 6)
         {
-            AudioManager.instance.PlaySFX(marahSFXName, 0.15f);
+            AudioManager.instance.PlaySFX(marahSFXName, 0.10f);
             SetState(CharacterState.LookingAround);
         }
         else if (lastReachedWaypoint == 7)
         {
-            AudioManager.instance.PlaySFX(hdehSFXName, 0.15f);
+            AudioManager.instance.PlaySFX(hdehSFXName, 0.10f);
             SetState(CharacterState.Idlee);
         }
         else if (lastReachedWaypoint == 11)
         {
+            AudioManager.instance.PlaySFX(marahSFXName, 0.10f);
             Vector3 lookDirection = lookTarget.transform.position - mother.transform.position;
             lookDirection.y = 0f;
             mother.transform.rotation = Quaternion.LookRotation(lookDirection);
@@ -364,4 +381,14 @@ public class TargetWalk : MonoBehaviour
     {
         LoadingScreen.Instance.SwitchToScene("RoomsTutorial");
     }
+
+    IEnumerator PlayFootstepSound()
+    {
+        while (true)
+        {
+            AudioManager.instance.PlaySFX(footstepSFXName, 0.09f);
+            yield return new WaitForSeconds(footstepInterval); 
+        }
+    }
+
 }
