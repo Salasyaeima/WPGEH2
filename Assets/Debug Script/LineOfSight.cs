@@ -48,7 +48,7 @@ public class LineOfSight : MonoBehaviour
                     if (!hasPlayedSFX)
                     {
                         AudioManager.instance.PlaySFX(isChasedSFX, 0.5f);
-                        hasPlayedSFX = true; 
+                        hasPlayedSFX = true;
                     }
                     DetectedTarget = hit.collider.gameObject;
                 }
@@ -57,6 +57,7 @@ public class LineOfSight : MonoBehaviour
                     if (DetectedTarget != null)
                     {
                         CheckLastSeen();
+                        hasPlayedSFX = false;
                     }
                     DetectedTarget = null;
                 }
@@ -64,6 +65,7 @@ public class LineOfSight : MonoBehaviour
             else
             {
                 potentialTarget.tag = tagBefore;
+                hasPlayedSFX = false;
             }
         }
         return DetectedTarget;

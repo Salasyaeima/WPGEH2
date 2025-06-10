@@ -32,7 +32,7 @@ public class Sight : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             xrayActive = true;
-            AudioManager.instance.PlayLoopingSFX(xRaySound);
+            AudioManager.instance.PlayLoopingSFX(xRaySound, 0.3f);
             starterAssetInput.move = new Vector2(0, 0);
             colorAdjust.saturation.value = -100f;
         }
