@@ -45,7 +45,6 @@ public class AudioManager : MonoBehaviour
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.playOnAwake = false;
         bgmSource.loop = true;
-        
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }

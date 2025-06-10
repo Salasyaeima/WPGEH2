@@ -34,6 +34,8 @@ public class PauseManager : MonoBehaviour
 
         playerInputs.cursorInputForLook = true;
         playerInputs.SetCursorStateExternal(true);
+
+        AudioListener.pause = false;
     }
 
     public void PauseGame()
@@ -48,6 +50,8 @@ public class PauseManager : MonoBehaviour
         playerInputs.cursorInputForLook = false;
         playerInputs.SetCursorStateExternal(false);
         playerInputs.look = Vector2.zero;
+
+        AudioListener.pause = true;
     }
 
     public void ShowOptionsMenu()
