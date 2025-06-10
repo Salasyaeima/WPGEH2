@@ -194,6 +194,7 @@ public class MotherTutorial : MonoBehaviour
             jumpscareAnimator.Play("Scene");
             playerCamera.enabled = false;
             playerCameraJumpScare.enabled = true;
+            cameraJumpScare.StartShakeAndZoom();
             StartCoroutine(Reset());
         }
     }
