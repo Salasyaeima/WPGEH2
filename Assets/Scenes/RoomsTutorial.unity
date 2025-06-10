@@ -2496,6 +2496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSources: []
+  loopingSourcePool: []
   sfxClips:
   - {fileID: 8300000, guid: adbff08b727b1a84db8778eb0d358e7a, type: 3}
   - {fileID: 8300000, guid: 67aac4c98a9bd724a92b078069594887, type: 3}
@@ -2525,6 +2526,7 @@ MonoBehaviour:
   bgmVolume: 1
   cutsceneBGMVolume: 0.3
   fadeDuration: 1
+  loopingSourcePoolSize: 5
 --- !u!4 &398681399
 Transform:
   m_ObjectHideFlags: 0
@@ -7037,19 +7039,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5126000012016405007, guid: c0645ae13e2564d4b824775de63b64ab, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5126000012016405007, guid: c0645ae13e2564d4b824775de63b64ab, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5126000012016405007, guid: c0645ae13e2564d4b824775de63b64ab, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5126000012016405007, guid: c0645ae13e2564d4b824775de63b64ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8505,9 +8507,10 @@ MonoBehaviour:
   detailProgression: {fileID: 370127306}
   player: {fileID: 543449882}
   TaskResultSFX: Instrument
-  nextScene: {fileID: 0}
-  panelResult: {fileID: 131737730}
-  resultButton: {fileID: 0}
+  panelWin: {fileID: 0}
+  panelLose: {fileID: 0}
+  winResultButton: {fileID: 0}
+  loseResultButton: {fileID: 0}
 --- !u!4 &1450977757
 Transform:
   m_ObjectHideFlags: 0
@@ -13068,6 +13071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSources: []
+  loopingSourcePool: []
   sfxClips:
   - {fileID: 8300000, guid: adbff08b727b1a84db8778eb0d358e7a, type: 3}
   - {fileID: 8300000, guid: 67aac4c98a9bd724a92b078069594887, type: 3}
@@ -13101,6 +13105,7 @@ MonoBehaviour:
   bgmVolume: 0.5
   cutsceneBGMVolume: 0.05
   fadeDuration: 1
+  loopingSourcePoolSize: 5
 --- !u!4 &2017054628
 Transform:
   m_ObjectHideFlags: 0
