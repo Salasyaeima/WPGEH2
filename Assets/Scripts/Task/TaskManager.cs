@@ -18,9 +18,10 @@ public class TaskManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI detailProgression;
     [SerializeField] GameObject player;
     [SerializeField] string TaskResultSFX = "Instrument";
-    [SerializeField] TextMeshProUGUI nextScene;
-    public GameObject panelResult;
-    [SerializeField] Button resultButton;
+    public GameObject panelWin;
+    public GameObject panelLose;
+    [SerializeField] Button winResultButton;
+    [SerializeField] Button loseResultButton;
 
     Room[] rooms;
     int completedRooms = 0;
@@ -44,18 +45,32 @@ public class TaskManager : MonoBehaviour
         UpdateTaskInfo();
         UpdateTasksPerRoom();
 
-        if (resultButton != null)
+        if (winResultButton != null)
         {
-            resultButton.onClick.RemoveAllListeners();
-            resultButton.onClick.AddListener(() =>
+            winResultButton.onClick.RemoveAllListeners();
+            winResultButton.onClick.AddListener(() =>
             {
-                OnResultButtonClicked();
-                resultButton.interactable = false;
+                OnWinResultButtonClicked();
+                winResultButton.interactable = false;
             });
         }
         else
         {
-            Debug.LogWarning("ResultButton tidak diatur di Inspector!");
+            Debug.LogWarning("WinResultButton tidak diatur di Inspector!");
+        }
+
+        if (loseResultButton != null)
+        {
+            loseResultButton.onClick.RemoveAllListeners();
+            loseResultButton.onClick.AddListener(() =>
+            {
+                OnLoseResultButtonClicked();
+                loseResultButton.interactable = false;
+            });
+        }
+        else
+        {
+            Debug.LogWarning("LoseResultButton tidak diatur di Inspector!");
         }
     }
 
@@ -150,10 +165,13 @@ public class TaskManager : MonoBehaviour
             UpdateTaskInfo();
             UpdateTasksPerRoom();
 
-            if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
-            {
-                panelResult.SetActive(true);
-            }
+            // if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
+            // {
+            //     panelWin.SetActive(true); 
+            //     Time.timeScale = 0f;
+            //     Cursor.visible = true;
+            //     Cursor.lockState = CursorLockMode.None;
+            // }
         }
     }
 
@@ -261,26 +279,30 @@ public class TaskManager : MonoBehaviour
         }
         UpdateTaskInfo();
 
-        if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
+       if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
         {
-            panelResult.SetActive(true);
-            nextScene.text = "Lihat Ending";
+            panelWin.SetActive(true); 
             Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+        // else
+        // {
+        //     panelLose.SetActive(true);
+        //     Time.timeScale = 0f;
+        //     Cursor.visible = true;
+        //     Cursor.lockState = CursorLockMode.None;
+        // }
     }
 
-    public void OnResultButtonClicked()
+     public void OnWinResultButtonClicked()
     {
-        if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
-        {
-            LoadingScreen.Instance.SwitchToScene("EndingCutScene");
-        }
-        else
-        {
-            LoadingScreen.Instance.SwitchToScene("Rooms");
-        }
+        LoadingScreen.Instance.SwitchToScene("EndingCutScene"); 
+    }
+
+    public void OnLoseResultButtonClicked()
+    {
+        LoadingScreen.Instance.SwitchToScene("Rooms"); 
     }
 
 }
