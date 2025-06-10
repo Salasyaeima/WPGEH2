@@ -40,7 +40,7 @@ public class Sight : MonoBehaviour
         {
             AudioManager.instance.StopLoopingSFX(xRaySound);
             xrayActive = false;
-            // colorAdjust.saturation.value = 0f;
+            colorAdjust.saturation.value = 30f;
         }
         saturation = colorAdjust.saturation.value;
     }
