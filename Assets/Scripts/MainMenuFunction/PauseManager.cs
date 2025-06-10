@@ -1,3 +1,4 @@
+using System.Collections;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,4 +66,6 @@ public class PauseManager : MonoBehaviour
         mainMenu.SetActive(true);
         menuOptions.SetActive(false);
     }
+
+    
 }

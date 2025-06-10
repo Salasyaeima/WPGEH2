@@ -33,6 +33,7 @@ public class LoadingScreen : MonoBehaviour
             p_loadingScreen.SetActive(true);
         }
         StartCoroutine(StartLoadingScreen(nameScene));
+        AudioListener.pause = true;
     }
 
     IEnumerator StartLoadingScreen(string nameScene)
@@ -55,6 +56,7 @@ public class LoadingScreen : MonoBehaviour
         }
         yield return new WaitForSeconds(timeDuration);
         m_loadingScreen.SetActive(false);
+        AudioListener.pause = false;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
