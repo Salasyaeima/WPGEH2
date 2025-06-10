@@ -18,6 +18,8 @@ public class TextDisplayManager : MonoBehaviour
     [SerializeField] bool useAutoDisplay = true;
     [SerializeField] string yaaSFXName = "Iyahh";
     [SerializeField] string EehhSFXName = "Eehh";
+    [SerializeField] string marahSFXName = "Marahibu";
+
 
     
 
@@ -126,11 +128,15 @@ public class TextDisplayManager : MonoBehaviour
 
         if (currentTextIndex == 5)
         {
-            AudioManager.instance.PlaySFX(yaaSFXName, 0.05f);
+            // AudioManager.instance.PlaySFX(yaaSFXName, 0.05f);
         }
         else if (currentTextIndex == 8)
         {
             AudioManager.instance.PlaySFX(EehhSFXName, 0.05f);
+        }
+        else if (currentTextIndex == 11)
+        {
+            AudioManager.instance.PlaySFX(marahSFXName, 0.10f);
         }
     }
 
