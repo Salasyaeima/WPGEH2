@@ -128,7 +128,7 @@ public class TaskManager : MonoBehaviour
             completedTasks++;
             if (playSound) 
             {
-                AudioManager.instance.PlaySFX(TaskResultSFX);
+                AudioManager.instance.PlaySFX(TaskResultSFX, 0.5f);
             }
 
             foreach (Transform child in taskListParent)
