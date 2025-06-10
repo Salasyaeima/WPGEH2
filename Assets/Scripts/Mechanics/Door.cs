@@ -40,11 +40,11 @@ public class Door : Interactable
         {
             if (isOpen)
             {
-                AudioManager.instance.PlaySFX(closeDoorSFX);
+                AudioManager.instance.PlaySFX(closeDoorSFX, 0.5f);
             }
             else
             {
-                AudioManager.instance.PlaySFX(openDoorSFX);
+                AudioManager.instance.PlaySFX(openDoorSFX, 0.5f);
             }
             StartCoroutine(AnimateDoor());
         }
