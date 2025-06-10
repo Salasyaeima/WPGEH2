@@ -27,7 +27,7 @@ public class CameraJumpScare : MonoBehaviour
         blackBackground.SetActive(false);
         if (postProcessVolume != null && postProcessVolume.profile.TryGet(out vignette))
         {
-            vignette.intensity.value = 0f;
+            vignette.intensity.value = 0.3f;
         }
 
         if (postProcessVolume != null && postProcessVolume.profile.TryGet(out chromaticAberration))

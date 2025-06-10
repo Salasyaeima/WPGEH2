@@ -62,7 +62,7 @@ public class SleepyBlinkEffect : MonoBehaviour
             postProcessVolume.profile.TryGetSettings(out depthOfField);
             if (vignette)
             {
-                vignette.intensity.value = 0f;
+                vignette.intensity.value = 0.3f;
             }
             else
             {
@@ -185,7 +185,7 @@ public class SleepyBlinkEffect : MonoBehaviour
 
             if (vignette)
             {
-                vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.6f, Time.deltaTime * 2f);
+                vignette.intensity.value = Mathf.Lerp(0.3f, 0.6f, Time.deltaTime * 2f);
             }
 
             if (depthOfField)
@@ -265,7 +265,7 @@ public class SleepyBlinkEffect : MonoBehaviour
 
         if (vignette)
         {
-            vignette.intensity.value = 0f;
+            vignette.intensity.value = 0.3f;
         }
         if (depthOfField)
         {
