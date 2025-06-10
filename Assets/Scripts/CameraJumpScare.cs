@@ -123,7 +123,7 @@ public class CameraJumpScare : MonoBehaviour
         sight.enabled = false;
         Time.timeScale = 0f;
         Cursor.visible = true;
-        TaskManager.Instance.panelResult.SetActive(true);
+        TaskManager.Instance.panelLose.SetActive(true);
         if (Timer.Instance != null)
         {
             Timer.Instance.CompleteGame();
