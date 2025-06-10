@@ -5042,6 +5042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSources: []
+  loopingSourcePool: []
   sfxClips:
   - {fileID: 8300000, guid: adbff08b727b1a84db8778eb0d358e7a, type: 3}
   - {fileID: 8300000, guid: 67aac4c98a9bd724a92b078069594887, type: 3}
@@ -5080,6 +5081,7 @@ MonoBehaviour:
   bgmVolume: 0.5
   cutsceneBGMVolume: 0.05
   fadeDuration: 1
+  loopingSourcePoolSize: 5
 --- !u!4 &709482207
 Transform:
   m_ObjectHideFlags: 0
@@ -13788,6 +13790,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2274025974013491543, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2603250146982190993, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.0833
@@ -13795,6 +13801,10 @@ PrefabInstance:
     - target: {fileID: 2603250146982190993, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0123
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170008456376619661, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452011336097063111, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13888,6 +13898,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6915135515503653418, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7195883349974312071, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.0726
@@ -13895,6 +13909,10 @@ PrefabInstance:
     - target: {fileID: 7195883349974312071, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.0115
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225775356017277727, guid: 11a6514494a95414a991b982a2686d55, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7348336257910612654, guid: 11a6514494a95414a991b982a2686d55, type: 3}
       propertyPath: m_CastShadows
