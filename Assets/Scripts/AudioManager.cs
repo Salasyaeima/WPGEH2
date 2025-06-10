@@ -81,7 +81,7 @@ public class AudioManager : MonoBehaviour
         else if (scene.name == "CutScene")
         {
             targetBGM = mainGameBGM;
-            targetVolume = cutsceneBGMVolume;
+            targetVolume = 1f;
         }
 
         if (targetMixerGroups != null)
@@ -153,13 +153,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayLoopingSFX(string sfxName)
+    public void PlayLoopingSFX(string sfxName, float volume = 1.0f)
     {
         if (loopingSources.ContainsKey(sfxName))
         {
             if (!loopingSources[sfxName].isPlaying)
             {
+                loopingSources[sfxName].volume = volume;
                 loopingSources[sfxName].Play();
+            }
+            else
+            {
+                loopingSources[sfxName].volume = volume;
             }
             return;
         }
@@ -175,6 +180,7 @@ public class AudioManager : MonoBehaviour
         source.clip = clip;
         source.playOnAwake = false;
         source.loop = true;
+        source.volume = volume;
         source.Play();
         loopingSources[sfxName] = source;
     }
