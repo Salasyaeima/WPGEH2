@@ -17,7 +17,7 @@ public class Sight : MonoBehaviour
     {
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjust))
         {
-            colorAdjust.saturation.value = 0f;
+            colorAdjust.saturation.value = 30f;
         }
         else
         {
@@ -40,7 +40,7 @@ public class Sight : MonoBehaviour
         {
             AudioManager.instance.StopLoopingSFX(xRaySound);
             xrayActive = false;
-            colorAdjust.saturation.value = 0f;
+            // colorAdjust.saturation.value = 0f;
         }
         saturation = colorAdjust.saturation.value;
     }

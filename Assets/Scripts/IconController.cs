@@ -38,7 +38,8 @@ public class IconController : MonoBehaviour
 
         if (volume != null && volume.profile.TryGet(out vignette))
         {
-            vignette.intensity.value = 0f;
+            vignette.intensity.value = 0.3f;
+
         }
         else
         {
@@ -124,7 +125,7 @@ public class IconController : MonoBehaviour
             Debug.LogWarning("Komponen AreaCheck pada Mother tidak ditemukan!");
         }
 
-        float targetIntensity = (isMotherVisible || isPlayerVisibleToMother) ? maxIntensity : 0f;
+        float targetIntensity = (isMotherVisible || isPlayerVisibleToMother) ? maxIntensity : 0.3f;
         vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, targetIntensity, Time.deltaTime * vignetteTransitionSpeed);
     }
 
