@@ -2134,6 +2134,7 @@ GameObject:
   - component: {fileID: 132188032}
   - component: {fileID: 132188034}
   - component: {fileID: 132188033}
+  - component: {fileID: 132188035}
   m_Layer: 5
   m_Name: PauseManager
   m_TagString: Untagged
@@ -2192,6 +2193,20 @@ MonoBehaviour:
   playerInputs: {fileID: 135756641613574975}
   mainMenu: {fileID: 168457187}
   menuOptions: {fileID: 1910169902}
+--- !u!114 &132188035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132188031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813232d145d66c349b9f982206e9a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartButton: {fileID: 218314139}
+  menuButton: {fileID: 960656257}
 --- !u!1 &137410848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4034,7 +4049,6 @@ GameObject:
   - component: {fileID: 218314141}
   - component: {fileID: 218314140}
   - component: {fileID: 218314139}
-  - component: {fileID: 218314142}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -4143,19 +4157,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218314137}
   m_CullTransparentMesh: 1
---- !u!114 &218314142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218314137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5471cb5fab7d6e248825f45b08ed79f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GoToScene: Rooms
 --- !u!1 &219653613
 GameObject:
   m_ObjectHideFlags: 0
@@ -17077,7 +17078,6 @@ GameObject:
   - component: {fileID: 960656259}
   - component: {fileID: 960656258}
   - component: {fileID: 960656257}
-  - component: {fileID: 960656260}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -17186,19 +17186,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960656255}
   m_CullTransparentMesh: 1
---- !u!114 &960656260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960656255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5471cb5fab7d6e248825f45b08ed79f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GoToScene: MainMenu
 --- !u!1 &961714115
 GameObject:
   m_ObjectHideFlags: 0
