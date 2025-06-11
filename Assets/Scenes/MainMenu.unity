@@ -4398,8 +4398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 291, y: -170}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 291, y: -158.2}
+  m_SizeDelta: {x: 160, y: 59.9193}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &668795555
 MonoBehaviour:
@@ -4489,7 +4489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3eef9dcdc56ed3b4a9df4c7f755bba3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d97175ef1e970a4e915e4691155ab61, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8814,6 +8814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingScreenManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2449234739759257106, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -159
+      objectReference: {fileID: 0}
     - target: {fileID: 2815089233222422992, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8898,13 +8902,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4429935706822254977, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5649703031285528287, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5649703031285528287, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6494146684628970596, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494146684628970596, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234681857767055110, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
+      propertyPath: m_fontSize
+      value: 14.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234681857767055110, guid: 8a4d633169562d84db0d3677d2ae3fd1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14.86
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13387,8 +13411,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SFX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
+  m_sharedMaterial: {fileID: -8606871794169907001, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15407,8 +15431,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BGM
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
+  m_sharedMaterial: {fileID: -8606871794169907001, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

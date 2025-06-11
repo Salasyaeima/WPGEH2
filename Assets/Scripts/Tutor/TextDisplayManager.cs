@@ -132,7 +132,7 @@ public class TextDisplayManager : MonoBehaviour
         }
         else if (currentTextIndex == 8)
         {
-            AudioManager.instance.PlaySFX(EehhSFXName, 0.05f);
+            AudioManager.instance.PlaySFX(EehhSFXName, 0.03f);
         }
         else if (currentTextIndex == 11)
         {

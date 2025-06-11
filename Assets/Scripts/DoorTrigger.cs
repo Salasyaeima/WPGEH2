@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorTrigger : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class DoorTrigger : MonoBehaviour
     {
         if (!isOpen)
         {
-            AudioManager.instance.PlaySFX(openDoorSFX, 0.10f);
+            float volume = SceneManager.GetActiveScene().name == "Rooms" ? 0.05f : 0.10f;
+            AudioManager.instance.PlaySFX(openDoorSFX, volume);
             StartCoroutine(AnimateDoor());
         }
     }
@@ -35,9 +37,9 @@ public class DoorTrigger : MonoBehaviour
     {
         if (isOpen)
         {
-            AudioManager.instance.PlaySFX(closeDoorSFX, 0.10f);
+            float volume = SceneManager.GetActiveScene().name == "Rooms" ? 0.05f : 0.10f;
+            AudioManager.instance.PlaySFX(closeDoorSFX, volume);
             StartCoroutine(AnimateDoor());
-
         }
     }
 

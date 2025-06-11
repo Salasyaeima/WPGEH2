@@ -198,7 +198,7 @@ public class TaskManager : MonoBehaviour
 
         if (currentRoom == null)
         {
-            tasksPerRoom.text = "Tugas di Ruangan Ini: -/-";
+            tasksPerRoom.text = "Tugas yang tersisa di Ruangan Ini: -/-";
         }
         else
         {
