@@ -5,14 +5,23 @@ public class ButtonManager : MonoBehaviour
 {
     public Button restartButton;
     public Button menuButton;
+    public Button playMenu;
 
     void Start()
     {
         // Pastikan LoadingScreen.Instance tersedia
         if (LoadingScreen.Instance != null)
         {
-            restartButton.onClick.AddListener(() => LoadingScreen.Instance.SwitchToScene("Rooms"));
-            menuButton.onClick.AddListener(() => LoadingScreen.Instance.SwitchToScene("MainMenu"));
+            if (restartButton != null && menuButton != null)
+            {
+                restartButton.onClick.AddListener(() => LoadingScreen.Instance.SwitchToScene("Rooms"));
+                menuButton.onClick.AddListener(() => LoadingScreen.Instance.SwitchToScene("MainMenu"));
+            }
+            if (playMenu != null)
+            {
+                playMenu.onClick.AddListener(() => LoadingScreen.Instance.SwitchToScene("CutScene"));
+            }
+            
         }
         else
         {
