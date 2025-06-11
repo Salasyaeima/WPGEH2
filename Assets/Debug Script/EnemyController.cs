@@ -1,7 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.Behavior;
+using System.Collections.Generic;
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private BehaviorGraph behavior;
+    [SerializeField]
+    private List<GameObject> waypoints;
     [SerializeField]
     private LineOfSight lineOfSight;
     [SerializeField]
@@ -21,6 +23,7 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         behavior.BlackboardReference.SetVariableValue<GameObject>("Target", player);
+        behavior.BlackboardReference.SetVariableValue<List<GameObject>>("Waypoints", waypoints);
     }
     void Start()
     {
