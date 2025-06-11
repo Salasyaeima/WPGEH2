@@ -16,6 +16,7 @@ public class CameraJumpScare : MonoBehaviour
     [SerializeField] Sight sight;
     [SerializeField] AudioSource jumpScareAudioSource;
     [SerializeField] AudioClip soundScare;
+    [SerializeField] GameObject taskPanel;
     Vignette vignette;
     ChromaticAberration chromaticAberration;
     Coroutine shakeCoroutine;
@@ -49,6 +50,8 @@ public class CameraJumpScare : MonoBehaviour
         {
             Debug.LogWarning("AudioSource atau AudioClip untuk jumpscare tidak diatur!");
         }
+
+        taskPanel.SetActive(false);
 
         shakeCoroutine = StartCoroutine(Shake());
         StartCoroutine(VignetteFlash(0.50f, 1.5f));
