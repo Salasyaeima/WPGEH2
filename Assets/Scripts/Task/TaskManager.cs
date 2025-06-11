@@ -13,6 +13,8 @@ public class TaskManager : MonoBehaviour
     public Image progressBar;
     [SerializeField] TextMeshProUGUI taskText;
     [SerializeField] TextMeshProUGUI totalTask;
+    [SerializeField] TextMeshProUGUI taskTextPause;
+    [SerializeField] TextMeshProUGUI totalRoamPause;
     [SerializeField] TextMeshProUGUI tasksPerRoom;
     [SerializeField] TextMeshProUGUI roomText;
     [SerializeField] TextMeshProUGUI detailProgression;
@@ -183,8 +185,14 @@ public class TaskManager : MonoBehaviour
         if (totalTask != null && tasks != null)
             totalTask.text = $"Total Tugas: {tasks.Count}";
 
+        if (taskTextPause != null && tasks != null)
+            taskTextPause.text = $"{completedTasks}/{tasks.Count} Tugas";
+
         if (roomText != null && rooms != null)
             roomText.text = $"{completedRooms}/{rooms.Length} Ruangan";
+
+        if (totalRoamPause != null && rooms != null)
+            totalRoamPause.text = $"{completedRooms}/{rooms.Length} Ruangan";
     }
 
 
@@ -282,6 +290,7 @@ public class TaskManager : MonoBehaviour
        if (completedTasks == tasks.Count && completedRooms >= rooms.Length)
         {
             panelWin.SetActive(true); 
+
             Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
