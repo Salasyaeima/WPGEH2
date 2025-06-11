@@ -24,10 +24,8 @@ public class LineOfSight : MonoBehaviour
     [SerializeField]
     private BehaviorGraph behavior;
     private Vector3 lastPosition;
-    bool hasPlayedSFX = false;
-
     public GameObject DetectedTarget;
-    [SerializeField] string isChasedSFX = "Ibu_sadar";
+
     public GameObject CheckInSight(GameObject potentialTarget)
     {
         if (potentialTarget)
@@ -46,11 +44,6 @@ public class LineOfSight : MonoBehaviour
                     //change tag when chased or not chased
                     hit.collider.gameObject.tag = tagAfter;
 
-                    if (!hasPlayedSFX)
-                    {
-                        AudioManager.instance.PlaySFX(isChasedSFX, 0.5f);
-                        hasPlayedSFX = true;
-                    }
                     DetectedTarget = hit.collider.gameObject;
                 }
                 else
@@ -60,7 +53,6 @@ public class LineOfSight : MonoBehaviour
                         CheckLastSeen();
                     }
                     DetectedTarget = null;
-                    hasPlayedSFX = false;
                 }
             }
             else

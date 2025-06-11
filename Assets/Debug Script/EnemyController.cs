@@ -17,8 +17,11 @@ public class EnemyController : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip footstepSfx;
+    [SerializeField]
+    string isChasedSFX = "Ibu_sadar";
     private Animator animator;
     private Vector3 dir;
+    private bool hasPlayedSFX;
 
     void Awake()
     {
@@ -41,6 +44,11 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("isIdle", false);
             if (lineOfSight.DetectedTarget != null || animator.GetFloat("isTowardsLastPos") > 0)
             {
+                if (!hasPlayedSFX)
+                {
+                    AudioManager.instance.PlaySFX(isChasedSFX, 0.5f);
+                    hasPlayedSFX = true;
+                }
                 animator.SetFloat("SpeedMagnitude", 1, 0.5f, Time.deltaTime);
             }
             else
@@ -54,6 +62,7 @@ public class EnemyController : MonoBehaviour
         else if (animator.GetFloat("PatrolMagnitude") == 0 && animator.GetFloat("SpeedMagnitude") == 0 && animator.GetFloat("Temp") == 0)
         {
             animator.SetBool("isIdle", true);
+            hasPlayedSFX = false;
         }
     }
 
