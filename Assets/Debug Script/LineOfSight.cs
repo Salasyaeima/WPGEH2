@@ -45,6 +45,7 @@ public class LineOfSight : MonoBehaviour
                     }
                     //change tag when chased or not chased
                     hit.collider.gameObject.tag = tagAfter;
+
                     if (!hasPlayedSFX)
                     {
                         AudioManager.instance.PlaySFX(isChasedSFX, 0.5f);
@@ -57,15 +58,14 @@ public class LineOfSight : MonoBehaviour
                     if (DetectedTarget != null)
                     {
                         CheckLastSeen();
-                        hasPlayedSFX = false;
                     }
                     DetectedTarget = null;
+                    hasPlayedSFX = false;
                 }
             }
             else
             {
                 potentialTarget.tag = tagBefore;
-                hasPlayedSFX = false;
             }
         }
         return DetectedTarget;
