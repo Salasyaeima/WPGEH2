@@ -101,7 +101,7 @@ public class IconController : MonoBehaviour
         {
             if (heartbeatPlaying)
             {
-                AudioManager.instance.StopLoopingSFX(heartRate);
+                AudioManager.instance.StopLoopingSFXWithFade(heartRate, 5f);
                 heartbeatPlaying = false;
             }
         }

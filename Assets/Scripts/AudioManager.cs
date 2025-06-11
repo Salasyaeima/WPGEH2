@@ -165,16 +165,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayLoopingSFX(string sfxName, float volume = 1.0f)
     {
-        if (loopingSources.TryGetValue(sfxName, out AudioSource existingSource))
+       if (loopingSources.TryGetValue(sfxName, out AudioSource existingSource))
         {
             if (!existingSource.isPlaying)
             {
                 existingSource.volume = volume;
                 existingSource.Play();
-            }
-            else
-            {
-                StartCoroutine(SmoothVolumeChange(existingSource, volume));
             }
             return;
         }
@@ -189,8 +185,11 @@ public class AudioManager : MonoBehaviour
         AudioSource source = loopingSourcePool.Find(s => !s.isPlaying);
         if (source == null)
         {
-            Debug.LogWarning("Tidak ada AudioSource looping yang tersedia!");
-            return;
+            source = gameObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
+            source.loop = true;
+            source.outputAudioMixerGroup = sfxMixerGroups;
+            loopingSourcePool.Add(source);
         }
 
         source.clip = clip;
@@ -198,6 +197,7 @@ public class AudioManager : MonoBehaviour
         source.Play();
         loopingSources[sfxName] = source;
     }
+
 
     public void PlayRandomSFX(string[] sfxNames)
     {
@@ -211,7 +211,22 @@ public class AudioManager : MonoBehaviour
     {
         if (loopingSources.TryGetValue(sfxName, out AudioSource source))
         {
-            StartCoroutine(FadeOutLoopingSFX(sfxName));
+            source.Stop();
+            source.clip = null;
+            source.volume = 1f;
+            loopingSources.Remove(sfxName);
+            if (!loopingSourcePool.Contains(source))
+            {
+                loopingSourcePool.Add(source);
+            }
+        }
+    }
+
+    public void StopLoopingSFXWithFade(string sfxName, float fadeDuration = 0.2f)
+    {
+        if (loopingSources.TryGetValue(sfxName, out AudioSource source))
+        {
+            StartCoroutine(FadeOutLoopingSFX(sfxName, source, fadeDuration));
         }
     }
 
@@ -228,22 +243,23 @@ public class AudioManager : MonoBehaviour
         source.volume = targetVolume;
     }
 
-    IEnumerator FadeOutLoopingSFX(string sfxName)
+   IEnumerator FadeOutLoopingSFX(string sfxName, AudioSource source, float fadeDuration)
     {
-        if (loopingSources.TryGetValue(sfxName, out AudioSource source))
+        float startVolume = source.volume;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
         {
-            float startVolume = source.volume;
-            float elapsed = 0f;
-            while (elapsed < fadeDuration)
-            {
-                elapsed += Time.deltaTime;
-                source.volume = Mathf.Lerp(startVolume, 0f, elapsed / fadeDuration);
-                yield return null;
-            }
-            source.Stop();
-            source.volume = 1f;
-            source.clip = null; 
-            loopingSources.Remove(sfxName);
+            elapsed += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, 0f, elapsed / fadeDuration);
+            yield return null;
+        }
+        source.Stop();
+        source.clip = null;
+        source.volume = 1f;
+        loopingSources.Remove(sfxName);
+        if (!loopingSourcePool.Contains(source))
+        {
+            loopingSourcePool.Add(source);
         }
     }
 

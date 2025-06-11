@@ -13,6 +13,7 @@ public class BroomInHand : MonoBehaviour
     Quaternion originalRotation;
     Dictionary<Collider, float> dirtTimers = new Dictionary<Collider, float>();
     bool wasSweeping = false;
+    bool isSweepingSFXPlaying = false;
 
     void Start()
     {
@@ -38,13 +39,15 @@ public class BroomInHand : MonoBehaviour
             broomAnimator.SetBool("IsSweeping", isSweeping);
         }
 
-        if (isSweeping && !wasSweeping)
+        if (isSweeping && !isSweepingSFXPlaying)
         {
             AudioManager.instance.PlayLoopingSFX(sweepSFXName);
+            isSweepingSFXPlaying = true;
         }
         else if (!isSweeping && wasSweeping)
         {
             AudioManager.instance.StopLoopingSFX(sweepSFXName);
+            isSweepingSFXPlaying = false;
         }
         wasSweeping = isSweeping;
 

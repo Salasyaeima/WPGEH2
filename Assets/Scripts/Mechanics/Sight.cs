@@ -12,6 +12,7 @@ public class Sight : MonoBehaviour
     Vector3 lockedPos;
     ColorAdjustments colorAdjust;
     public bool xrayActive = false;
+    bool isXRaySFXPlaying = false;
 
     void Start()
     {
@@ -27,18 +28,25 @@ public class Sight : MonoBehaviour
 
     void Update()
     {
-
         float saturation = 0f;
         if (Input.GetKey(KeyCode.Tab))
         {
             xrayActive = true;
-            AudioManager.instance.PlayLoopingSFX(xRaySound, 0.3f);
+            if (!isXRaySFXPlaying)
+            {
+                AudioManager.instance.PlayLoopingSFX(xRaySound, 0.3f);
+                isXRaySFXPlaying = true;
+            }
             starterAssetInput.move = new Vector2(0, 0);
             colorAdjust.saturation.value = -100f;
         }
         else
         {
-            AudioManager.instance.StopLoopingSFX(xRaySound);
+            if (isXRaySFXPlaying)
+            {
+                AudioManager.instance.StopLoopingSFX(xRaySound);
+                isXRaySFXPlaying = false;
+            }
             xrayActive = false;
             colorAdjust.saturation.value = 30f;
         }
