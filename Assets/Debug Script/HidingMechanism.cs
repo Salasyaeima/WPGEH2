@@ -155,13 +155,11 @@ public class HidingMechanism : Interactable
     {
         if (player.CompareTag("isChased") && isHiding)
         {
-            Debug.Log("Detected");
             gameObject.layer = LayerMask.NameToLayer("Player");
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", this.gameObject);
         }
         else
         {
-            Debug.Log("Not Detected");
             gameObject.layer = LayerMask.NameToLayer("Default");
             behavior.BlackboardReference.SetVariableValue<GameObject>("Target", player);
         }
