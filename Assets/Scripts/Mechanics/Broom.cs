@@ -10,6 +10,7 @@ public class Broom : Interactable, ITaskProvider
     [SerializeField] string taskName = "Bersihkan Lantai";
     [SerializeField] string interectionSFXName = "Ambilbarang";
     [SerializeField] string dorpSFXName = "LepasBarang";
+    [SerializeField] string sweepSFXName = "sweep_sfx";
     TaskManager taskManager;
     Room room;
     public bool isHeld = false;
@@ -52,6 +53,7 @@ public class Broom : Interactable, ITaskProvider
     {
         if (isHeld && broomInHand != null && broomInRoom != null)
         {
+            AudioManager.instance.StopLoopingSFX(sweepSFXName);
             AudioManager.instance.PlaySFX(dorpSFXName, 0.3f);
             broomInHand.SetActive(false);
             broomInRoom.SetActive(true);
