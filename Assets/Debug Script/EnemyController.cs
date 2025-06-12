@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     private AudioClip footstepSfx;
     [SerializeField]
     string isChasedSFX = "Ibu_sadar";
+    [SerializeField]
+    string ChasedSFX = "ChasedSound";
     private Animator animator;
     private Vector3 dir;
     private bool hasPlayedSFX;
@@ -47,6 +49,7 @@ public class EnemyController : MonoBehaviour
                 if (!hasPlayedSFX)
                 {
                     AudioManager.instance.PlaySFX(isChasedSFX, 0.5f);
+                    AudioManager.instance.PlayLoopingSFX(ChasedSFX, .4f);
                     hasPlayedSFX = true;
                 }
                 animator.SetFloat("SpeedMagnitude", 1, 0.5f, Time.deltaTime);
@@ -62,6 +65,7 @@ public class EnemyController : MonoBehaviour
         else if (animator.GetFloat("PatrolMagnitude") == 0 && animator.GetFloat("SpeedMagnitude") == 0 && animator.GetFloat("Temp") == 0)
         {
             animator.SetBool("isIdle", true);
+            AudioManager.instance.StopLoopingSFXWithFade(ChasedSFX);
             hasPlayedSFX = false;
         }
     }
