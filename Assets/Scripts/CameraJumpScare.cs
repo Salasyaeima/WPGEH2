@@ -17,6 +17,8 @@ public class CameraJumpScare : MonoBehaviour
     [SerializeField] AudioSource jumpScareAudioSource;
     [SerializeField] AudioClip soundScare;
     [SerializeField] GameObject taskPanel;
+    [SerializeField] AudioClip arpegio;
+    [SerializeField] AudioSource arpegioAudioSource;
     Vignette vignette;
     ChromaticAberration chromaticAberration;
     Coroutine shakeCoroutine;
@@ -42,9 +44,10 @@ public class CameraJumpScare : MonoBehaviour
         if (hasStarted) return;
         hasStarted = true;
 
-        if (jumpScareAudioSource != null && soundScare != null)
+        if (jumpScareAudioSource != null && soundScare != null && arpegio != null)
         {
             jumpScareAudioSource.PlayOneShot(soundScare);
+            arpegioAudioSource.PlayOneShot(arpegio);
         }
         else
         {
