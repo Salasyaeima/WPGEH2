@@ -47846,6 +47846,7 @@ MonoBehaviour:
   taskName: Bersihkan Lantai
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
+  sweepSFXName: sweep_sfx
   isHeld: 0
 --- !u!1 &2600322011642947862
 GameObject:
@@ -49080,6 +49081,7 @@ MonoBehaviour:
   taskName: Bersihkan Lantai Gudang
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
+  sweepSFXName: sweep_sfx
   isHeld: 0
 --- !u!4 &2703587291792340927
 Transform:
@@ -84768,7 +84770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: MoveSpeed
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: endScreen
@@ -84780,7 +84782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintSpeed
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: canvasGroup
@@ -84802,6 +84804,10 @@ PrefabInstance:
       propertyPath: hidingMechanism
       value: 
       objectReference: {fileID: 542022928}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: maxSprintDuration
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: GroundLayers.m_Bits
       value: 4096
@@ -90125,6 +90131,7 @@ MonoBehaviour:
   taskName: Bersihkan Lantai Kamar
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
+  sweepSFXName: sweep_sfx
   isHeld: 0
 --- !u!1 &5791086265927565015
 GameObject:
@@ -106400,6 +106407,7 @@ MonoBehaviour:
   taskName: Bersihkan Lantai Ruang Tamu
   interectionSFXName: Ambilbarang
   dorpSFXName: LepasBarang
+  sweepSFXName: sweep_sfx
   isHeld: 0
 --- !u!1 &7043121178401916134
 GameObject:
