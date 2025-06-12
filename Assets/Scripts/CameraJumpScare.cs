@@ -19,6 +19,7 @@ public class CameraJumpScare : MonoBehaviour
     [SerializeField] GameObject taskPanel;
     [SerializeField] AudioClip arpegio;
     [SerializeField] AudioSource arpegioAudioSource;
+    [SerializeField] AudioClip ditampar;
     Vignette vignette;
     ChromaticAberration chromaticAberration;
     Coroutine shakeCoroutine;
@@ -60,6 +61,7 @@ public class CameraJumpScare : MonoBehaviour
         StartCoroutine(VignetteFlash(0.50f, 1.5f));
         StartCoroutine(ChromaticAberrationEffect());
         StartCoroutine(ActiveBackgroundBlack());
+        StartCoroutine(Ditampar());
     }
 
     IEnumerator Shake()
@@ -134,6 +136,12 @@ public class CameraJumpScare : MonoBehaviour
         {
             Timer.Instance.CompleteGame();
         }
+    }
+
+    IEnumerator Ditampar()
+    {
+        yield return new WaitForSeconds(1.3f);
+        arpegioAudioSource.PlayOneShot(ditampar);
     }
 
 
