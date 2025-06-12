@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Door : Interactable
 {
-    bool isOpen = false;
+    public bool isOpen = false;
     Quaternion closedRotation;
     Quaternion openRotation;
     bool isAnimating = false;
@@ -59,7 +59,7 @@ public class Door : Interactable
     }
 
 
-    IEnumerator AnimateDoor()
+    public IEnumerator AnimateDoor()
     {
         isAnimating = true;
         float elapsed = 0f;

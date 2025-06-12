@@ -8,6 +8,7 @@ public class DoorTrigger : MonoBehaviour
     Quaternion closedRotation;
     Quaternion openRotation;
     bool isAnimating;
+    Door doorInteract;
 
     [SerializeField] float openAngle;
     [SerializeField] float animationDuration = 1f;
@@ -16,6 +17,10 @@ public class DoorTrigger : MonoBehaviour
     [SerializeField] string openDoorSFX = "Buka_Pintu";
     [SerializeField] string closeDoorSFX = "Tutup_Pintu";
 
+    void Awake()
+    {
+        doorInteract = GetComponentInChildren<Door>();
+    }
 
     void Start()
     {
@@ -25,21 +30,21 @@ public class DoorTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!isOpen)
+        if (!doorInteract.isOpen)
         {
             float volume = SceneManager.GetActiveScene().name == "Rooms" ? 0.05f : 0.10f;
             AudioManager.instance.PlaySFX(openDoorSFX, volume);
-            StartCoroutine(AnimateDoor());
+            StartCoroutine(doorInteract.AnimateDoor());
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (isOpen)
+        if (doorInteract.isOpen)
         {
             float volume = SceneManager.GetActiveScene().name == "Rooms" ? 0.05f : 0.10f;
             AudioManager.instance.PlaySFX(closeDoorSFX, volume);
-            StartCoroutine(AnimateDoor());
+            StartCoroutine(doorInteract.AnimateDoor());
         }
     }
 
