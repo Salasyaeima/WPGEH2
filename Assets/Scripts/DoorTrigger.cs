@@ -30,7 +30,7 @@ public class DoorTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!doorInteract.isOpen)
+        if (doorInteract != null && !doorInteract.isOpen)
         {
             float volume = SceneManager.GetActiveScene().name == "Rooms" ? 0.05f : 0.10f;
             AudioManager.instance.PlaySFX(openDoorSFX, volume);
@@ -40,7 +40,7 @@ public class DoorTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (doorInteract.isOpen)
+        if (doorInteract != null && doorInteract.isOpen)
         {
             float volume = SceneManager.GetActiveScene().name == "Rooms" ? 0.05f : 0.10f;
             AudioManager.instance.PlaySFX(closeDoorSFX, volume);
@@ -48,7 +48,7 @@ public class DoorTrigger : MonoBehaviour
         }
     }
 
-    IEnumerator AnimateDoor()
+    public IEnumerator AnimateDoor()
     {
         isAnimating = true;
         float elapsed = 0f;

@@ -39798,8 +39798,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02412748, y: 0.01914708, z: 0.01}
-  m_Center: {x: 0.007063737, y: -0.007073547, z: 2.4143326e-13}
+  m_Size: {x: 0.011257068, y: 0.027940718, z: 0.0027533353}
+  m_Center: {x: 0.0006285309, y: -0.002676725, z: -0.0086468505}
 --- !u!1 &3298766816289778511
 GameObject:
   m_ObjectHideFlags: 0
@@ -46400,6 +46400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 0
+  isOpen: 0
   openAngle: -90
   animationDuration: 1
   openDoorSFX: Buka_Pintu
@@ -49481,6 +49482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 0
+  isOpen: 0
   openAngle: 90
   animationDuration: 1
   openDoorSFX: Buka_Pintu
@@ -51448,6 +51450,7 @@ GameObject:
   - component: {fileID: 1805938506152052439}
   - component: {fileID: 4309646648928807078}
   - component: {fileID: 3297714207429572717}
+  - component: {fileID: 4755504108870781331}
   m_Layer: 6
   m_Name: PINTU.004
   m_TagString: Untagged
@@ -51455,6 +51458,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4755504108870781331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4755504108870781330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f23267c063f61749833c4af49ae51d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorTrigger: {fileID: 4309646648928807078}
 --- !u!23 &4755538633662078491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61714,6 +61730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 0
+  isOpen: 0
   openAngle: -90
   animationDuration: 1
   openDoorSFX: Buka_Pintu
