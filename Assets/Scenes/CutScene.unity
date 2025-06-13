@@ -51471,6 +51471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorTrigger: {fileID: 4309646648928807078}
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!23 &4755538633662078491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66769,6 +66771,7 @@ GameObject:
   - component: {fileID: 3048132242967785534}
   - component: {fileID: 6797673298837548883}
   - component: {fileID: 6797673298837548884}
+  - component: {fileID: 6797673298837548885}
   m_Layer: 6
   m_Name: PINTU.001
   m_TagString: Untagged
@@ -66814,6 +66817,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012797419, y: 0.013462768, z: 0.024796035}
   m_Center: {x: 0.000000022986839, y: 0.0056010396, z: 0.00020443792}
+--- !u!114 &6797673298837548885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797673298837548882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f23267c063f61749833c4af49ae51d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorTrigger: {fileID: 4309646648928807078}
+  openDoorSFX: Buka_Pintu
+  closeDoorSFX: Tutup_Pintu
 --- !u!65 &6800965623578863100
 BoxCollider:
   m_ObjectHideFlags: 0

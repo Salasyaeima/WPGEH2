@@ -20,6 +20,7 @@ public class CameraJumpScare : MonoBehaviour
     [SerializeField] AudioClip arpegio;
     [SerializeField] AudioSource arpegioAudioSource;
     [SerializeField] AudioClip ditampar;
+    [SerializeField] PauseManager pauseManager;
     Vignette vignette;
     ChromaticAberration chromaticAberration;
     Coroutine shakeCoroutine;
@@ -132,6 +133,11 @@ public class CameraJumpScare : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.visible = true;
         TaskManager.Instance.panelLose.SetActive(true);
+        if (pauseManager != null)
+        {
+            pauseManager.enabled = false;
+        }
+
         if (Timer.Instance != null)
         {
             Timer.Instance.CompleteGame();
