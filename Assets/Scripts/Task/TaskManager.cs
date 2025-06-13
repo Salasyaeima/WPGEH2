@@ -17,6 +17,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalRoamPause;
     [SerializeField] TextMeshProUGUI tasksPerRoom;
     [SerializeField] TextMeshProUGUI roomText;
+    [SerializeField] TextMeshProUGUI roomTextComplated;
     [SerializeField] TextMeshProUGUI detailProgression;
     [SerializeField] GameObject player;
     [SerializeField] string TaskResultSFX = "Instrument";
@@ -188,8 +189,8 @@ public class TaskManager : MonoBehaviour
         if (taskTextPause != null && tasks != null)
             taskTextPause.text = $"{completedTasks}/{tasks.Count} Tugas";
 
-        if (roomText != null && rooms != null)
-            roomText.text = $"{completedRooms}/{rooms.Length} Ruangan";
+        if (roomTextComplated != null && rooms != null)
+            roomTextComplated.text = $"{completedRooms}/{rooms.Length} Ruangan";
 
         if (totalRoamPause != null && rooms != null)
             totalRoamPause.text = $"{completedRooms}/{rooms.Length} Ruangan";

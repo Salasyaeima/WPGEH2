@@ -40,7 +40,6 @@ public class FloorChecker : MonoBehaviour
             Task task = FindTaskByName(broom.GetTaskName());
             if (task != null && !task.isCompleted)
             {
-                Debug.Log($"Menyelesaikan task: {broom.GetTaskName()}");
                 taskManager.CompleteTask(task);
             }
             else

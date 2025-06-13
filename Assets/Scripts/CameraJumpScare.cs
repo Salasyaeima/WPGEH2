@@ -140,7 +140,7 @@ public class CameraJumpScare : MonoBehaviour
 
     IEnumerator Ditampar()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.32f);
         arpegioAudioSource.PlayOneShot(ditampar);
     }
 
