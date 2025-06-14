@@ -56,7 +56,7 @@ public class PlayerInteractions : MonoBehaviour
                 if (hit.collider.CompareTag("Dirt"))
                 {
                     isHittingDirt = true;
-                    interactionText.text = "Tahan {Klik Kiri} Menyapu";
+                    interactionText.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Hold {Left Click} to Sweep" : "Tahan {Klik Kiri} Menyapu";
                 }
                 else
                 {

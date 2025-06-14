@@ -5518,6 +5518,7 @@ MonoBehaviour:
   textDialogChild: {fileID: 4039424907246016871}
   blinkController: {fileID: 1418240779}
   paperSFXName: paper
+  textProgress: {fileID: 227472031}
 --- !u!4 &970515175
 Transform:
   m_ObjectHideFlags: 0
@@ -9344,6 +9345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDialog: {fileID: 4039424907246016871}
   boxPenghalang: {fileID: 0}
+  intruksi: {fileID: 0}
 --- !u!1 &1683988885
 GameObject:
   m_ObjectHideFlags: 0
@@ -13839,7 +13841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Masuk Ke Kamar!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
   m_sharedMaterial: {fileID: -8606871794169907001, guid: 5bdb840495d4494448532f16a71f2470, type: 2}
@@ -15353,7 +15355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636369da602fad74eb408b4f4f8a1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: Ruang Tamu
+  roomName:
+    englishName: Living Room
+    indonesianName: Ruang Tamu
   totalTasks: 1
 --- !u!33 &109861233737340546
 MeshFilter:
@@ -42919,7 +42923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636369da602fad74eb408b4f4f8a1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: Ruangan Kamar
+  roomName:
+    englishName: Room Space
+    indonesianName: Ruang Kamar
   totalTasks: 5
 --- !u!33 &2254510826509777125
 MeshFilter:
@@ -67265,28 +67271,53 @@ MonoBehaviour:
   pintuSFXName: Buka_Pintu
   hmmIbuSFXName: HmmIbu
   texts:
-  - Hmmm. . .
-  - Apalah Ibu ini, padahal tadi lagi seru banget main Fanny!
-  - Udah gacor, combo jalan terus, eh langsung main rampas aja hp-nya!
-  - Arghhh, mana hp-nya dibawa lagi kesel bener!
-  - Hadehh nasib. . .
-  - Ck, kenapa sih harus berantakan banget ini kamar?
-  - Males banget rasanya beresin, sumpah.
-  - 'Yaampun Masih banyak lagii ternyata padahal udah capek '
-  - Hmm. . . aduh aku malah ngantuk lagi.
-  - 'Tidur dulu bentar deh, baru beresin. '
-  - HEEEEHHHH
-  - ADUH ASTAGAA, INI JAM BERAPAA?!!
-  - Kelamaan tidur yaampun!
-  - Harus cepet-cepet beresin sebelum Ibu dateng!
-  - Eh, bunyi apa itu?
-  - Jangan-jangan... Ibu udah sampe?
-  - Waduhhh aku harus sembunyi dulu!!
-  - Andy, ibu pulang
-  - Kemana perginya anak itu?!?
-  - Mengapa ini masih berantakan sih?!?
-  - Awas, ya! Kalau kelihatan tapi belum dibereskan juga, Ibu pukul kamu!
-  - Aduh, gawat! Aku harus segera membereskannya.
+  - indonesianText: Hmmm. . .
+    englishText: Hmmm. . .
+  - indonesianText: Apalah Ibu ini, padahal tadi lagi seru banget main Fanny!
+    englishText: What's with Mom, I was having so much fun playing Fanny!
+  - indonesianText: Udah gacor, combo jalan terus, eh langsung main rampas aja hp-nya!
+    englishText: I was on a roll, chaining combos, and she just snatched my phone!
+  - indonesianText: Arghhh, mana hp-nya dibawa lagi kesel bener!
+    englishText: Arghhh, and she took my phone away, so annoying!
+  - indonesianText: Hadehh nasib. . .
+    englishText: Ugh, what a fate...
+  - indonesianText: Ck, kenapa sih harus berantakan banget ini kamar?
+    englishText: Tch, why is this room such a mess?
+  - indonesianText: Males banget rasanya beresin, sumpah.
+    englishText: "I really don\u2019t feel like cleaning, honestly."
+  - indonesianText: 'Yaampun Masih banyak lagii ternyata padahal udah capek '
+    englishText: "Oh no, there\u2019s still so much to do even though I\u2019m already
+      tired!"
+  - indonesianText: Hmm. . . aduh aku malah ngantuk lagi.
+    englishText: "Hmm... ugh, I\u2019m getting sleepy again."
+  - indonesianText: 'Tidur dulu bentar deh, baru beresin. '
+    englishText: "I\u2019ll take a quick nap first, then clean up."
+  - indonesianText: HEEEEHHHH
+    englishText: HEHHH!
+  - indonesianText: ADUH ASTAGAA, INI JAM BERAPAA?!!
+    englishText: OH NO, WHAT TIME IS IT?!
+  - indonesianText: Kelamaan tidur yaampun!
+    englishText: I overslept, oh no!
+  - indonesianText: Harus cepet-cepet beresin sebelum Ibu dateng!
+    englishText: I need to hurry up and clean before Mom comes back!
+  - indonesianText: Eh, bunyi apa itu?
+    englishText: "Huh, what\u2019s that sound?"
+  - indonesianText: Jangan-jangan... Ibu udah sampe?
+    englishText: "Could it be... Mom\u2019s already here?"
+  - indonesianText: Waduhhh aku harus sembunyi dulu!!
+    englishText: Oh no, I need to hide first!!
+  - indonesianText: Andy, ibu pulang
+    englishText: "Andy, Mom\u2019s home!"
+  - indonesianText: Kemana perginya anak itu?!?
+    englishText: Where did that kid go?!
+  - indonesianText: Mengapa ini masih berantakan sih?!?
+    englishText: Why is this still such a mess?!
+  - indonesianText: Awas, ya! Kalau kelihatan tapi belum dibereskan juga, Ibu pukul
+      kamu!
+    englishText: "Watch out! If I see you and it\u2019s still not cleaned up, I\u2019ll
+      spank you!"
+  - indonesianText: Aduh, gawat! Aku harus segera membereskannya.
+    englishText: Oh no, trouble! I need to clean up right away.
   textDuration: 3
 --- !u!23 &4041435335247082420
 MeshRenderer:
@@ -107713,7 +107744,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636369da602fad74eb408b4f4f8a1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: Ruangan Gudang
+  roomName:
+    englishName: Warehouse Room
+    indonesianName: Ruang Gudang
   totalTasks: 2
 --- !u!4 &7143903065690449804
 Transform:
@@ -109295,7 +109328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636369da602fad74eb408b4f4f8a1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: Ruangan Gudang
+  roomName:
+    englishName: 
+    indonesianName: 
   totalTasks: 1
 --- !u!33 &7285616141334588054
 MeshFilter:
@@ -124138,7 +124173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636369da602fad74eb408b4f4f8a1aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: Ruangan Kamar
+  roomName:
+    englishName: 
+    indonesianName: 
   totalTasks: 4
 --- !u!4 &8474781358914461884
 Transform:
@@ -125937,6 +125974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDialog: {fileID: 4039424907246016871}
   boxPenghalang: {fileID: 1248778073}
+  intruksi: {fileID: 2135280799}
 --- !u!4 &8626145292933904276
 Transform:
   m_ObjectHideFlags: 0

@@ -108,7 +108,7 @@ public class TaskManager : MonoBehaviour
                     roomText = roomHeader.GetComponentInChildren<TextMeshProUGUI>();
                     if (roomText != null)
                     {
-                        roomText.text = room.roomName;
+                        roomText.text = room.GetLocalizedRoomName();
                         roomText.fontStyle = FontStyles.Bold | FontStyles.Underline;
                         roomText.fontSize = 40;
                         TaskUI taskUI = roomHeader.GetComponent<TaskUI>();
@@ -181,19 +181,29 @@ public class TaskManager : MonoBehaviour
     void UpdateTaskInfo()
     {
         if (taskText != null && tasks != null)
-            taskText.text = $"{completedTasks}/{tasks.Count} Task";
+            taskText.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? $"{completedTasks}/{tasks.Count} Tasks"
+            : $"{completedTasks}/{tasks.Count} Tugas";
 
         if (totalTask != null && tasks != null)
-            totalTask.text = $"Total Tugas: {tasks.Count}";
+             totalTask.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? $"Total Tasks: {tasks.Count}"
+            : $"Total Tugas: {tasks.Count}";
 
         if (taskTextPause != null && tasks != null)
-            taskTextPause.text = $"{completedTasks}/{tasks.Count} Tugas";
+            taskTextPause.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? $"{completedTasks}/{tasks.Count} Tasks"
+            : $"{completedTasks}/{tasks.Count} Tugas";
 
         if (roomTextComplated != null && rooms != null)
-            roomTextComplated.text = $"{completedRooms}/{rooms.Length} Ruangan";
+           roomTextComplated.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? $"{completedRooms}/{rooms.Length} Rooms"
+            : $"{completedRooms}/{rooms.Length} Ruangan";
 
         if (totalRoamPause != null && rooms != null)
-            totalRoamPause.text = $"{completedRooms}/{rooms.Length} Ruangan";
+             totalRoamPause.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? $"{completedRooms}/{rooms.Length} Rooms"
+            : $"{completedRooms}/{rooms.Length} Ruangan";
     }
 
 
@@ -207,7 +217,9 @@ public class TaskManager : MonoBehaviour
 
         if (currentRoom == null)
         {
-            tasksPerRoom.text = "Tugas yang tersisa di Ruangan Ini: -/-";
+            tasksPerRoom.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? "Tasks remaining in this room: -/-"
+            : "Tugas yang tersisa di Ruangan Ini: -/-";
         }
         else
         {
@@ -224,6 +236,9 @@ public class TaskManager : MonoBehaviour
                 }
             }
             tasksPerRoom.text = $"Tugas yang tersisa di Ruangan Ini: {completedTasksInRoom}/{tasksInRoom}";
+            tasksPerRoom.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? $"Tasks remaining in this room: {completedTasksInRoom}/{tasksInRoom}"
+            : $"Tugas yang tersisa di Ruangan Ini: {completedTasksInRoom}/{tasksInRoom}";
         }
     }
 
@@ -235,12 +250,14 @@ public class TaskManager : MonoBehaviour
             progressBar.fillAmount = progress;
 
             int percentage = Mathf.RoundToInt(progress * 100f);
-            detailProgression.text = $"{percentage}% Tugas Selesai";
+            detailProgression.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? $"{percentage}% Tasks Completed"
+            : $"{percentage}% Tugas Selesai";
         }
         else
         {
             progressBar.fillAmount = 0f;
-            detailProgression.text = "0% Tugas Selesai";
+            detailProgression.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "0% Tasks Completed" :  "0% Tugas Selesai";
         }
     }
 

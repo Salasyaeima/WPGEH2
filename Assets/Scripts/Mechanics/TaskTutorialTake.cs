@@ -14,7 +14,7 @@ public class TaskTutorialTake : Interactable
     {
         if (isDone == false)
         {
-            return "Tekan {E} untuk mengambil.";
+            return  LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Press {E} to take" :  "Tekan {E} untuk mengambil";
         }
         else
         {
@@ -28,7 +28,7 @@ public class TaskTutorialTake : Interactable
         isDone = true;
         taskList.SetActive(false);
         windowQuest.SetActive(false);
-        taskTutorial.intruksi.text = "Tekan [T] untuk melihat tugas";
+        taskTutorial.intruksi.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Press [T] to view tasks": "Tekan [T] untuk melihat tugas";
         taskTutorial.playerInteractions.canInteract = false;
     }
 }

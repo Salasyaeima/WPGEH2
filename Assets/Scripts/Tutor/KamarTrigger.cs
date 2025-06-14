@@ -1,10 +1,12 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class KamarTrigger : MonoBehaviour
 {
     [SerializeField] TextDialogChild textDialog;
     [SerializeField] GameObject boxPenghalang;
+    [SerializeField] TextMeshProUGUI intruksi;
     bool hasTriggered = false;
     void OnTriggerEnter(Collider other)
     {

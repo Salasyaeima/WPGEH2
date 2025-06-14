@@ -22,7 +22,7 @@ public class Item : Interactable
     {
         if (isHeld == false)
         {
-            return "Tahan {Klik Kiri} Mengambil";
+            return LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Hold {Left Click} Capture":"Tahan {Klik Kiri} Mengambil";
         }
         else
         {

@@ -62,7 +62,7 @@ public class Container : Interactable, ITaskProvider
     {
         if (PlayerInteractions.heldItem != null)
         {
-            return "Press {E} to interact.";
+            return LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Press {E} to interact" : "Tekan {E} untuk berinteraksi";
         }
         else
         {
@@ -190,14 +190,15 @@ public class Container : Interactable, ITaskProvider
 
     public string GetBaseTaskName()
     {
+        bool isIndonesian = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.Indonesian;
         switch (containerType)
         {
             case ContainerType.toyContainer:
-                return "Masukkan barang ke dalam kotak mainan";
+                return isIndonesian ? "Masukkan barang ke dalam kotak mainan" : "Put items in the toy box";
             case ContainerType.wardrobe:
-                return "Simpan pakaian di dalam lemari";
+                return isIndonesian ? "Simpan pakaian di dalam lemari" : "Store clothes in the wardrobe";
             case ContainerType.gudang:
-                return "Masukkan kardus ke rak";
+               return isIndonesian ? "Masukkan kardus ke rak" : "Place boxes on the shelf";
             default:
                 return "";
         }

@@ -4954,8 +4954,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5021,49 +5021,69 @@ MonoBehaviour:
   textMeshPro: {fileID: 856360262}
   targetWalk: {fileID: 1820767001}
   textList:
-  - text: Aduh kenapa kamar ini berantakan sekali sih?!
+  - indonesianText: Aduh kenapa kamar ini berantakan sekali sih?!
+    englishText: Ugh, why is this room so messy?!
     triggerAngryModel: 0
     duration: 3
-  - text: Kemana Andy?!, kenapa kamarnya dibiarkan seperti ini!?!?
+  - indonesianText: Kemana Andy?!, kenapa kamarnya dibiarkan seperti ini!?!?
+    englishText: "Where\u2019s Andy?! Why is his room left like this?!"
     triggerAngryModel: 0
     duration: 3
-  - text: Ini gimana sih, tugas bersihkannya udah dibuat tapi nggak dikerjain juga!
+  - indonesianText: Ini gimana sih, tugas bersihkannya udah dibuat tapi nggak dikerjain
+      juga!
+    englishText: "What\u2019s going on? The cleaning tasks were assigned, but they\u2019re
+      not done!"
     triggerAngryModel: 0
     duration: 3
-  - text: Hadehh... Andy, Andy!
+  - indonesianText: Hadehh... Andy, Andy!
+    englishText: Ugh... Andy, Andy!
     triggerAngryModel: 0
     duration: 3
-  - text: Andy! ini hasilnya kalau kerjaannya cuma main HP! Kamarmu jadi jorok gitu!
+  - indonesianText: Andy! ini hasilnya kalau kerjaannya cuma main HP! Kamarmu jadi
+      jorok gitu!
+    englishText: Andy! This is what happens when you only play on your phone! Your
+      room gets filthy!
     triggerAngryModel: 0
     duration: 3
-  - text: Iyaa, Bu. . . Maaf ya. Nanti aku bersihin kok.
+  - indonesianText: Iyaa, Bu. . . Maaf ya. Nanti aku bersihin kok.
+    englishText: "Yeah, Mom... Sorry. I\u2019ll clean it up later."
     triggerAngryModel: 0
     duration: 3
-  - text: Kamu ini, nanti-nanti aja terus! Cepat beresin sana!
+  - indonesianText: Kamu ini, nanti-nanti aja terus! Cepat beresin sana!
+    englishText: You keep saying later! Hurry up and clean it now!
     triggerAngryModel: 0
     duration: 3
-  - text: Heh!!! Sini Hp Kamu!
+  - indonesianText: Heh!!! Sini Hp Kamu!
+    englishText: Hey!!! Give me your phone!
     triggerAngryModel: 0
     duration: 3
-  - text: Ehh-! Ibu jangan lah
+  - indonesianText: Ehh-! Ibu jangan lah
+    englishText: "Ehh! Mom, don\u2019t do that!"
     triggerAngryModel: 0
     duration: 3
-  - text: Masa langsung dirampas sih bu
+  - indonesianText: Masa langsung dirampas sih bu
+    englishText: "You can\u2019t just take it like that, Mom!"
     triggerAngryModel: 0
     duration: 3
-  - text: Cepat bereskan kamarmu! ibu mau pergi dulu
+  - indonesianText: Cepat bereskan kamarmu! ibu mau pergi dulu
+    englishText: "Hurry up and clean your room! I\u2019m going out for a bit."
     triggerAngryModel: 0
     duration: 3
-  - text: Kalau ibu masih lihat kamu baru mau bersihin, Awas Kamu!
+  - indonesianText: Kalau ibu masih lihat kamu baru mau bersihin, Awas Kamu!
+    englishText: "If I come back and see you just starting to clean, you\u2019re
+      in trouble!"
     triggerAngryModel: 1
     duration: 3
-  - text: Ehh-! Iya Buu
+  - indonesianText: Ehh-! Iya Buu
+    englishText: Ehh! Okay, Mom!
     triggerAngryModel: 0
     duration: 3
-  - text: Jangan cuman kamar kamu saja tapi semuanya!
+  - indonesianText: Jangan cuman kamar kamu saja tapi semuanya!
+    englishText: Not just your room, but everything!
     triggerAngryModel: 0
     duration: 3
-  - text: Yaudah Ibu pergi dulu, Bye
+  - indonesianText: Yaudah Ibu pergi dulu, Bye
+    englishText: "Alright, I\u2019m leaving now, bye!"
     triggerAngryModel: 0
     duration: 3
   useAutoDisplay: 1
@@ -66829,7 +66849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f23267c063f61749833c4af49ae51d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorTrigger: {fileID: 4309646648928807078}
+  doorTrigger: {fileID: 6797673298837548883}
   openDoorSFX: Buka_Pintu
   closeDoorSFX: Tutup_Pintu
 --- !u!65 &6800965623578863100

@@ -2,10 +2,23 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public string roomName;
+    [System.Serializable]
+    public struct RoomNameData
+    {
+        public string englishName;
+        public string indonesianName;
+    }
+    public RoomNameData roomName;
     public int totalTasks = 0;
     int completedTasks = 0;
     bool isCompleted = false;
+
+    public string GetLocalizedRoomName()
+    {
+        return LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? roomName.englishName
+            : roomName.indonesianName;
+    }
 
     public void OnTaskCompleted()
     {
@@ -16,7 +29,6 @@ public class Room : MonoBehaviour
             {
                 isCompleted = true;
                 TaskManager.Instance.OnRoomCompleted();
-                Debug.Log($"{roomName} selesai!");
             }
         }
     }

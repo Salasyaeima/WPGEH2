@@ -24,14 +24,9 @@ public class Door : Interactable
 
     public override string Description()
     {
-        if (!isOpen)
-        {
-            return "Tekan {E} untuk membuka.";
-        }
-        else
-        {
-            return "Tekan {E} untuk menutup.";
-        }
+        return LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? (!isOpen ? "Press {E} to open." : "Press {E} to close.")
+            : (!isOpen ? "Tekan {E} untuk membuka." : "Tekan {E} untuk menutup.");
     }
 
     public override void Interact()

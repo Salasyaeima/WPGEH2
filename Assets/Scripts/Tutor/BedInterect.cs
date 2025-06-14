@@ -17,7 +17,7 @@ public class BedInterect : Interactable
     {
         if (!isBed)
         {
-            return "Press {E} to sleep.";
+            return  LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Press {E} to sleep" : "Tekan {E} untuk tidur";
         }
         else
         {
