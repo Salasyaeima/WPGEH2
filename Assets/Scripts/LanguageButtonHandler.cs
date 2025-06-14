@@ -28,7 +28,6 @@ public class LanguageButtonHandler : MonoBehaviour
 
     void UpdateUI()
     {
-        Debug.Log("Bahasa saat ini: " + LanguageManager.Instance.GetCurrentLanguage());
         option.SetActive(false);
         menu.SetActive(true);
     }
