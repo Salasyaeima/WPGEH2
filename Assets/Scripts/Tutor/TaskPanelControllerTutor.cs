@@ -15,6 +15,7 @@ public class TaskPanelControllerTutor : MonoBehaviour
     [SerializeField] TextDialogChild textDialogChild;
     [SerializeField] GameObject blinkController;
     [SerializeField] string paperSFXName = "paper";
+    [SerializeField] TextMeshProUGUI textProgress;
 
     bool hasSeenTasks = false;
     CanvasGroup canvasGroup;
@@ -55,7 +56,9 @@ public class TaskPanelControllerTutor : MonoBehaviour
         {
             taskPanel.SetActive(true);
             TaskManager.Instance.ShowTasks();
-            infoText.text = "Tekan [T] lagi untuk menutup tugas";
+            infoText.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Press [T] again to close the task." : "Tekan [T] lagi untuk menutup tugas";
+            textProgress.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "This is your assignment progress" : "Ini progres tugasmu";
+            
         }
         else
         {
@@ -86,7 +89,7 @@ public class TaskPanelControllerTutor : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        infoText.text = "Selesaikan tugas memasukkan baju";
+        infoText.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Complete the task of stuffing clothes" : "Selesaikan tugas memasukkan baju";
         PlayerInteractions.canInteractWithClothes = true;
         textDialogChild.playerInteractions.canInteract = true;
         textDialogChild.playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.clothesOnly);

@@ -67,11 +67,23 @@ public class HidingMechanism : Interactable
     {
         if (isHiding)
         {
-            return " ";
+            if (isInTutorialScene)
+            {
+                return string.Empty; 
+            }
+            string key = keyCode.ToUpper();
+            string text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? $"Press {{{key}}} to exit."
+                : $"Tekan {{{key}}} untuk keluar.";
+            return text;
         }
         else
         {
-            return "Tekan {" + keyCode.ToUpper() + "} untuk berinteraksi.";
+            string key = keyCode.ToUpper();
+            string text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? $"Press {{{key}}} to hide."
+                : $"Tekan {{{key}}} untuk sembunyi.";
+            return text;
         }
     }
 
@@ -98,6 +110,7 @@ public class HidingMechanism : Interactable
                 isHiding = false;
                 NotHiddenWhenChased();
                 PerformHide(isHiding);
+
             }
         }
     }

@@ -15,6 +15,7 @@ public class CutsceneSkipper : MonoBehaviour
     {
         if (cutsceneText != null)
         {
+            UpdateCutsceneText();
             Color c = cutsceneText.color;
             c.a = 0;
             cutsceneText.color = c;
@@ -28,6 +29,18 @@ public class CutsceneSkipper : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             LoadingScreen.Instance.SwitchToScene(nextSceneName);
+        }
+    }
+
+    void UpdateCutsceneText()
+    {
+        if (LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.Indonesian)
+        {
+            cutsceneText.text = "Tekan [ESC] Untuk Skip >>";
+        }
+        else
+        {
+            cutsceneText.text = "Press [ESC] to Skip >>";
         }
     }
 

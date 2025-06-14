@@ -17,6 +17,7 @@ public class Broom : Interactable, ITaskProvider
 
     void Start()
     {
+        GetTaskNameField();
         taskManager = TaskManager.Instance;
         room = GetComponentInParent<Room>();
         if (room == null)
@@ -26,7 +27,7 @@ public class Broom : Interactable, ITaskProvider
 
         if (taskManager != null)
         {
-            taskManager.RegisterTask(taskName, this, room);
+            taskManager.RegisterTask(GetTaskName(), this, room);
         }
     }
 
@@ -65,12 +66,22 @@ public class Broom : Interactable, ITaskProvider
 
     public override string Description()
     {
-        return isHeld ? "Tekan {E} untuk menjatuhkan" : "Tekan {E} untuk mengambil";
+        string text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+        ? (isHeld ? "Press {E} to drop" : "Press {E} to pick up")
+        : (isHeld ? "Tekan {E} untuk menjatuhkan" : "Tekan {E} untuk mengambil");
+        return text;
     }
 
     public string GetTaskName()
     {
-        return room != null ? $"{taskName}" : taskName;
+        string baseTaskName = GetTaskNameField();
+        return room != null ? $"{baseTaskName} {room.GetLocalizedRoomName()}" : baseTaskName;
     }
     public Animator GetBroomAnimator() => broomInHand.GetComponent<BroomInHand>().GetBroomAnimator();
+    public string GetTaskNameField()
+    {
+        return LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.Indonesian
+            ? "Bersihkan Lantai"
+            : "Clean the Floor";
+    }
 }

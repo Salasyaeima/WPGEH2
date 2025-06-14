@@ -5,6 +5,12 @@ using Unity.AppUI.UI;
 
 public class TextDialogChild : MonoBehaviour
 {
+    [System.Serializable]
+    public struct TextData
+    {
+        [TextArea] public string indonesianText;
+        [TextArea] public string englishText;
+    }
     public Window_QuestPointer windowQuest;
     public TextMeshProUGUI intruksi;
     public bool useAutoDisplay = true;
@@ -25,7 +31,7 @@ public class TextDialogChild : MonoBehaviour
     [SerializeField] string duhSFXName = "Duh";
     [SerializeField] string pintuSFXName = "Buka_Pintu";
     [SerializeField] string hmmIbuSFXName = "HmmIbu";
-    [SerializeField] string[] texts;
+    [SerializeField] TextData[] texts;
     [SerializeField] float textDuration = 2f;
 
     bool lastHidingState;
@@ -117,7 +123,10 @@ public class TextDialogChild : MonoBehaviour
         if (textDisplay != null)
         {
             textDisplay.gameObject.SetActive(true);
-            textDisplay.text = texts[currentTextIndex];
+            textDisplay.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? texts[currentTextIndex].englishText
+                : texts[currentTextIndex].indonesianText;
+                Debug.Log($"Language: {LanguageManager.Instance.GetCurrentLanguage()}, Text: {textDisplay.text}");
             timer = 0f;
         }
         else
@@ -145,14 +154,28 @@ public class TextDialogChild : MonoBehaviour
     public void NextText()
     {
         currentTextIndex++;
+        
+        if (currentTextIndex >= texts.Length)
+        {
+            StopDisplayingText();
+            return;
+        }
+         textDisplay.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? texts[currentTextIndex].englishText
+                : texts[currentTextIndex].indonesianText;
+                
 
         if (currentTextIndex != 5 && currentTextIndex != 7 && currentTextIndex != 10 && currentTextIndex != 21)
-            {
-                playerInteractions.canInteract = false;
-            }
+        {
+            playerInteractions.canInteract = false;
+        }
+        
 
         if (currentTextIndex == 5)
         {
+            intruksi.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? "Enter the room!"
+            : "Masuk Kamar!";
             PauseDisplayingText();
             StartCoroutine(DelayedInstruksi());
             return;
@@ -178,7 +201,9 @@ public class TextDialogChild : MonoBehaviour
             intruksi.enabled = true;
             playerInteractions.canInteract = true;
             playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.BedOnly);
-            intruksi.text = "Pergi Ke tempat tidur";
+            intruksi.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? "Go to bed"
+                : "Pergi Ke tempat tidur";
 
             newTargetTransform = targetTransforms[0];
             ChangeTargetTransform();
@@ -196,7 +221,9 @@ public class TextDialogChild : MonoBehaviour
         else if (currentTextIndex == 17)
         {
             intruksi.enabled = true;
-            intruksi.text = "Sembunyi Ke Kardus";
+            intruksi.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? "Hide in the cardboard"
+                : "Sembunyi Ke Kardus";
             playerInteractions.canInteract = true;
             playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.HidingOnly);
             newTargetTransform = targetTransforms[1];
@@ -205,7 +232,7 @@ public class TextDialogChild : MonoBehaviour
             PauseDisplayingText();
             StartCoroutine(CheckHidingState());
         }
-        
+
         else if (currentTextIndex == 21)
         {
             PauseDisplayingText();
@@ -213,7 +240,6 @@ public class TextDialogChild : MonoBehaviour
 
         if (currentTextIndex < texts.Length && textDisplay != null)
         {
-            textDisplay.text = texts[currentTextIndex];
             timer = 0f;
         }
         else
@@ -251,7 +277,9 @@ public class TextDialogChild : MonoBehaviour
     IEnumerator ShowInstruksiAfterDelay()
     {
         yield return new WaitForSeconds(2f);
-        intruksi.text = "Ambil Tugas!";
+        intruksi.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? "Pick up the task!"
+            : "Ambil Tugas!";
         playerInteractions.canInteract = true;
         playerInteractions.SetInteractionMode(PlayerInteractions.InteractionMode.TaskOnly);
         intruksi.enabled = true;
@@ -278,7 +306,9 @@ public class TextDialogChild : MonoBehaviour
         if (textDisplay != null)
         {
             textDisplay.enabled = true;
-            textDisplay.text = texts[currentTextIndex];
+            textDisplay.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? texts[currentTextIndex].englishText
+                : texts[currentTextIndex].indonesianText;
             timer = 0f;
         }
         else
@@ -338,7 +368,9 @@ public class TextDialogChild : MonoBehaviour
                 if (textDisplay != null)
                 {
                     textDisplay.enabled = true;
-                    textDisplay.text = texts[currentTextIndex];
+                    textDisplay.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? texts[currentTextIndex].englishText
+                : texts[currentTextIndex].indonesianText;
                 }
                 timer = 0f;
             }

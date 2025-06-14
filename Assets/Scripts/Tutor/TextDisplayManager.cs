@@ -7,7 +7,8 @@ public class TextDisplayManager : MonoBehaviour
     [System.Serializable]
     public class TextData
     {
-        [TextArea] public string text;
+        [TextArea] public string indonesianText;
+        [TextArea] public string englishText;
         public bool triggerAngryModel;
         public float duration = 3f;
     }
@@ -74,7 +75,9 @@ public class TextDisplayManager : MonoBehaviour
 
         isDisplaying = true;
         textMeshPro.gameObject.SetActive(true);
-        textMeshPro.text = textList[currentTextIndex].text;
+        textMeshPro.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+            ? textList[currentTextIndex].englishText
+            : textList[currentTextIndex].indonesianText;
 
         if (useAutoDisplay && displayCoroutine == null)
         {
@@ -112,7 +115,9 @@ public class TextDisplayManager : MonoBehaviour
         currentTextIndex++;
         if (currentTextIndex < textList.Length && textMeshPro != null)
         {
-            textMeshPro.text = textList[currentTextIndex].text;
+            textMeshPro.text = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English
+                ? textList[currentTextIndex].englishText
+                : textList[currentTextIndex].indonesianText;
             CheckAngryState();
             if (useAutoDisplay)
             {

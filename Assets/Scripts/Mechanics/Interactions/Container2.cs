@@ -41,7 +41,7 @@ public class Container2 : Interactable, ITaskProvider
     {
         if (isDone == false)
         {
-            return "Tahan {E} Berinteraksi.";
+            return  LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.English ? "Hold {E} Interact." :"Tahan {E} Berinteraksi";
         }
         else
         {
@@ -91,12 +91,13 @@ public class Container2 : Interactable, ITaskProvider
 
     public string GetTaskName()
     {
+        bool isIndonesian = LanguageManager.Instance.GetCurrentLanguage() == LanguageManager.Language.Indonesian;
         switch (containerType)
         {
             case ContainerType.Bookshelf:
-                return "Susun buku di meja belajar";
+                return isIndonesian ? "Susun buku di meja belajar" : "Arrange books on the study table";
             case ContainerType.bed:
-                return "Rapihkan tempat tidur";
+                return isIndonesian ? "Rapihkan tempat tidur" : "Make the bed";
             default:
                 return "";
         }
