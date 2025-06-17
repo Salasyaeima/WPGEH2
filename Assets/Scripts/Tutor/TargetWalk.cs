@@ -386,7 +386,7 @@ public class TargetWalk : MonoBehaviour
     {
         while (true)
         {
-            AudioManager.instance.PlaySFX(footstepSFXName, 0.09f);
+            AudioManager.instance.PlaySFX(footstepSFXName, 0.11f);
             yield return new WaitForSeconds(footstepInterval); 
         }
     }
