@@ -16,6 +16,11 @@ public class MainMenuFunction : MonoBehaviour
         LoadVolumeSettings();
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void SetBGMVolume(float volume)
     {
         if (volume > 0.001f)
