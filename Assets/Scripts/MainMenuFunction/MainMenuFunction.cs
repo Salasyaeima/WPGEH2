@@ -19,6 +19,7 @@ public class MainMenuFunction : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        Debug.Log("Quit");
     }
 
     public void SetBGMVolume(float volume)
